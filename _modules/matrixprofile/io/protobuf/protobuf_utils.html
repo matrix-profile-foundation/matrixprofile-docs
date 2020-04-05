@@ -1,0 +1,652 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>matrixprofile.io.protobuf.protobuf_utils &mdash; MatrixProfile</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> matrixprofile
+          
+
+          
+            
+            <img src="../../../../_static/mpf-logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../Quickstart.html">Quickstart Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../Algorithms.html">Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../help.html">Getting Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../code_of_conduct.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../citations.html">Citations</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/matrix-profile-foundation/matrixprofile">Code Repository (Github)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://matrixprofile.org">Website</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">matrixprofile</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>matrixprofile.io.protobuf.protobuf_utils</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for matrixprofile.io.protobuf.protobuf_utils</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">absolute_import</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">division</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">unicode_literals</span>
+
+<span class="nb">range</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">__builtins__</span><span class="p">,</span> <span class="s1">&#39;xrange&#39;</span><span class="p">,</span> <span class="nb">range</span><span class="p">)</span>
+<span class="c1"># end of py2 compatability boilerplate</span>
+
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">matrixprofile</span> <span class="k">import</span> <span class="n">core</span>
+<span class="kn">from</span> <span class="nn">matrixprofile.io.protobuf.proto_messages_pb2</span> <span class="k">import</span> <span class="p">(</span>
+    <span class="n">Location</span><span class="p">,</span> <span class="n">Motif</span><span class="p">,</span> <span class="n">MPFOutput</span>
+<span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">get_matrix_attributes</span><span class="p">(</span><span class="n">matrix</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Utility function to extract the rows, cols and flattened array from a</span>
+<span class="sd">    numpy array so it can be stored in the MPFOutput protobuf message.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    matrix : np.ndarray</span>
+<span class="sd">        The numpy array to extract the attributes from.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    tuple :</span>
+<span class="sd">        A tuple containing the rows, cols and flattened array.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">core</span><span class="o">.</span><span class="n">is_array_like</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
+    
+    <span class="n">rows</span> <span class="o">=</span> <span class="n">matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">cols</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">cols</span> <span class="o">=</span> <span class="n">matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    
+    <span class="k">return</span> <span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">matrix</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">get_windows</span><span class="p">(</span><span class="n">profile</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Utility function to format the windows from a profile structure ensuring</span>
+<span class="sd">    that the windows are in an array.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    profile : dict</span>
+<span class="sd">        The MatrixProfile or PMP profile.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    list :</span>
+<span class="sd">        The window(s) in a list.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">windows</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="k">if</span> <span class="n">core</span><span class="o">.</span><span class="n">is_mp_obj</span><span class="p">(</span><span class="n">profile</span><span class="p">):</span>
+        <span class="n">windows</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;w&#39;</span><span class="p">))</span>
+    <span class="k">elif</span> <span class="n">core</span><span class="o">.</span><span class="n">is_pmp_obj</span><span class="p">(</span><span class="n">profile</span><span class="p">):</span>
+        <span class="n">windows</span> <span class="o">=</span> <span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;windows&#39;</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">windows</span>
+
+
+<span class="k">def</span> <span class="nf">get_proto_motif</span><span class="p">(</span><span class="n">motif</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Utility function to convert a motif from a MatrixProfile or PMP structure</span>
+<span class="sd">    ensuring that it is compatible with the MPFOutput message.</span>
+
+<span class="sd">    Note</span>
+<span class="sd">    ----</span>
+<span class="sd">    A single dimensional motif location will only have a row index and</span>
+<span class="sd">    a column index of 0.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    motif : dict</span>
+<span class="sd">        The motif to convert.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Motif :</span>
+<span class="sd">        The motif object for MPFOutput message.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">out_motif</span> <span class="o">=</span> <span class="n">Motif</span><span class="p">()</span>
+    
+    <span class="k">for</span> <span class="n">indices</span> <span class="ow">in</span> <span class="n">motif</span><span class="p">[</span><span class="s1">&#39;motifs&#39;</span><span class="p">]:</span>
+        <span class="n">tmp</span> <span class="o">=</span> <span class="n">Location</span><span class="p">()</span>
+        <span class="n">tmp</span><span class="o">.</span><span class="n">row</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">tmp</span><span class="o">.</span><span class="n">col</span> <span class="o">=</span> <span class="mi">0</span>
+        
+        <span class="c1"># handle single integer location</span>
+        <span class="k">if</span> <span class="n">core</span><span class="o">.</span><span class="n">is_array_like</span><span class="p">(</span><span class="n">indices</span><span class="p">):</span>
+            <span class="n">tmp</span><span class="o">.</span><span class="n">row</span> <span class="o">=</span> <span class="n">indices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">tmp</span><span class="o">.</span><span class="n">col</span> <span class="o">=</span> <span class="n">indices</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">tmp</span><span class="o">.</span><span class="n">row</span> <span class="o">=</span> <span class="n">indices</span>
+        
+        <span class="n">out_motif</span><span class="o">.</span><span class="n">motifs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
+    
+    <span class="k">for</span> <span class="n">neighbor</span> <span class="ow">in</span> <span class="n">motif</span><span class="p">[</span><span class="s1">&#39;neighbors&#39;</span><span class="p">]:</span>
+        <span class="n">tmp</span> <span class="o">=</span> <span class="n">Location</span><span class="p">()</span>
+        <span class="n">tmp</span><span class="o">.</span><span class="n">row</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">tmp</span><span class="o">.</span><span class="n">col</span> <span class="o">=</span> <span class="mi">0</span>
+        
+        <span class="c1"># handle single integer location</span>
+        <span class="k">if</span> <span class="n">core</span><span class="o">.</span><span class="n">is_array_like</span><span class="p">(</span><span class="n">neighbor</span><span class="p">):</span>
+            <span class="n">tmp</span><span class="o">.</span><span class="n">row</span> <span class="o">=</span> <span class="n">neighbor</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">tmp</span><span class="o">.</span><span class="n">col</span> <span class="o">=</span> <span class="n">neighbor</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">tmp</span><span class="o">.</span><span class="n">row</span> <span class="o">=</span> <span class="n">neighbor</span>
+        
+        <span class="n">out_motif</span><span class="o">.</span><span class="n">neighbors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">out_motif</span>
+
+
+<span class="k">def</span> <span class="nf">get_proto_discord</span><span class="p">(</span><span class="n">discord</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Utility function to convert a discord into the MPFOutput message</span>
+<span class="sd">    format.</span>
+
+<span class="sd">    Note</span>
+<span class="sd">    ----</span>
+<span class="sd">    A single dimensional discord location will only have a row index and</span>
+<span class="sd">    a column index of 0.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    discord : int or tuple</span>
+<span class="sd">        The discord with row, col index or single index.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Location :</span>
+<span class="sd">        The Location message used in the MPFOutput protobuf message.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">out_discord</span> <span class="o">=</span> <span class="n">Location</span><span class="p">()</span>
+    <span class="n">out_discord</span><span class="o">.</span><span class="n">row</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">out_discord</span><span class="o">.</span><span class="n">col</span> <span class="o">=</span> <span class="mi">0</span>
+    
+    <span class="k">if</span> <span class="n">core</span><span class="o">.</span><span class="n">is_array_like</span><span class="p">(</span><span class="n">discord</span><span class="p">):</span>
+        <span class="n">out_discord</span><span class="o">.</span><span class="n">row</span> <span class="o">=</span> <span class="n">discord</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">out_discord</span><span class="o">.</span><span class="n">col</span> <span class="o">=</span> <span class="n">discord</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">out_discord</span><span class="o">.</span><span class="n">row</span> <span class="o">=</span> <span class="n">discord</span>
+    
+    <span class="k">return</span> <span class="n">out_discord</span>
+
+
+<span class="k">def</span> <span class="nf">profile_to_proto</span><span class="p">(</span><span class="n">profile</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Utility function that takes a MatrixProfile or PMP profile data structure</span>
+<span class="sd">    and converts it to the MPFOutput protobuf message object.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    profile : dict</span>
+<span class="sd">        The profile to convert.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    MPFOutput :</span>
+<span class="sd">        The MPFOutput protobuf message object.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="n">MPFOutput</span><span class="p">()</span>
+    
+    <span class="c1"># add higher level attributes that work for PMP and MP</span>
+    <span class="n">output</span><span class="o">.</span><span class="n">klass</span> <span class="o">=</span> <span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">)</span>
+    <span class="n">output</span><span class="o">.</span><span class="n">algorithm</span> <span class="o">=</span> <span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;algorithm&#39;</span><span class="p">)</span>
+    <span class="n">output</span><span class="o">.</span><span class="n">metric</span> <span class="o">=</span> <span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;metric&#39;</span><span class="p">)</span>
+    <span class="n">output</span><span class="o">.</span><span class="n">sample_pct</span> <span class="o">=</span> <span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;sample_pct&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># add time series data</span>
+    <span class="n">ts</span> <span class="o">=</span> <span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;ts&#39;</span><span class="p">)</span>
+    <span class="n">query</span> <span class="o">=</span> <span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;query&#39;</span><span class="p">)</span>
+    <span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">get_matrix_attributes</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span>
+    <span class="n">output</span><span class="o">.</span><span class="n">ts</span><span class="o">.</span><span class="n">rows</span> <span class="o">=</span> <span class="n">rows</span>
+    <span class="n">output</span><span class="o">.</span><span class="n">ts</span><span class="o">.</span><span class="n">cols</span> <span class="o">=</span> <span class="n">cols</span>
+    <span class="n">output</span><span class="o">.</span><span class="n">ts</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    
+    <span class="c1"># add query data</span>
+    <span class="n">query</span> <span class="o">=</span> <span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;query&#39;</span><span class="p">)</span>
+    <span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">get_matrix_attributes</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="n">rows</span> <span class="ow">and</span> <span class="n">cols</span> <span class="ow">and</span> <span class="n">core</span><span class="o">.</span><span class="n">is_array_like</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+        <span class="n">output</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">rows</span> <span class="o">=</span> <span class="n">rows</span>
+        <span class="n">output</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">cols</span> <span class="o">=</span> <span class="n">cols</span>
+        <span class="n">output</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    
+    <span class="c1"># add window(s)</span>
+    <span class="n">output</span><span class="o">.</span><span class="n">windows</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">get_windows</span><span class="p">(</span><span class="n">profile</span><span class="p">))</span>
+    
+    <span class="c1"># add motifs</span>
+    <span class="n">motifs</span> <span class="o">=</span> <span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;motifs&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">motifs</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="kc">None</span><span class="p">)):</span>
+        <span class="k">for</span> <span class="n">motif</span> <span class="ow">in</span> <span class="n">motifs</span><span class="p">:</span>
+            <span class="n">output</span><span class="o">.</span><span class="n">motifs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">get_proto_motif</span><span class="p">(</span><span class="n">motif</span><span class="p">))</span>
+
+
+    <span class="c1"># add discords</span>
+    <span class="n">discords</span> <span class="o">=</span> <span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;discords&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">discords</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="kc">None</span><span class="p">)):</span>
+        <span class="k">for</span> <span class="n">discord</span> <span class="ow">in</span> <span class="n">discords</span><span class="p">:</span>
+            <span class="n">output</span><span class="o">.</span><span class="n">discords</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">get_proto_discord</span><span class="p">(</span><span class="n">discord</span><span class="p">))</span>
+    
+    <span class="c1"># add the matrix profile specific attributes</span>
+    <span class="k">if</span> <span class="n">core</span><span class="o">.</span><span class="n">is_mp_obj</span><span class="p">(</span><span class="n">profile</span><span class="p">):</span>
+        <span class="n">output</span><span class="o">.</span><span class="n">mp</span><span class="o">.</span><span class="n">ez</span> <span class="o">=</span> <span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;ez&#39;</span><span class="p">)</span>
+        <span class="n">output</span><span class="o">.</span><span class="n">mp</span><span class="o">.</span><span class="n">join</span> <span class="o">=</span> <span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;join&#39;</span><span class="p">)</span>
+        
+        <span class="c1"># add mp</span>
+        <span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">get_matrix_attributes</span><span class="p">(</span><span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;mp&#39;</span><span class="p">))</span>
+        <span class="n">output</span><span class="o">.</span><span class="n">mp</span><span class="o">.</span><span class="n">mp</span><span class="o">.</span><span class="n">rows</span> <span class="o">=</span> <span class="n">rows</span>
+        <span class="n">output</span><span class="o">.</span><span class="n">mp</span><span class="o">.</span><span class="n">mp</span><span class="o">.</span><span class="n">cols</span> <span class="o">=</span> <span class="n">cols</span>
+        <span class="n">output</span><span class="o">.</span><span class="n">mp</span><span class="o">.</span><span class="n">mp</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        
+        <span class="c1"># add pi</span>
+        <span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">get_matrix_attributes</span><span class="p">(</span><span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;pi&#39;</span><span class="p">))</span>
+        <span class="n">output</span><span class="o">.</span><span class="n">mp</span><span class="o">.</span><span class="n">pi</span><span class="o">.</span><span class="n">rows</span> <span class="o">=</span> <span class="n">rows</span>
+        <span class="n">output</span><span class="o">.</span><span class="n">mp</span><span class="o">.</span><span class="n">pi</span><span class="o">.</span><span class="n">cols</span> <span class="o">=</span> <span class="n">cols</span>
+        <span class="n">output</span><span class="o">.</span><span class="n">mp</span><span class="o">.</span><span class="n">pi</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        
+        <span class="c1"># add lmp</span>
+        <span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">get_matrix_attributes</span><span class="p">(</span><span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;lmp&#39;</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">rows</span> <span class="ow">and</span> <span class="n">cols</span> <span class="ow">and</span> <span class="n">core</span><span class="o">.</span><span class="n">is_array_like</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+            <span class="n">output</span><span class="o">.</span><span class="n">mp</span><span class="o">.</span><span class="n">lmp</span><span class="o">.</span><span class="n">rows</span> <span class="o">=</span> <span class="n">rows</span>
+            <span class="n">output</span><span class="o">.</span><span class="n">mp</span><span class="o">.</span><span class="n">lmp</span><span class="o">.</span><span class="n">cols</span> <span class="o">=</span> <span class="n">cols</span>
+            <span class="n">output</span><span class="o">.</span><span class="n">mp</span><span class="o">.</span><span class="n">lmp</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        
+        <span class="c1"># add lpi</span>
+        <span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">get_matrix_attributes</span><span class="p">(</span><span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;lpi&#39;</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">rows</span> <span class="ow">and</span> <span class="n">cols</span> <span class="ow">and</span> <span class="n">core</span><span class="o">.</span><span class="n">is_array_like</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+            <span class="n">output</span><span class="o">.</span><span class="n">mp</span><span class="o">.</span><span class="n">lpi</span><span class="o">.</span><span class="n">rows</span> <span class="o">=</span> <span class="n">rows</span>
+            <span class="n">output</span><span class="o">.</span><span class="n">mp</span><span class="o">.</span><span class="n">lpi</span><span class="o">.</span><span class="n">cols</span> <span class="o">=</span> <span class="n">cols</span>
+            <span class="n">output</span><span class="o">.</span><span class="n">mp</span><span class="o">.</span><span class="n">lpi</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        
+        <span class="c1"># add rmp</span>
+        <span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">get_matrix_attributes</span><span class="p">(</span><span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;rmp&#39;</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">rows</span> <span class="ow">and</span> <span class="n">cols</span> <span class="ow">and</span> <span class="n">core</span><span class="o">.</span><span class="n">is_array_like</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+            <span class="n">output</span><span class="o">.</span><span class="n">mp</span><span class="o">.</span><span class="n">rmp</span><span class="o">.</span><span class="n">rows</span> <span class="o">=</span> <span class="n">rows</span>
+            <span class="n">output</span><span class="o">.</span><span class="n">mp</span><span class="o">.</span><span class="n">rmp</span><span class="o">.</span><span class="n">cols</span> <span class="o">=</span> <span class="n">cols</span>
+            <span class="n">output</span><span class="o">.</span><span class="n">mp</span><span class="o">.</span><span class="n">rmp</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        
+        <span class="c1"># add rpi</span>
+        <span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">get_matrix_attributes</span><span class="p">(</span><span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;rpi&#39;</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">rows</span> <span class="ow">and</span> <span class="n">cols</span> <span class="ow">and</span> <span class="n">core</span><span class="o">.</span><span class="n">is_array_like</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+            <span class="n">output</span><span class="o">.</span><span class="n">mp</span><span class="o">.</span><span class="n">rpi</span><span class="o">.</span><span class="n">rows</span> <span class="o">=</span> <span class="n">rows</span>
+            <span class="n">output</span><span class="o">.</span><span class="n">mp</span><span class="o">.</span><span class="n">rpi</span><span class="o">.</span><span class="n">cols</span> <span class="o">=</span> <span class="n">cols</span>
+            <span class="n">output</span><span class="o">.</span><span class="n">mp</span><span class="o">.</span><span class="n">rpi</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        
+    <span class="c1"># add the pan matrix profile specific attributes</span>
+    <span class="k">elif</span> <span class="n">core</span><span class="o">.</span><span class="n">is_pmp_obj</span><span class="p">(</span><span class="n">profile</span><span class="p">):</span>               
+        <span class="c1"># add pmp</span>
+        <span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">get_matrix_attributes</span><span class="p">(</span><span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;pmp&#39;</span><span class="p">))</span>
+        <span class="n">output</span><span class="o">.</span><span class="n">pmp</span><span class="o">.</span><span class="n">pmp</span><span class="o">.</span><span class="n">rows</span> <span class="o">=</span> <span class="n">rows</span>
+        <span class="n">output</span><span class="o">.</span><span class="n">pmp</span><span class="o">.</span><span class="n">pmp</span><span class="o">.</span><span class="n">cols</span> <span class="o">=</span> <span class="n">cols</span>
+        <span class="n">output</span><span class="o">.</span><span class="n">pmp</span><span class="o">.</span><span class="n">pmp</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        
+        <span class="c1"># add pmpi</span>
+        <span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">get_matrix_attributes</span><span class="p">(</span><span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;pmpi&#39;</span><span class="p">))</span>
+        <span class="n">output</span><span class="o">.</span><span class="n">pmp</span><span class="o">.</span><span class="n">pmpi</span><span class="o">.</span><span class="n">rows</span> <span class="o">=</span> <span class="n">rows</span>
+        <span class="n">output</span><span class="o">.</span><span class="n">pmp</span><span class="o">.</span><span class="n">pmpi</span><span class="o">.</span><span class="n">cols</span> <span class="o">=</span> <span class="n">cols</span>
+        <span class="n">output</span><span class="o">.</span><span class="n">pmp</span><span class="o">.</span><span class="n">pmpi</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Expecting Pan-MatrixProfile or MatrixProfile!&#39;</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">output</span>
+
+
+<div class="viewcode-block" id="to_mpf"><a class="viewcode-back" href="../../../../api.html#matrixprofile.io.to_mpf">[docs]</a><span class="k">def</span> <span class="nf">to_mpf</span><span class="p">(</span><span class="n">profile</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Converts a given profile object into MPF binary file format.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    profile : dict_like</span>
+<span class="sd">        A MatrixProfile or Pan-MatrixProfile data structure.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    str :</span>
+<span class="sd">        The profile as a binary formatted string.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">obj</span> <span class="o">=</span> <span class="n">profile_to_proto</span><span class="p">(</span><span class="n">profile</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">obj</span><span class="o">.</span><span class="n">SerializeToString</span><span class="p">()</span></div>
+
+        
+<span class="k">def</span> <span class="nf">from_proto_to_array</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Utility function to convert a protobuf array back into the correct</span>
+<span class="sd">    dimensions.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    value : array_like</span>
+<span class="sd">        The array to transform.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    np.ndarray :</span>
+<span class="sd">        The transformed array.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="kc">None</span><span class="p">))</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">data</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    
+    <span class="n">shape</span> <span class="o">=</span> <span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">rows</span><span class="p">,</span> <span class="n">value</span><span class="o">.</span><span class="n">cols</span><span class="p">)</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="n">out</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">out</span>
+
+
+<span class="k">def</span> <span class="nf">discords_from_proto</span><span class="p">(</span><span class="n">discords</span><span class="p">,</span> <span class="n">is_one_dimensional</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Utility function to transform discord locations back to single dimension</span>
+<span class="sd">    or multi-dimension location.</span>
+
+<span class="sd">    Parameter</span>
+<span class="sd">    ---------</span>
+<span class="sd">    discords : array_like</span>
+<span class="sd">        The protobuf formatted array.</span>
+<span class="sd">    is_one_dimensional : boolean</span>
+<span class="sd">        A flag to indicate if the original locations should be 1D.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    np.ndarray :</span>
+<span class="sd">        The transformed discord locations.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="k">for</span> <span class="n">discord</span> <span class="ow">in</span> <span class="n">discords</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">is_one_dimensional</span><span class="p">:</span>
+            <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">discord</span><span class="o">.</span><span class="n">row</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">discord</span><span class="o">.</span><span class="n">row</span><span class="p">,</span> <span class="n">discord</span><span class="o">.</span><span class="n">col</span><span class="p">))</span>
+    
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">motifs_from_proto</span><span class="p">(</span><span class="n">motifs</span><span class="p">,</span> <span class="n">is_one_dimensional</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Utility function to transform motif locations back to single dimension</span>
+<span class="sd">    or multi-dimension location.</span>
+
+<span class="sd">    Parameter</span>
+<span class="sd">    ---------</span>
+<span class="sd">    motifs : array_like</span>
+<span class="sd">        The protobuf formatted array.</span>
+<span class="sd">    is_one_dimensional : boolean</span>
+<span class="sd">        A flag to indicate if the original locations should be 1D.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    list :</span>
+<span class="sd">        The transformed motif locations.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="k">for</span> <span class="n">motif</span> <span class="ow">in</span> <span class="n">motifs</span><span class="p">:</span>
+        <span class="n">tmp</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;motifs&#39;</span><span class="p">:</span> <span class="p">[],</span> <span class="s1">&#39;neighbors&#39;</span><span class="p">:</span> <span class="p">[]}</span>
+        
+        <span class="k">for</span> <span class="n">location</span> <span class="ow">in</span> <span class="n">motif</span><span class="o">.</span><span class="n">motifs</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">is_one_dimensional</span><span class="p">:</span>
+                <span class="n">tmp</span><span class="p">[</span><span class="s1">&#39;motifs&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">location</span><span class="o">.</span><span class="n">row</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">tmp</span><span class="p">[</span><span class="s1">&#39;motifs&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">location</span><span class="o">.</span><span class="n">row</span><span class="p">,</span> <span class="n">location</span><span class="o">.</span><span class="n">col</span><span class="p">))</span>
+        
+        <span class="k">for</span> <span class="n">neighbor</span> <span class="ow">in</span> <span class="n">motif</span><span class="o">.</span><span class="n">neighbors</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">is_one_dimensional</span><span class="p">:</span>
+                <span class="n">tmp</span><span class="p">[</span><span class="s1">&#39;neighbors&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">neighbor</span><span class="o">.</span><span class="n">row</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">tmp</span><span class="p">[</span><span class="s1">&#39;neighbors&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">neighbor</span><span class="o">.</span><span class="n">row</span><span class="p">,</span> <span class="n">neighbor</span><span class="o">.</span><span class="n">col</span><span class="p">))</span>
+        
+        <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">out</span>
+
+
+<div class="viewcode-block" id="from_mpf"><a class="viewcode-back" href="../../../../api.html#matrixprofile.io.from_mpf">[docs]</a><span class="k">def</span> <span class="nf">from_mpf</span><span class="p">(</span><span class="n">profile</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Converts binary formatted MPFOutput message into a profile data structure.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    profile : str</span>
+<span class="sd">        The profile as a binary formatted MPFOutput message.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    profile : dict_like</span>
+<span class="sd">        A MatrixProfile or Pan-MatrixProfile data structure.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">obj</span> <span class="o">=</span> <span class="n">MPFOutput</span><span class="p">()</span>
+    <span class="n">obj</span><span class="o">.</span><span class="n">ParseFromString</span><span class="p">(</span><span class="n">profile</span><span class="p">)</span>
+    
+    <span class="n">out</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">is_one_dimensional</span> <span class="o">=</span> <span class="kc">False</span>
+    
+    <span class="c1"># load in all higher level attributes</span>
+    <span class="n">out</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">klass</span>
+    <span class="n">out</span><span class="p">[</span><span class="s1">&#39;algorithm&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">algorithm</span>
+    <span class="n">out</span><span class="p">[</span><span class="s1">&#39;metric&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">metric</span>
+    <span class="n">out</span><span class="p">[</span><span class="s1">&#39;sample_pct&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">sample_pct</span>
+    <span class="n">out</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;ts&#39;</span><span class="p">:</span> <span class="n">from_proto_to_array</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">ts</span><span class="p">),</span>
+        <span class="s1">&#39;query&#39;</span><span class="p">:</span> <span class="n">from_proto_to_array</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">query</span><span class="p">)</span>
+    <span class="p">}</span>
+    
+    <span class="k">if</span> <span class="n">obj</span><span class="o">.</span><span class="n">klass</span> <span class="o">==</span> <span class="s1">&#39;MatrixProfile&#39;</span><span class="p">:</span>
+        <span class="n">out</span><span class="p">[</span><span class="s1">&#39;mp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">from_proto_to_array</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">mp</span><span class="o">.</span><span class="n">mp</span><span class="p">)</span>
+        <span class="n">out</span><span class="p">[</span><span class="s1">&#39;pi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">from_proto_to_array</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">mp</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+        <span class="n">out</span><span class="p">[</span><span class="s1">&#39;lmp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">from_proto_to_array</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">mp</span><span class="o">.</span><span class="n">lmp</span><span class="p">)</span>
+        <span class="n">out</span><span class="p">[</span><span class="s1">&#39;lpi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">from_proto_to_array</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">mp</span><span class="o">.</span><span class="n">lpi</span><span class="p">)</span>
+        <span class="n">out</span><span class="p">[</span><span class="s1">&#39;rmp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">from_proto_to_array</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">mp</span><span class="o">.</span><span class="n">rmp</span><span class="p">)</span>
+        <span class="n">out</span><span class="p">[</span><span class="s1">&#39;rpi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">from_proto_to_array</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">mp</span><span class="o">.</span><span class="n">rpi</span><span class="p">)</span>
+        <span class="n">out</span><span class="p">[</span><span class="s1">&#39;ez&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">mp</span><span class="o">.</span><span class="n">ez</span>
+        <span class="n">out</span><span class="p">[</span><span class="s1">&#39;join&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">mp</span><span class="o">.</span><span class="n">join</span>
+        <span class="n">out</span><span class="p">[</span><span class="s1">&#39;w&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">windows</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        
+        <span class="n">is_one_dimensional</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">out</span><span class="p">[</span><span class="s1">&#39;mp&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+        
+    <span class="k">elif</span> <span class="n">obj</span><span class="o">.</span><span class="n">klass</span> <span class="o">==</span> <span class="s1">&#39;PMP&#39;</span><span class="p">:</span>
+        <span class="n">out</span><span class="p">[</span><span class="s1">&#39;pmp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">from_proto_to_array</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">pmp</span><span class="o">.</span><span class="n">pmp</span><span class="p">)</span>
+        <span class="n">out</span><span class="p">[</span><span class="s1">&#39;pmpi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">from_proto_to_array</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">pmp</span><span class="o">.</span><span class="n">pmpi</span><span class="p">)</span>
+        <span class="n">out</span><span class="p">[</span><span class="s1">&#39;windows&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">windows</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">discords</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="kc">None</span><span class="p">))</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">discords</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">out</span><span class="p">[</span><span class="s1">&#39;discords&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">discords_from_proto</span><span class="p">(</span>
+            <span class="n">obj</span><span class="o">.</span><span class="n">discords</span><span class="p">,</span> <span class="n">is_one_dimensional</span><span class="o">=</span><span class="n">is_one_dimensional</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">motifs</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="kc">None</span><span class="p">))</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">motifs</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">out</span><span class="p">[</span><span class="s1">&#39;motifs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">motifs_from_proto</span><span class="p">(</span>
+            <span class="n">obj</span><span class="o">.</span><span class="n">motifs</span><span class="p">,</span> <span class="n">is_one_dimensional</span><span class="o">=</span><span class="n">is_one_dimensional</span><span class="p">)</span>
+        
+    <span class="k">return</span> <span class="n">out</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Matrix Profile Foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

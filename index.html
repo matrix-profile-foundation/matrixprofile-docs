@@ -1,1 +1,307 @@
-<h1>Placeholder</h1>
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>MatrixProfile Documentation &mdash; MatrixProfile</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Installation" href="install.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+          
+
+          
+            <a href="#" class="icon icon-home"> matrixprofile
+          
+
+          
+            
+            <img src="_static/mpf-logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Quickstart.html">Quickstart Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Algorithms.html">Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Getting Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code_of_conduct.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="citations.html">Citations</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/matrix-profile-foundation/matrixprofile">Code Repository (Github)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://matrixprofile.org">Website</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">matrixprofile</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="#">Docs</a> &raquo;</li>
+        
+      <li>MatrixProfile Documentation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="toctree-wrapper compound">
+</div>
+<div class="section" id="matrixprofile-documentation">
+<h1>MatrixProfile Documentation<a class="headerlink" href="#matrixprofile-documentation" title="Permalink to this headline">¶</a></h1>
+<a class="reference external image-reference" href="https://pypi.org/project/matrixprofile/"><img alt="PyPI Version" src="https://img.shields.io/pypi/v/matrixprofile.svg" /></a>
+<a class="reference external image-reference" href="https://pepy.tech/project/matrixprofile"><img alt="PyPI Downloads" src="https://pepy.tech/badge/matrixprofile" /></a>
+<a class="reference external image-reference" href="https://codecov.io/gh/matrix-profile-foundation/matrixprofile"><img alt="Code Coverage" src="https://codecov.io/gh/matrix-profile-foundation/matrixprofile/branch/master/graph/badge.svg" /></a>
+<a class="reference external image-reference" href="https://travis-ci.com/matrix-profile-foundation/matrixprofile"><img alt="Build Status" src="https://travis-ci.com/matrix-profile-foundation/matrixprofile.svg" /></a>
+<a class="reference external image-reference" href="https://opensource.org/licenses/Apache-2.0"><img alt="License" src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" /></a>
+<a class="reference external image-reference" href="https://twitter.com/matrixprofile"><img alt="Twitter" src="https://img.shields.io/twitter/follow/matrixprofile.svg?style=social" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<a class="reference external image-reference" href="https://matrixprofile.org"><img alt="MPF Logo" src="https://matrixprofile.org/static/img/mpf-logo.png" style="height: 150.0px;" /></a>
+<div class="section" id="matrixprofile">
+<h2>MatrixProfile<a class="headerlink" href="#matrixprofile" title="Permalink to this headline">¶</a></h2>
+<p>MatrixProfile is a Python 2 and 3 library, brought to you by the <a class="reference external" href="https://matrixprofile.org">Matrix Profile Foundation</a>, for mining time series data. The Matrix Profile is a novel data structure with corresponding algorithms (stomp, regimes, motifs, etc.) developed by the <a class="reference external" href="https://www.cs.ucr.edu/~eamonn/MatrixProfile.html">Keogh</a> and <a class="reference external" href="https://www.cs.unm.edu/~mueen/">Mueen</a> research groups at UC-Riverside and the University of New Mexico. The goal of this library is to make these algorithms accessible to both the novice and expert through standardization of core concepts, a simplistic API, and sensible default parameter values.</p>
+<p>In addition to this Python library, the Matrix Profile Foundation, provides implementations in other languages. These languages have a pretty consistent API allowing you to easily switch between them without a huge learning curve.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/matrix-profile-foundation/tsmp">tsmp</a> - an R implementation</p></li>
+<li><p><a class="reference external" href="https://github.com/matrix-profile-foundation/go-matrixprofile">go-matrixprofile</a> - a Golang implementation</p></li>
+</ul>
+</div>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>The easiest way to install this library is using pip. If you would like to install it from source, please review the <a class="reference external" href="http://matrixprofile.docs.matrixprofile.org/install.html">installation documentation</a> for your platform.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install matrixprofile
+</pre></div>
+</div>
+</div>
+<div class="section" id="getting-started">
+<h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
+<p>This article provides introductory material on the Matrix Profile:
+<a class="reference external" href="https://towardsdatascience.com/introduction-to-matrix-profiles-5568f3375d90">Introduction to Matrix Profiles</a></p>
+<p>This article provides details about core concepts introduced in this library:
+<a class="reference external" href="https://towardsdatascience.com/how-to-painlessly-analyze-your-time-series-f52dab7ea80d">How To Painlessly Analyze Your Time Series</a></p>
+<p>Our documentation provides a <a class="reference external" href="http://matrixprofile.docs.matrixprofile.org/Quickstart.html">quick start guide</a>, <a class="reference external" href="http://matrixprofile.docs.matrixprofile.org/examples.html">examples</a> and <a class="reference external" href="http://matrixprofile.docs.matrixprofile.org/api.html">api</a> documentation. It is the source of truth for getting up and running.</p>
+</div>
+<div class="section" id="algorithms">
+<h2>Algorithms<a class="headerlink" href="#algorithms" title="Permalink to this headline">¶</a></h2>
+<p>For details about the algorithms implemented, including performance characteristics, please refer to the <a class="reference external" href="http://matrixprofile.docs.matrixprofile.org/Algorithms.html">documentation</a>.</p>
+<div class="section" id="getting-help">
+<h3>Getting Help<a class="headerlink" href="#getting-help" title="Permalink to this headline">¶</a></h3>
+<p>We provide a dedicated <a class="reference external" href="https://discordapp.com/invite/sBhDNXT">Discord channel</a> where practitioners can discuss applications and ask questions about the Matrix Profile Foundation libraries. If you rather not join Discord, then please open a <a class="reference external" href="https://github.com/matrix-profile-foundation/matrixprofile/issues">Github issue</a>.</p>
+</div>
+<div class="section" id="contributing">
+<h3>Contributing<a class="headerlink" href="#contributing" title="Permalink to this headline">¶</a></h3>
+<p>Please review the <a class="reference external" href="http://matrixprofile.docs.matrixprofile.org/contributing.html">contributing guidelines</a> located in our documentation.</p>
+</div>
+<div class="section" id="code-of-conduct">
+<h3>Code of Conduct<a class="headerlink" href="#code-of-conduct" title="Permalink to this headline">¶</a></h3>
+<p>Please review our <a class="reference external" href="http://matrixprofile.docs.matrixprofile.org/code_of_conduct.html">Code of Conduct documentation</a>.</p>
+</div>
+<div class="section" id="citations">
+<h3>Citations<a class="headerlink" href="#citations" title="Permalink to this headline">¶</a></h3>
+<p>All proper acknowledgements for works of others may be found in our <a class="reference external" href="http://matrixprofile.docs.matrixprofile.org/citations.html">citation documentation</a>.</p>
+<div class="section" id="indices-and-tables">
+<h4>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="install.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Matrix Profile Foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

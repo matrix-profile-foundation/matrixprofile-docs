@@ -1,0 +1,579 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>matrixprofile.algorithms.stomp &mdash; MatrixProfile</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> matrixprofile
+          
+
+          
+            
+            <img src="../../../_static/mpf-logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Quickstart.html">Quickstart Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Algorithms.html">Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../help.html">Getting Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../code_of_conduct.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../citations.html">Citations</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/matrix-profile-foundation/matrixprofile">Code Repository (Github)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://matrixprofile.org">Website</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">matrixprofile</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>matrixprofile.algorithms.stomp</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for matrixprofile.algorithms.stomp</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">absolute_import</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">division</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">unicode_literals</span>
+
+<span class="nb">range</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">__builtins__</span><span class="p">,</span> <span class="s1">&#39;xrange&#39;</span><span class="p">,</span> <span class="nb">range</span><span class="p">)</span>
+<span class="c1"># end of py2 compatability boilerplate</span>
+
+<span class="kn">import</span> <span class="nn">logging</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">matrixprofile</span> <span class="k">import</span> <span class="n">core</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_batch_compute</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Internal function to compute a batch of the time series in parallel.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    args : tuple</span>
+<span class="sd">        Various attributes used for computing the batch.</span>
+<span class="sd">        (</span>
+<span class="sd">            batch_start : int</span>
+<span class="sd">                The starting index for this batch.</span>
+<span class="sd">            batch_end : int</span>
+<span class="sd">                The ending index for this batch.</span>
+<span class="sd">            ts : array_like</span>
+<span class="sd">                The time series to compute the matrix profile for.</span>
+<span class="sd">            query : array_like</span>
+<span class="sd">                The query.</span>
+<span class="sd">            window_size : int</span>
+<span class="sd">                The size of the window to compute the profile over.</span>
+<span class="sd">            data_length : int</span>
+<span class="sd">                The number of elements in the time series.</span>
+<span class="sd">            profile_length : int</span>
+<span class="sd">                The number of elements that will be in the final matrix</span>
+<span class="sd">                profile.</span>
+<span class="sd">            exclusion_zone : int</span>
+<span class="sd">                Used to exclude trivial matches.</span>
+<span class="sd">            is_join : bool</span>
+<span class="sd">                Flag to indicate if an AB join or self join is occuring.</span>
+<span class="sd">            data_mu : array_like</span>
+<span class="sd">                The moving average over the time series for the given window</span>
+<span class="sd">                size.</span>
+<span class="sd">            data_sig : array_like</span>
+<span class="sd">                The moving standard deviation over the time series for the</span>
+<span class="sd">                given window size.</span>
+<span class="sd">            first_product : array_like</span>
+<span class="sd">                The first sliding dot product for the time series over index</span>
+<span class="sd">                0 to window_size.</span>
+<span class="sd">            skip_locs : array_like</span>
+<span class="sd">                Indices that should be skipped for distance profile calculation</span>
+<span class="sd">                due to a nan or inf.</span>
+<span class="sd">        )</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    dict : profile</span>
+<span class="sd">        The matrix profile, left and right matrix profiles and their respective</span>
+<span class="sd">        profile indices.</span>
+
+<span class="sd">        &gt;&gt;&gt; {</span>
+<span class="sd">        &gt;&gt;&gt;     &#39;mp&#39;: The matrix profile,</span>
+<span class="sd">        &gt;&gt;&gt;     &#39;pi&#39;: The matrix profile 1NN indices,</span>
+<span class="sd">        &gt;&gt;&gt;     &#39;rmp&#39;: The right matrix profile,</span>
+<span class="sd">        &gt;&gt;&gt;     &#39;rpi&#39;: The right matrix profile 1NN indices,</span>
+<span class="sd">        &gt;&gt;&gt;     &#39;lmp&#39;: The left matrix profile,</span>
+<span class="sd">        &gt;&gt;&gt;     &#39;lpi&#39;: The left matrix profile 1NN indices,</span>
+<span class="sd">        &gt;&gt;&gt; }</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">batch_start</span><span class="p">,</span> <span class="n">batch_end</span><span class="p">,</span> <span class="n">ts</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">window_size</span><span class="p">,</span> <span class="n">data_length</span><span class="p">,</span> \
+    <span class="n">profile_length</span><span class="p">,</span> <span class="n">exclusion_zone</span><span class="p">,</span> <span class="n">is_join</span><span class="p">,</span> <span class="n">data_mu</span><span class="p">,</span> <span class="n">data_sig</span><span class="p">,</span> \
+    <span class="n">first_product</span><span class="p">,</span> <span class="n">skip_locs</span> <span class="o">=</span> <span class="n">args</span>
+
+     <span class="c1"># initialize matrices</span>
+    <span class="n">matrix_profile</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">profile_length</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">)</span>
+    <span class="n">profile_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">profile_length</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+    <span class="n">left_matrix_profile</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">right_matrix_profile</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">left_profile_index</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">right_profile_index</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">is_join</span><span class="p">:</span>
+        <span class="n">left_matrix_profile</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">matrix_profile</span><span class="p">)</span>
+        <span class="n">right_matrix_profile</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">matrix_profile</span><span class="p">)</span>
+        <span class="n">left_profile_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">profile_index</span><span class="p">)</span>
+        <span class="n">right_profile_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">profile_index</span><span class="p">)</span>
+
+    <span class="c1"># with batch 0 we do not need to recompute the dot product</span>
+    <span class="c1"># however with other batch windows, we need the previous iterations sliding</span>
+    <span class="c1"># dot product</span>
+    <span class="n">last_product</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">if</span> <span class="n">batch_start</span> <span class="ow">is</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">first_window</span> <span class="o">=</span> <span class="n">query</span><span class="p">[</span><span class="n">batch_start</span><span class="p">:</span><span class="n">batch_start</span> <span class="o">+</span> <span class="n">window_size</span><span class="p">]</span>
+        <span class="n">last_product</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">first_product</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">first_window</span> <span class="o">=</span> <span class="n">query</span><span class="p">[</span><span class="n">batch_start</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span><span class="n">batch_start</span> <span class="o">+</span> <span class="n">window_size</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>        
+        <span class="n">last_product</span> <span class="o">=</span> <span class="n">core</span><span class="o">.</span><span class="n">fft_convolve</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">first_window</span><span class="p">)</span>
+
+    <span class="n">query_sum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">first_window</span><span class="p">)</span>
+    <span class="n">query_2sum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">first_window</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">query_mu</span><span class="p">,</span> <span class="n">query_sig</span> <span class="o">=</span> <span class="n">core</span><span class="o">.</span><span class="n">moving_avg_std</span><span class="p">(</span><span class="n">first_window</span><span class="p">,</span> <span class="n">window_size</span><span class="p">)</span>
+
+    <span class="n">drop_value</span> <span class="o">=</span> <span class="n">first_window</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="c1"># only compute the distance profile for index 0 and update</span>
+    <span class="k">if</span> <span class="n">batch_start</span> <span class="ow">is</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">distance_profile</span> <span class="o">=</span> <span class="n">core</span><span class="o">.</span><span class="n">distance_profile</span><span class="p">(</span><span class="n">last_product</span><span class="p">,</span> <span class="n">window_size</span><span class="p">,</span>
+         <span class="n">data_mu</span><span class="p">,</span> <span class="n">data_sig</span><span class="p">,</span> <span class="n">query_mu</span><span class="p">,</span> <span class="n">query_sig</span><span class="p">)</span>
+
+        <span class="c1"># apply exclusion zone</span>
+        <span class="n">distance_profile</span> <span class="o">=</span> <span class="n">core</span><span class="o">.</span><span class="n">apply_exclusion_zone</span><span class="p">(</span><span class="n">exclusion_zone</span><span class="p">,</span> <span class="n">is_join</span><span class="p">,</span>
+            <span class="n">window_size</span><span class="p">,</span> <span class="n">data_length</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">distance_profile</span><span class="p">)</span>
+           
+        <span class="c1"># update the matrix profile</span>
+        <span class="n">indices</span> <span class="o">=</span> <span class="p">(</span><span class="n">distance_profile</span> <span class="o">&lt;</span> <span class="n">matrix_profile</span><span class="p">)</span>
+        <span class="n">matrix_profile</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span> <span class="o">=</span> <span class="n">distance_profile</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span>
+        <span class="n">profile_index</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="n">batch_start</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="c1"># make sure to compute inclusively from batch start to batch end</span>
+    <span class="c1"># otherwise there are gaps in the profile</span>
+    <span class="k">if</span> <span class="n">batch_end</span> <span class="o">&lt;</span> <span class="n">profile_length</span><span class="p">:</span>
+        <span class="n">batch_end</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="c1"># iteratively compute distance profile and update with element-wise mins</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">batch_start</span><span class="p">,</span> <span class="n">batch_end</span><span class="p">):</span>
+
+        <span class="c1"># check for nan or inf and skip</span>
+        <span class="k">if</span> <span class="n">skip_locs</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+            <span class="k">continue</span>
+
+        <span class="n">query_window</span> <span class="o">=</span> <span class="n">query</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="n">window_size</span><span class="p">]</span>
+        <span class="n">query_sum</span> <span class="o">=</span> <span class="n">query_sum</span> <span class="o">-</span> <span class="n">drop_value</span> <span class="o">+</span> <span class="n">query_window</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">query_2sum</span> <span class="o">=</span> <span class="n">query_2sum</span> <span class="o">-</span> <span class="n">drop_value</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">query_window</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span>
+        <span class="n">query_mu</span> <span class="o">=</span> <span class="n">query_sum</span> <span class="o">/</span> <span class="n">window_size</span>
+        <span class="n">query_sig2</span> <span class="o">=</span> <span class="n">query_2sum</span> <span class="o">/</span> <span class="n">window_size</span> <span class="o">-</span> <span class="n">query_mu</span> <span class="o">**</span> <span class="mi">2</span>
+        <span class="n">query_sig</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">query_sig2</span><span class="p">)</span>
+        <span class="n">last_product</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">=</span> <span class="n">last_product</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">data_length</span> <span class="o">-</span> <span class="n">window_size</span><span class="p">]</span> \
+            <span class="o">-</span> <span class="n">ts</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">data_length</span> <span class="o">-</span> <span class="n">window_size</span><span class="p">]</span> <span class="o">*</span> <span class="n">drop_value</span> \
+            <span class="o">+</span> <span class="n">ts</span><span class="p">[</span><span class="n">window_size</span><span class="p">:]</span> <span class="o">*</span> <span class="n">query_window</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">last_product</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">first_product</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">drop_value</span> <span class="o">=</span> <span class="n">query_window</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="n">distance_profile</span> <span class="o">=</span> <span class="n">core</span><span class="o">.</span><span class="n">distance_profile</span><span class="p">(</span>
+            <span class="n">last_product</span><span class="p">,</span> <span class="n">window_size</span><span class="p">,</span> <span class="n">data_mu</span><span class="p">,</span> <span class="n">data_sig</span><span class="p">,</span> <span class="n">query_mu</span><span class="p">,</span> <span class="n">query_sig</span><span class="p">)</span>
+
+        <span class="c1"># apply the exclusion zone        </span>
+        <span class="n">distance_profile</span> <span class="o">=</span> <span class="n">core</span><span class="o">.</span><span class="n">apply_exclusion_zone</span><span class="p">(</span><span class="n">exclusion_zone</span><span class="p">,</span> <span class="n">is_join</span><span class="p">,</span> 
+            <span class="n">window_size</span><span class="p">,</span> <span class="n">data_length</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">distance_profile</span><span class="p">)</span>
+            
+        <span class="c1"># update the matrix profile</span>
+        <span class="n">indices</span> <span class="o">=</span> <span class="p">(</span><span class="n">distance_profile</span> <span class="o">&lt;</span> <span class="n">matrix_profile</span><span class="p">)</span>
+        <span class="n">matrix_profile</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span> <span class="o">=</span> <span class="n">distance_profile</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span>
+        <span class="n">profile_index</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span>
+
+        <span class="c1"># update the left and right matrix profiles</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">is_join</span><span class="p">:</span>
+            <span class="c1"># find differences, shift left and update</span>
+            <span class="n">indices</span> <span class="o">=</span> <span class="n">distance_profile</span><span class="p">[</span><span class="n">i</span><span class="p">:]</span> <span class="o">&lt;</span> <span class="n">left_matrix_profile</span><span class="p">[</span><span class="n">i</span><span class="p">:]</span>
+            <span class="n">falses</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;bool&#39;</span><span class="p">)</span>
+            <span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">falses</span><span class="p">,</span> <span class="n">indices</span><span class="p">)</span>
+            <span class="n">left_matrix_profile</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span> <span class="o">=</span> <span class="n">distance_profile</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span>
+            <span class="n">left_profile_index</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argwhere</span><span class="p">(</span><span class="n">indices</span><span class="p">)]</span> <span class="o">=</span> <span class="n">i</span>
+
+            <span class="c1"># find differences, shift right and update</span>
+            <span class="n">indices</span> <span class="o">=</span> <span class="n">distance_profile</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">right_matrix_profile</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">falses</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">profile_length</span> <span class="o">-</span> <span class="n">i</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;bool&#39;</span><span class="p">)</span>
+            <span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">indices</span><span class="p">,</span> <span class="n">falses</span><span class="p">)</span>
+            <span class="n">right_matrix_profile</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span> <span class="o">=</span> <span class="n">distance_profile</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span>
+            <span class="n">right_profile_index</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argwhere</span><span class="p">(</span><span class="n">indices</span><span class="p">)]</span> <span class="o">=</span> <span class="n">i</span>
+
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s1">&#39;mp&#39;</span><span class="p">:</span> <span class="n">matrix_profile</span><span class="p">,</span>
+        <span class="s1">&#39;pi&#39;</span><span class="p">:</span> <span class="n">profile_index</span><span class="p">,</span>
+        <span class="s1">&#39;rmp&#39;</span><span class="p">:</span> <span class="n">right_matrix_profile</span><span class="p">,</span>
+        <span class="s1">&#39;rpi&#39;</span><span class="p">:</span> <span class="n">right_profile_index</span><span class="p">,</span>
+        <span class="s1">&#39;lmp&#39;</span><span class="p">:</span> <span class="n">left_matrix_profile</span><span class="p">,</span>
+        <span class="s1">&#39;lpi&#39;</span><span class="p">:</span> <span class="n">left_profile_index</span><span class="p">,</span>
+    <span class="p">}</span>
+
+
+<div class="viewcode-block" id="stomp"><a class="viewcode-back" href="../../../api.html#matrixprofile.algorithms.stomp">[docs]</a><span class="k">def</span> <span class="nf">stomp</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">window_size</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Computes matrix profiles for a single dimensional time series using the </span>
+<span class="sd">    parallelized STOMP algorithm (by default). Ray or Python&#39;s multiprocessing</span>
+<span class="sd">    library may be used. When you have initialized Ray on your machine, </span>
+<span class="sd">    it takes priority over using Python&#39;s multiprocessing.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    ts : array_like</span>
+<span class="sd">        The time series to compute the matrix profile for.</span>
+<span class="sd">    window_size: int</span>
+<span class="sd">        The size of the window to compute the matrix profile over.</span>
+<span class="sd">    query : array_like</span>
+<span class="sd">        Optionally, a query can be provided to perform a similarity join.</span>
+<span class="sd">    n_jobs : int, Default = 1</span>
+<span class="sd">        Number of cpu cores to use.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    dict : profile</span>
+<span class="sd">        A MatrixProfile data structure.</span>
+<span class="sd">        </span>
+<span class="sd">        &gt;&gt;&gt; {</span>
+<span class="sd">        &gt;&gt;&gt;     &#39;mp&#39;: The matrix profile,</span>
+<span class="sd">        &gt;&gt;&gt;     &#39;pi&#39;: The matrix profile 1NN indices,</span>
+<span class="sd">        &gt;&gt;&gt;     &#39;rmp&#39;: The right matrix profile,</span>
+<span class="sd">        &gt;&gt;&gt;     &#39;rpi&#39;: The right matrix profile 1NN indices,</span>
+<span class="sd">        &gt;&gt;&gt;     &#39;lmp&#39;: The left matrix profile,</span>
+<span class="sd">        &gt;&gt;&gt;     &#39;lpi&#39;: The left matrix profile 1NN indices,</span>
+<span class="sd">        &gt;&gt;&gt;     &#39;metric&#39;: The distance metric computed for the mp,</span>
+<span class="sd">        &gt;&gt;&gt;     &#39;w&#39;: The window size used to compute the matrix profile,</span>
+<span class="sd">        &gt;&gt;&gt;     &#39;ez&#39;: The exclusion zone used,</span>
+<span class="sd">        &gt;&gt;&gt;     &#39;join&#39;: Flag indicating if a similarity join was computed,</span>
+<span class="sd">        &gt;&gt;&gt;     &#39;sample_pct&#39;: Percentage of samples used in computing the MP,</span>
+<span class="sd">        &gt;&gt;&gt;     &#39;data&#39;: {</span>
+<span class="sd">        &gt;&gt;&gt;         &#39;ts&#39;: Time series data,</span>
+<span class="sd">        &gt;&gt;&gt;         &#39;query&#39;: Query data if supplied</span>
+<span class="sd">        &gt;&gt;&gt;     }</span>
+<span class="sd">        &gt;&gt;&gt;     &#39;class&#39;: &quot;MatrixProfile&quot;</span>
+<span class="sd">        &gt;&gt;&gt;     &#39;algorithm&#39;: &quot;stomp_parallel&quot;</span>
+<span class="sd">        &gt;&gt;&gt; }</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    ValueError</span>
+<span class="sd">        If window_size &lt; 4.</span>
+<span class="sd">        If window_size &gt; query length / 2.</span>
+<span class="sd">        If ts is not a list or np.array.</span>
+<span class="sd">        If query is not a list or np.array.</span>
+<span class="sd">        If ts or query is not one dimensional.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">is_join</span> <span class="o">=</span> <span class="n">core</span><span class="o">.</span><span class="n">is_similarity_join</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">query</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">is_join</span><span class="p">:</span>
+        <span class="n">query</span> <span class="o">=</span> <span class="n">ts</span>
+
+    <span class="c1"># data conversion to np.array</span>
+    <span class="n">ts</span> <span class="o">=</span> <span class="n">core</span><span class="o">.</span><span class="n">to_np_array</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span>
+    <span class="n">query</span> <span class="o">=</span> <span class="n">core</span><span class="o">.</span><span class="n">to_np_array</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">window_size</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">:</span>
+        <span class="n">error</span> <span class="o">=</span> <span class="s2">&quot;window size must be at least 4.&quot;</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">window_size</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">query</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">error</span> <span class="o">=</span> <span class="s2">&quot;Time series is too short relative to desired window size&quot;</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+
+    <span class="c1"># multiprocessing or single threaded approach</span>
+    <span class="k">if</span> <span class="n">n_jobs</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">n_jobs</span> <span class="o">=</span> <span class="n">core</span><span class="o">.</span><span class="n">valid_n_jobs</span><span class="p">(</span><span class="n">n_jobs</span><span class="p">)</span>
+
+    <span class="c1"># precompute some common values - profile length, query length etc.</span>
+    <span class="n">profile_length</span> <span class="o">=</span> <span class="n">core</span><span class="o">.</span><span class="n">get_profile_length</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">window_size</span><span class="p">)</span>
+    <span class="n">data_length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span>
+    <span class="n">query_length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+    <span class="n">num_queries</span> <span class="o">=</span> <span class="n">query_length</span> <span class="o">-</span> <span class="n">window_size</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">exclusion_zone</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">window_size</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">))</span>
+
+    <span class="c1"># do not use exclusion zone for join</span>
+    <span class="k">if</span> <span class="n">is_join</span><span class="p">:</span>
+        <span class="n">exclusion_zone</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="c1"># find skip locations, clean up nan and inf in the ts and query</span>
+    <span class="n">skip_locs</span> <span class="o">=</span> <span class="n">core</span><span class="o">.</span><span class="n">find_skip_locations</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">profile_length</span><span class="p">,</span> <span class="n">window_size</span><span class="p">)</span>
+    <span class="n">ts</span> <span class="o">=</span> <span class="n">core</span><span class="o">.</span><span class="n">clean_nan_inf</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span>
+    <span class="n">query</span> <span class="o">=</span> <span class="n">core</span><span class="o">.</span><span class="n">clean_nan_inf</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+
+    <span class="c1"># initialize matrices</span>
+    <span class="n">matrix_profile</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">profile_length</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">)</span>
+    <span class="n">profile_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">profile_length</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+    <span class="c1"># compute left and right matrix profile when similarity join does not happen</span>
+    <span class="n">left_matrix_profile</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">right_matrix_profile</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">left_profile_index</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">right_profile_index</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">is_join</span><span class="p">:</span>
+        <span class="n">left_matrix_profile</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">matrix_profile</span><span class="p">)</span>
+        <span class="n">right_matrix_profile</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">matrix_profile</span><span class="p">)</span>
+        <span class="n">left_profile_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">profile_index</span><span class="p">)</span>
+        <span class="n">right_profile_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">profile_index</span><span class="p">)</span>
+
+    <span class="c1"># precompute some statistics on ts</span>
+    <span class="n">data_mu</span><span class="p">,</span> <span class="n">data_sig</span> <span class="o">=</span> <span class="n">core</span><span class="o">.</span><span class="n">moving_avg_std</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">window_size</span><span class="p">)</span>
+    <span class="n">first_window</span> <span class="o">=</span> <span class="n">query</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">window_size</span><span class="p">]</span>
+    <span class="n">first_product</span> <span class="o">=</span> <span class="n">core</span><span class="o">.</span><span class="n">fft_convolve</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">first_window</span><span class="p">)</span>
+
+    <span class="n">batch_windows</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="c1"># batch compute with multiprocessing</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="ow">in</span> <span class="n">core</span><span class="o">.</span><span class="n">generate_batch_jobs</span><span class="p">(</span><span class="n">num_queries</span><span class="p">,</span> <span class="n">n_jobs</span><span class="p">):</span>
+        <span class="n">args</span><span class="o">.</span><span class="n">append</span><span class="p">((</span>
+            <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">ts</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">window_size</span><span class="p">,</span> <span class="n">data_length</span><span class="p">,</span>
+            <span class="n">profile_length</span><span class="p">,</span> <span class="n">exclusion_zone</span><span class="p">,</span> <span class="n">is_join</span><span class="p">,</span> <span class="n">data_mu</span><span class="p">,</span> <span class="n">data_sig</span><span class="p">,</span>
+            <span class="n">first_product</span><span class="p">,</span> <span class="n">skip_locs</span>
+        <span class="p">))</span>
+        <span class="n">batch_windows</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">))</span>
+
+    <span class="c1"># we are running single threaded stomp - no need to initialize any</span>
+    <span class="c1"># parallel environments.</span>
+    <span class="k">if</span> <span class="n">n_jobs</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_batch_compute</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># parallelize</span>
+        <span class="k">with</span> <span class="n">core</span><span class="o">.</span><span class="n">mp_pool</span><span class="p">()(</span><span class="n">n_jobs</span><span class="p">)</span> <span class="k">as</span> <span class="n">pool</span><span class="p">:</span>
+            <span class="n">results</span> <span class="o">=</span> <span class="n">pool</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">_batch_compute</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
+
+    <span class="c1"># now we combine the batch results</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">matrix_profile</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;mp&#39;</span><span class="p">]</span>
+        <span class="n">profile_index</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;pi&#39;</span><span class="p">]</span>
+        <span class="n">left_matrix_profile</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;lmp&#39;</span><span class="p">]</span>
+        <span class="n">left_profile_index</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;lpi&#39;</span><span class="p">]</span>
+        <span class="n">right_matrix_profile</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;rmp&#39;</span><span class="p">]</span>
+        <span class="n">right_profile_index</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;rpi&#39;</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">result</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">results</span><span class="p">):</span>
+            <span class="n">start</span> <span class="o">=</span> <span class="n">batch_windows</span><span class="p">[</span><span class="n">index</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">end</span> <span class="o">=</span> <span class="n">batch_windows</span><span class="p">[</span><span class="n">index</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>        
+            
+            <span class="c1"># update the matrix profile</span>
+            <span class="n">indices</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;mp&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">matrix_profile</span>
+            <span class="n">matrix_profile</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;mp&#39;</span><span class="p">][</span><span class="n">indices</span><span class="p">]</span>
+            <span class="n">profile_index</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;pi&#39;</span><span class="p">][</span><span class="n">indices</span><span class="p">]</span>
+
+            <span class="c1"># update the left and right matrix profiles</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">is_join</span><span class="p">:</span>
+                <span class="n">indices</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;lmp&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">left_matrix_profile</span>
+                <span class="n">left_matrix_profile</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;lmp&#39;</span><span class="p">][</span><span class="n">indices</span><span class="p">]</span>
+                <span class="n">left_profile_index</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;lpi&#39;</span><span class="p">][</span><span class="n">indices</span><span class="p">]</span>
+
+                <span class="n">indices</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;rmp&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">right_matrix_profile</span>
+                <span class="n">right_matrix_profile</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;rmp&#39;</span><span class="p">][</span><span class="n">indices</span><span class="p">]</span>
+                <span class="n">right_profile_index</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;rpi&#39;</span><span class="p">][</span><span class="n">indices</span><span class="p">]</span>           
+
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s1">&#39;mp&#39;</span><span class="p">:</span> <span class="n">matrix_profile</span><span class="p">,</span>
+        <span class="s1">&#39;pi&#39;</span><span class="p">:</span> <span class="n">profile_index</span><span class="p">,</span>
+        <span class="s1">&#39;rmp&#39;</span><span class="p">:</span> <span class="n">right_matrix_profile</span><span class="p">,</span>
+        <span class="s1">&#39;rpi&#39;</span><span class="p">:</span> <span class="n">right_profile_index</span><span class="p">,</span>
+        <span class="s1">&#39;lmp&#39;</span><span class="p">:</span> <span class="n">left_matrix_profile</span><span class="p">,</span>
+        <span class="s1">&#39;lpi&#39;</span><span class="p">:</span> <span class="n">left_profile_index</span><span class="p">,</span>
+        <span class="s1">&#39;metric&#39;</span><span class="p">:</span> <span class="s1">&#39;euclidean&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;w&#39;</span><span class="p">:</span> <span class="n">window_size</span><span class="p">,</span>
+        <span class="s1">&#39;ez&#39;</span><span class="p">:</span> <span class="n">exclusion_zone</span><span class="p">,</span>
+        <span class="s1">&#39;join&#39;</span><span class="p">:</span> <span class="n">is_join</span><span class="p">,</span>
+        <span class="s1">&#39;sample_pct&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;ts&#39;</span><span class="p">:</span> <span class="n">ts</span><span class="p">,</span>
+            <span class="s1">&#39;query&#39;</span><span class="p">:</span> <span class="n">query</span>
+        <span class="p">},</span>
+        <span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s2">&quot;MatrixProfile&quot;</span><span class="p">,</span>
+        <span class="s1">&#39;algorithm&#39;</span><span class="p">:</span> <span class="s2">&quot;stomp&quot;</span>
+    <span class="p">}</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Matrix Profile Foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

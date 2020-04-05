@@ -1,0 +1,772 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>matrixprofile.algorithms.scrimp &mdash; MatrixProfile</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> matrixprofile
+          
+
+          
+            
+            <img src="../../../_static/mpf-logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Quickstart.html">Quickstart Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Algorithms.html">Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../help.html">Getting Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../code_of_conduct.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../citations.html">Citations</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/matrix-profile-foundation/matrixprofile">Code Repository (Github)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://matrixprofile.org">Website</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">matrixprofile</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>matrixprofile.algorithms.scrimp</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for matrixprofile.algorithms.scrimp</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This module consists of all code to implement the SCRIMP++ algorithm. SCRIMP++ </span>
+<span class="sd">is an anytime algorithm that computes the matrix profile for a given time </span>
+<span class="sd">series (ts) over a given window size (m).</span>
+
+<span class="sd">This algorithm was originally created at the University of California </span>
+<span class="sd">Riverside. For further academic understanding, please review this paper:</span>
+
+<span class="sd">Matrix Proﬁle XI: SCRIMP++: Time Series Motif Discovery at Interactive</span>
+<span class="sd">Speed. Yan Zhu, Chin-Chia Michael Yeh, Zachary Zimmerman, Kaveh Kamgar</span>
+<span class="sd">Eamonn Keogh, ICDM 2018.</span>
+
+<span class="sd">https://www.cs.ucr.edu/~eamonn/SCRIMP_ICDM_camera_ready_updated.pdf</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">absolute_import</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">division</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">unicode_literals</span>
+
+<span class="nb">range</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">__builtins__</span><span class="p">,</span> <span class="s1">&#39;xrange&#39;</span><span class="p">,</span> <span class="nb">range</span><span class="p">)</span>
+<span class="c1"># end of py2 compatability boilerplate</span>
+
+<span class="kn">import</span> <span class="nn">math</span>
+
+<span class="kn">import</span> <span class="nn">warnings</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">matrixprofile</span> <span class="k">import</span> <span class="n">core</span>
+
+
+<span class="k">def</span> <span class="nf">calc_distance_profile</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">meanx</span><span class="p">,</span> <span class="n">sigmax</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Computes the distance profile.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    X : array_like</span>
+<span class="sd">        The FFT transformed time series.</span>
+<span class="sd">    y : array_like</span>
+<span class="sd">        The query.</span>
+<span class="sd">    n : int</span>
+<span class="sd">        The length of the time series.</span>
+<span class="sd">    m : int</span>
+<span class="sd">        The window size.</span>
+<span class="sd">    meanx : array_like</span>
+<span class="sd">        The moving mean of the time series.</span>
+<span class="sd">    sigmax : array_like</span>
+<span class="sd">        The moving standard deviation of the time series.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    array_like :</span>
+<span class="sd">        The distance profile.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># reverse the query</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">flip</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+   
+    <span class="c1"># make y same size as ts with zero fill</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">y</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="n">m</span><span class="p">)])</span>
+
+    <span class="c1"># main trick of getting dot product in O(n log n) time</span>
+    <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+    <span class="n">Z</span> <span class="o">=</span> <span class="n">X</span> <span class="o">*</span> <span class="n">Y</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifft</span><span class="p">(</span><span class="n">Z</span><span class="p">)</span>
+
+    <span class="c1"># compute y stats in O(n)</span>
+    <span class="n">sumy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+    <span class="n">sumy2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+    <span class="n">meany</span> <span class="o">=</span> <span class="n">sumy</span> <span class="o">/</span> <span class="n">m</span>
+    <span class="n">sigmay2</span> <span class="o">=</span> <span class="n">sumy2</span> <span class="o">/</span> <span class="n">m</span> <span class="o">-</span> <span class="n">meany</span> <span class="o">**</span> <span class="mi">2</span>
+    <span class="n">sigmay</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sigmay2</span><span class="p">)</span>
+
+    <span class="n">dist</span> <span class="o">=</span> <span class="p">(</span><span class="n">z</span><span class="p">[</span><span class="n">m</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span><span class="n">n</span><span class="p">]</span> <span class="o">-</span> <span class="n">m</span> <span class="o">*</span> <span class="n">meanx</span> <span class="o">*</span> <span class="n">meany</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">sigmax</span> <span class="o">*</span> <span class="n">sigmay</span><span class="p">)</span>
+    <span class="n">dist</span> <span class="o">=</span> <span class="n">m</span> <span class="o">-</span> <span class="n">dist</span>
+    <span class="n">dist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">dist</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">absolute</span><span class="p">(</span><span class="n">dist</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">calc_dotproduct_idx</span><span class="p">(</span><span class="n">dotproduct</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">mp</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">sigmax</span><span class="p">,</span> <span class="n">idx_nn</span><span class="p">,</span> <span class="n">meanx</span><span class="p">):</span>
+    <span class="n">dotproduct</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">m</span> <span class="o">-</span> <span class="n">mp</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> \
+        <span class="n">sigmax</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">*</span> <span class="n">sigmax</span><span class="p">[</span><span class="n">idx_nn</span><span class="p">]</span> <span class="o">+</span> <span class="n">m</span> <span class="o">*</span> <span class="n">meanx</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">*</span> <span class="n">meanx</span><span class="p">[</span><span class="n">idx_nn</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">dotproduct</span>
+
+
+<span class="k">def</span> <span class="nf">calc_dotproduct_end_idx</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">dp</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">endidx</span><span class="p">,</span> <span class="n">idx_nn</span><span class="p">,</span> <span class="n">idx_diff</span><span class="p">):</span>
+    <span class="n">tmp_a</span> <span class="o">=</span> <span class="n">ts</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="n">m</span><span class="p">:</span><span class="n">endidx</span><span class="o">+</span><span class="n">m</span><span class="p">]</span>
+    <span class="n">tmp_b</span> <span class="o">=</span> <span class="n">ts</span><span class="p">[</span><span class="n">idx_nn</span><span class="o">+</span><span class="n">m</span><span class="p">:</span><span class="n">endidx</span><span class="o">+</span><span class="n">m</span><span class="o">+</span><span class="n">idx_diff</span><span class="p">]</span>
+    <span class="n">tmp_c</span> <span class="o">=</span> <span class="n">ts</span><span class="p">[</span><span class="n">idx</span><span class="p">:</span><span class="n">endidx</span><span class="p">]</span>
+    <span class="n">tmp_d</span> <span class="o">=</span> <span class="n">ts</span><span class="p">[</span><span class="n">idx_nn</span><span class="p">:</span><span class="n">endidx</span><span class="o">+</span><span class="n">idx_diff</span><span class="p">]</span>
+    <span class="n">tmp_f</span> <span class="o">=</span> <span class="n">tmp_a</span> <span class="o">*</span> <span class="n">tmp_b</span> <span class="o">-</span> <span class="n">tmp_c</span> <span class="o">*</span> <span class="n">tmp_d</span>
+
+    <span class="n">dp</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="n">endidx</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">dp</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">tmp_f</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">dp</span>
+
+
+<span class="k">def</span> <span class="nf">calc_refine_distance_end_idx</span><span class="p">(</span><span class="n">refine_distance</span><span class="p">,</span> <span class="n">dp</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">endidx</span><span class="p">,</span> <span class="n">meanx</span><span class="p">,</span> 
+                                 <span class="n">sigmax</span><span class="p">,</span> <span class="n">idx_nn</span><span class="p">,</span> <span class="n">idx_diff</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
+    <span class="n">tmp_a</span> <span class="o">=</span> <span class="n">dp</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="n">endidx</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">tmp_b</span> <span class="o">=</span> <span class="n">meanx</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="n">endidx</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">tmp_c</span> <span class="o">=</span> <span class="n">meanx</span><span class="p">[</span><span class="n">idx_nn</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="n">endidx</span><span class="o">+</span><span class="n">idx_diff</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">tmp_d</span> <span class="o">=</span> <span class="n">sigmax</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="n">endidx</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">tmp_e</span> <span class="o">=</span> <span class="n">sigmax</span><span class="p">[</span><span class="n">idx_nn</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="n">endidx</span><span class="o">+</span><span class="n">idx_diff</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">tmp_f</span> <span class="o">=</span> <span class="n">tmp_b</span> <span class="o">*</span> <span class="n">tmp_c</span>
+    <span class="n">tmp_g</span> <span class="o">=</span> <span class="n">tmp_d</span> <span class="o">*</span> <span class="n">tmp_e</span>
+    <span class="n">tmp_h</span> <span class="o">=</span> <span class="p">(</span><span class="n">m</span><span class="o">-</span><span class="p">(</span><span class="n">tmp_a</span> <span class="o">-</span> <span class="n">m</span> <span class="o">*</span> <span class="n">tmp_f</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">tmp_g</span><span class="p">))</span>
+    <span class="n">refine_distance</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="n">endidx</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">tmp_h</span><span class="p">))</span>    
+
+    <span class="k">return</span> <span class="n">refine_distance</span>
+
+
+<span class="k">def</span> <span class="nf">calc_dotproduct_begin_idx</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">dp</span><span class="p">,</span> <span class="n">beginidx</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">idx_diff</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> 
+                              <span class="n">idx_nn</span><span class="p">):</span>
+    <span class="n">indices</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">idx</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">beginidx</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>    
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">indices</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">dp</span>
+
+    <span class="n">tmp_a</span> <span class="o">=</span> <span class="n">ts</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span>
+    <span class="n">indices_b</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">idx_nn</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">beginidx</span> <span class="o">+</span> <span class="n">idx_diff</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">tmp_b</span> <span class="o">=</span> <span class="n">ts</span><span class="p">[</span><span class="n">indices_b</span><span class="p">]</span>
+    <span class="n">indices_c</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">idx</span> <span class="o">+</span> <span class="n">m</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">beginidx</span> <span class="o">+</span> <span class="n">m</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">tmp_c</span> <span class="o">=</span> <span class="n">ts</span><span class="p">[</span><span class="n">indices_c</span><span class="p">]</span>
+    <span class="n">indices_d</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">idx_nn</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">m</span><span class="p">,</span> <span class="n">beginidx</span> <span class="o">+</span> <span class="n">idx_diff</span> <span class="o">+</span> <span class="n">m</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">tmp_d</span> <span class="o">=</span> <span class="n">ts</span><span class="p">[</span><span class="n">indices_d</span><span class="p">]</span>
+
+    <span class="n">dp</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span> <span class="o">=</span> <span class="n">dp</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">+</span> \
+        <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">((</span><span class="n">tmp_a</span> <span class="o">*</span> <span class="n">tmp_b</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">tmp_c</span> <span class="o">*</span> <span class="n">tmp_d</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">dp</span>
+
+
+<span class="k">def</span> <span class="nf">calc_refine_distance_begin_idx</span><span class="p">(</span><span class="n">refine_distance</span><span class="p">,</span> <span class="n">dp</span><span class="p">,</span> <span class="n">beginidx</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> 
+                                   <span class="n">idx_diff</span><span class="p">,</span> <span class="n">idx_nn</span><span class="p">,</span> <span class="n">sigmax</span><span class="p">,</span> <span class="n">meanx</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">beginidx</span> <span class="o">&lt;</span> <span class="n">idx</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">refine_distance</span>
+
+    <span class="n">tmp_a</span> <span class="o">=</span> <span class="n">dp</span><span class="p">[</span><span class="n">beginidx</span><span class="p">:</span><span class="n">idx</span><span class="p">]</span>
+    <span class="n">tmp_b</span> <span class="o">=</span> <span class="n">meanx</span><span class="p">[</span><span class="n">beginidx</span><span class="p">:</span><span class="n">idx</span><span class="p">]</span>
+    <span class="n">tmp_c</span> <span class="o">=</span> <span class="n">meanx</span><span class="p">[</span><span class="n">beginidx</span><span class="o">+</span><span class="n">idx_diff</span><span class="p">:</span><span class="n">idx_nn</span><span class="p">]</span>
+    <span class="n">tmp_d</span> <span class="o">=</span> <span class="n">sigmax</span><span class="p">[</span><span class="n">beginidx</span><span class="p">:</span><span class="n">idx</span><span class="p">]</span>
+    <span class="n">tmp_e</span> <span class="o">=</span> <span class="n">sigmax</span><span class="p">[</span><span class="n">beginidx</span><span class="o">+</span><span class="n">idx_diff</span><span class="p">:</span><span class="n">idx_nn</span><span class="p">]</span>
+    <span class="n">tmp_f</span> <span class="o">=</span> <span class="n">tmp_b</span> <span class="o">*</span> <span class="n">tmp_c</span>
+    <span class="n">tmp_g</span> <span class="o">=</span> <span class="n">tmp_d</span> <span class="o">*</span> <span class="n">tmp_e</span>
+    <span class="n">tmp_h</span> <span class="o">=</span> <span class="p">(</span><span class="n">m</span><span class="o">-</span><span class="p">(</span><span class="n">tmp_a</span> <span class="o">-</span> <span class="n">m</span> <span class="o">*</span> <span class="n">tmp_f</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">tmp_g</span><span class="p">))</span>
+
+    <span class="n">refine_distance</span><span class="p">[</span><span class="n">beginidx</span><span class="p">:</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">tmp_h</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">refine_distance</span>
+
+
+<span class="k">def</span> <span class="nf">apply_update_positions</span><span class="p">(</span><span class="n">matrix_profile</span><span class="p">,</span> <span class="n">mp_index</span><span class="p">,</span> <span class="n">refine_distance</span><span class="p">,</span> <span class="n">beginidx</span><span class="p">,</span>
+                           <span class="n">endidx</span><span class="p">,</span> <span class="n">orig_index</span><span class="p">,</span> <span class="n">idx_diff</span><span class="p">):</span>
+    <span class="n">tmp_a</span> <span class="o">=</span> <span class="n">refine_distance</span><span class="p">[</span><span class="n">beginidx</span><span class="p">:</span><span class="n">endidx</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">tmp_b</span> <span class="o">=</span> <span class="n">matrix_profile</span><span class="p">[</span><span class="n">beginidx</span><span class="p">:</span><span class="n">endidx</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">update_pos1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argwhere</span><span class="p">(</span><span class="n">tmp_a</span> <span class="o">&lt;</span> <span class="n">tmp_b</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>    
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">update_pos1</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>        
+        <span class="n">update_pos1</span> <span class="o">=</span> <span class="n">update_pos1</span> <span class="o">+</span> <span class="n">beginidx</span>
+        <span class="n">matrix_profile</span><span class="p">[</span><span class="n">update_pos1</span><span class="p">]</span> <span class="o">=</span> <span class="n">refine_distance</span><span class="p">[</span><span class="n">update_pos1</span><span class="p">]</span>
+        <span class="n">mp_index</span><span class="p">[</span><span class="n">update_pos1</span><span class="p">]</span> <span class="o">=</span> <span class="n">orig_index</span><span class="p">[</span><span class="n">update_pos1</span><span class="p">]</span> <span class="o">+</span> <span class="n">idx_diff</span>
+
+    <span class="n">tmp_a</span> <span class="o">=</span> <span class="n">refine_distance</span><span class="p">[</span><span class="n">beginidx</span><span class="p">:</span><span class="n">endidx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="n">tmp_b</span> <span class="o">=</span> <span class="n">matrix_profile</span><span class="p">[</span><span class="n">beginidx</span> <span class="o">+</span> <span class="n">idx_diff</span><span class="p">:</span><span class="n">endidx</span> <span class="o">+</span> <span class="n">idx_diff</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="n">update_pos2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argwhere</span><span class="p">(</span><span class="n">tmp_a</span> <span class="o">&lt;</span> <span class="n">tmp_b</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">update_pos2</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">update_pos2</span> <span class="o">=</span> <span class="n">update_pos2</span> <span class="o">+</span> <span class="n">beginidx</span>
+        <span class="n">matrix_profile</span><span class="p">[</span><span class="n">update_pos2</span> <span class="o">+</span> <span class="n">idx_diff</span><span class="p">]</span> <span class="o">=</span> <span class="n">refine_distance</span><span class="p">[</span><span class="n">update_pos2</span><span class="p">]</span>
+        <span class="n">mp_index</span><span class="p">[</span><span class="n">update_pos2</span> <span class="o">+</span> <span class="n">idx_diff</span><span class="p">]</span> <span class="o">=</span> <span class="n">orig_index</span><span class="p">[</span><span class="n">update_pos2</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="p">(</span><span class="n">matrix_profile</span><span class="p">,</span> <span class="n">mp_index</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">compute_indices</span><span class="p">(</span><span class="n">profile_len</span><span class="p">,</span> <span class="n">step_size</span><span class="p">,</span> <span class="n">sample_pct</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Computes the indices used for profile index iteration based on the</span>
+<span class="sd">    number of samples and step size.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    profile_len : int</span>
+<span class="sd">        The length of the profile to be computed.</span>
+<span class="sd">    step_size : float</span>
+<span class="sd">        step_size : float, default 0.25</span>
+<span class="sd">        The sampling interval for the window. The paper suggest 0.25 is the</span>
+<span class="sd">        most practical. It should be a float value between 0 and 1.</span>
+<span class="sd">    sample_pct : float, default = 0.1 (10%)</span>
+<span class="sd">        Number of samples to compute distances for in the MP.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    array_like :</span>
+<span class="sd">        The indices to compute.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">compute_order</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">profile_len</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="n">step_size</span><span class="p">)</span>
+    <span class="n">sample_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">compute_order</span><span class="p">)</span> <span class="o">*</span> <span class="n">sample_pct</span><span class="p">))</span>
+    <span class="n">samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">compute_order</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">sample_size</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">samples</span>
+
+
+<div class="viewcode-block" id="prescrimp"><a class="viewcode-back" href="../../../api.html#matrixprofile.algorithms.prescrimp">[docs]</a><span class="k">def</span> <span class="nf">prescrimp</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">window_size</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">step_size</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">sample_pct</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+                     <span class="n">random_state</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This is the PreScrimp algorithm from the SCRIMP++ paper. It is primarly</span>
+<span class="sd">    used to compute the approximate matrix profile. In this case we use</span>
+<span class="sd">    a sample percentage to mock &quot;the anytime/approximate nature&quot;.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    ts : np.ndarray</span>
+<span class="sd">        The time series to compute the matrix profile for.</span>
+<span class="sd">    window_size : int</span>
+<span class="sd">        The window size.</span>
+<span class="sd">    query : array_like</span>
+<span class="sd">        Optionally, a query can be provided to perform a similarity join.</span>
+<span class="sd">    step_size : float, default 0.25</span>
+<span class="sd">        The sampling interval for the window. The paper suggest 0.25 is the</span>
+<span class="sd">        most practical. It should be a float value between 0 and 1.</span>
+<span class="sd">    sample_pct : float, default = 0.1 (10%)</span>
+<span class="sd">        Number of samples to compute distances for in the MP.</span>
+<span class="sd">    random_state : int, default None</span>
+<span class="sd">        Set the random seed generator for reproducible results.</span>
+<span class="sd">    n_jobs : int, Default = 1</span>
+<span class="sd">        Number of cpu cores to use.</span>
+
+<span class="sd">    Note</span>
+<span class="sd">    ----</span>
+<span class="sd">    The matrix profiles computed from prescrimp will always be the approximate</span>
+<span class="sd">    solution.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    dict : profile</span>
+<span class="sd">        A MatrixProfile data structure.</span>
+<span class="sd">        </span>
+<span class="sd">        &gt;&gt;&gt; {</span>
+<span class="sd">        &gt;&gt;&gt;    &#39;mp&#39;: The matrix profile,</span>
+<span class="sd">        &gt;&gt;&gt;    &#39;pi&#39;: The matrix profile 1NN indices,</span>
+<span class="sd">        &gt;&gt;&gt;    &#39;rmp&#39;: The right matrix profile,</span>
+<span class="sd">        &gt;&gt;&gt;    &#39;rpi&#39;: The right matrix profile 1NN indices,</span>
+<span class="sd">        &gt;&gt;&gt;    &#39;lmp&#39;: The left matrix profile,</span>
+<span class="sd">        &gt;&gt;&gt;    &#39;lpi&#39;: The left matrix profile 1NN indices,</span>
+<span class="sd">        &gt;&gt;&gt;    &#39;metric&#39;: The distance metric computed for the mp,</span>
+<span class="sd">        &gt;&gt;&gt;    &#39;w&#39;: The window size used to compute the matrix profile,</span>
+<span class="sd">        &gt;&gt;&gt;    &#39;ez&#39;: The exclusion zone used,</span>
+<span class="sd">        &gt;&gt;&gt;    &#39;join&#39;: Flag indicating if a similarity join was computed,</span>
+<span class="sd">        &gt;&gt;&gt;    &#39;sample_pct&#39;: Percentage of samples used in computing the MP,</span>
+<span class="sd">        &gt;&gt;&gt;    &#39;data&#39;: {</span>
+<span class="sd">        &gt;&gt;&gt;        &#39;ts&#39;: Time series data,</span>
+<span class="sd">        &gt;&gt;&gt;        &#39;query&#39;: Query data if supplied</span>
+<span class="sd">        &gt;&gt;&gt;    }</span>
+<span class="sd">        &gt;&gt;&gt;    &#39;class&#39;: &quot;MatrixProfile&quot;</span>
+<span class="sd">        &gt;&gt;&gt;    &#39;algorithm&#39;: &quot;prescrimp&quot;</span>
+<span class="sd">        &gt;&gt;&gt;}</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    ValueError</span>
+<span class="sd">        If window_size &lt; 4.</span>
+<span class="sd">        If window_size &gt; query length / 2.</span>
+<span class="sd">        If ts is not a list or np.array.</span>
+<span class="sd">        If query is not a list or np.array.</span>
+<span class="sd">        If ts or query is not one dimensional.</span>
+<span class="sd">        If sample_pct is not between 0 and 1.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">is_join</span> <span class="o">=</span> <span class="n">core</span><span class="o">.</span><span class="n">is_similarity_join</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">query</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">is_join</span><span class="p">:</span>
+        <span class="n">query</span> <span class="o">=</span> <span class="n">ts</span>
+
+    <span class="c1"># data conversion to np.array</span>
+    <span class="n">ts</span> <span class="o">=</span> <span class="n">core</span><span class="o">.</span><span class="n">to_np_array</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span>
+    <span class="n">query</span> <span class="o">=</span> <span class="n">core</span><span class="o">.</span><span class="n">to_np_array</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+
+    <span class="c1"># validate step_size</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">step_size</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span> <span class="ow">or</span> <span class="n">step_size</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">step_size</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;step_size should be a float between 0 and 1.&#39;</span><span class="p">)</span>
+
+    <span class="c1"># validate sample_pct</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sample_pct</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span> <span class="ow">or</span> <span class="n">sample_pct</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">sample_pct</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;sample_pct should be a float between 0 and 1.&#39;</span><span class="p">)</span>
+
+    <span class="c1"># validate random_state</span>
+    <span class="k">if</span> <span class="n">random_state</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">random_state</span><span class="p">)</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Invalid random_state value given.&#39;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">window_size</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">:</span>
+        <span class="n">error</span> <span class="o">=</span> <span class="s2">&quot;window size must be at least 4.&quot;</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">window_size</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">query</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">error</span> <span class="o">=</span> <span class="s2">&quot;Time series is too short relative to desired window size&quot;</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+
+    <span class="c1"># precompute some common values - profile length, query length etc.</span>
+    <span class="n">step_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">window_size</span> <span class="o">*</span> <span class="n">step_size</span><span class="p">))</span>
+    <span class="n">profile_length</span> <span class="o">=</span> <span class="n">core</span><span class="o">.</span><span class="n">get_profile_length</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">window_size</span><span class="p">)</span>
+    <span class="n">data_length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span>
+    <span class="n">exclusion_zone</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">window_size</span> <span class="o">/</span> <span class="mf">4.0</span><span class="p">))</span>
+
+    <span class="n">matrix_profile</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">profile_length</span><span class="p">)</span>
+    <span class="n">mp_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">profile_length</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;int&#39;</span><span class="p">)</span>
+
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span>
+    <span class="n">mux</span><span class="p">,</span> <span class="n">sigx</span> <span class="o">=</span> <span class="n">core</span><span class="o">.</span><span class="n">moving_avg_std</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">window_size</span><span class="p">)</span>
+
+    <span class="n">dotproduct</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">profile_length</span><span class="p">)</span>
+    <span class="n">refine_distance</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">profile_length</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">)</span>
+    <span class="n">orig_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">profile_length</span><span class="p">)</span>
+
+    <span class="c1"># iterate over sampled indices and update the matrix profile</span>
+    <span class="c1"># compute_order = compute_indices(profile_length, step_size, sample_pct)</span>
+    <span class="n">compute_order</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">profile_length</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="n">step_size</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">iteration</span><span class="p">,</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">compute_order</span><span class="p">):</span>
+        <span class="n">subsequence</span> <span class="o">=</span> <span class="n">ts</span><span class="p">[</span><span class="n">idx</span><span class="p">:</span><span class="n">idx</span> <span class="o">+</span> <span class="n">window_size</span><span class="p">]</span>
+
+        <span class="c1"># compute distance profile</span>
+        <span class="n">distance_profile</span> <span class="o">=</span> <span class="n">calc_distance_profile</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">subsequence</span><span class="p">,</span> <span class="n">data_length</span><span class="p">,</span>
+            <span class="n">window_size</span><span class="p">,</span> <span class="n">mux</span><span class="p">,</span> <span class="n">sigx</span><span class="p">)</span>
+        
+        <span class="c1"># apply exclusion zone</span>
+        <span class="n">distance_profile</span> <span class="o">=</span> <span class="n">core</span><span class="o">.</span><span class="n">apply_exclusion_zone</span><span class="p">(</span><span class="n">exclusion_zone</span><span class="p">,</span> <span class="n">is_join</span><span class="p">,</span>
+            <span class="n">window_size</span><span class="p">,</span> <span class="n">data_length</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">distance_profile</span><span class="p">)</span>
+
+        <span class="c1"># find and store nearest neighbor</span>
+        <span class="k">if</span> <span class="n">iteration</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">matrix_profile</span> <span class="o">=</span> <span class="n">distance_profile</span>
+            <span class="n">mp_index</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">idx</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">update_pos</span> <span class="o">=</span> <span class="n">distance_profile</span> <span class="o">&lt;</span> <span class="n">matrix_profile</span>
+            <span class="n">mp_index</span><span class="p">[</span><span class="n">update_pos</span><span class="p">]</span> <span class="o">=</span> <span class="n">idx</span>
+            <span class="n">matrix_profile</span><span class="p">[</span><span class="n">update_pos</span><span class="p">]</span> <span class="o">=</span> <span class="n">distance_profile</span><span class="p">[</span><span class="n">update_pos</span><span class="p">]</span>
+
+        <span class="n">idx_min</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">distance_profile</span><span class="p">)</span>
+        <span class="n">matrix_profile</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">distance_profile</span><span class="p">[</span><span class="n">idx_min</span><span class="p">]</span>
+        <span class="n">mp_index</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">idx_min</span>
+        <span class="n">idx_nn</span> <span class="o">=</span> <span class="n">mp_index</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+
+        <span class="c1"># compute the target indices</span>
+        <span class="n">idx_diff</span> <span class="o">=</span> <span class="n">idx_nn</span> <span class="o">-</span> <span class="n">idx</span>
+        <span class="n">endidx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">([</span>
+            <span class="n">profile_length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="n">idx</span> <span class="o">+</span> <span class="n">step_size</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="n">profile_length</span> <span class="o">-</span> <span class="n">idx_diff</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="p">])</span>
+        <span class="n">beginidx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">idx</span> <span class="o">-</span> <span class="n">step_size</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">idx_diff</span><span class="p">])</span>
+
+        <span class="c1"># compute dot product and refine distance for the idx, begin idx </span>
+        <span class="c1"># and end idx</span>
+        <span class="n">dotproduct</span> <span class="o">=</span> <span class="n">calc_dotproduct_idx</span><span class="p">(</span><span class="n">dotproduct</span><span class="p">,</span> <span class="n">window_size</span><span class="p">,</span> 
+            <span class="n">matrix_profile</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">sigx</span><span class="p">,</span> <span class="n">idx_nn</span><span class="p">,</span> <span class="n">mux</span><span class="p">)</span>
+
+        <span class="n">dotproduct</span> <span class="o">=</span> <span class="n">calc_dotproduct_end_idx</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">dotproduct</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">window_size</span><span class="p">,</span>
+                                             <span class="n">endidx</span><span class="p">,</span> <span class="n">idx_nn</span><span class="p">,</span> <span class="n">idx_diff</span><span class="p">)</span>
+
+        <span class="n">refine_distance</span> <span class="o">=</span> <span class="n">calc_refine_distance_end_idx</span><span class="p">(</span>
+            <span class="n">refine_distance</span><span class="p">,</span> <span class="n">dotproduct</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">endidx</span><span class="p">,</span> <span class="n">mux</span><span class="p">,</span> <span class="n">sigx</span><span class="p">,</span> <span class="n">idx_nn</span><span class="p">,</span>
+            <span class="n">idx_diff</span><span class="p">,</span> <span class="n">window_size</span><span class="p">)</span>
+        
+        <span class="n">dotproduct</span> <span class="o">=</span> <span class="n">calc_dotproduct_begin_idx</span><span class="p">(</span>
+            <span class="n">ts</span><span class="p">,</span> <span class="n">dotproduct</span><span class="p">,</span> <span class="n">beginidx</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">idx_diff</span><span class="p">,</span> <span class="n">window_size</span><span class="p">,</span> <span class="n">idx_nn</span><span class="p">)</span>
+
+        <span class="n">refine_distance</span> <span class="o">=</span> <span class="n">calc_refine_distance_begin_idx</span><span class="p">(</span>
+            <span class="n">refine_distance</span><span class="p">,</span> <span class="n">dotproduct</span><span class="p">,</span> <span class="n">beginidx</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">idx_diff</span><span class="p">,</span> <span class="n">idx_nn</span><span class="p">,</span> 
+            <span class="n">sigx</span><span class="p">,</span> <span class="n">mux</span><span class="p">,</span> <span class="n">window_size</span><span class="p">)</span>
+
+        <span class="n">matrix_profile</span><span class="p">,</span> <span class="n">mp_index</span> <span class="o">=</span> <span class="n">apply_update_positions</span><span class="p">(</span><span class="n">matrix_profile</span><span class="p">,</span> 
+                                                          <span class="n">mp_index</span><span class="p">,</span> 
+                                                          <span class="n">refine_distance</span><span class="p">,</span> 
+                                                          <span class="n">beginidx</span><span class="p">,</span> 
+                                                          <span class="n">endidx</span><span class="p">,</span> 
+                                                          <span class="n">orig_index</span><span class="p">,</span> <span class="n">idx_diff</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s1">&#39;mp&#39;</span><span class="p">:</span> <span class="n">matrix_profile</span><span class="p">,</span>
+        <span class="s1">&#39;pi&#39;</span><span class="p">:</span> <span class="n">mp_index</span><span class="p">,</span>
+        <span class="s1">&#39;rmp&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="s1">&#39;rpi&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="s1">&#39;lmp&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="s1">&#39;lpi&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="s1">&#39;w&#39;</span><span class="p">:</span> <span class="n">window_size</span><span class="p">,</span>
+        <span class="s1">&#39;ez&#39;</span><span class="p">:</span> <span class="n">exclusion_zone</span><span class="p">,</span>
+        <span class="s1">&#39;join&#39;</span><span class="p">:</span> <span class="n">is_join</span><span class="p">,</span>
+        <span class="s1">&#39;sample_pct&#39;</span><span class="p">:</span> <span class="n">sample_pct</span><span class="p">,</span>
+        <span class="s1">&#39;metric&#39;</span><span class="p">:</span> <span class="s1">&#39;euclidean&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;ts&#39;</span><span class="p">:</span> <span class="n">ts</span><span class="p">,</span>
+            <span class="s1">&#39;query&#39;</span><span class="p">:</span> <span class="n">query</span> <span class="k">if</span> <span class="n">is_join</span> <span class="k">else</span> <span class="kc">None</span>
+        <span class="p">},</span>
+        <span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;MatrixProfile&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;algorithm&#39;</span><span class="p">:</span> <span class="s1">&#39;prescrimp&#39;</span><span class="p">,</span>
+    <span class="p">}</span></div>
+
+
+<div class="viewcode-block" id="scrimp_plus_plus"><a class="viewcode-back" href="../../../api.html#matrixprofile.algorithms.scrimp_plus_plus">[docs]</a><span class="k">def</span> <span class="nf">scrimp_plus_plus</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">window_size</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">step_size</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">sample_pct</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+                     <span class="n">random_state</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;SCRIMP++ is an anytime algorithm that computes the matrix profile for a </span>
+<span class="sd">    given time series (ts) over a given window size (m). Essentially, it allows</span>
+<span class="sd">    for an approximate solution to be provided for quicker analysis. In the </span>
+<span class="sd">    case of this implementation, sample percentage is used. An approximate</span>
+<span class="sd">    solution is given based a sample percentage from 0 to 1. The default sample</span>
+<span class="sd">    percentage is currently 10%.</span>
+
+<span class="sd">    This algorithm was created at the University of California Riverside. For</span>
+<span class="sd">    further academic understanding, please review this paper:</span>
+
+<span class="sd">    Matrix Proﬁle XI: SCRIMP++: Time Series Motif Discovery at Interactive</span>
+<span class="sd">    Speed. Yan Zhu, Chin-Chia Michael Yeh, Zachary Zimmerman, Kaveh Kamgar</span>
+<span class="sd">    Eamonn Keogh, ICDM 2018.</span>
+
+<span class="sd">    https://www.cs.ucr.edu/~eamonn/SCRIMP_ICDM_camera_ready_updated.pdf</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    ts : np.ndarray</span>
+<span class="sd">        The time series to compute the matrix profile for.</span>
+<span class="sd">    window_size : int</span>
+<span class="sd">        The window size.</span>
+<span class="sd">    query : array_like</span>
+<span class="sd">        Optionally, a query can be provided to perform a similarity join.</span>
+<span class="sd">    step_size : float, default 0.25</span>
+<span class="sd">        The sampling interval for the window. The paper suggest 0.25 is the</span>
+<span class="sd">        most practical. It should be a float value between 0 and 1.</span>
+<span class="sd">    sample_pct : float, default = 0.1 (10%)</span>
+<span class="sd">        Number of samples to compute distances for in the MP.</span>
+<span class="sd">    random_state : int, default None</span>
+<span class="sd">        Set the random seed generator for reproducible results.</span>
+<span class="sd">    n_jobs : int, Default = 1</span>
+<span class="sd">        Number of cpu cores to use.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    dict : profile</span>
+<span class="sd">        A MatrixProfile data structure.</span>
+
+<span class="sd">        &gt;&gt;&gt; {</span>
+<span class="sd">        &gt;&gt;&gt;    &#39;mp&#39;: The matrix profile,</span>
+<span class="sd">        &gt;&gt;&gt;    &#39;pi&#39;: The matrix profile 1NN indices,</span>
+<span class="sd">        &gt;&gt;&gt;    &#39;rmp&#39;: The right matrix profile,</span>
+<span class="sd">        &gt;&gt;&gt;    &#39;rpi&#39;: The right matrix profile 1NN indices,</span>
+<span class="sd">        &gt;&gt;&gt;    &#39;lmp&#39;: The left matrix profile,</span>
+<span class="sd">        &gt;&gt;&gt;    &#39;lpi&#39;: The left matrix profile 1NN indices,</span>
+<span class="sd">        &gt;&gt;&gt;    &#39;metric&#39;: The distance metric computed for the mp,</span>
+<span class="sd">        &gt;&gt;&gt;    &#39;w&#39;: The window size used to compute the matrix profile,</span>
+<span class="sd">        &gt;&gt;&gt;    &#39;ez&#39;: The exclusion zone used,</span>
+<span class="sd">        &gt;&gt;&gt;    &#39;join&#39;: Flag indicating if a similarity join was computed,</span>
+<span class="sd">        &gt;&gt;&gt;    &#39;sample_pct&#39;: Percentage of samples used in computing the MP,</span>
+<span class="sd">        &gt;&gt;&gt;    &#39;data&#39;: {</span>
+<span class="sd">        &gt;&gt;&gt;        &#39;ts&#39;: Time series data,</span>
+<span class="sd">        &gt;&gt;&gt;        &#39;query&#39;: Query data if supplied</span>
+<span class="sd">        &gt;&gt;&gt;    }</span>
+<span class="sd">        &gt;&gt;&gt;    &#39;class&#39;: &quot;MatrixProfile&quot;</span>
+<span class="sd">        &gt;&gt;&gt;    &#39;algorithm&#39;: &quot;scrimp++&quot;</span>
+<span class="sd">        &gt;&gt;&gt; }</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    ValueError</span>
+<span class="sd">        If window_size &lt; 4.</span>
+<span class="sd">        If window_size &gt; query length / 2.</span>
+<span class="sd">        If ts is not a list or np.array.</span>
+<span class="sd">        If query is not a list or np.array.</span>
+<span class="sd">        If ts or query is not one dimensional.</span>
+<span class="sd">        If sample_pct is not between 0 and 1.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># validate random_state</span>
+    <span class="k">if</span> <span class="n">random_state</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">random_state</span><span class="p">)</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Invalid random_state value given.&#39;</span><span class="p">)</span>
+
+    <span class="c1">###########################</span>
+    <span class="c1"># PreSCRIMP</span>
+    <span class="c1">###########################</span>
+    <span class="n">profile</span> <span class="o">=</span> <span class="n">prescrimp</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">window_size</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="n">query</span><span class="p">,</span> <span class="n">step_size</span><span class="o">=</span><span class="n">step_size</span><span class="p">,</span>
+        <span class="n">sample_pct</span><span class="o">=</span><span class="n">sample_pct</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">random_state</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="n">n_jobs</span><span class="p">)</span>
+
+    <span class="c1"># data conversion to np.array</span>
+    <span class="n">ts</span> <span class="o">=</span> <span class="n">profile</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;ts&#39;</span><span class="p">]</span>
+    <span class="n">query</span> <span class="o">=</span> <span class="n">profile</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;query&#39;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="kc">None</span><span class="p">)):</span>
+        <span class="n">query</span> <span class="o">=</span> <span class="n">ts</span>
+
+    <span class="c1"># precompute some common values - profile length, query length etc.</span>
+    <span class="n">step_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">window_size</span> <span class="o">*</span> <span class="n">step_size</span><span class="p">))</span>
+    <span class="n">profile_length</span> <span class="o">=</span> <span class="n">core</span><span class="o">.</span><span class="n">get_profile_length</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">window_size</span><span class="p">)</span>
+    <span class="n">data_length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span>
+    <span class="n">exclusion_zone</span> <span class="o">=</span> <span class="n">profile</span><span class="p">[</span><span class="s1">&#39;ez&#39;</span><span class="p">]</span>
+    <span class="n">window_size</span> <span class="o">=</span> <span class="n">profile</span><span class="p">[</span><span class="s1">&#39;w&#39;</span><span class="p">]</span>
+
+    <span class="c1"># precompute some statistics on ts</span>
+    <span class="n">data_mu</span><span class="p">,</span> <span class="n">data_sig</span> <span class="o">=</span> <span class="n">core</span><span class="o">.</span><span class="n">moving_avg_std</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">window_size</span><span class="p">)</span>
+
+    <span class="c1">###########################</span>
+    <span class="c1"># SCRIMP</span>
+    <span class="c1">###########################</span>
+
+    <span class="c1"># randomly sort indices for compute order</span>
+    <span class="n">orig_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">profile_length</span><span class="p">)</span>
+    <span class="n">compute_order</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">orig_index</span><span class="p">[</span><span class="n">orig_index</span> <span class="o">&gt;</span> <span class="n">exclusion_zone</span><span class="p">])</span>
+    <span class="c1">#np.random.shuffle(compute_order)</span>
+
+    <span class="c1"># Only refine to provided sample_pct</span>
+    <span class="n">sample_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">compute_order</span><span class="p">)</span> <span class="o">*</span> <span class="n">sample_pct</span><span class="p">))</span>
+    <span class="n">compute_order</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">compute_order</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">sample_size</span><span class="p">,</span> 
+        <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="c1"># initialize some values</span>
+    <span class="n">curlastz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">profile_length</span><span class="p">)</span>
+    <span class="n">curdistance</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">profile_length</span><span class="p">)</span>
+    <span class="n">dist1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">profile_length</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">)</span>
+    <span class="n">dist2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">profile_length</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">compute_order</span><span class="p">:</span>
+        <span class="c1"># compute last z</span>
+        <span class="n">curlastz</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">ts</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">window_size</span><span class="p">]</span> <span class="o">*</span> <span class="n">ts</span><span class="p">[</span><span class="n">idx</span><span class="p">:</span><span class="n">idx</span> <span class="o">+</span> <span class="n">window_size</span><span class="p">])</span>
+        <span class="n">curlastz</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">1</span><span class="p">:]</span> <span class="o">=</span> <span class="n">curlastz</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span>
+            <span class="p">(</span><span class="n">ts</span><span class="p">[</span><span class="n">window_size</span><span class="p">:</span><span class="n">data_length</span> <span class="o">-</span> <span class="n">idx</span><span class="p">]</span> <span class="o">*</span> <span class="n">ts</span><span class="p">[</span><span class="n">idx</span> <span class="o">+</span> <span class="n">window_size</span><span class="p">:</span><span class="n">data_length</span><span class="p">])</span> <span class="o">-</span>\
+            <span class="p">(</span><span class="n">ts</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">profile_length</span> <span class="o">-</span> <span class="n">idx</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">ts</span><span class="p">[</span><span class="n">idx</span><span class="p">:</span><span class="n">profile_length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span>
+        <span class="p">)</span>
+
+        <span class="c1"># compute distances</span>
+        <span class="n">curdistance</span><span class="p">[</span><span class="n">idx</span><span class="p">:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span>
+            <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">window_size</span> <span class="o">-</span> <span class="p">(</span><span class="n">curlastz</span><span class="p">[</span><span class="n">idx</span><span class="p">:</span><span class="n">profile_length</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span>\
+                <span class="n">window_size</span> <span class="o">*</span> <span class="p">(</span><span class="n">data_mu</span><span class="p">[</span><span class="n">idx</span><span class="p">:]</span> <span class="o">*</span> <span class="n">data_mu</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">profile_length</span> <span class="o">-</span> <span class="n">idx</span><span class="p">]))</span> <span class="o">/</span>\
+                <span class="p">(</span><span class="n">data_sig</span><span class="p">[</span><span class="n">idx</span><span class="p">:]</span> <span class="o">*</span> <span class="n">data_sig</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">profile_length</span> <span class="o">-</span> <span class="n">idx</span><span class="p">]))</span>
+        <span class="p">))</span>
+
+        <span class="n">dist1</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">idx</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span>
+        <span class="n">dist1</span><span class="p">[</span><span class="n">idx</span><span class="p">:]</span> <span class="o">=</span> <span class="n">curdistance</span><span class="p">[</span><span class="n">idx</span><span class="p">:]</span>
+
+        <span class="n">dist2</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">profile_length</span> <span class="o">-</span> <span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">curdistance</span><span class="p">[</span><span class="n">idx</span><span class="p">:]</span>
+        <span class="n">dist2</span><span class="p">[</span><span class="n">profile_length</span> <span class="o">-</span> <span class="n">idx</span> <span class="o">+</span> <span class="mi">2</span><span class="p">:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span>
+
+        <span class="n">loc1</span> <span class="o">=</span> <span class="n">dist1</span> <span class="o">&lt;</span> <span class="n">profile</span><span class="p">[</span><span class="s1">&#39;mp&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">loc1</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
+            <span class="n">profile</span><span class="p">[</span><span class="s1">&#39;mp&#39;</span><span class="p">][</span><span class="n">loc1</span><span class="p">]</span> <span class="o">=</span> <span class="n">dist1</span><span class="p">[</span><span class="n">loc1</span><span class="p">]</span>
+            <span class="n">profile</span><span class="p">[</span><span class="s1">&#39;pi&#39;</span><span class="p">][</span><span class="n">loc1</span><span class="p">]</span> <span class="o">=</span> <span class="n">orig_index</span><span class="p">[</span><span class="n">loc1</span><span class="p">]</span> <span class="o">-</span> <span class="n">idx</span>
+
+        <span class="n">loc2</span> <span class="o">=</span> <span class="n">dist2</span> <span class="o">&lt;</span> <span class="n">profile</span><span class="p">[</span><span class="s1">&#39;mp&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">loc2</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
+            <span class="n">profile</span><span class="p">[</span><span class="s1">&#39;mp&#39;</span><span class="p">][</span><span class="n">loc2</span><span class="p">]</span> <span class="o">=</span> <span class="n">dist2</span><span class="p">[</span><span class="n">loc2</span><span class="p">]</span>
+            <span class="n">profile</span><span class="p">[</span><span class="s1">&#39;pi&#39;</span><span class="p">][</span><span class="n">loc2</span><span class="p">]</span> <span class="o">=</span> <span class="n">orig_index</span><span class="p">[</span><span class="n">loc2</span><span class="p">]</span> <span class="o">+</span> <span class="n">idx</span>
+
+
+    <span class="n">profile</span><span class="p">[</span><span class="s1">&#39;algorithm&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;scrimp++&#39;</span>
+    <span class="n">profile</span><span class="p">[</span><span class="s1">&#39;sample_pct&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sample_pct</span>
+
+    <span class="k">return</span> <span class="n">profile</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Matrix Profile Foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

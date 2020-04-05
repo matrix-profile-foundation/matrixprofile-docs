@@ -1,0 +1,308 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>matrixprofile.algorithms.mpx &mdash; MatrixProfile</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> matrixprofile
+          
+
+          
+            
+            <img src="../../../_static/mpf-logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Quickstart.html">Quickstart Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Algorithms.html">Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../help.html">Getting Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../code_of_conduct.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../citations.html">Citations</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/matrix-profile-foundation/matrixprofile">Code Repository (Github)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://matrixprofile.org">Website</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">matrixprofile</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>matrixprofile.algorithms.mpx</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for matrixprofile.algorithms.mpx</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">absolute_import</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">division</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">unicode_literals</span>
+
+<span class="nb">range</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">__builtins__</span><span class="p">,</span> <span class="s1">&#39;xrange&#39;</span><span class="p">,</span> <span class="nb">range</span><span class="p">)</span>
+<span class="c1"># end of py2 compatability boilerplate</span>
+
+<span class="kn">import</span> <span class="nn">math</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">matrixprofile</span> <span class="k">import</span> <span class="n">core</span>
+<span class="kn">from</span> <span class="nn">matrixprofile.algorithms.cympx</span> <span class="k">import</span> <span class="n">mpx_parallel</span> <span class="k">as</span> <span class="n">cympx_parallel</span>
+<span class="kn">from</span> <span class="nn">matrixprofile.algorithms.cympx</span> <span class="k">import</span> <span class="n">mpx_ab_parallel</span> <span class="k">as</span> <span class="n">cympx_ab_parallel</span>
+
+
+<div class="viewcode-block" id="mpx"><a class="viewcode-back" href="../../../api.html#matrixprofile.algorithms.mpx">[docs]</a><span class="k">def</span> <span class="nf">mpx</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cross_correlation</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The MPX algorithm computes the matrix profile without using the FFT.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    ts : array_like</span>
+<span class="sd">        The time series to compute the matrix profile for.</span>
+<span class="sd">    w : int</span>
+<span class="sd">        The window size.</span>
+<span class="sd">    query : array_like</span>
+<span class="sd">        Optionally a query series.</span>
+<span class="sd">    cross_correlation : bool, Default=False</span>
+<span class="sd">        Setermine if cross_correlation distance should be returned. It defaults</span>
+<span class="sd">        to Euclidean Distance.</span>
+<span class="sd">    n_jobs : int, Default = 1</span>
+<span class="sd">        Number of cpu cores to use.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    dict : profile</span>
+<span class="sd">        A MatrixProfile data structure.</span>
+<span class="sd">        </span>
+<span class="sd">        &gt;&gt;&gt; {</span>
+<span class="sd">        &gt;&gt;&gt;     &#39;mp&#39;: The matrix profile,</span>
+<span class="sd">        &gt;&gt;&gt;     &#39;pi&#39;: The matrix profile 1NN indices,</span>
+<span class="sd">        &gt;&gt;&gt;     &#39;rmp&#39;: The right matrix profile,</span>
+<span class="sd">        &gt;&gt;&gt;     &#39;rpi&#39;: The right matrix profile 1NN indices,</span>
+<span class="sd">        &gt;&gt;&gt;     &#39;lmp&#39;: The left matrix profile,</span>
+<span class="sd">        &gt;&gt;&gt;     &#39;lpi&#39;: The left matrix profile 1NN indices,</span>
+<span class="sd">        &gt;&gt;&gt;     &#39;metric&#39;: The distance metric computed for the mp,</span>
+<span class="sd">        &gt;&gt;&gt;     &#39;w&#39;: The window size used to compute the matrix profile,</span>
+<span class="sd">        &gt;&gt;&gt;     &#39;ez&#39;: The exclusion zone used,</span>
+<span class="sd">        &gt;&gt;&gt;     &#39;join&#39;: Flag indicating if a similarity join was computed,</span>
+<span class="sd">        &gt;&gt;&gt;     &#39;sample_pct&#39;: Percentage of samples used in computing the MP,</span>
+<span class="sd">        &gt;&gt;&gt;     &#39;data&#39;: {</span>
+<span class="sd">        &gt;&gt;&gt;         &#39;ts&#39;: Time series data,</span>
+<span class="sd">        &gt;&gt;&gt;         &#39;query&#39;: Query data if supplied</span>
+<span class="sd">        &gt;&gt;&gt;     }</span>
+<span class="sd">        &gt;&gt;&gt;     &#39;class&#39;: &quot;MatrixProfile&quot;</span>
+<span class="sd">        &gt;&gt;&gt;     &#39;algorithm&#39;: &quot;mpx&quot;</span>
+<span class="sd">        &gt;&gt;&gt; }</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">ts</span> <span class="o">=</span> <span class="n">core</span><span class="o">.</span><span class="n">to_np_array</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;d&#39;</span><span class="p">)</span>
+    <span class="n">n_jobs</span> <span class="o">=</span> <span class="n">core</span><span class="o">.</span><span class="n">valid_n_jobs</span><span class="p">(</span><span class="n">n_jobs</span><span class="p">)</span>
+    <span class="n">is_join</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="k">if</span> <span class="n">core</span><span class="o">.</span><span class="n">is_array_like</span><span class="p">(</span><span class="n">query</span><span class="p">):</span>
+        <span class="n">query</span> <span class="o">=</span> <span class="n">core</span><span class="o">.</span><span class="n">to_np_array</span><span class="p">(</span><span class="n">query</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;d&#39;</span><span class="p">)</span>
+        <span class="n">is_join</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">mp</span><span class="p">,</span> <span class="n">mpi</span><span class="p">,</span> <span class="n">mpb</span><span class="p">,</span> <span class="n">mpib</span> <span class="o">=</span> <span class="n">cympx_ab_parallel</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> 
+            <span class="nb">int</span><span class="p">(</span><span class="n">cross_correlation</span><span class="p">),</span> <span class="n">n_jobs</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">mp</span><span class="p">,</span> <span class="n">mpi</span> <span class="o">=</span> <span class="n">cympx_parallel</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">cross_correlation</span><span class="p">),</span> <span class="n">n_jobs</span><span class="p">)</span>
+
+
+    <span class="n">mp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">mp</span><span class="p">)</span>
+    <span class="n">mpi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">mpi</span><span class="p">)</span>
+    <span class="n">distance_metric</span> <span class="o">=</span> <span class="s1">&#39;euclidean&#39;</span>
+    <span class="k">if</span> <span class="n">cross_correlation</span><span class="p">:</span>
+        <span class="n">distance_metric</span> <span class="o">=</span> <span class="s1">&#39;cross_correlation&#39;</span>
+
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s1">&#39;mp&#39;</span><span class="p">:</span> <span class="n">mp</span><span class="p">,</span>
+        <span class="s1">&#39;pi&#39;</span><span class="p">:</span> <span class="n">mpi</span><span class="p">,</span>
+        <span class="s1">&#39;rmp&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="s1">&#39;rpi&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="s1">&#39;lmp&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="s1">&#39;lpi&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="s1">&#39;metric&#39;</span><span class="p">:</span> <span class="n">distance_metric</span><span class="p">,</span>
+        <span class="s1">&#39;w&#39;</span><span class="p">:</span> <span class="n">w</span><span class="p">,</span>
+        <span class="s1">&#39;ez&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">w</span> <span class="o">/</span> <span class="mi">4</span><span class="p">)),</span>
+        <span class="s1">&#39;join&#39;</span><span class="p">:</span> <span class="n">is_join</span><span class="p">,</span>
+        <span class="s1">&#39;sample_pct&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;ts&#39;</span><span class="p">:</span> <span class="n">ts</span><span class="p">,</span>
+            <span class="s1">&#39;query&#39;</span><span class="p">:</span> <span class="n">query</span>
+        <span class="p">},</span>
+        <span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;MatrixProfile&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;algorithm&#39;</span><span class="p">:</span> <span class="s1">&#39;mpx&#39;</span>
+    <span class="p">}</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Matrix Profile Foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

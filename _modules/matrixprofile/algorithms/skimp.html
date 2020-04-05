@@ -1,0 +1,580 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>matrixprofile.algorithms.skimp &mdash; MatrixProfile</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> matrixprofile
+          
+
+          
+            
+            <img src="../../../_static/mpf-logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Quickstart.html">Quickstart Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Algorithms.html">Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../help.html">Getting Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../code_of_conduct.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../citations.html">Citations</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/matrix-profile-foundation/matrixprofile">Code Repository (Github)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://matrixprofile.org">Website</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">matrixprofile</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>matrixprofile.algorithms.skimp</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for matrixprofile.algorithms.skimp</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">absolute_import</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">division</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">unicode_literals</span>
+
+<span class="nb">range</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">__builtins__</span><span class="p">,</span> <span class="s1">&#39;xrange&#39;</span><span class="p">,</span> <span class="nb">range</span><span class="p">)</span>
+<span class="c1"># end of py2 compatability boilerplate</span>
+
+
+<span class="c1"># handle Python 2/3 Iterable import</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">collections.abc</span> <span class="k">import</span> <span class="n">Iterable</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">Iterable</span>
+
+<span class="kn">import</span> <span class="nn">math</span>
+
+<span class="kn">import</span> <span class="nn">warnings</span>
+
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="k">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">matrixprofile</span> <span class="k">import</span> <span class="n">core</span>
+<span class="kn">from</span> <span class="nn">matrixprofile.algorithms.mpx</span> <span class="k">import</span> <span class="n">mpx</span>
+
+
+<span class="k">def</span> <span class="nf">split</span><span class="p">(</span><span class="n">lower_bound</span><span class="p">,</span> <span class="n">upper_bound</span><span class="p">,</span> <span class="n">middle</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Helper function to split the indices for BFS.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">lower_bound</span> <span class="o">==</span> <span class="n">middle</span><span class="p">:</span>
+        <span class="n">L</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">R</span> <span class="o">=</span> <span class="p">[</span><span class="n">middle</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">upper_bound</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="n">upper_bound</span> <span class="o">==</span> <span class="n">middle</span><span class="p">:</span>
+        <span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="n">lower_bound</span><span class="p">,</span> <span class="n">middle</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="n">R</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="n">lower_bound</span><span class="p">,</span> <span class="n">middle</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="n">R</span> <span class="o">=</span> <span class="p">[</span><span class="n">middle</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">upper_bound</span><span class="p">]</span>
+    
+    <span class="k">return</span> <span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">R</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">binary_split</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Create a breadth first search for indices 0..n.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    n : int</span>
+<span class="sd">        The length of indices.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    array_like :</span>
+<span class="sd">        The indices to iterate to perform BFS.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># having length of 1 causes infinite loop and it just doesn&#39;t really</span>
+    <span class="c1"># make much sense.</span>
+    <span class="c1"># just return it</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[</span><span class="mi">0</span><span class="p">,]</span>
+
+    <span class="n">index</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">intervals</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="c1"># always begin by exploring the first integer</span>
+    <span class="n">index</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    
+    <span class="c1"># after exploring first integer, split interval 2:n</span>
+    <span class="n">intervals</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span>
+    
+    <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">intervals</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">interval</span> <span class="o">=</span> <span class="n">intervals</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">lower_bound</span> <span class="o">=</span> <span class="n">interval</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">upper_bound</span> <span class="o">=</span> <span class="n">interval</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">middle</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">((</span><span class="n">lower_bound</span> <span class="o">+</span> <span class="n">upper_bound</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span>
+        <span class="n">index</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">middle</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="n">lower_bound</span> <span class="o">==</span> <span class="n">upper_bound</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">L</span><span class="p">,</span> <span class="n">R</span> <span class="o">=</span> <span class="n">split</span><span class="p">(</span><span class="n">lower_bound</span><span class="p">,</span> <span class="n">upper_bound</span><span class="p">,</span> <span class="n">middle</span><span class="p">)</span>
+            
+            <span class="k">if</span> <span class="n">L</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">intervals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>
+            
+            <span class="k">if</span> <span class="n">R</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">intervals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">R</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">index</span>
+
+
+<div class="viewcode-block" id="skimp"><a class="viewcode-back" href="../../../api.html#matrixprofile.algorithms.skimp">[docs]</a><span class="k">def</span> <span class="nf">skimp</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">windows</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">show_progress</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">cross_correlation</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+          <span class="n">pmp_obj</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sample_pct</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Computes the Pan Matrix Profile (PMP) for the given time series. When the</span>
+<span class="sd">    time series is only passed, windows start from 8 and increase by increments</span>
+<span class="sd">    of 2 up to length(ts) / 2. Also, the PMP is only computed using 10% of the</span>
+<span class="sd">    windows unless sample_pct is set to a different value.</span>
+
+<span class="sd">    Note</span>
+<span class="sd">    ----</span>
+<span class="sd">    When windows is explicitly provided, sample_pct no longer takes affect. The</span>
+<span class="sd">    MP for all windows provided will be computed.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    ts : array_like</span>
+<span class="sd">        The time series.</span>
+<span class="sd">    show_progress: bool, default = False</span>
+<span class="sd">        Show the progress in percent complete in increments of 5% by printing</span>
+<span class="sd">        it out to the console.</span>
+<span class="sd">    cross_correlation : bool, default = False</span>
+<span class="sd">        Return the MP values as Pearson Correlation instead of Euclidean</span>
+<span class="sd">        distance.</span>
+<span class="sd">    pmp_obj : dict, default = None</span>
+<span class="sd">        Repurpose already computed window sizes with this provided PMP. It</span>
+<span class="sd">        should be the output of a PMP algorithm such as skimp or maximum</span>
+<span class="sd">        subsequence.</span>
+<span class="sd">    sample_pct : float, default = 0.1 (10%)</span>
+<span class="sd">        Number of window sizes to compute MPs for. Decimal percent between</span>
+<span class="sd">        0 and 1.</span>
+<span class="sd">    n_jobs : int, Default = 1</span>
+<span class="sd">        Number of cpu cores to use.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    dict : profile</span>
+<span class="sd">        A Pan-MatrixProfile data structure.</span>
+<span class="sd">        </span>
+<span class="sd">        &gt;&gt;&gt; {</span>
+<span class="sd">        &gt;&gt;&gt;     &#39;pmp&#39;: the pan matrix profile as a 2D array,</span>
+<span class="sd">        &gt;&gt;&gt;     &#39;pmpi&#39;: the pmp indices,</span>
+<span class="sd">        &gt;&gt;&gt;     &#39;data&#39;: {</span>
+<span class="sd">        &gt;&gt;&gt;         &#39;ts&#39;: time series used,</span>
+<span class="sd">        &gt;&gt;&gt;     },</span>
+<span class="sd">        &gt;&gt;&gt;     &#39;windows&#39;: the windows used to compute the pmp,</span>
+<span class="sd">        &gt;&gt;&gt;     &#39;sample_pct&#39;: the sample percent used,</span>
+<span class="sd">        &gt;&gt;&gt;     &#39;metric&#39;:The distance metric computed for the pmp,</span>
+<span class="sd">        &gt;&gt;&gt;     &#39;algorithm&#39;: the algorithm used,</span>
+<span class="sd">        &gt;&gt;&gt;     &#39;class&#39;: PMP</span>
+<span class="sd">        &gt;&gt;&gt; }</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    ValueError :</span>
+<span class="sd">        1. ts is not array_like.</span>
+<span class="sd">        2. windows is not an iterable</span>
+<span class="sd">        3. show_progress is not a boolean.</span>
+<span class="sd">        4. cross_correlation is not a boolean.</span>
+<span class="sd">        5. sample_pct is not between 0 and 1.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">ts</span> <span class="o">=</span> <span class="n">core</span><span class="o">.</span><span class="n">to_np_array</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span>
+    
+    <span class="c1"># Argument validation</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">windows</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="kc">None</span><span class="p">)):</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="mi">8</span>
+        <span class="n">end</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span>
+        <span class="n">windows</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">show_progress</span><span class="p">,</span> <span class="nb">bool</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;show_progress must be a boolean!&#39;</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cross_correlation</span><span class="p">,</span> <span class="nb">bool</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;cross_correlation must be a boolean!&#39;</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sample_pct</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">))</span> <span class="ow">or</span> <span class="n">sample_pct</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">sample_pct</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;sample_pct must be a decimal between 0 and 1&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># create a breath first search index list of our window sizes</span>
+    <span class="n">split_index</span> <span class="o">=</span> <span class="n">binary_split</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">windows</span><span class="p">))</span>
+    <span class="n">pmp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">split_index</span><span class="p">),</span> <span class="n">n</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">)</span>
+    <span class="n">pmpi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">split_index</span><span class="p">),</span> <span class="n">n</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;int&#39;</span><span class="p">)</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">split_index</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    
+    <span class="c1"># compute the sample pct index</span>
+    <span class="n">last_index</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">split_index</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">sample_pct</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">last_index</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">split_index</span><span class="p">)</span> <span class="o">*</span> <span class="n">sample_pct</span><span class="p">))</span>
+        <span class="n">last_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">minimum</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">split_index</span><span class="p">),</span> <span class="n">last_index</span><span class="p">)</span>
+    
+    <span class="n">pct_shown</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="c1"># compute all matrix profiles for each window size</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">last_index</span><span class="p">):</span>
+        <span class="n">window_size</span> <span class="o">=</span> <span class="n">windows</span><span class="p">[</span><span class="n">split_index</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
+
+        <span class="c1"># check if we already computed this MP given a passed in PMP</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">pmp_obj</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="n">cw</span> <span class="o">=</span> <span class="n">pmp_obj</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;windows&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="n">w_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argwhere</span><span class="p">(</span><span class="n">cw</span> <span class="o">==</span> <span class="n">window_size</span><span class="p">)</span>
+            
+            <span class="c1"># having the window provided, we simply copy over the data instead</span>
+            <span class="c1"># of recomputing it</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">w_idx</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">w_idx</span> <span class="o">=</span> <span class="n">w_idx</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">pmp</span><span class="p">[</span><span class="n">split_index</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">pmp_obj</span><span class="p">[</span><span class="s1">&#39;pmp&#39;</span><span class="p">][</span><span class="n">w_idx</span><span class="p">,</span> <span class="p">:]</span>
+                <span class="n">pmpi</span><span class="p">[</span><span class="n">split_index</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">pmp_obj</span><span class="p">[</span><span class="s1">&#39;pmpi&#39;</span><span class="p">][</span><span class="n">w_idx</span><span class="p">,</span> <span class="p">:]</span>
+
+                <span class="k">continue</span>
+
+        <span class="n">profile</span> <span class="o">=</span> <span class="n">mpx</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">window_size</span><span class="p">,</span> <span class="n">cross_correlation</span><span class="o">=</span><span class="n">cross_correlation</span><span class="p">,</span>
+            <span class="n">n_jobs</span><span class="o">=</span><span class="n">n_jobs</span><span class="p">)</span>
+        <span class="n">mp</span> <span class="o">=</span> <span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;mp&#39;</span><span class="p">)</span>
+        <span class="n">pi</span> <span class="o">=</span> <span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;pi&#39;</span><span class="p">)</span>
+        <span class="n">pmp</span><span class="p">[</span><span class="n">split_index</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="mi">0</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="n">mp</span><span class="p">)]</span> <span class="o">=</span> <span class="n">mp</span>
+        <span class="n">pmpi</span><span class="p">[</span><span class="n">split_index</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="mi">0</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="n">pi</span><span class="p">)]</span> <span class="o">=</span> <span class="n">pi</span>
+        
+        <span class="n">j</span> <span class="o">=</span> <span class="n">split_index</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="k">while</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">last_index</span> <span class="ow">and</span> <span class="n">idx</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">!=</span> <span class="n">j</span><span class="p">:</span>
+            <span class="n">idx</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">split_index</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">j</span> <span class="o">=</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span>
+        
+        <span class="c1"># output the progress</span>
+        <span class="k">if</span> <span class="n">show_progress</span><span class="p">:</span>
+            <span class="n">pct_complete</span> <span class="o">=</span> <span class="nb">round</span><span class="p">((</span><span class="n">i</span> <span class="o">/</span> <span class="p">(</span><span class="n">last_index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+            <span class="n">int_pct</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">pct_complete</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">int_pct</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">int_pct</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">pct_shown</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}% c</span><span class="s1">omplete&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">int_pct</span><span class="p">))</span>
+                <span class="n">pct_shown</span><span class="p">[</span><span class="n">int_pct</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="n">metric</span> <span class="o">=</span> <span class="s1">&#39;euclidean&#39;</span>
+    <span class="k">if</span> <span class="n">cross_correlation</span><span class="p">:</span>
+        <span class="n">metric</span> <span class="o">=</span> <span class="s1">&#39;pearson&#39;</span>
+
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s1">&#39;pmp&#39;</span><span class="p">:</span> <span class="n">pmp</span><span class="p">,</span>
+        <span class="s1">&#39;pmpi&#39;</span><span class="p">:</span> <span class="n">pmpi</span><span class="p">,</span>
+        <span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;ts&#39;</span><span class="p">:</span> <span class="n">ts</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="s1">&#39;windows&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">windows</span><span class="p">),</span>
+        <span class="s1">&#39;sample_pct&#39;</span><span class="p">:</span> <span class="n">sample_pct</span><span class="p">,</span>
+        <span class="s1">&#39;metric&#39;</span><span class="p">:</span> <span class="n">metric</span><span class="p">,</span>
+        <span class="s1">&#39;algorithm&#39;</span><span class="p">:</span> <span class="s1">&#39;skimp&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;PMP&#39;</span>
+    <span class="p">}</span></div>
+    
+
+<div class="viewcode-block" id="maximum_subsequence"><a class="viewcode-back" href="../../../api.html#matrixprofile.algorithms.maximum_subsequence">[docs]</a><span class="k">def</span> <span class="nf">maximum_subsequence</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">refine_stepsize</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">include_pmp</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Finds the maximum subsequence length based on the threshold provided. Note</span>
+<span class="sd">    that this threshold is domain specific requiring some knowledge about the</span>
+<span class="sd">    underyling time series in question.</span>
+
+<span class="sd">    The subsequence length starts at 8 and iteratively doubles until the</span>
+<span class="sd">    maximum correlation coefficient is no longer met.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    ts : array_like</span>
+<span class="sd">        The time series to analyze.</span>
+<span class="sd">    threshold : float, Default 0.95</span>
+<span class="sd">        The correlation coefficient used as the threshold. It should be between</span>
+<span class="sd">        0 and 1.</span>
+<span class="sd">    refine_stepsize : float, Default 0.05</span>
+<span class="sd">        Used in the refinement step to find a more precise upper window. It</span>
+<span class="sd">        should be a percentage between 0.01 and 0.99.</span>
+<span class="sd">    n_jobs : int, Default = 1</span>
+<span class="sd">        Number of cpu cores to use.</span>
+<span class="sd">    include_pmp : bool, default False</span>
+<span class="sd">        Include the PanMatrixProfile for the computed windows.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    obj :</span>
+<span class="sd">        With include_pmp=False (default)</span>
+<span class="sd">        int : The maximum subsequence length based on the threshold provided.</span>
+<span class="sd">        </span>
+<span class="sd">        With include_pmp=True</span>
+<span class="sd">        dict : A dict containing the upper window, windows and pmp.</span>
+
+<span class="sd">        &gt;&gt;&gt; {</span>
+<span class="sd">        &gt;&gt;&gt;     &#39;upper_window&#39;: The upper window,</span>
+<span class="sd">        &gt;&gt;&gt;     &#39;windows&#39;: array_like windows used to compute the pmp,</span>
+<span class="sd">        &gt;&gt;&gt;     &#39;pmp&#39;: the pan matrix profile as a 2D array,</span>
+<span class="sd">        &gt;&gt;&gt;     &#39;pmpi&#39;: the pmp indices,</span>
+<span class="sd">        &gt;&gt;&gt; }</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">windows</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([],</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;int&#39;</span><span class="p">)</span>
+    <span class="n">pearson</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([],</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;d&#39;</span><span class="p">)</span>
+    <span class="n">pmp</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">pmpi</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="n">ts</span> <span class="o">=</span> <span class="n">core</span><span class="o">.</span><span class="n">to_np_array</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span>
+    <span class="n">correlation_max</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span>
+    <span class="n">window_size</span> <span class="o">=</span> <span class="mi">8</span>
+    <span class="n">max_window</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span>
+    
+    <span class="k">def</span> <span class="nf">resize</span><span class="p">(</span><span class="n">mp</span><span class="p">,</span> <span class="n">pi</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Helper function to resize mp and pi to be aligned with the</span>
+<span class="sd">        PMP. Also convert pearson to euclidean.&quot;&quot;&quot;</span>
+        <span class="n">mp</span> <span class="o">=</span> <span class="n">core</span><span class="o">.</span><span class="n">pearson_to_euclidean</span><span class="p">(</span><span class="n">profile</span><span class="p">[</span><span class="s1">&#39;mp&#39;</span><span class="p">],</span> <span class="n">window_size</span><span class="p">)</span>
+        <span class="n">infs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="n">mp</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">)</span>
+        <span class="n">nans</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="n">mp</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+        <span class="n">mp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mp</span><span class="p">,</span> <span class="n">infs</span><span class="p">)</span>
+        <span class="n">pi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">profile</span><span class="p">[</span><span class="s1">&#39;pi&#39;</span><span class="p">],</span> <span class="n">nans</span><span class="p">)</span>
+        
+        <span class="k">return</span> <span class="p">(</span><span class="n">mp</span><span class="p">,</span> <span class="n">pi</span><span class="p">)</span>
+
+    <span class="c1"># first perform a wide search by increasing window by 2 in</span>
+    <span class="c1"># each iteration</span>
+    <span class="k">while</span> <span class="n">window_size</span> <span class="o">&lt;=</span> <span class="n">max_window</span><span class="p">:</span>
+        <span class="n">profile</span> <span class="o">=</span> <span class="n">mpx</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">window_size</span><span class="p">,</span> <span class="n">cross_correlation</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">mask</span> <span class="o">=</span> <span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">isinf</span><span class="p">(</span><span class="n">profile</span><span class="p">[</span><span class="s1">&#39;mp&#39;</span><span class="p">])</span>
+        <span class="n">correlation_max</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">profile</span><span class="p">[</span><span class="s1">&#39;mp&#39;</span><span class="p">][</span><span class="n">mask</span><span class="p">])</span>
+
+        <span class="n">windows</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">windows</span><span class="p">,</span> <span class="n">window_size</span><span class="p">)</span>
+        <span class="n">pearson</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pearson</span><span class="p">,</span> <span class="n">correlation_max</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="n">include_pmp</span><span class="p">:</span>            
+            <span class="n">mp</span><span class="p">,</span> <span class="n">pi</span> <span class="o">=</span> <span class="n">resize</span><span class="p">(</span><span class="n">profile</span><span class="p">[</span><span class="s1">&#39;mp&#39;</span><span class="p">],</span> <span class="n">profile</span><span class="p">[</span><span class="s1">&#39;pi&#39;</span><span class="p">],</span> <span class="n">n</span><span class="p">)</span>
+            <span class="n">pmp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mp</span><span class="p">)</span>
+            <span class="n">pmpi</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pi</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">correlation_max</span> <span class="o">&lt;</span> <span class="n">threshold</span><span class="p">:</span>
+            <span class="k">break</span>
+
+        <span class="n">window_size</span> <span class="o">=</span> <span class="n">window_size</span> <span class="o">*</span> <span class="mi">2</span>
+
+    <span class="c1"># find last window within threshold and throw away</span>
+    <span class="c1"># computations outside of the threshold</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">pearson</span> <span class="o">&gt;</span> <span class="n">threshold</span>
+    <span class="n">pearson</span> <span class="o">=</span> <span class="n">pearson</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+    <span class="n">windows</span> <span class="o">=</span> <span class="n">windows</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+    <span class="n">window_size</span> <span class="o">=</span> <span class="n">windows</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    
+    <span class="k">if</span> <span class="n">include_pmp</span><span class="p">:</span>
+        <span class="n">pmp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">pmp</span><span class="p">)[</span><span class="n">mask</span><span class="p">]</span>
+        <span class="n">pmpi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">pmpi</span><span class="p">)[</span><span class="n">mask</span><span class="p">]</span>
+
+    <span class="c1"># refine the upper u by increase by + X% increments</span>
+    <span class="n">test_windows</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">refine_stepsize</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="n">refine_stepsize</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">test_windows</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">test_windows</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">test_windows</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">test_windows</span> <span class="o">*</span> <span class="n">window_size</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int&#39;</span><span class="p">)</span>
+
+    <span class="c1"># keep windows divisible by 2</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">test_windows</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span>
+    <span class="n">test_windows</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">test_windows</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+    
+    <span class="k">for</span> <span class="n">window_size</span> <span class="ow">in</span> <span class="n">test_windows</span><span class="p">:</span>
+        <span class="n">profile</span> <span class="o">=</span> <span class="n">mpx</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">window_size</span><span class="p">,</span> <span class="n">cross_correlation</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">mask</span> <span class="o">=</span> <span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">isinf</span><span class="p">(</span><span class="n">profile</span><span class="p">[</span><span class="s1">&#39;mp&#39;</span><span class="p">])</span>
+        <span class="n">correlation_max</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">profile</span><span class="p">[</span><span class="s1">&#39;mp&#39;</span><span class="p">][</span><span class="n">mask</span><span class="p">])</span>
+
+        <span class="n">windows</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">windows</span><span class="p">,</span> <span class="n">window_size</span><span class="p">)</span>
+        <span class="n">pearson</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pearson</span><span class="p">,</span> <span class="n">correlation_max</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="n">include_pmp</span><span class="p">:</span>
+            <span class="n">mp</span><span class="p">,</span> <span class="n">pi</span> <span class="o">=</span> <span class="n">resize</span><span class="p">(</span><span class="n">profile</span><span class="p">[</span><span class="s1">&#39;mp&#39;</span><span class="p">],</span> <span class="n">profile</span><span class="p">[</span><span class="s1">&#39;pi&#39;</span><span class="p">],</span> <span class="n">n</span><span class="p">)</span>
+            <span class="n">pmp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pmp</span><span class="p">,</span> <span class="p">[</span><span class="n">mp</span><span class="p">,],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+            <span class="n">pmpi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pmpi</span><span class="p">,</span> <span class="p">[</span><span class="n">pi</span><span class="p">,],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">correlation_max</span> <span class="o">&lt;</span> <span class="n">threshold</span><span class="p">:</span>
+            <span class="k">break</span>
+    
+    <span class="k">if</span> <span class="n">include_pmp</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s1">&#39;upper_window&#39;</span><span class="p">:</span> <span class="n">window_size</span><span class="p">,</span>
+            <span class="s1">&#39;windows&#39;</span><span class="p">:</span> <span class="n">windows</span><span class="p">,</span>
+            <span class="s1">&#39;pmp&#39;</span><span class="p">:</span> <span class="n">pmp</span><span class="p">,</span>
+            <span class="s1">&#39;pmpi&#39;</span><span class="p">:</span> <span class="n">pmpi</span>
+        <span class="p">}</span>
+    
+    <span class="k">return</span> <span class="n">window_size</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Matrix Profile Foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

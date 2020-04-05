@@ -1,0 +1,1248 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>API &mdash; MatrixProfile</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Examples" href="examples.html" />
+    <link rel="prev" title="Quickstart Guide" href="Quickstart.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> matrixprofile
+          
+
+          
+            
+            <img src="_static/mpf-logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Quickstart.html">Quickstart Guide</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#matrixprofile-analyze">matrixprofile.analyze</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#matrixprofile-compute">matrixprofile.compute</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#matrixprofile-visualize">matrixprofile.visualize</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#matrixprofile-discover-motifs">matrixprofile.discover.motifs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#matrixprofile-discover-discords">matrixprofile.discover.discords</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#matrixprofile-discover-snippets">matrixprofile.discover.snippets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#matrixprofile-discover-regimes">matrixprofile.discover.regimes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#matrixprofile-discover-statistics">matrixprofile.discover.statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#matrixprofile-algorithms-stomp">matrixprofile.algorithms.stomp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#matrixprofile-algorithms-mpx">matrixprofile.algorithms.mpx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#matrixprofile-algorithms-skimp">matrixprofile.algorithms.skimp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#matrixprofile-algorithms-mass2">matrixprofile.algorithms.mass2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#matrixprofile-algorithms-mpdist">matrixprofile.algorithms.mpdist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#matrixprofile-algorithms-maximum-subsequence">matrixprofile.algorithms.maximum_subsequence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#matrixprofile-algorithms-prescrimp">matrixprofile.algorithms.prescrimp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#matrixprofile-algorithms-scrimp-plus-plus">matrixprofile.algorithms.scrimp_plus_plus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#matrixprofile-utils-empty-mp">matrixprofile.utils.empty_mp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#matrixprofile-utils-pick-mp">matrixprofile.utils.pick_mp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#matrixprofile-io-to-disk">matrixprofile.io.to_disk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#matrixprofile-io-from-disk">matrixprofile.io.from_disk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#matrixprofile-io-to-json">matrixprofile.io.to_json</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#matrixprofile-io-from-json">matrixprofile.io.from_json</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#matrixprofile-io-to-mpf">matrixprofile.io.to_mpf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#matrixprofile-io-from-mpf">matrixprofile.io.from_mpf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#matrixprofile-datasets-fetch-available">matrixprofile.datasets.fetch_available</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#matrixprofile-datasets-load">matrixprofile.datasets.load</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Algorithms.html">Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Getting Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code_of_conduct.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="citations.html">Citations</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/matrix-profile-foundation/matrixprofile">Code Repository (Github)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://matrixprofile.org">Website</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">matrixprofile</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>API</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/api.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="api">
+<h1>API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="matrixprofile-analyze">
+<h2>matrixprofile.analyze<a class="headerlink" href="#matrixprofile-analyze" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="matrixprofile.analyze">
+<code class="sig-prename descclassname">matrixprofile.</code><code class="sig-name descname">analyze</code><span class="sig-paren">(</span><em class="sig-param">ts</em>, <em class="sig-param">query=None</em>, <em class="sig-param">windows=None</em>, <em class="sig-param">sample_pct=1.0</em>, <em class="sig-param">threshold=0.98</em>, <em class="sig-param">n_jobs=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/analyze.html#analyze"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.analyze" title="Permalink to this definition">¶</a></dt>
+<dd><p>Runs an appropriate workflow based on the parameters passed in. The goal
+of this function is to compute all fundamental algorithms on the provided
+time series data. For now the following is computed:</p>
+<ol class="arabic simple">
+<li><p>Matrix Profile - exact or approximate based on sample_pct given that a
+window is provided. By default is the exact algorithm.</p></li>
+<li><p>Top Motifs - The top 3 motifs are found.</p></li>
+<li><p>Top Discords - The top 3 discords are found.</p></li>
+<li><p>Plot MP, Motifs and Discords</p></li>
+</ol>
+<p>When a window is not provided or more than a single window is provided,
+the PMP is computed:</p>
+<ol class="arabic simple">
+<li><p>Compute UPPER window when no window(s) is provided</p></li>
+<li><p>Compute PMP for all windows</p></li>
+<li><p>Top Motifs</p></li>
+<li><p>Top Discords</p></li>
+<li><p>Plot PMP, motifs and discords.</p></li>
+</ol>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ts</strong> (<em>array_like</em>) – The time series to analyze.</p></li>
+<li><p><strong>query</strong> (<em>array_like</em><em>, </em><em>Optional</em>) – The query to analyze. Note that when computing the PMP the query is
+ignored!</p></li>
+<li><p><strong>windows</strong> (<em>int</em><em> or </em><em>array_like</em><em>, </em><em>Optional</em>) – The window(s) to compute the MatrixProfile. Note that it may be an int
+for a single matrix profile computation or an array of ints for
+computing the pan matrix profile.</p></li>
+<li><p><strong>sample_pct</strong> (<em>float</em><em>, </em><em>default = 1</em>) – A float between 0 and 1 representing how many samples to compute for
+the MP or PMP. When it is 1, the exact algorithm is used.</p></li>
+<li><p><strong>threshold</strong> (<em>float</em><em>, </em><em>Default 0.98</em>) – The correlation coefficient used as the threshold. It should be between
+0 and 1. This is used to compute the upper window size when no
+window(s) is given.</p></li>
+<li><p><strong>n_jobs</strong> (<em>int</em><em>, </em><em>Default = 1</em>) – Number of cpu cores to use.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>tuple</strong> – The appropriate PMP or MP profile object and associated figures.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(profile, figures)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="matrixprofile-compute">
+<h2>matrixprofile.compute<a class="headerlink" href="#matrixprofile-compute" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="matrixprofile.compute">
+<code class="sig-prename descclassname">matrixprofile.</code><code class="sig-name descname">compute</code><span class="sig-paren">(</span><em class="sig-param">ts</em>, <em class="sig-param">windows=None</em>, <em class="sig-param">query=None</em>, <em class="sig-param">sample_pct=1</em>, <em class="sig-param">threshold=0.98</em>, <em class="sig-param">n_jobs=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/compute.html#compute"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.compute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the exact or approximate MatrixProfile based on the sample percent
+specified. Currently, MPX and SCRIMP++ is used for the exact and
+approximate algorithms respectively. When multiple windows are passed, the
+Pan-MatrixProfile is computed and returned.</p>
+<p>By default, only passing in a time series (ts), the Pan-MatrixProfile is
+computed based on the maximum upper window algorithm with a correlation
+threshold of 0.98.</p>
+<p class="rubric">Notes</p>
+<p>When multiple windows are passed and the Pan-MatrixProfile is computed, the
+query is ignored!</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ts</strong> (<em>array_like</em>) – The time series to analyze.</p></li>
+<li><p><strong>windows</strong> (<em>int</em><em>, </em><em>array_like</em>) – The window(s) to compute the MatrixProfile. Note that it may be an int
+for a single matrix profile computation or an array of ints for
+computing the pan matrix profile.</p></li>
+<li><p><strong>query</strong> (<em>array_like</em><em>, </em><em>optional</em>) – The query to analyze. Note that when computing the PMP the query is
+ignored!</p></li>
+<li><p><strong>sample_pct</strong> (<em>float</em><em>, </em><em>default 1</em>) – A float between 0 and 1 representing how many samples to compute for
+the MP or PMP. When it is 1, the exact algorithm is used.</p></li>
+<li><p><strong>threshold</strong> (<em>float</em><em>, </em><em>default 0.98</em>) – The correlation coefficient used as the threshold. It should be between
+0 and 1. This is used to compute the upper window size when no
+window(s) is given.</p></li>
+<li><p><strong>n_jobs</strong> (<em>int</em><em>, </em><em>default = 1</em>) – Number of cpu cores to use.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>dict</strong> – The profile computed.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>profile</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="matrixprofile-visualize">
+<h2>matrixprofile.visualize<a class="headerlink" href="#matrixprofile-visualize" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="matrixprofile.visualize">
+<code class="sig-prename descclassname">matrixprofile.</code><code class="sig-name descname">visualize</code><span class="sig-paren">(</span><em class="sig-param">profile</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/visualize.html#visualize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.visualize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Automatically creates plots for the provided data structure. In some cases
+many plots are created. For example, when a MatrixProfile is passed with
+corresponding motifs and discords, the matrix profile, discords and motifs
+will be plotted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>profile</strong> (<em>dict_like</em>) – A MatrixProfile, Pan-MatrixProfile or Statistics data structure.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>list</strong> – A list of matplotlib figures.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>figures</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="matrixprofile-discover-motifs">
+<h2>matrixprofile.discover.motifs<a class="headerlink" href="#matrixprofile-discover-motifs" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="matrixprofile.discover.motifs">
+<code class="sig-prename descclassname">matrixprofile.discover.</code><code class="sig-name descname">motifs</code><span class="sig-paren">(</span><em class="sig-param">profile</em>, <em class="sig-param">exclusion_zone=None</em>, <em class="sig-param">k=3</em>, <em class="sig-param">max_neighbors=10</em>, <em class="sig-param">radius=3</em><span class="sig-paren">)</span><a class="headerlink" href="#matrixprofile.discover.motifs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the top K number of motifs (patterns) given a matrix profile or a pan
+matrix profile. By default the algorithm will find up to 3 motifs (k) and
+up to 10 of their neighbors with a radius of 3 * min_dist.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>profile</strong> (<em>dict</em>) – The output from one of the matrix profile algorithms.</p></li>
+<li><p><strong>exclusion_zone</strong> (<em>int</em><em>, </em><em>Default to algorithm ez</em>) – Desired number of values to exclude on both sides of the motif. This
+avoids trivial matches. It defaults to half of the computed window
+size. Setting the exclusion zone to 0 makes it not apply.</p></li>
+<li><p><strong>k</strong> (<em>int</em><em>, </em><em>Default = 3</em>) – Desired number of motifs to find.</p></li>
+<li><p><strong>neighbor_count</strong> (<em>int</em><em>, </em><em>Default = 10</em>) – The maximum number of neighbors to include for a given motif.</p></li>
+<li><p><strong>radius</strong> (<em>int</em><em>, </em><em>Default = 3</em>) – The radius is used to associate a neighbor by checking if the
+neighbor’s distance is less than or equal to dist * radius</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p><strong>dict</strong> – The original input profile with the addition of the “motifs” key. The
+motifs key consists of the following structure.</p>
+<p>A list of dicts containing motif indices and their corresponding
+neighbor indices.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">[</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="p">{</span>
+<span class="gp">&gt;&gt;&gt; </span>        <span class="s1">&#39;motifs&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">first_index</span><span class="p">,</span> <span class="n">second_index</span><span class="p">],</span>
+<span class="gp">&gt;&gt;&gt; </span>        <span class="s1">&#39;neighbors&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">index</span> <span class="o">...</span><span class="n">max_neighbors</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">]</span>
+</pre></div>
+</div>
+<p>The index is a single value when a MatrixProfile is passed in otherwise
+the index contains a row and column index for Pan-MatrixProfile.</p>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>profile</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="matrixprofile-discover-discords">
+<h2>matrixprofile.discover.discords<a class="headerlink" href="#matrixprofile-discover-discords" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="matrixprofile.discover.discords">
+<code class="sig-prename descclassname">matrixprofile.discover.</code><code class="sig-name descname">discords</code><span class="sig-paren">(</span><em class="sig-param">profile</em>, <em class="sig-param">exclusion_zone=None</em>, <em class="sig-param">k=3</em><span class="sig-paren">)</span><a class="headerlink" href="#matrixprofile.discover.discords" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the top K number of discords (anomalies) given a mp or pmp,
+exclusion zone and the desired number of discords. The exclusion zone
+nullifies entries on the left and right side of the first and subsequent
+discords to remove non-trivial matches. More specifically, a discord found
+at location X will more than likely have additional discords to the left or
+right of it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>profile</strong> (<em>dict</em>) – A MatrixProfile or Pan-MatrixProfile structure.</p></li>
+<li><p><strong>exclusion_zone</strong> (<em>int</em><em>, </em><em>Default mp algorithm ez</em>) – Desired number of values to exclude on both sides of the anomaly.</p></li>
+<li><p><strong>k</strong> (<em>int</em>) – Desired number of discords to find.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>dict</strong> – The original profile object with an additional ‘discords’ key. Take
+note that a MatrixProfile discord contains a single value while the
+Pan-MatrixProfile contains a row and column index.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>profile</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="matrixprofile-discover-snippets">
+<h2>matrixprofile.discover.snippets<a class="headerlink" href="#matrixprofile-discover-snippets" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="matrixprofile.discover.snippets">
+<code class="sig-prename descclassname">matrixprofile.discover.</code><code class="sig-name descname">snippets</code><span class="sig-paren">(</span><em class="sig-param">ts</em>, <em class="sig-param">snippet_size</em>, <em class="sig-param">num_snippets=2</em>, <em class="sig-param">window_size=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/algorithms/snippets.html#snippets"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.discover.snippets" title="Permalink to this definition">¶</a></dt>
+<dd><p>The snippets algorithm is used to summarize your time series by
+identifying N number of representative subsequences. If you want to
+identify typical patterns in your time series, then this is the algorithm
+to use.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ts</strong> (<em>array_like</em>) – The time series.</p></li>
+<li><p><strong>snippet_size</strong> (<em>int</em>) – The size of snippet desired.</p></li>
+<li><p><strong>num_snippets</strong> (<em>int</em><em>, </em><em>Default 2</em>) – The number of snippets you would like to find.</p></li>
+<li><p><strong>window_size</strong> (<em>int</em><em>, </em><em>Default</em><em> (</em><em>snippet_size / 2</em><em>)</em>) – The window size.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p><strong>list</strong> – A list of snippets as dictionary objects with the following structure.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">{</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">fraction</span><span class="p">:</span> <span class="n">fraction</span> <span class="n">of</span> <span class="n">the</span> <span class="n">snippet</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">index</span><span class="p">:</span> <span class="n">the</span> <span class="n">index</span> <span class="n">of</span> <span class="n">the</span> <span class="n">snippet</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">snippet</span><span class="p">:</span> <span class="n">the</span> <span class="n">snippet</span> <span class="n">values</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">}</span>
+</pre></div>
+</div>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>snippets</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="matrixprofile-discover-regimes">
+<h2>matrixprofile.discover.regimes<a class="headerlink" href="#matrixprofile-discover-regimes" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="matrixprofile.discover.regimes">
+<code class="sig-prename descclassname">matrixprofile.discover.</code><code class="sig-name descname">regimes</code><span class="sig-paren">(</span><em class="sig-param">profile</em>, <em class="sig-param">num_regimes=3</em><span class="sig-paren">)</span><a class="headerlink" href="#matrixprofile.discover.regimes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a MatrixProfile, compute the corrected arc curve and extract
+the desired number of regimes. Regimes are computed with an exclusion
+zone of 5 * window size per the authors.</p>
+<dl class="simple">
+<dt>The author states:</dt><dd><p>This exclusion zone is based on an assumption that regimes will have
+multiple repetitions; FLUSS is not able to segment single gesture
+patterns.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>profile</strong> (<em>dict</em>) – Data structure from a MatrixProfile algorithm.</p></li>
+<li><p><strong>num_regimes</strong> (<em>int</em>) – The desired number of regimes to find.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p><strong>dict</strong> – The original MatrixProfile object with additional keys containing.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">{</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;cac&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">corrected</span> <span class="n">arc</span> <span class="n">curve</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;cac_ez&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">exclusion</span> <span class="n">zone</span> <span class="n">used</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;regimes&#39;</span><span class="p">:</span> <span class="n">Array</span> <span class="n">of</span> <span class="n">starting</span> <span class="n">indices</span> <span class="n">indicating</span> <span class="n">a</span> <span class="n">regime</span><span class="o">.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">}</span>
+</pre></div>
+</div>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>profile</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="matrixprofile-discover-statistics">
+<h2>matrixprofile.discover.statistics<a class="headerlink" href="#matrixprofile-discover-statistics" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="matrixprofile.discover.statistics">
+<code class="sig-prename descclassname">matrixprofile.discover.</code><code class="sig-name descname">statistics</code><span class="sig-paren">(</span><em class="sig-param">ts</em>, <em class="sig-param">window_size</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/algorithms/statistics.html#statistics"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.discover.statistics" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute global and moving statistics for the provided 1D time
+series. The statistics computed include the min, max, mean, std. and median
+over the window specified and globally.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ts</strong> (<em>array_like</em>) – The time series.</p></li>
+<li><p><strong>window_size</strong> (<em>int</em>) – The size of the window to compute moving statistics over.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p><strong>dict</strong> – The global and rolling window statistics.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">{</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">ts</span><span class="p">:</span> <span class="n">the</span> <span class="n">original</span> <span class="n">time</span> <span class="n">series</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="nb">min</span><span class="p">:</span> <span class="n">the</span> <span class="k">global</span> <span class="n">minimum</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="nb">max</span><span class="p">:</span> <span class="n">the</span> <span class="k">global</span> <span class="n">maximum</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">mean</span><span class="p">:</span> <span class="n">the</span> <span class="k">global</span> <span class="n">mean</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">std</span><span class="p">:</span> <span class="n">the</span> <span class="k">global</span> <span class="n">standard</span> <span class="n">deviation</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">median</span><span class="p">:</span> <span class="n">the</span> <span class="k">global</span> <span class="n">standard</span> <span class="n">deviation</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">moving_min</span><span class="p">:</span> <span class="n">the</span> <span class="n">moving</span> <span class="n">minimum</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">moving_max</span><span class="p">:</span> <span class="n">the</span> <span class="n">moving</span> <span class="n">maximum</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">moving_mean</span><span class="p">:</span> <span class="n">the</span> <span class="n">moving</span> <span class="n">mean</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">moving_std</span><span class="p">:</span> <span class="n">the</span> <span class="n">moving</span> <span class="n">standard</span> <span class="n">deviation</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">moving_median</span><span class="p">:</span> <span class="n">the</span> <span class="n">moving</span> <span class="n">median</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">window_size</span><span class="p">:</span> <span class="n">the</span> <span class="n">window</span> <span class="n">size</span> <span class="n">provided</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">class</span><span class="p">:</span> <span class="n">Statistics</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">}</span>
+</pre></div>
+</div>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>statistics</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If window_size is not an int.
+    If window_size &gt; len(ts)
+    If ts is not a list or np.array.
+    If ts is not 1D.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="matrixprofile-algorithms-stomp">
+<h2>matrixprofile.algorithms.stomp<a class="headerlink" href="#matrixprofile-algorithms-stomp" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="matrixprofile.algorithms.stomp">
+<code class="sig-prename descclassname">matrixprofile.algorithms.</code><code class="sig-name descname">stomp</code><span class="sig-paren">(</span><em class="sig-param">ts</em>, <em class="sig-param">window_size</em>, <em class="sig-param">query=None</em>, <em class="sig-param">n_jobs=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/algorithms/stomp.html#stomp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.algorithms.stomp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes matrix profiles for a single dimensional time series using the
+parallelized STOMP algorithm (by default). Ray or Python’s multiprocessing
+library may be used. When you have initialized Ray on your machine,
+it takes priority over using Python’s multiprocessing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ts</strong> (<em>array_like</em>) – The time series to compute the matrix profile for.</p></li>
+<li><p><strong>window_size</strong> (<em>int</em>) – The size of the window to compute the matrix profile over.</p></li>
+<li><p><strong>query</strong> (<em>array_like</em>) – Optionally, a query can be provided to perform a similarity join.</p></li>
+<li><p><strong>n_jobs</strong> (<em>int</em><em>, </em><em>Default = 1</em>) – Number of cpu cores to use.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p><strong>dict</strong> – A MatrixProfile data structure.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">{</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;mp&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">matrix</span> <span class="n">profile</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;pi&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">matrix</span> <span class="n">profile</span> <span class="mi">1</span><span class="n">NN</span> <span class="n">indices</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;rmp&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">right</span> <span class="n">matrix</span> <span class="n">profile</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;rpi&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">right</span> <span class="n">matrix</span> <span class="n">profile</span> <span class="mi">1</span><span class="n">NN</span> <span class="n">indices</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;lmp&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">left</span> <span class="n">matrix</span> <span class="n">profile</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;lpi&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">left</span> <span class="n">matrix</span> <span class="n">profile</span> <span class="mi">1</span><span class="n">NN</span> <span class="n">indices</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;metric&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">distance</span> <span class="n">metric</span> <span class="n">computed</span> <span class="k">for</span> <span class="n">the</span> <span class="n">mp</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;w&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">window</span> <span class="n">size</span> <span class="n">used</span> <span class="n">to</span> <span class="n">compute</span> <span class="n">the</span> <span class="n">matrix</span> <span class="n">profile</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;ez&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">exclusion</span> <span class="n">zone</span> <span class="n">used</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;join&#39;</span><span class="p">:</span> <span class="n">Flag</span> <span class="n">indicating</span> <span class="k">if</span> <span class="n">a</span> <span class="n">similarity</span> <span class="n">join</span> <span class="n">was</span> <span class="n">computed</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;sample_pct&#39;</span><span class="p">:</span> <span class="n">Percentage</span> <span class="n">of</span> <span class="n">samples</span> <span class="n">used</span> <span class="ow">in</span> <span class="n">computing</span> <span class="n">the</span> <span class="n">MP</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="p">{</span>
+<span class="gp">&gt;&gt;&gt; </span>        <span class="s1">&#39;ts&#39;</span><span class="p">:</span> <span class="n">Time</span> <span class="n">series</span> <span class="n">data</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>        <span class="s1">&#39;query&#39;</span><span class="p">:</span> <span class="n">Query</span> <span class="n">data</span> <span class="k">if</span> <span class="n">supplied</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s2">&quot;MatrixProfile&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;algorithm&#39;</span><span class="p">:</span> <span class="s2">&quot;stomp_parallel&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">}</span>
+</pre></div>
+</div>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>profile</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If window_size &lt; 4.
+    If window_size &gt; query length / 2.
+    If ts is not a list or np.array.
+    If query is not a list or np.array.
+    If ts or query is not one dimensional.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="matrixprofile-algorithms-mpx">
+<h2>matrixprofile.algorithms.mpx<a class="headerlink" href="#matrixprofile-algorithms-mpx" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="matrixprofile.algorithms.mpx">
+<code class="sig-prename descclassname">matrixprofile.algorithms.</code><code class="sig-name descname">mpx</code><span class="sig-paren">(</span><em class="sig-param">ts</em>, <em class="sig-param">w</em>, <em class="sig-param">query=None</em>, <em class="sig-param">cross_correlation=False</em>, <em class="sig-param">n_jobs=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/algorithms/mpx.html#mpx"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.algorithms.mpx" title="Permalink to this definition">¶</a></dt>
+<dd><p>The MPX algorithm computes the matrix profile without using the FFT.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ts</strong> (<em>array_like</em>) – The time series to compute the matrix profile for.</p></li>
+<li><p><strong>w</strong> (<em>int</em>) – The window size.</p></li>
+<li><p><strong>query</strong> (<em>array_like</em>) – Optionally a query series.</p></li>
+<li><p><strong>cross_correlation</strong> (<em>bool</em><em>, </em><em>Default=False</em>) – Setermine if cross_correlation distance should be returned. It defaults
+to Euclidean Distance.</p></li>
+<li><p><strong>n_jobs</strong> (<em>int</em><em>, </em><em>Default = 1</em>) – Number of cpu cores to use.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p><strong>dict</strong> – A MatrixProfile data structure.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">{</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;mp&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">matrix</span> <span class="n">profile</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;pi&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">matrix</span> <span class="n">profile</span> <span class="mi">1</span><span class="n">NN</span> <span class="n">indices</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;rmp&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">right</span> <span class="n">matrix</span> <span class="n">profile</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;rpi&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">right</span> <span class="n">matrix</span> <span class="n">profile</span> <span class="mi">1</span><span class="n">NN</span> <span class="n">indices</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;lmp&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">left</span> <span class="n">matrix</span> <span class="n">profile</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;lpi&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">left</span> <span class="n">matrix</span> <span class="n">profile</span> <span class="mi">1</span><span class="n">NN</span> <span class="n">indices</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;metric&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">distance</span> <span class="n">metric</span> <span class="n">computed</span> <span class="k">for</span> <span class="n">the</span> <span class="n">mp</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;w&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">window</span> <span class="n">size</span> <span class="n">used</span> <span class="n">to</span> <span class="n">compute</span> <span class="n">the</span> <span class="n">matrix</span> <span class="n">profile</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;ez&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">exclusion</span> <span class="n">zone</span> <span class="n">used</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;join&#39;</span><span class="p">:</span> <span class="n">Flag</span> <span class="n">indicating</span> <span class="k">if</span> <span class="n">a</span> <span class="n">similarity</span> <span class="n">join</span> <span class="n">was</span> <span class="n">computed</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;sample_pct&#39;</span><span class="p">:</span> <span class="n">Percentage</span> <span class="n">of</span> <span class="n">samples</span> <span class="n">used</span> <span class="ow">in</span> <span class="n">computing</span> <span class="n">the</span> <span class="n">MP</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="p">{</span>
+<span class="gp">&gt;&gt;&gt; </span>        <span class="s1">&#39;ts&#39;</span><span class="p">:</span> <span class="n">Time</span> <span class="n">series</span> <span class="n">data</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>        <span class="s1">&#39;query&#39;</span><span class="p">:</span> <span class="n">Query</span> <span class="n">data</span> <span class="k">if</span> <span class="n">supplied</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s2">&quot;MatrixProfile&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;algorithm&#39;</span><span class="p">:</span> <span class="s2">&quot;mpx&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">}</span>
+</pre></div>
+</div>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>profile</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="matrixprofile-algorithms-skimp">
+<h2>matrixprofile.algorithms.skimp<a class="headerlink" href="#matrixprofile-algorithms-skimp" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="matrixprofile.algorithms.skimp">
+<code class="sig-prename descclassname">matrixprofile.algorithms.</code><code class="sig-name descname">skimp</code><span class="sig-paren">(</span><em class="sig-param">ts</em>, <em class="sig-param">windows=None</em>, <em class="sig-param">show_progress=False</em>, <em class="sig-param">cross_correlation=False</em>, <em class="sig-param">pmp_obj=None</em>, <em class="sig-param">sample_pct=0.1</em>, <em class="sig-param">n_jobs=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/algorithms/skimp.html#skimp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.algorithms.skimp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the Pan Matrix Profile (PMP) for the given time series. When the
+time series is only passed, windows start from 8 and increase by increments
+of 2 up to length(ts) / 2. Also, the PMP is only computed using 10% of the
+windows unless sample_pct is set to a different value.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When windows is explicitly provided, sample_pct no longer takes affect. The
+MP for all windows provided will be computed.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ts</strong> (<em>array_like</em>) – The time series.</p></li>
+<li><p><strong>show_progress</strong> (<em>bool</em><em>, </em><em>default = False</em>) – Show the progress in percent complete in increments of 5% by printing
+it out to the console.</p></li>
+<li><p><strong>cross_correlation</strong> (<em>bool</em><em>, </em><em>default = False</em>) – Return the MP values as Pearson Correlation instead of Euclidean
+distance.</p></li>
+<li><p><strong>pmp_obj</strong> (<em>dict</em><em>, </em><em>default = None</em>) – Repurpose already computed window sizes with this provided PMP. It
+should be the output of a PMP algorithm such as skimp or maximum
+subsequence.</p></li>
+<li><p><strong>sample_pct</strong> (<em>float</em><em>, </em><em>default = 0.1</em><em> (</em><em>10%</em><em>)</em>) – Number of window sizes to compute MPs for. Decimal percent between
+0 and 1.</p></li>
+<li><p><strong>n_jobs</strong> (<em>int</em><em>, </em><em>Default = 1</em>) – Number of cpu cores to use.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p><strong>dict</strong> – A Pan-MatrixProfile data structure.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">{</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;pmp&#39;</span><span class="p">:</span> <span class="n">the</span> <span class="n">pan</span> <span class="n">matrix</span> <span class="n">profile</span> <span class="k">as</span> <span class="n">a</span> <span class="mi">2</span><span class="n">D</span> <span class="n">array</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;pmpi&#39;</span><span class="p">:</span> <span class="n">the</span> <span class="n">pmp</span> <span class="n">indices</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="p">{</span>
+<span class="gp">&gt;&gt;&gt; </span>        <span class="s1">&#39;ts&#39;</span><span class="p">:</span> <span class="n">time</span> <span class="n">series</span> <span class="n">used</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="p">},</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;windows&#39;</span><span class="p">:</span> <span class="n">the</span> <span class="n">windows</span> <span class="n">used</span> <span class="n">to</span> <span class="n">compute</span> <span class="n">the</span> <span class="n">pmp</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;sample_pct&#39;</span><span class="p">:</span> <span class="n">the</span> <span class="n">sample</span> <span class="n">percent</span> <span class="n">used</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;metric&#39;</span><span class="p">:</span><span class="n">The</span> <span class="n">distance</span> <span class="n">metric</span> <span class="n">computed</span> <span class="k">for</span> <span class="n">the</span> <span class="n">pmp</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;algorithm&#39;</span><span class="p">:</span> <span class="n">the</span> <span class="n">algorithm</span> <span class="n">used</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="n">PMP</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">}</span>
+</pre></div>
+</div>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>profile</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError :</strong> – <ol class="arabic simple">
+<li><p>ts is not array_like.
+    2. windows is not an iterable
+    3. show_progress is not a boolean.
+    4. cross_correlation is not a boolean.
+    5. sample_pct is not between 0 and 1.</p></li>
+</ol>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="matrixprofile-algorithms-mass2">
+<h2>matrixprofile.algorithms.mass2<a class="headerlink" href="#matrixprofile-algorithms-mass2" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="matrixprofile.algorithms.mass2">
+<code class="sig-prename descclassname">matrixprofile.algorithms.</code><code class="sig-name descname">mass2</code><span class="sig-paren">(</span><em class="sig-param">ts</em>, <em class="sig-param">query</em>, <em class="sig-param">extras=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/algorithms/mass2.html#mass2"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.algorithms.mass2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the distance profile for the given query over the given time
+series.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ts</strong> (<em>array_like</em>) – The time series to search.</p></li>
+<li><p><strong>query</strong> (<em>array_like</em>) – The query.</p></li>
+<li><p><strong>extras</strong> (<em>boolean</em><em>, </em><em>default False</em>) – Optionally return additional data used to compute the matrix profile.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p><strong>np.array, dict</strong> – An array of distances np.array() or dict with extras.</p>
+<p>With extras:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">{</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;distance_profile&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">distance</span> <span class="n">profile</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;product&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">FFT</span> <span class="n">product</span> <span class="n">between</span> <span class="n">ts</span> <span class="ow">and</span> <span class="n">query</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;data_mean&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">moving</span> <span class="n">average</span> <span class="n">of</span> <span class="n">the</span> <span class="n">ts</span> <span class="n">over</span> <span class="nb">len</span><span class="p">(</span><span class="n">query</span><span class="p">),</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;query_mean&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">mean</span> <span class="n">of</span> <span class="n">the</span> <span class="n">query</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;data_std&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">moving</span> <span class="n">std</span><span class="o">.</span> <span class="n">of</span> <span class="n">the</span> <span class="n">ts</span> <span class="n">over</span> <span class="nb">len</span><span class="p">(</span><span class="n">query</span><span class="p">),</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;query_std&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">std</span><span class="o">.</span> <span class="n">of</span> <span class="n">the</span> <span class="n">query</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">}</span>
+</pre></div>
+</div>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>distance_profile</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If ts is not a list or np.array.
+    If query is not a list or np.array.
+    If ts or query is not one dimensional.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="matrixprofile-algorithms-mpdist">
+<h2>matrixprofile.algorithms.mpdist<a class="headerlink" href="#matrixprofile-algorithms-mpdist" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="matrixprofile.algorithms.mpdist">
+<code class="sig-prename descclassname">matrixprofile.algorithms.</code><code class="sig-name descname">mpdist</code><span class="sig-paren">(</span><em class="sig-param">ts</em>, <em class="sig-param">ts_b</em>, <em class="sig-param">w</em>, <em class="sig-param">n_jobs=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/algorithms/mpdist.html#mpdist"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.algorithms.mpdist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the MPDist between the two series ts and ts_b. For more details
+refer to the paper:</p>
+<p>Matrix Proﬁle XII: MPdist: A Novel Time Series Distance Measure to Allow
+Data Mining in More Challenging Scenarios. Shaghayegh Gharghabi,
+Shima Imani, Anthony Bagnall, Amirali Darvishzadeh, Eamonn Keogh. ICDM 2018</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ts</strong> (<em>array_like</em>) – The time series to compute the matrix profile for.</p></li>
+<li><p><strong>ts_b</strong> (<em>array_like</em>) – The time series to compare against.</p></li>
+<li><p><strong>w</strong> (<em>int</em>) – The window size.</p></li>
+<li><p><strong>n_jobs</strong> (<em>int</em><em>, </em><em>Default = 1</em>) – Number of cpu cores to use.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>float</strong> – The MPDist.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>mpdist</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="matrixprofile-algorithms-maximum-subsequence">
+<h2>matrixprofile.algorithms.maximum_subsequence<a class="headerlink" href="#matrixprofile-algorithms-maximum-subsequence" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="matrixprofile.algorithms.maximum_subsequence">
+<code class="sig-prename descclassname">matrixprofile.algorithms.</code><code class="sig-name descname">maximum_subsequence</code><span class="sig-paren">(</span><em class="sig-param">ts</em>, <em class="sig-param">threshold=0.95</em>, <em class="sig-param">refine_stepsize=0.05</em>, <em class="sig-param">n_jobs=1</em>, <em class="sig-param">include_pmp=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/algorithms/skimp.html#maximum_subsequence"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.algorithms.maximum_subsequence" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds the maximum subsequence length based on the threshold provided. Note
+that this threshold is domain specific requiring some knowledge about the
+underyling time series in question.</p>
+<p>The subsequence length starts at 8 and iteratively doubles until the
+maximum correlation coefficient is no longer met.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ts</strong> (<em>array_like</em>) – The time series to analyze.</p></li>
+<li><p><strong>threshold</strong> (<em>float</em><em>, </em><em>Default 0.95</em>) – The correlation coefficient used as the threshold. It should be between
+0 and 1.</p></li>
+<li><p><strong>refine_stepsize</strong> (<em>float</em><em>, </em><em>Default 0.05</em>) – Used in the refinement step to find a more precise upper window. It
+should be a percentage between 0.01 and 0.99.</p></li>
+<li><p><strong>n_jobs</strong> (<em>int</em><em>, </em><em>Default = 1</em>) – Number of cpu cores to use.</p></li>
+<li><p><strong>include_pmp</strong> (<em>bool</em><em>, </em><em>default False</em>) – Include the PanMatrixProfile for the computed windows.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p>With include_pmp=False (default)
+int : The maximum subsequence length based on the threshold provided.</p>
+<p>With include_pmp=True
+dict : A dict containing the upper window, windows and pmp.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">{</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;upper_window&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">upper</span> <span class="n">window</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;windows&#39;</span><span class="p">:</span> <span class="n">array_like</span> <span class="n">windows</span> <span class="n">used</span> <span class="n">to</span> <span class="n">compute</span> <span class="n">the</span> <span class="n">pmp</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;pmp&#39;</span><span class="p">:</span> <span class="n">the</span> <span class="n">pan</span> <span class="n">matrix</span> <span class="n">profile</span> <span class="k">as</span> <span class="n">a</span> <span class="mi">2</span><span class="n">D</span> <span class="n">array</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;pmpi&#39;</span><span class="p">:</span> <span class="n">the</span> <span class="n">pmp</span> <span class="n">indices</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">}</span>
+</pre></div>
+</div>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>obj</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="matrixprofile-algorithms-prescrimp">
+<h2>matrixprofile.algorithms.prescrimp<a class="headerlink" href="#matrixprofile-algorithms-prescrimp" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="matrixprofile.algorithms.prescrimp">
+<code class="sig-prename descclassname">matrixprofile.algorithms.</code><code class="sig-name descname">prescrimp</code><span class="sig-paren">(</span><em class="sig-param">ts</em>, <em class="sig-param">window_size</em>, <em class="sig-param">query=None</em>, <em class="sig-param">step_size=0.25</em>, <em class="sig-param">sample_pct=0.1</em>, <em class="sig-param">random_state=None</em>, <em class="sig-param">n_jobs=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/algorithms/scrimp.html#prescrimp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.algorithms.prescrimp" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the PreScrimp algorithm from the SCRIMP++ paper. It is primarly
+used to compute the approximate matrix profile. In this case we use
+a sample percentage to mock “the anytime/approximate nature”.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ts</strong> (<em>np.ndarray</em>) – The time series to compute the matrix profile for.</p></li>
+<li><p><strong>window_size</strong> (<em>int</em>) – The window size.</p></li>
+<li><p><strong>query</strong> (<em>array_like</em>) – Optionally, a query can be provided to perform a similarity join.</p></li>
+<li><p><strong>step_size</strong> (<em>float</em><em>, </em><em>default 0.25</em>) – The sampling interval for the window. The paper suggest 0.25 is the
+most practical. It should be a float value between 0 and 1.</p></li>
+<li><p><strong>sample_pct</strong> (<em>float</em><em>, </em><em>default = 0.1</em><em> (</em><em>10%</em><em>)</em>) – Number of samples to compute distances for in the MP.</p></li>
+<li><p><strong>random_state</strong> (<em>int</em><em>, </em><em>default None</em>) – Set the random seed generator for reproducible results.</p></li>
+<li><p><strong>n_jobs</strong> (<em>int</em><em>, </em><em>Default = 1</em>) – Number of cpu cores to use.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The matrix profiles computed from prescrimp will always be the approximate
+solution.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><p><strong>dict</strong> – A MatrixProfile data structure.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">{</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="s1">&#39;mp&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">matrix</span> <span class="n">profile</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="s1">&#39;pi&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">matrix</span> <span class="n">profile</span> <span class="mi">1</span><span class="n">NN</span> <span class="n">indices</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="s1">&#39;rmp&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">right</span> <span class="n">matrix</span> <span class="n">profile</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="s1">&#39;rpi&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">right</span> <span class="n">matrix</span> <span class="n">profile</span> <span class="mi">1</span><span class="n">NN</span> <span class="n">indices</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="s1">&#39;lmp&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">left</span> <span class="n">matrix</span> <span class="n">profile</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="s1">&#39;lpi&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">left</span> <span class="n">matrix</span> <span class="n">profile</span> <span class="mi">1</span><span class="n">NN</span> <span class="n">indices</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="s1">&#39;metric&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">distance</span> <span class="n">metric</span> <span class="n">computed</span> <span class="k">for</span> <span class="n">the</span> <span class="n">mp</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="s1">&#39;w&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">window</span> <span class="n">size</span> <span class="n">used</span> <span class="n">to</span> <span class="n">compute</span> <span class="n">the</span> <span class="n">matrix</span> <span class="n">profile</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="s1">&#39;ez&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">exclusion</span> <span class="n">zone</span> <span class="n">used</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="s1">&#39;join&#39;</span><span class="p">:</span> <span class="n">Flag</span> <span class="n">indicating</span> <span class="k">if</span> <span class="n">a</span> <span class="n">similarity</span> <span class="n">join</span> <span class="n">was</span> <span class="n">computed</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="s1">&#39;sample_pct&#39;</span><span class="p">:</span> <span class="n">Percentage</span> <span class="n">of</span> <span class="n">samples</span> <span class="n">used</span> <span class="ow">in</span> <span class="n">computing</span> <span class="n">the</span> <span class="n">MP</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="p">{</span>
+<span class="gp">&gt;&gt;&gt; </span>       <span class="s1">&#39;ts&#39;</span><span class="p">:</span> <span class="n">Time</span> <span class="n">series</span> <span class="n">data</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>       <span class="s1">&#39;query&#39;</span><span class="p">:</span> <span class="n">Query</span> <span class="n">data</span> <span class="k">if</span> <span class="n">supplied</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s2">&quot;MatrixProfile&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="s1">&#39;algorithm&#39;</span><span class="p">:</span> <span class="s2">&quot;prescrimp&quot;</span>
+<span class="go">&gt;&gt;&gt;}</span>
+</pre></div>
+</div>
+</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>profile</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – If window_size &lt; 4.
+    If window_size &gt; query length / 2.
+    If ts is not a list or np.array.
+    If query is not a list or np.array.
+    If ts or query is not one dimensional.
+    If sample_pct is not between 0 and 1.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="matrixprofile-algorithms-scrimp-plus-plus">
+<h2>matrixprofile.algorithms.scrimp_plus_plus<a class="headerlink" href="#matrixprofile-algorithms-scrimp-plus-plus" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="matrixprofile.algorithms.scrimp_plus_plus">
+<code class="sig-prename descclassname">matrixprofile.algorithms.</code><code class="sig-name descname">scrimp_plus_plus</code><span class="sig-paren">(</span><em class="sig-param">ts</em>, <em class="sig-param">window_size</em>, <em class="sig-param">query=None</em>, <em class="sig-param">step_size=0.25</em>, <em class="sig-param">sample_pct=0.1</em>, <em class="sig-param">random_state=None</em>, <em class="sig-param">n_jobs=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/algorithms/scrimp.html#scrimp_plus_plus"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.algorithms.scrimp_plus_plus" title="Permalink to this definition">¶</a></dt>
+<dd><p>SCRIMP++ is an anytime algorithm that computes the matrix profile for a
+given time series (ts) over a given window size (m). Essentially, it allows
+for an approximate solution to be provided for quicker analysis. In the
+case of this implementation, sample percentage is used. An approximate
+solution is given based a sample percentage from 0 to 1. The default sample
+percentage is currently 10%.</p>
+<p>This algorithm was created at the University of California Riverside. For
+further academic understanding, please review this paper:</p>
+<p>Matrix Proﬁle XI: SCRIMP++: Time Series Motif Discovery at Interactive
+Speed. Yan Zhu, Chin-Chia Michael Yeh, Zachary Zimmerman, Kaveh Kamgar
+Eamonn Keogh, ICDM 2018.</p>
+<p><a class="reference external" href="https://www.cs.ucr.edu/~eamonn/SCRIMP_ICDM_camera_ready_updated.pdf">https://www.cs.ucr.edu/~eamonn/SCRIMP_ICDM_camera_ready_updated.pdf</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ts</strong> (<em>np.ndarray</em>) – The time series to compute the matrix profile for.</p></li>
+<li><p><strong>window_size</strong> (<em>int</em>) – The window size.</p></li>
+<li><p><strong>query</strong> (<em>array_like</em>) – Optionally, a query can be provided to perform a similarity join.</p></li>
+<li><p><strong>step_size</strong> (<em>float</em><em>, </em><em>default 0.25</em>) – The sampling interval for the window. The paper suggest 0.25 is the
+most practical. It should be a float value between 0 and 1.</p></li>
+<li><p><strong>sample_pct</strong> (<em>float</em><em>, </em><em>default = 0.1</em><em> (</em><em>10%</em><em>)</em>) – Number of samples to compute distances for in the MP.</p></li>
+<li><p><strong>random_state</strong> (<em>int</em><em>, </em><em>default None</em>) – Set the random seed generator for reproducible results.</p></li>
+<li><p><strong>n_jobs</strong> (<em>int</em><em>, </em><em>Default = 1</em>) – Number of cpu cores to use.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p><strong>dict</strong> – A MatrixProfile data structure.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">{</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="s1">&#39;mp&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">matrix</span> <span class="n">profile</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="s1">&#39;pi&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">matrix</span> <span class="n">profile</span> <span class="mi">1</span><span class="n">NN</span> <span class="n">indices</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="s1">&#39;rmp&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">right</span> <span class="n">matrix</span> <span class="n">profile</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="s1">&#39;rpi&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">right</span> <span class="n">matrix</span> <span class="n">profile</span> <span class="mi">1</span><span class="n">NN</span> <span class="n">indices</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="s1">&#39;lmp&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">left</span> <span class="n">matrix</span> <span class="n">profile</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="s1">&#39;lpi&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">left</span> <span class="n">matrix</span> <span class="n">profile</span> <span class="mi">1</span><span class="n">NN</span> <span class="n">indices</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="s1">&#39;metric&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">distance</span> <span class="n">metric</span> <span class="n">computed</span> <span class="k">for</span> <span class="n">the</span> <span class="n">mp</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="s1">&#39;w&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">window</span> <span class="n">size</span> <span class="n">used</span> <span class="n">to</span> <span class="n">compute</span> <span class="n">the</span> <span class="n">matrix</span> <span class="n">profile</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="s1">&#39;ez&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">exclusion</span> <span class="n">zone</span> <span class="n">used</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="s1">&#39;join&#39;</span><span class="p">:</span> <span class="n">Flag</span> <span class="n">indicating</span> <span class="k">if</span> <span class="n">a</span> <span class="n">similarity</span> <span class="n">join</span> <span class="n">was</span> <span class="n">computed</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="s1">&#39;sample_pct&#39;</span><span class="p">:</span> <span class="n">Percentage</span> <span class="n">of</span> <span class="n">samples</span> <span class="n">used</span> <span class="ow">in</span> <span class="n">computing</span> <span class="n">the</span> <span class="n">MP</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="p">{</span>
+<span class="gp">&gt;&gt;&gt; </span>       <span class="s1">&#39;ts&#39;</span><span class="p">:</span> <span class="n">Time</span> <span class="n">series</span> <span class="n">data</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>       <span class="s1">&#39;query&#39;</span><span class="p">:</span> <span class="n">Query</span> <span class="n">data</span> <span class="k">if</span> <span class="n">supplied</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s2">&quot;MatrixProfile&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="s1">&#39;algorithm&#39;</span><span class="p">:</span> <span class="s2">&quot;scrimp++&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">}</span>
+</pre></div>
+</div>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>profile</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If window_size &lt; 4.
+    If window_size &gt; query length / 2.
+    If ts is not a list or np.array.
+    If query is not a list or np.array.
+    If ts or query is not one dimensional.
+    If sample_pct is not between 0 and 1.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="matrixprofile-utils-empty-mp">
+<h2>matrixprofile.utils.empty_mp<a class="headerlink" href="#matrixprofile-utils-empty-mp" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="matrixprofile.utils.empty_mp">
+<code class="sig-prename descclassname">matrixprofile.utils.</code><code class="sig-name descname">empty_mp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/utils.html#empty_mp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.utils.empty_mp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Utility function that provides an empty MatrixProfile data structure.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>dict</strong> – An empty MatrixProfile data structure.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>profile</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="matrixprofile-utils-pick-mp">
+<h2>matrixprofile.utils.pick_mp<a class="headerlink" href="#matrixprofile-utils-pick-mp" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="matrixprofile.utils.pick_mp">
+<code class="sig-prename descclassname">matrixprofile.utils.</code><code class="sig-name descname">pick_mp</code><span class="sig-paren">(</span><em class="sig-param">profile</em>, <em class="sig-param">window</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/utils.html#pick_mp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.utils.pick_mp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Utility function that extracts a MatrixProfile from a Pan-MatrixProfile
+placing it into the MatrixProfile data structure.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>profile</strong> (<em>dict</em>) – A Pan-MatrixProfile data structure.</p></li>
+<li><p><strong>window</strong> (<em>int</em>) – The specific window size used to compute the desired MatrixProfile.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>dict</strong> – A MatrixProfile data structure.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>profile</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If profile is not a Pan-MatrixProfile data structure.
+    If window is not an integer.
+    If desired MatrixProfile is not found based on window.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="matrixprofile-io-to-disk">
+<h2>matrixprofile.io.to_disk<a class="headerlink" href="#matrixprofile-io-to-disk" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="matrixprofile.io.to_disk">
+<code class="sig-prename descclassname">matrixprofile.io.</code><code class="sig-name descname">to_disk</code><span class="sig-paren">(</span><em class="sig-param">profile</em>, <em class="sig-param">file_path</em>, <em class="sig-param">format='json'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/io/__io.html#to_disk"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.io.to_disk" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes a profile object of type MatrixProfile or PMP to disk as a JSON
+formatted file by default.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The JSON format is human readable where as the mpf format is binary and
+cannot be read when opened in a text editor. When the file path does not
+include the extension, it is appended for you.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>profile</strong> (<em>dict_like</em>) – A MatrixProfile or Pan-MatrixProfile data structure.</p></li>
+<li><p><strong>file_path</strong> (<em>str</em>) – The path to write the file to.</p></li>
+<li><p><strong>format</strong> (<em>str</em><em>, </em><em>default json</em>) – The format of the file to be written. Options include json, mpf</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="matrixprofile-io-from-disk">
+<h2>matrixprofile.io.from_disk<a class="headerlink" href="#matrixprofile-io-from-disk" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="matrixprofile.io.from_disk">
+<code class="sig-prename descclassname">matrixprofile.io.</code><code class="sig-name descname">from_disk</code><span class="sig-paren">(</span><em class="sig-param">file_path</em>, <em class="sig-param">format='infer'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/io/__io.html#from_disk"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.io.from_disk" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads a profile object of type MatrixProfile or PMP from disk into the
+respective object type. By default the type is inferred by the file
+extension.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>file_path</strong> (<em>str</em>) – The path to read the file from.</p></li>
+<li><p><strong>format</strong> (<em>str</em><em>, </em><em>default infer</em>) – The file format type to read from disk. Options include:
+infer, json, mpf</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>profile</strong> – A MatrixProfile or Pan-MatrixProfile data structure.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict_like, None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="matrixprofile-io-to-json">
+<h2>matrixprofile.io.to_json<a class="headerlink" href="#matrixprofile-io-to-json" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="matrixprofile.io.to_json">
+<code class="sig-prename descclassname">matrixprofile.io.</code><code class="sig-name descname">to_json</code><span class="sig-paren">(</span><em class="sig-param">profile</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/io/__io.html#to_json"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.io.to_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts a given profile object into JSON format.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>profile</strong> (<em>dict_like</em>) – A MatrixProfile or Pan-MatrixProfile data structure.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The profile as a JSON formatted string.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="matrixprofile-io-from-json">
+<h2>matrixprofile.io.from_json<a class="headerlink" href="#matrixprofile-io-from-json" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="matrixprofile.io.from_json">
+<code class="sig-prename descclassname">matrixprofile.io.</code><code class="sig-name descname">from_json</code><span class="sig-paren">(</span><em class="sig-param">profile</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/io/__io.html#from_json"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.io.from_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts a JSON formatted string into a profile data structure.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>profile</strong> (<em>str</em>) – The profile as a JSON formatted string.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>profile</strong> – A MatrixProfile or Pan-MatrixProfile data structure.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict_like</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="matrixprofile-io-to-mpf">
+<h2>matrixprofile.io.to_mpf<a class="headerlink" href="#matrixprofile-io-to-mpf" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="matrixprofile.io.to_mpf">
+<code class="sig-prename descclassname">matrixprofile.io.</code><code class="sig-name descname">to_mpf</code><span class="sig-paren">(</span><em class="sig-param">profile</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/io/protobuf/protobuf_utils.html#to_mpf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.io.to_mpf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts a given profile object into MPF binary file format.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>profile</strong> (<em>dict_like</em>) – A MatrixProfile or Pan-MatrixProfile data structure.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The profile as a binary formatted string.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="matrixprofile-io-from-mpf">
+<h2>matrixprofile.io.from_mpf<a class="headerlink" href="#matrixprofile-io-from-mpf" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="matrixprofile.io.from_mpf">
+<code class="sig-prename descclassname">matrixprofile.io.</code><code class="sig-name descname">from_mpf</code><span class="sig-paren">(</span><em class="sig-param">profile</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/io/protobuf/protobuf_utils.html#from_mpf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.io.from_mpf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts binary formatted MPFOutput message into a profile data structure.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>profile</strong> (<em>str</em>) – The profile as a binary formatted MPFOutput message.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>profile</strong> – A MatrixProfile or Pan-MatrixProfile data structure.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict_like</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="matrixprofile-datasets-fetch-available">
+<h2>matrixprofile.datasets.fetch_available<a class="headerlink" href="#matrixprofile-datasets-fetch-available" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="matrixprofile.datasets.fetch_available">
+<code class="sig-prename descclassname">matrixprofile.datasets.</code><code class="sig-name descname">fetch_available</code><span class="sig-paren">(</span><em class="sig-param">category=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/datasets/datasets.html#fetch_available"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.datasets.fetch_available" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fetches the available datasets found in
+github.com/matrix-profile-foundation/mpf-datasets github repository.
+Providing a category filters the datasets.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>category</strong> (<em>str</em><em>, </em><em>Optional</em>) – The desired category to retrieve datasets by.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A list of dictionaries containing details about each dataset.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError:</strong> – When a category is provided, but is not found in the listing.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="matrixprofile-datasets-load">
+<h2>matrixprofile.datasets.load<a class="headerlink" href="#matrixprofile-datasets-load" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="matrixprofile.datasets.load">
+<code class="sig-prename descclassname">matrixprofile.datasets.</code><code class="sig-name descname">load</code><span class="sig-paren">(</span><em class="sig-param">name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/datasets/datasets.html#load"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.datasets.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads a MPF dataset by base file name or file name. The match is case
+insensitive.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>An internet connection is required to fetch the data.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><p>The dataset and metadata.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">{</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">file</span> <span class="n">name</span> <span class="n">loaded</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;category&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">category</span> <span class="n">the</span> <span class="n">file</span> <span class="n">came</span> <span class="n">from</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="n">A</span> <span class="n">description</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">real</span> <span class="n">valued</span> <span class="n">data</span> <span class="k">as</span> <span class="n">an</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;datetime&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">datetime</span> <span class="k">as</span> <span class="n">an</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">}</span>
+</pre></div>
+</div>
+</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="examples.html" class="btn btn-neutral float-right" title="Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Quickstart.html" class="btn btn-neutral float-left" title="Quickstart Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Matrix Profile Foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

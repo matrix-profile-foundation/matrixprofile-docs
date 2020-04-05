@@ -1,0 +1,453 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>matrixprofile.io.__io &mdash; MatrixProfile</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> matrixprofile
+          
+
+          
+            
+            <img src="../../../_static/mpf-logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Quickstart.html">Quickstart Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Algorithms.html">Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../help.html">Getting Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../code_of_conduct.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../citations.html">Citations</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/matrix-profile-foundation/matrixprofile">Code Repository (Github)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://matrixprofile.org">Website</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">matrixprofile</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>matrixprofile.io.__io</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for matrixprofile.io.__io</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">absolute_import</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">division</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">unicode_literals</span>
+
+<span class="nb">range</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">__builtins__</span><span class="p">,</span> <span class="s1">&#39;xrange&#39;</span><span class="p">,</span> <span class="nb">range</span><span class="p">)</span>
+<span class="c1"># end of py2 compatability boilerplate</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;to_json&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;from_json&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;to_disk&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;from_disk&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="kn">import</span> <span class="nn">json.tool</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">matrixprofile</span> <span class="k">import</span> <span class="n">core</span>
+<span class="kn">from</span> <span class="nn">matrixprofile.io.protobuf.protobuf_utils</span> <span class="k">import</span> <span class="p">(</span>
+    <span class="n">to_mpf</span><span class="p">,</span>
+    <span class="n">from_mpf</span>
+<span class="p">)</span>
+
+
+<span class="c1"># Supported file extensions</span>
+<span class="n">SUPPORTED_EXTS</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span>
+    <span class="s1">&#39;json&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;mpf&#39;</span><span class="p">,</span>
+<span class="p">])</span>
+
+<span class="c1"># Supported file formats</span>
+<span class="n">SUPPORTED_FORMATS</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span>
+    <span class="s1">&#39;json&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;mpf&#39;</span><span class="p">,</span>
+<span class="p">])</span>
+
+<span class="k">def</span> <span class="nf">JSONSerializer</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Default JSON serializer to write numpy arays and other non-supported</span>
+<span class="sd">    data types.</span>
+
+<span class="sd">    Borrowed from:</span>
+<span class="sd">    https://stackoverflow.com/a/52604722</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span><span class="o">.</span><span class="vm">__module__</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="vm">__name__</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">obj</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">obj</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+
+    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;Unknown type:&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">obj</span><span class="p">))</span>
+
+
+<div class="viewcode-block" id="from_json"><a class="viewcode-back" href="../../../api.html#matrixprofile.io.from_json">[docs]</a><span class="k">def</span> <span class="nf">from_json</span><span class="p">(</span><span class="n">profile</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Converts a JSON formatted string into a profile data structure.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    profile : str</span>
+<span class="sd">        The profile as a JSON formatted string.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    profile : dict_like</span>
+<span class="sd">        A MatrixProfile or Pan-MatrixProfile data structure.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">dct</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">profile</span><span class="p">)</span>
+
+    <span class="c1"># handle pmp and convert to appropriate types</span>
+    <span class="k">if</span> <span class="n">core</span><span class="o">.</span><span class="n">is_pmp_obj</span><span class="p">(</span><span class="n">dct</span><span class="p">):</span>
+        <span class="n">dct</span><span class="p">[</span><span class="s1">&#39;pmp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">dct</span><span class="p">[</span><span class="s1">&#39;pmp&#39;</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;float64&#39;</span><span class="p">)</span>
+        <span class="n">dct</span><span class="p">[</span><span class="s1">&#39;pmpi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">dct</span><span class="p">[</span><span class="s1">&#39;pmpi&#39;</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+        <span class="n">dct</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;ts&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">dct</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;ts&#39;</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;float64&#39;</span><span class="p">)</span>
+        <span class="n">dct</span><span class="p">[</span><span class="s1">&#39;windows&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">dct</span><span class="p">[</span><span class="s1">&#39;windows&#39;</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+
+    <span class="c1"># handle mp</span>
+    <span class="k">elif</span> <span class="n">core</span><span class="o">.</span><span class="n">is_mp_obj</span><span class="p">(</span><span class="n">dct</span><span class="p">):</span>
+        <span class="n">dct</span><span class="p">[</span><span class="s1">&#39;mp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">dct</span><span class="p">[</span><span class="s1">&#39;mp&#39;</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;float64&#39;</span><span class="p">)</span>
+        <span class="n">dct</span><span class="p">[</span><span class="s1">&#39;pi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">dct</span><span class="p">[</span><span class="s1">&#39;pi&#39;</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+
+        <span class="n">has_l</span> <span class="o">=</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dct</span><span class="p">[</span><span class="s1">&#39;lmp&#39;</span><span class="p">],</span> <span class="nb">list</span><span class="p">)</span>
+        <span class="n">has_l</span> <span class="o">=</span> <span class="n">has_l</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dct</span><span class="p">[</span><span class="s1">&#39;lpi&#39;</span><span class="p">],</span> <span class="nb">list</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">has_l</span><span class="p">:</span>
+            <span class="n">dct</span><span class="p">[</span><span class="s1">&#39;lmp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">dct</span><span class="p">[</span><span class="s1">&#39;lmp&#39;</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;float64&#39;</span><span class="p">)</span>
+            <span class="n">dct</span><span class="p">[</span><span class="s1">&#39;lpi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">dct</span><span class="p">[</span><span class="s1">&#39;lpi&#39;</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+
+        <span class="n">has_r</span> <span class="o">=</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dct</span><span class="p">[</span><span class="s1">&#39;rmp&#39;</span><span class="p">],</span> <span class="nb">list</span><span class="p">)</span>
+        <span class="n">has_r</span> <span class="o">=</span> <span class="n">has_r</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dct</span><span class="p">[</span><span class="s1">&#39;rpi&#39;</span><span class="p">],</span> <span class="nb">list</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="n">has_r</span><span class="p">:</span>
+            <span class="n">dct</span><span class="p">[</span><span class="s1">&#39;rmp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">dct</span><span class="p">[</span><span class="s1">&#39;rmp&#39;</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;float64&#39;</span><span class="p">)</span>
+            <span class="n">dct</span><span class="p">[</span><span class="s1">&#39;rpi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">dct</span><span class="p">[</span><span class="s1">&#39;rpi&#39;</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+        
+        <span class="n">dct</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;ts&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">dct</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;ts&#39;</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;float64&#39;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dct</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;query&#39;</span><span class="p">],</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="n">dct</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;query&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">dct</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;query&#39;</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;float64&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;File is not of type profile!&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">dct</span></div>
+
+
+<div class="viewcode-block" id="to_json"><a class="viewcode-back" href="../../../api.html#matrixprofile.io.to_json">[docs]</a><span class="k">def</span> <span class="nf">to_json</span><span class="p">(</span><span class="n">profile</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Converts a given profile object into JSON format.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    profile : dict_like</span>
+<span class="sd">        A MatrixProfile or Pan-MatrixProfile data structure.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    str :</span>
+<span class="sd">        The profile as a JSON formatted string.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">core</span><span class="o">.</span><span class="n">is_mp_or_pmp_obj</span><span class="p">(</span><span class="n">profile</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;profile is expected to be of type MatrixProfile or PMP&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">profile</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">JSONSerializer</span><span class="p">)</span></div>
+
+
+<span class="k">def</span> <span class="nf">add_extension_to_path</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">extension</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Utility function to add the file extension when it is not provided by the</span>
+<span class="sd">    user in the file path.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    file_path : str</span>
+<span class="sd">        The file path.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    str :</span>
+<span class="sd">        The file path with the extension appended.</span>
+<span class="sd">    str :</span>
+<span class="sd">        The file format extension.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">end</span> <span class="o">=</span> <span class="s1">&#39;.</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">extension</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">file_path</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="n">end</span><span class="p">):</span>
+        <span class="n">file_path</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{}{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">file_path</span>
+
+
+<span class="k">def</span> <span class="nf">infer_file_format</span><span class="p">(</span><span class="n">file_path</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Attempts to determine the file type based on the extension. The extension</span>
+<span class="sd">    is assumed to be the last dot suffix.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    file_path : str</span>
+<span class="sd">        The file path to infer the file format of.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    str :</span>
+<span class="sd">        A label described the file extension.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">pieces</span> <span class="o">=</span> <span class="n">file_path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+    <span class="n">extension</span> <span class="o">=</span> <span class="n">pieces</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">extension</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">SUPPORTED_EXTS</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;Unsupported file type with extension </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">extension</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">extension</span>
+
+
+<div class="viewcode-block" id="to_disk"><a class="viewcode-back" href="../../../api.html#matrixprofile.io.to_disk">[docs]</a><span class="k">def</span> <span class="nf">to_disk</span><span class="p">(</span><span class="n">profile</span><span class="p">,</span> <span class="n">file_path</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;json&#39;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Writes a profile object of type MatrixProfile or PMP to disk as a JSON</span>
+<span class="sd">    formatted file by default.</span>
+
+<span class="sd">    Note</span>
+<span class="sd">    ----</span>
+<span class="sd">    The JSON format is human readable where as the mpf format is binary and</span>
+<span class="sd">    cannot be read when opened in a text editor. When the file path does not</span>
+<span class="sd">    include the extension, it is appended for you.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    profile : dict_like</span>
+<span class="sd">        A MatrixProfile or Pan-MatrixProfile data structure.</span>
+<span class="sd">    file_path : str</span>
+<span class="sd">        The path to write the file to.</span>
+<span class="sd">    format : str, default json</span>
+<span class="sd">        The format of the file to be written. Options include json, mpf</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">core</span><span class="o">.</span><span class="n">is_mp_or_pmp_obj</span><span class="p">(</span><span class="n">profile</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;profile is expected to be of type MatrixProfile or PMP&#39;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">format</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">SUPPORTED_FORMATS</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Unsupported file format </span><span class="si">{}</span><span class="s1"> given.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">format</span><span class="p">))</span>
+
+    <span class="n">file_path</span> <span class="o">=</span> <span class="n">add_extension_to_path</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="nb">format</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">format</span> <span class="o">==</span> <span class="s1">&#39;json&#39;</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">out</span><span class="p">:</span>
+            <span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">to_json</span><span class="p">(</span><span class="n">profile</span><span class="p">))</span>
+    <span class="k">elif</span> <span class="nb">format</span> <span class="o">==</span> <span class="s1">&#39;mpf&#39;</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">out</span><span class="p">:</span>
+            <span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">to_mpf</span><span class="p">(</span><span class="n">profile</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="from_disk"><a class="viewcode-back" href="../../../api.html#matrixprofile.io.from_disk">[docs]</a><span class="k">def</span> <span class="nf">from_disk</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;infer&#39;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Reads a profile object of type MatrixProfile or PMP from disk into the</span>
+<span class="sd">    respective object type. By default the type is inferred by the file</span>
+<span class="sd">    extension.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    file_path : str</span>
+<span class="sd">        The path to read the file from.</span>
+<span class="sd">    format : str, default infer</span>
+<span class="sd">        The file format type to read from disk. Options include:</span>
+<span class="sd">        infer, json, mpf</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    profile : dict_like, None</span>
+<span class="sd">        A MatrixProfile or Pan-MatrixProfile data structure.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">format</span> <span class="o">!=</span> <span class="s1">&#39;infer&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">format</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">SUPPORTED_FORMATS</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;format supplied </span><span class="si">{}</span><span class="s1"> is not supported&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">format</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">format</span> <span class="o">=</span> <span class="n">infer_file_format</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+    
+    <span class="n">profile</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">if</span> <span class="nb">format</span> <span class="o">==</span> <span class="s1">&#39;json&#39;</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">profile</span> <span class="o">=</span> <span class="n">from_json</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">format</span> <span class="o">==</span> <span class="s1">&#39;mpf&#39;</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">profile</span> <span class="o">=</span> <span class="n">from_mpf</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+    
+    <span class="k">return</span> <span class="n">profile</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Matrix Profile Foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

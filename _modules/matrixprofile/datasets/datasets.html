@@ -1,0 +1,426 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>matrixprofile.datasets.datasets &mdash; MatrixProfile</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> matrixprofile
+          
+
+          
+            
+            <img src="../../../_static/mpf-logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Quickstart.html">Quickstart Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Algorithms.html">Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../help.html">Getting Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../code_of_conduct.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../citations.html">Citations</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/matrix-profile-foundation/matrixprofile">Code Repository (Github)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://matrixprofile.org">Website</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">matrixprofile</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>matrixprofile.datasets.datasets</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for matrixprofile.datasets.datasets</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">absolute_import</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">division</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">unicode_literals</span>
+
+<span class="nb">range</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">__builtins__</span><span class="p">,</span> <span class="s1">&#39;xrange&#39;</span><span class="p">,</span> <span class="nb">range</span><span class="p">)</span>
+<span class="c1"># end of py2 compatability boilerplate</span>
+
+<span class="kn">import</span> <span class="nn">csv</span>
+<span class="kn">import</span> <span class="nn">gzip</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="c1"># load urlretrieve for python2 and python3</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="k">import</span> <span class="n">urlretrieve</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">urllib</span> <span class="k">import</span> <span class="n">urlretrieve</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+    
+<span class="n">DATA_LISTING_URL</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/matrix-profile-foundation/mpf-datasets/master/listings.json&#39;</span>
+<span class="n">DATA_URL</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/matrix-profile-foundation/mpf-datasets/master/</span><span class="si">{}</span><span class="s1">/</span><span class="si">{}</span><span class="s1">&#39;</span>
+<span class="n">DATA_DIR</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;~&#39;</span><span class="p">,</span> <span class="s1">&#39;.mpf-datasets&#39;</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">create_dirs</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Python 2 and 3 compatible function to make directories. Python 3 has the</span>
+<span class="sd">    exist_ok option in makedirs, but Python 2 does not.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    path : str</span>
+<span class="sd">        The path to create directories for.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">OSError</span><span class="p">(</span><span class="s1">&#39;Unable to create path: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">path</span><span class="p">))</span>
+
+
+<div class="viewcode-block" id="fetch_available"><a class="viewcode-back" href="../../../api.html#matrixprofile.datasets.fetch_available">[docs]</a><span class="k">def</span> <span class="nf">fetch_available</span><span class="p">(</span><span class="n">category</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Fetches the available datasets found in</span>
+<span class="sd">    github.com/matrix-profile-foundation/mpf-datasets github repository.</span>
+<span class="sd">    Providing a category filters the datasets.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    category : str, Optional</span>
+<span class="sd">        The desired category to retrieve datasets by.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    list :</span>
+<span class="sd">        A list of dictionaries containing details about each dataset.</span>
+<span class="sd">    </span>
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    ValueError:</span>
+<span class="sd">        When a category is provided, but is not found in the listing.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># download the file and load it</span>
+    <span class="n">create_dirs</span><span class="p">(</span><span class="n">DATA_DIR</span><span class="p">)</span>
+    <span class="n">output_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">DATA_DIR</span><span class="p">,</span> <span class="s1">&#39;listings.json&#39;</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">urlretrieve</span><span class="p">(</span><span class="n">DATA_LISTING_URL</span><span class="p">,</span> <span class="n">output_path</span><span class="p">)</span>
+    
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">output_path</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">datasets</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    
+    <span class="c1"># filter with category</span>
+    <span class="k">if</span> <span class="n">category</span><span class="p">:</span>
+        <span class="n">category_found</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">filtered</span> <span class="o">=</span> <span class="p">[]</span>
+        
+        <span class="k">for</span> <span class="n">dataset</span> <span class="ow">in</span> <span class="n">datasets</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;category&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">category</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
+                <span class="n">filtered</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+                <span class="n">category_found</span> <span class="o">=</span> <span class="kc">True</span>
+        
+        <span class="n">datasets</span> <span class="o">=</span> <span class="n">filtered</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">category_found</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;category </span><span class="si">{}</span><span class="s1"> is not a valid option.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">category</span><span class="p">))</span>
+    
+    <span class="k">return</span> <span class="n">datasets</span></div>
+
+
+<span class="k">def</span> <span class="nf">get_csv_indices</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="n">is_gzip</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Utility function to provide indices of the datetime dimension and the</span>
+<span class="sd">    real valued dimensions.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    fp : str</span>
+<span class="sd">        The filepath to load.</span>
+<span class="sd">    is_gzip : boolean, Default False</span>
+<span class="sd">        Flag to tell if the csv is gzipped.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    (dt_index, real_indices) :</span>
+<span class="sd">        The datetime index and real valued indices.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">first_line</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">if</span> <span class="n">is_gzip</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">gzip</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="s1">&#39;rt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">first_line</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">first_line</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+    
+    <span class="n">dt_index</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">real_indices</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">first_line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="s1">&#39;date&#39;</span> <span class="ow">in</span> <span class="n">label</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">or</span> <span class="s1">&#39;time&#39;</span> <span class="ow">in</span> <span class="n">label</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
+            <span class="n">dt_index</span> <span class="o">=</span> <span class="n">index</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">real_indices</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">dt_index</span><span class="p">,</span> <span class="n">real_indices</span>
+
+
+<div class="viewcode-block" id="load"><a class="viewcode-back" href="../../../api.html#matrixprofile.datasets.load">[docs]</a><span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Loads a MPF dataset by base file name or file name. The match is case </span>
+<span class="sd">    insensitive.</span>
+
+<span class="sd">    Note</span>
+<span class="sd">    ----</span>
+<span class="sd">    An internet connection is required to fetch the data.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    dict :</span>
+<span class="sd">        The dataset and metadata.</span>
+
+<span class="sd">        &gt;&gt;&gt; {</span>
+<span class="sd">        &gt;&gt;&gt;     &#39;name&#39;: The file name loaded,</span>
+<span class="sd">        &gt;&gt;&gt;     &#39;category&#39;: The category the file came from,</span>
+<span class="sd">        &gt;&gt;&gt;     &#39;description&#39;: A description,</span>
+<span class="sd">        &gt;&gt;&gt;     &#39;data&#39;: The real valued data as an np.ndarray,</span>
+<span class="sd">        &gt;&gt;&gt;     &#39;datetime&#39;: The datetime as an np.ndarray</span>
+<span class="sd">        &gt;&gt;&gt; }</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">datasets</span> <span class="o">=</span> <span class="n">fetch_available</span><span class="p">()</span>
+    
+    <span class="c1"># find the filename in datasets matching either on filename provided or</span>
+    <span class="c1"># the base name</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">category</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">description</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">for</span> <span class="n">dataset</span> <span class="ow">in</span> <span class="n">datasets</span><span class="p">:</span>
+        <span class="n">base_name</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        
+        <span class="k">if</span> <span class="n">name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="n">base_name</span> <span class="ow">or</span> <span class="n">name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]:</span>
+            <span class="n">filename</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+            <span class="n">category</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;category&#39;</span><span class="p">]</span>
+            <span class="n">description</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;description&#39;</span><span class="p">]</span>
+    
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">filename</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Could not find dataset </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
+        
+    <span class="c1"># download the file</span>
+    <span class="n">output_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">DATA_DIR</span><span class="p">,</span> <span class="n">category</span><span class="p">)</span>
+    <span class="n">create_dirs</span><span class="p">(</span><span class="n">output_dir</span><span class="p">)</span>
+    <span class="n">output_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">output_path</span><span class="p">):</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="n">DATA_URL</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">category</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+        <span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">output_path</span><span class="p">)</span>
+
+    <span class="c1"># load the file based on type</span>
+    <span class="n">is_txt</span> <span class="o">=</span> <span class="n">filename</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;.txt&#39;</span><span class="p">)</span>    
+    <span class="n">is_txt_gunzip</span> <span class="o">=</span> <span class="n">filename</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;.txt.gz&#39;</span><span class="p">)</span>
+    <span class="n">is_csv</span> <span class="o">=</span> <span class="n">filename</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;.csv&#39;</span><span class="p">)</span>
+    <span class="n">is_csv_gunzip</span> <span class="o">=</span> <span class="n">filename</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;.csv.gz&#39;</span><span class="p">)</span>
+    
+    <span class="n">data</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">dt_data</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">if</span> <span class="n">is_txt</span> <span class="ow">or</span> <span class="n">is_txt_gunzip</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">output_path</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">is_csv</span> <span class="ow">or</span> <span class="n">is_csv_gunzip</span><span class="p">:</span>
+        <span class="n">dt_index</span><span class="p">,</span> <span class="n">real_indices</span> <span class="o">=</span> <span class="n">get_csv_indices</span><span class="p">(</span>
+            <span class="n">output_path</span><span class="p">,</span> <span class="n">is_gzip</span><span class="o">=</span><span class="n">is_csv_gunzip</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dt_index</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+            <span class="n">dt_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span>
+                <span class="n">output_path</span><span class="p">,</span>
+                <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;datetime64&#39;</span><span class="p">,</span>
+                <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span>
+                <span class="n">skip_header</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                <span class="n">usecols</span><span class="o">=</span><span class="p">[</span><span class="n">dt_index</span><span class="p">,]</span>
+            <span class="p">)</span>
+
+        <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span>
+            <span class="n">output_path</span><span class="p">,</span>
+            <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span>
+            <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;float64&#39;</span><span class="p">,</span>
+            <span class="n">skip_header</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">usecols</span><span class="o">=</span><span class="n">real_indices</span>
+        <span class="p">)</span>
+    
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">filename</span><span class="p">,</span>
+        <span class="s1">&#39;category&#39;</span><span class="p">:</span> <span class="n">category</span><span class="p">,</span>
+        <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="n">description</span><span class="p">,</span>
+        <span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="n">data</span><span class="p">,</span>
+        <span class="s1">&#39;datetime&#39;</span><span class="p">:</span> <span class="n">dt_data</span>
+    <span class="p">}</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Matrix Profile Foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

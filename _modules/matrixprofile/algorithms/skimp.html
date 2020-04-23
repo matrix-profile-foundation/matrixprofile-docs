@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                1.0
+                1.1
               </div>
             
           
@@ -496,6 +496,12 @@
     <span class="n">mask</span> <span class="o">=</span> <span class="n">pearson</span> <span class="o">&gt;</span> <span class="n">threshold</span>
     <span class="n">pearson</span> <span class="o">=</span> <span class="n">pearson</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
     <span class="n">windows</span> <span class="o">=</span> <span class="n">windows</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">windows</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;No windows found with given threshold, try to&#39;</span>\
+            <span class="s1">&#39; set a lower threshold&#39;</span><span class="p">,</span> <span class="ne">RuntimeWarning</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
     <span class="n">window_size</span> <span class="o">=</span> <span class="n">windows</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
     
     <span class="k">if</span> <span class="n">include_pmp</span><span class="p">:</span>

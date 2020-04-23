@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                1.0
+                1.1
               </div>
             
           
@@ -218,12 +218,12 @@
 <span class="sd">        A Pan-MatrixProfile data structure.</span>
 <span class="sd">    window : int</span>
 <span class="sd">        The specific window size used to compute the desired MatrixProfile.</span>
-<span class="sd">    </span>
+
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    dict : profile</span>
 <span class="sd">        A MatrixProfile data structure.</span>
-<span class="sd">    </span>
+
 <span class="sd">    Raises</span>
 <span class="sd">    ------</span>
 <span class="sd">    ValueError</span>
@@ -235,33 +235,33 @@
 
     <span class="k">if</span> <span class="ow">not</span> <span class="n">core</span><span class="o">.</span><span class="n">is_pmp_obj</span><span class="p">(</span><span class="n">profile</span><span class="p">):</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;pluck_mp expects profile as a PMP data structure!&#39;</span><span class="p">)</span>
-    
+
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">window</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;pluck_mp expects window to be an int!&#39;</span><span class="p">)</span>
-    
+
     <span class="n">mp_profile</span> <span class="o">=</span> <span class="n">empty_mp</span><span class="p">()</span>
-    
+
     <span class="c1"># find the window index</span>
     <span class="n">windows</span> <span class="o">=</span> <span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;windows&#39;</span><span class="p">)</span>
     <span class="n">window_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argwhere</span><span class="p">(</span><span class="n">windows</span> <span class="o">==</span> <span class="n">window</span><span class="p">)</span>
-    
+
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">window_index</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;Unable to find window </span><span class="si">{}</span><span class="s1"> in the provided PMP!&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">window</span><span class="p">))</span>
-    
+
     <span class="n">window_index</span> <span class="o">=</span> <span class="n">window_index</span><span class="o">.</span><span class="n">flatten</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
 
-    <span class="n">w</span> <span class="o">=</span> <span class="n">windows</span><span class="p">[</span><span class="n">window_index</span><span class="p">]</span>
+    <span class="n">window</span> <span class="o">=</span> <span class="n">windows</span><span class="p">[</span><span class="n">window_index</span><span class="p">]</span>
     <span class="n">mp</span> <span class="o">=</span> <span class="n">profile</span><span class="p">[</span><span class="s1">&#39;pmp&#39;</span><span class="p">][</span><span class="n">window_index</span><span class="p">]</span>
     <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">mp</span><span class="p">)</span>
-    <span class="n">mp_profile</span><span class="p">[</span><span class="s1">&#39;mp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mp</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">n</span><span class="o">-</span><span class="n">w</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
-    <span class="n">mp_profile</span><span class="p">[</span><span class="s1">&#39;pi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">profile</span><span class="p">[</span><span class="s1">&#39;pmpi&#39;</span><span class="p">][</span><span class="n">window_index</span><span class="p">][</span><span class="mi">0</span><span class="p">:</span><span class="n">n</span><span class="o">-</span><span class="n">w</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">mp_profile</span><span class="p">[</span><span class="s1">&#39;mp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mp</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">n</span><span class="o">-</span><span class="n">window</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">mp_profile</span><span class="p">[</span><span class="s1">&#39;pi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">profile</span><span class="p">[</span><span class="s1">&#39;pmpi&#39;</span><span class="p">][</span><span class="n">window_index</span><span class="p">][</span><span class="mi">0</span><span class="p">:</span><span class="n">n</span><span class="o">-</span><span class="n">window</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
     <span class="n">mp_profile</span><span class="p">[</span><span class="s1">&#39;metric&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">profile</span><span class="p">[</span><span class="s1">&#39;metric&#39;</span><span class="p">]</span>
     <span class="n">mp_profile</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;ts&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">profile</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;ts&#39;</span><span class="p">]</span>
     <span class="n">mp_profile</span><span class="p">[</span><span class="s1">&#39;join&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
-    <span class="n">mp_profile</span><span class="p">[</span><span class="s1">&#39;w&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+    <span class="n">mp_profile</span><span class="p">[</span><span class="s1">&#39;w&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">window</span><span class="p">)</span>
     <span class="n">mp_profile</span><span class="p">[</span><span class="s1">&#39;ez&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">windows</span><span class="p">[</span><span class="n">window_index</span><span class="p">]</span> <span class="o">/</span> <span class="mi">4</span><span class="p">))</span>
     <span class="n">mp_profile</span><span class="p">[</span><span class="s1">&#39;algorithm&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;mpx&#39;</span>
-    
+
     <span class="k">return</span> <span class="n">mp_profile</span></div>
 </pre></div>
 

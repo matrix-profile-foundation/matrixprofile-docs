@@ -1,0 +1,994 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Algorithms &mdash; MatrixProfile</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../../../../../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../../../../../../" src="../../../../../../../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../../../../../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../../../../../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../../../../../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../../../../../../../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../../../../../../../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../../../../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../../../../../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+          
+
+          
+            <a href="../../../../../../../../../index.html" class="icon icon-home"> matrixprofile
+          
+
+          
+            
+            <img src="../../../../../../../../../_static/mpf-logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../Quickstart.html">Quickstart Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../Algorithms.html">Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../help.html">Getting Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../code_of_conduct.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../citations.html">Citations</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/matrix-profile-foundation/matrixprofile">Code Repository (Github)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://matrixprofile.org">Website</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../../../../index.html">matrixprofile</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../../../../../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Algorithms</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../../../../../../../_sources/build/doctrees/nbsphinx/build/doctrees/nbsphinx/build/doctrees/nbsphinx/Algorithms.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container,
+div.nbinput.container div.prompt,
+div.nbinput.container div.input_area,
+div.nbinput.container div[class*=highlight],
+div.nbinput.container div[class*=highlight] pre,
+div.nboutput.container,
+div.nboutput.container div.prompt,
+div.nboutput.container div.output_area,
+div.nboutput.container div[class*=highlight],
+div.nboutput.container div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    min-width: 5ex;
+    padding-top: 0.4em;
+    padding-right: 0.4em;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    padding: 0.4em;
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="Algorithms">
+<h1>Algorithms<a class="headerlink" href="#Algorithms" title="Permalink to this headline">¶</a></h1>
+<p>This document provides a high level description of the algorithms implemented within MatrixProfile. Runtime comparisons are also explored when appropriate.</p>
+<div class="section" id="Compute---MatrixProfile-and-Pan-MatrixProfile">
+<h2>Compute - MatrixProfile and Pan-MatrixProfile<a class="headerlink" href="#Compute---MatrixProfile-and-Pan-MatrixProfile" title="Permalink to this headline">¶</a></h2>
+<p>There are two types of algorithm implementations to be aware of:</p>
+<ol class="arabic simple">
+<li><p><strong>exact</strong> - an algorithm that computes the exact solution. The algorithm must complete before an answer is provided. The majority of the algorithms implemented are exact:</p>
+<ul class="simple">
+<li><p><strong>stomp</strong> - the first exact algorithm to compute the Matrix Profile.</p></li>
+<li><p><strong>mpx</strong> - a very fast algorithm that does not require fourier transform to compute the Matrix Profile.</p></li>
+<li><p><strong>brute_force_pmp</strong> - a naive Pan-MatrixProfile implementation that is inefficent.</p></li>
+</ul>
+</li>
+<li><p><strong>anytime</strong> - an algorithm that may provide an approximate solution. Note that we currently do not support interactivity to stop the algorithm from running. The “anytime” component is implemented by specifying the desired percentage of samples to compute.</p>
+<ul class="simple">
+<li><p><strong>prescrimp</strong> - computes the Matrix Profile in a stepping fashion based on 1/4 * window size.</p></li>
+<li><p><strong>scrimp_plus_plus</strong> - refines solutions of prescrimp for an anytime Matrix Profile calculation.</p></li>
+<li><p><strong>skimp</strong> - an efficient Pan-MatrixProfile algorithm.</p></li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="section" id="Runtime-Benchmarks">
+<h2>Runtime Benchmarks<a class="headerlink" href="#Runtime-Benchmarks" title="Permalink to this headline">¶</a></h2>
+<p>In this section we explore runtimes of the algorithms based on varying time series length (N) and varying window sizes (M). The hardware specifications of this runtime is displayed below and will vary across different configurations.</p>
+<p>Note that comparisons are made between the MatrixProfile implementations only. Pan-MatrixProfile algorithms are built on top of these implementations and purely compute many MatrixProfiles over varying windows. For a fair comparison, anytime algorithms are forced to compute the exact solution.</p>
+<p>The following benchmarks were ran on: * Ubuntu 19.10 * Intel(R) Core(TM) i7-9750H CPU &#64; 2.60GHz * 32 GB memory</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">timeit</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="k">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+<div class="section" id="Single-Threaded-Varying-N">
+<h3>Single-Threaded Varying N<a class="headerlink" href="#Single-Threaded-Varying-N" title="Permalink to this headline">¶</a></h3>
+<p>This benchmark compares all algorithms, including the anytime implementations, with one CPU core. The window size (M) is held constant at 32.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">results</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Algorithm&#39;</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="s1">&#39;N&#39;</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="s1">&#39;Time (seconds)&#39;</span><span class="p">:</span> <span class="p">[],</span>
+<span class="p">}</span>
+<span class="n">algorithms</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;stomp&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;mpx&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;prescrimp&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;scrimp_plus_plus&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+<span class="n">m</span> <span class="o">=</span> <span class="mi">2</span><span class="o">**</span><span class="mi">5</span>
+
+<span class="k">for</span> <span class="n">algorithm</span> <span class="ow">in</span> <span class="n">algorithms</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">16</span><span class="p">):</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="mi">2</span><span class="o">**</span><span class="n">i</span>
+        <span class="n">setup</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s1">&#39;import numpy as np&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;import matrixprofile as mp&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;ts = np.random.uniform(size=</span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n</span><span class="p">),</span>
+            <span class="s1">&#39;m = </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">m</span><span class="p">),</span>
+        <span class="p">]</span>
+        <span class="n">setup_code</span> <span class="o">=</span> <span class="s1">&#39;;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">setup</span><span class="p">)</span>
+
+        <span class="n">runtime_code</span> <span class="o">=</span> <span class="s1">&#39;mp.algorithms.</span><span class="si">{}</span><span class="s1">(ts, m)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">algorithm</span><span class="p">)</span>
+
+        <span class="c1"># force anytime algorithms to compute exact solution</span>
+        <span class="k">if</span> <span class="n">algorithm</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;prescrimp&#39;</span><span class="p">,</span> <span class="s1">&#39;scrimp_plus_plus&#39;</span><span class="p">):</span>
+            <span class="n">runtime_code</span> <span class="o">=</span> <span class="s1">&#39;mp.algorithms.</span><span class="si">{}</span><span class="s1">(ts, m, sample_pct=1.0)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">algorithm</span><span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">timeit</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="n">stmt</span><span class="o">=</span><span class="n">runtime_code</span><span class="p">,</span> <span class="n">setup</span><span class="o">=</span><span class="n">setup_code</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;Algorithm&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">algorithm</span><span class="p">)</span>
+        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;N&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;Time (seconds)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;N&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Algorithm&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;Time (seconds)&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Runtime Varying N</span><span class="se">\n</span><span class="s1"> M = 2^5&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Seconds&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../../../../../../../_images/build_doctrees_nbsphinx_build_doctrees_nbsphinx_build_doctrees_nbsphinx_Algorithms_6_0.png" src="../../../../../../../../../_images/build_doctrees_nbsphinx_build_doctrees_nbsphinx_build_doctrees_nbsphinx_Algorithms_6_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;N&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Algorithm&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;Time (seconds)&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Algorithm</th>
+      <th>mpx</th>
+      <th>prescrimp</th>
+      <th>scrimp_plus_plus</th>
+      <th>stomp</th>
+    </tr>
+    <tr>
+      <th>N</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1024</td>
+      <td>0.001757</td>
+      <td>0.029654</td>
+      <td>0.075022</td>
+      <td>0.136062</td>
+    </tr>
+    <tr>
+      <td>2048</td>
+      <td>0.006199</td>
+      <td>0.068821</td>
+      <td>0.182622</td>
+      <td>0.239098</td>
+    </tr>
+    <tr>
+      <td>4096</td>
+      <td>0.024315</td>
+      <td>0.176737</td>
+      <td>0.460083</td>
+      <td>0.589630</td>
+    </tr>
+    <tr>
+      <td>8192</td>
+      <td>0.098919</td>
+      <td>0.545312</td>
+      <td>1.407748</td>
+      <td>1.621021</td>
+    </tr>
+    <tr>
+      <td>16384</td>
+      <td>0.384985</td>
+      <td>1.518244</td>
+      <td>4.192007</td>
+      <td>4.207855</td>
+    </tr>
+    <tr>
+      <td>32768</td>
+      <td>1.554985</td>
+      <td>6.748916</td>
+      <td>18.780976</td>
+      <td>12.567574</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+</div>
+<div class="section" id="Multi-Threaded-Varying-N">
+<h3>Multi-Threaded Varying N<a class="headerlink" href="#Multi-Threaded-Varying-N" title="Permalink to this headline">¶</a></h3>
+<p>This benchmark compares all algorithms, mpx and stomp, that have parallel implementations. The window size (M) is held constant at 32.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">results</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Algorithm&#39;</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="s1">&#39;N&#39;</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="s1">&#39;Time (seconds)&#39;</span><span class="p">:</span> <span class="p">[],</span>
+<span class="p">}</span>
+<span class="n">algorithms</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;stomp&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;mpx&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+<span class="n">m</span> <span class="o">=</span> <span class="mi">2</span><span class="o">**</span><span class="mi">5</span>
+
+<span class="k">for</span> <span class="n">algorithm</span> <span class="ow">in</span> <span class="n">algorithms</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">16</span><span class="p">):</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="mi">2</span><span class="o">**</span><span class="n">i</span>
+        <span class="n">setup</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s1">&#39;import numpy as np&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;import matrixprofile as mp&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;ts = np.random.uniform(size=</span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n</span><span class="p">),</span>
+            <span class="s1">&#39;m = </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">m</span><span class="p">),</span>
+        <span class="p">]</span>
+        <span class="n">setup_code</span> <span class="o">=</span> <span class="s1">&#39;;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">setup</span><span class="p">)</span>
+
+        <span class="n">runtime_code</span> <span class="o">=</span> <span class="s1">&#39;mp.algorithms.</span><span class="si">{}</span><span class="s1">(ts, m, n_jobs=4)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">algorithm</span><span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">timeit</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="n">stmt</span><span class="o">=</span><span class="n">runtime_code</span><span class="p">,</span> <span class="n">setup</span><span class="o">=</span><span class="n">setup_code</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;Algorithm&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">algorithm</span><span class="p">)</span>
+        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;N&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;Time (seconds)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;N&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Algorithm&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;Time (seconds)&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Runtime Varying N</span><span class="se">\n</span><span class="s1"> M = 2^5</span><span class="se">\n</span><span class="s1">CPU Cores = 4&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Seconds&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../../../../../../../_images/build_doctrees_nbsphinx_build_doctrees_nbsphinx_build_doctrees_nbsphinx_Algorithms_11_0.png" src="../../../../../../../../../_images/build_doctrees_nbsphinx_build_doctrees_nbsphinx_build_doctrees_nbsphinx_Algorithms_11_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;N&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Algorithm&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;Time (seconds)&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Algorithm</th>
+      <th>mpx</th>
+      <th>stomp</th>
+    </tr>
+    <tr>
+      <th>N</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1024</td>
+      <td>0.001193</td>
+      <td>0.123515</td>
+    </tr>
+    <tr>
+      <td>2048</td>
+      <td>0.003401</td>
+      <td>0.248056</td>
+    </tr>
+    <tr>
+      <td>4096</td>
+      <td>0.012696</td>
+      <td>0.254736</td>
+    </tr>
+    <tr>
+      <td>8192</td>
+      <td>0.048492</td>
+      <td>0.759632</td>
+    </tr>
+    <tr>
+      <td>16384</td>
+      <td>0.201252</td>
+      <td>2.103931</td>
+    </tr>
+    <tr>
+      <td>32768</td>
+      <td>0.816059</td>
+      <td>9.997659</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+</div>
+<div class="section" id="Single-Threaded-Varying-M">
+<h3>Single-Threaded Varying M<a class="headerlink" href="#Single-Threaded-Varying-M" title="Permalink to this headline">¶</a></h3>
+<p>This benchmark compares all algorithms, including the anytime implementations, with one CPU core. The series size (N) is held constant at 2^15.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">results</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Algorithm&#39;</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="s1">&#39;M&#39;</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="s1">&#39;Time (seconds)&#39;</span><span class="p">:</span> <span class="p">[],</span>
+<span class="p">}</span>
+<span class="n">algorithms</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;stomp&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;mpx&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;prescrimp&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;scrimp_plus_plus&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">2</span><span class="o">**</span><span class="mi">15</span>
+
+<span class="k">for</span> <span class="n">algorithm</span> <span class="ow">in</span> <span class="n">algorithms</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">16</span><span class="p">):</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="mi">2</span><span class="o">**</span><span class="n">i</span>
+        <span class="n">setup</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s1">&#39;import numpy as np&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;import matrixprofile as mp&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;ts = np.random.uniform(size=</span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n</span><span class="p">),</span>
+            <span class="s1">&#39;m = </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">m</span><span class="p">),</span>
+        <span class="p">]</span>
+        <span class="n">setup_code</span> <span class="o">=</span> <span class="s1">&#39;;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">setup</span><span class="p">)</span>
+
+        <span class="n">runtime_code</span> <span class="o">=</span> <span class="s1">&#39;mp.algorithms.</span><span class="si">{}</span><span class="s1">(ts, m)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">algorithm</span><span class="p">)</span>
+
+        <span class="c1"># force anytime algorithms to compute exact solution</span>
+        <span class="k">if</span> <span class="n">algorithm</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;prescrimp&#39;</span><span class="p">,</span> <span class="s1">&#39;scrimp_plus_plus&#39;</span><span class="p">):</span>
+            <span class="n">runtime_code</span> <span class="o">=</span> <span class="s1">&#39;mp.algorithms.</span><span class="si">{}</span><span class="s1">(ts, m, sample_pct=1.0)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">algorithm</span><span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">timeit</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="n">stmt</span><span class="o">=</span><span class="n">runtime_code</span><span class="p">,</span> <span class="n">setup</span><span class="o">=</span><span class="n">setup_code</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;Algorithm&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">algorithm</span><span class="p">)</span>
+        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;M&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;Time (seconds)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Algorithm&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;Time (seconds)&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Runtime Varying M</span><span class="se">\n</span><span class="s1"> N = 2^15&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Seconds&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../../../../../../../_images/build_doctrees_nbsphinx_build_doctrees_nbsphinx_build_doctrees_nbsphinx_Algorithms_16_0.png" src="../../../../../../../../../_images/build_doctrees_nbsphinx_build_doctrees_nbsphinx_build_doctrees_nbsphinx_Algorithms_16_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Algorithm&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;Time (seconds)&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Algorithm</th>
+      <th>mpx</th>
+      <th>prescrimp</th>
+      <th>scrimp_plus_plus</th>
+      <th>stomp</th>
+    </tr>
+    <tr>
+      <th>M</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>32</td>
+      <td>1.542865</td>
+      <td>5.318786</td>
+      <td>14.245731</td>
+      <td>13.244420</td>
+    </tr>
+    <tr>
+      <td>64</td>
+      <td>1.526071</td>
+      <td>2.829714</td>
+      <td>11.322351</td>
+      <td>13.371113</td>
+    </tr>
+    <tr>
+      <td>128</td>
+      <td>1.531585</td>
+      <td>1.472558</td>
+      <td>9.523658</td>
+      <td>13.406355</td>
+    </tr>
+    <tr>
+      <td>256</td>
+      <td>1.532456</td>
+      <td>0.750691</td>
+      <td>8.764534</td>
+      <td>12.943933</td>
+    </tr>
+    <tr>
+      <td>512</td>
+      <td>1.523352</td>
+      <td>0.390036</td>
+      <td>8.395955</td>
+      <td>13.041736</td>
+    </tr>
+    <tr>
+      <td>1024</td>
+      <td>1.570149</td>
+      <td>0.210468</td>
+      <td>7.758907</td>
+      <td>12.980969</td>
+    </tr>
+    <tr>
+      <td>2048</td>
+      <td>1.593238</td>
+      <td>0.108608</td>
+      <td>7.134549</td>
+      <td>12.330609</td>
+    </tr>
+    <tr>
+      <td>4096</td>
+      <td>1.549784</td>
+      <td>0.061189</td>
+      <td>5.896495</td>
+      <td>10.411182</td>
+    </tr>
+    <tr>
+      <td>8192</td>
+      <td>1.517890</td>
+      <td>0.033622</td>
+      <td>4.244812</td>
+      <td>8.062553</td>
+    </tr>
+    <tr>
+      <td>16384</td>
+      <td>1.256453</td>
+      <td>0.013144</td>
+      <td>1.681837</td>
+      <td>4.140138</td>
+    </tr>
+    <tr>
+      <td>32768</td>
+      <td>0.000264</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Matrix Profile Foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

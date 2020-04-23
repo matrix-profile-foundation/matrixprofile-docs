@@ -65,7 +65,7 @@
             
             
               <div class="version">
-                1.0
+                1.1
               </div>
             
           
@@ -102,6 +102,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#matrixprofile-discover-snippets">matrixprofile.discover.snippets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#matrixprofile-discover-regimes">matrixprofile.discover.regimes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#matrixprofile-discover-statistics">matrixprofile.discover.statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#matrixprofile-discover-hierarchical-clusters">matrixprofile.discover.hierarchical_clusters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#matrixprofile-algorithms-stomp">matrixprofile.algorithms.stomp</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#matrixprofile-algorithms-mpx">matrixprofile.algorithms.mpx</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#matrixprofile-algorithms-skimp">matrixprofile.algorithms.skimp</a></li>
@@ -110,6 +111,11 @@
 <li class="toctree-l2"><a class="reference internal" href="#matrixprofile-algorithms-maximum-subsequence">matrixprofile.algorithms.maximum_subsequence</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#matrixprofile-algorithms-prescrimp">matrixprofile.algorithms.prescrimp</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#matrixprofile-algorithms-scrimp-plus-plus">matrixprofile.algorithms.scrimp_plus_plus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#matrixprofile-transform-apply-av">matrixprofile.transform.apply_av</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#matrixprofile-transform-make-default-av">matrixprofile.transform.make_default_av</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#matrixprofile-transform-make-complexity-av">matrixprofile.transform.make_complexity_av</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#matrixprofile-transform-make-meanstd-av">matrixprofile.transform.make_meanstd_av</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#matrixprofile-transform-make-clipping-av">matrixprofile.transform.make_clipping_av</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#matrixprofile-utils-empty-mp">matrixprofile.utils.empty_mp</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#matrixprofile-utils-pick-mp">matrixprofile.utils.pick_mp</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#matrixprofile-io-to-disk">matrixprofile.io.to_disk</a></li>
@@ -340,10 +346,12 @@ will be plotted.</p>
 <h2>matrixprofile.discover.motifs<a class="headerlink" href="#matrixprofile-discover-motifs" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="matrixprofile.discover.motifs">
-<code class="sig-prename descclassname">matrixprofile.discover.</code><code class="sig-name descname">motifs</code><span class="sig-paren">(</span><em class="sig-param">profile</em>, <em class="sig-param">exclusion_zone=None</em>, <em class="sig-param">k=3</em>, <em class="sig-param">max_neighbors=10</em>, <em class="sig-param">radius=3</em><span class="sig-paren">)</span><a class="headerlink" href="#matrixprofile.discover.motifs" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">matrixprofile.discover.</code><code class="sig-name descname">motifs</code><span class="sig-paren">(</span><em class="sig-param">profile</em>, <em class="sig-param">exclusion_zone=None</em>, <em class="sig-param">k=3</em>, <em class="sig-param">max_neighbors=10</em>, <em class="sig-param">radius=3</em>, <em class="sig-param">use_cmp=False</em><span class="sig-paren">)</span><a class="headerlink" href="#matrixprofile.discover.motifs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Find the top K number of motifs (patterns) given a matrix profile or a pan
 matrix profile. By default the algorithm will find up to 3 motifs (k) and
-up to 10 of their neighbors with a radius of 3 * min_dist.</p>
+up to 10 of their neighbors with a radius of 3 * min_dist using the
+regular matrix profile. If the profile is a Matrix Profile data structure,
+you can also use a Corrected Matrix Profile to compute the motifs.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -355,6 +363,8 @@ size. Setting the exclusion zone to 0 makes it not apply.</p></li>
 <li><p><strong>neighbor_count</strong> (<em>int</em><em>, </em><em>Default = 10</em>) – The maximum number of neighbors to include for a given motif.</p></li>
 <li><p><strong>radius</strong> (<em>int</em><em>, </em><em>Default = 3</em>) – The radius is used to associate a neighbor by checking if the
 neighbor’s distance is less than or equal to dist * radius</p></li>
+<li><p><strong>use_cmp</strong> (<em>bool</em><em>, </em><em>Default = False</em>) – Use the Corrected Matrix Profile to compute the motifs (only for
+a Matrix Profile data structure).</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -531,6 +541,99 @@ over the window specified and globally.</p>
     If window_size &gt; len(ts)
     If ts is not a list or np.array.
     If ts is not 1D.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="matrixprofile-discover-hierarchical-clusters">
+<h2>matrixprofile.discover.hierarchical_clusters<a class="headerlink" href="#matrixprofile-discover-hierarchical-clusters" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="matrixprofile.discover.hierarchical_clusters">
+<code class="sig-prename descclassname">matrixprofile.discover.</code><code class="sig-name descname">hierarchical_clusters</code><span class="sig-paren">(</span><em class="sig-param">X</em>, <em class="sig-param">window_size</em>, <em class="sig-param">t</em>, <em class="sig-param">threshold=0.05</em>, <em class="sig-param">method='single'</em>, <em class="sig-param">depth=2</em>, <em class="sig-param">criterion='distance'</em>, <em class="sig-param">n_jobs=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/algorithms/hierarchical_clustering.html#hierarchical_clusters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.discover.hierarchical_clusters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cluster M time series into hierarchical clusters using agglomerative
+approach. This function is more or less a convenience wrapper around
+SciPy’s scipy.cluster.hierarchy functions, but uses the MPDist algorithm
+to compute distances between each pair of time series.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Memory usage could potentially high depending on the length of your
+time series and how many distances are computed!</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array_like</em>) – An M x N matrix where M is the time series and N is the observations at
+a given time.</p></li>
+<li><p><strong>window_size</strong> (<em>int</em>) – The window size used to compute the MPDist.</p></li>
+<li><p><strong>t</strong> (<em>scalar</em>) – For criteria ‘inconsistent’, ‘distance’ or ‘monocrit’, this is the
+threshold to apply when forming flat clusters.
+For ‘maxclust’ criteria, this would be max number of clusters
+requested.</p></li>
+<li><p><strong>threshold</strong> (<em>float</em><em>, </em><em>Default 0.05</em>) – The percentile in which the MPDist is taken from. By default it is
+set to 0.05 based on empircal research results from the paper.
+Generally, you should not change this unless you know what you are
+doing! This value must be a float greater than 0 and less than 1.</p></li>
+<li><p><strong>method</strong> (<em>str</em><em>, </em><em>Default single</em>) – The linkage algorithm to use.
+Options: {single, complete, average, weighted}</p></li>
+<li><p><strong>depth</strong> (<em>int</em><em>, </em><em>Default 2</em>) – A non-negative value more than 0 to specify the number of levels below
+a non-singleton cluster to allow.</p></li>
+<li><p><strong>criterion</strong> (<em>str</em><em>, </em><em>Default distance</em>) – <p>Options: {inconsistent, distance, maxclust, monocrit}
+The criterion to use in forming flat clusters.</p>
+<blockquote>
+<div><dl>
+<dt><code class="docutils literal notranslate"><span class="pre">inconsistent</span></code> :</dt><dd><p>If a cluster node and all its
+descendants have an inconsistent value less than or equal
+to <cite>t</cite>, then all its leaf descendants belong to the
+same flat cluster. When no non-singleton cluster meets
+this criterion, every node is assigned to its own
+cluster. (Default)</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">distance</span></code> :</dt><dd><p>Forms flat clusters so that the original
+observations in each flat cluster have no greater a
+cophenetic distance than <cite>t</cite>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">maxclust</span></code> :</dt><dd><p>Finds a minimum threshold <code class="docutils literal notranslate"><span class="pre">r</span></code> so that
+the cophenetic distance between any two original
+observations in the same flat cluster is no more than
+<code class="docutils literal notranslate"><span class="pre">r</span></code> and no more than <cite>t</cite> flat clusters are formed.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">monocrit</span></code> :</dt><dd><p>Forms a flat cluster from a cluster node c
+with index i when <code class="docutils literal notranslate"><span class="pre">monocrit[j]</span> <span class="pre">&lt;=</span> <span class="pre">t</span></code>.
+For example, to threshold on the maximum mean distance
+as computed in the inconsistency matrix R with a
+threshold of 0.8 do:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MR</span> <span class="o">=</span> <span class="n">maxRstat</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">cluster</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">criterion</span><span class="o">=</span><span class="s1">&#39;monocrit&#39;</span><span class="p">,</span> <span class="n">monocrit</span><span class="o">=</span><span class="n">MR</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</div></blockquote>
+</p></li>
+<li><p><strong>n_jobs</strong> (<em>int</em><em>, </em><em>Default 1</em>) – The number of cpu cores used to compute the MPDist.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p><strong>clusters</strong> – Clustering statistics, distances and labels.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">{</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">pairwise_distances</span><span class="p">:</span> <span class="n">MPDist</span> <span class="n">between</span> <span class="n">pairs</span> <span class="n">of</span> <span class="n">time</span> <span class="n">series</span> <span class="k">as</span>
+<span class="gp">&gt;&gt;&gt; </span>                        <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">linkage_matrix</span><span class="p">:</span> <span class="n">clustering</span> <span class="n">linkage</span> <span class="n">matrix</span> <span class="k">as</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">inconsistency_statistics</span><span class="p">:</span> <span class="n">inconsistency</span> <span class="n">stats</span> <span class="k">as</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">assignments</span><span class="p">:</span> <span class="n">cluster</span> <span class="n">label</span> <span class="n">associated</span> <span class="k">with</span> <span class="nb">input</span> <span class="n">X</span> <span class="n">location</span> <span class="k">as</span>
+<span class="gp">&gt;&gt;&gt; </span>                 <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">cophenet</span><span class="p">:</span> <span class="nb">float</span> <span class="n">the</span> <span class="n">cophenet</span> <span class="n">statistic</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">cophenet_distances</span><span class="p">:</span> <span class="n">cophenet</span> <span class="n">distances</span> <span class="n">between</span> <span class="n">pairs</span> <span class="n">of</span> <span class="n">time</span>
+<span class="gp">&gt;&gt;&gt; </span>                        <span class="n">series</span> <span class="k">as</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">class</span><span class="p">:</span> <span class="n">hclusters</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">}</span>
+</pre></div>
+</div>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
 </dd>
 </dl>
 </dd></dl>
@@ -753,7 +856,7 @@ series.</p>
 <h2>matrixprofile.algorithms.mpdist<a class="headerlink" href="#matrixprofile-algorithms-mpdist" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="matrixprofile.algorithms.mpdist">
-<code class="sig-prename descclassname">matrixprofile.algorithms.</code><code class="sig-name descname">mpdist</code><span class="sig-paren">(</span><em class="sig-param">ts</em>, <em class="sig-param">ts_b</em>, <em class="sig-param">w</em>, <em class="sig-param">n_jobs=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/algorithms/mpdist.html#mpdist"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.algorithms.mpdist" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">matrixprofile.algorithms.</code><code class="sig-name descname">mpdist</code><span class="sig-paren">(</span><em class="sig-param">ts</em>, <em class="sig-param">ts_b</em>, <em class="sig-param">w</em>, <em class="sig-param">threshold=0.05</em>, <em class="sig-param">n_jobs=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/algorithms/mpdist.html#mpdist"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.algorithms.mpdist" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes the MPDist between the two series ts and ts_b. For more details
 refer to the paper:</p>
 <p>Matrix Proﬁle XII: MPdist: A Novel Time Series Distance Measure to Allow
@@ -765,6 +868,10 @@ Shima Imani, Anthony Bagnall, Amirali Darvishzadeh, Eamonn Keogh. ICDM 2018</p>
 <li><p><strong>ts</strong> (<em>array_like</em>) – The time series to compute the matrix profile for.</p></li>
 <li><p><strong>ts_b</strong> (<em>array_like</em>) – The time series to compare against.</p></li>
 <li><p><strong>w</strong> (<em>int</em>) – The window size.</p></li>
+<li><p><strong>threshold</strong> (<em>float</em><em>, </em><em>Default 0.05</em>) – The percentile in which the distance is taken from. By default it is
+set to 0.05 based on empircal research results from the paper.
+Generally, you should not change this unless you know what you are
+doing! This value must be a float greater than 0 and less than 1.</p></li>
 <li><p><strong>n_jobs</strong> (<em>int</em><em>, </em><em>Default = 1</em>) – Number of cpu cores to use.</p></li>
 </ul>
 </dd>
@@ -955,6 +1062,157 @@ most practical. It should be a float value between 0 and 1.</p></li>
     If query is not a list or np.array.
     If ts or query is not one dimensional.
     If sample_pct is not between 0 and 1.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="matrixprofile-transform-apply-av">
+<h2>matrixprofile.transform.apply_av<a class="headerlink" href="#matrixprofile-transform-apply-av" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="matrixprofile.transform.apply_av">
+<code class="sig-prename descclassname">matrixprofile.transform.</code><code class="sig-name descname">apply_av</code><span class="sig-paren">(</span><em class="sig-param">profile</em>, <em class="sig-param">av='default'</em>, <em class="sig-param">custom_av=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/transform.html#apply_av"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.transform.apply_av" title="Permalink to this definition">¶</a></dt>
+<dd><p>Utility function that returns a MatrixProfile data structure
+with a calculated annotation vector that has been applied
+to correct the matrix profile.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>profile</strong> (<em>dict</em>) – A MatrixProfile structure.</p></li>
+<li><p><strong>av</strong> (<em>str</em><em>, </em><em>Default = &quot;default&quot;</em>) – The type of annotation vector to apply.</p></li>
+<li><p><strong>custom_av</strong> (<em>array_like</em><em>, </em><em>Default = None</em>) – Custom annotation vector (will only be applied if av is “custom”).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>dict</strong> – A MatrixProfile data structure with a calculated annotation vector
+and a corrected matrix profile.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>profile</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If profile is not a MatrixProfile data structure.
+    If custom_av parameter is not array-like when using a custom av.
+    If av paramter is invalid.
+    If lengths of annotation vector and matrix profile are different.
+    If values in annotation vector are outside [0.0, 1.0].</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="matrixprofile-transform-make-default-av">
+<h2>matrixprofile.transform.make_default_av<a class="headerlink" href="#matrixprofile-transform-make-default-av" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="matrixprofile.transform.make_default_av">
+<code class="sig-prename descclassname">matrixprofile.transform.</code><code class="sig-name descname">make_default_av</code><span class="sig-paren">(</span><em class="sig-param">ts</em>, <em class="sig-param">window</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/transform.html#make_default_av"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.transform.make_default_av" title="Permalink to this definition">¶</a></dt>
+<dd><p>Utility function that returns an annotation vector filled with 1s
+(should not change the matrix profile).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ts</strong> (<em>array_like</em>) – The time series.</p></li>
+<li><p><strong>window</strong> (<em>int</em>) – The specific window size used to compute the MatrixProfile.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>np.array</strong> – An annotation vector.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>av</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If ts is not a list or np.array.
+    If ts is not one-dimensional.
+    If window is not an integer.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="matrixprofile-transform-make-complexity-av">
+<h2>matrixprofile.transform.make_complexity_av<a class="headerlink" href="#matrixprofile-transform-make-complexity-av" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="matrixprofile.transform.make_complexity_av">
+<code class="sig-prename descclassname">matrixprofile.transform.</code><code class="sig-name descname">make_complexity_av</code><span class="sig-paren">(</span><em class="sig-param">ts</em>, <em class="sig-param">window</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/transform.html#make_complexity_av"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.transform.make_complexity_av" title="Permalink to this definition">¶</a></dt>
+<dd><p>Utility function that returns an annotation vector where values are based
+on the complexity estimation of the signal.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ts</strong> (<em>array_like</em>) – The time series.</p></li>
+<li><p><strong>window</strong> (<em>int</em>) – The specific window size used to compute the MatrixProfile.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>np.array</strong> – An annotation vector.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>av</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If ts is not a list or np.array.
+    If ts is not one-dimensional.
+    If window is not an integer.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="matrixprofile-transform-make-meanstd-av">
+<h2>matrixprofile.transform.make_meanstd_av<a class="headerlink" href="#matrixprofile-transform-make-meanstd-av" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="matrixprofile.transform.make_meanstd_av">
+<code class="sig-prename descclassname">matrixprofile.transform.</code><code class="sig-name descname">make_meanstd_av</code><span class="sig-paren">(</span><em class="sig-param">ts</em>, <em class="sig-param">window</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/transform.html#make_meanstd_av"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.transform.make_meanstd_av" title="Permalink to this definition">¶</a></dt>
+<dd><p>Utility function that returns an annotation vector where values are set to
+1 if the standard deviation is less than the mean of standard deviation.
+Otherwise, the values are set to 0.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ts</strong> (<em>array_like</em>) – The time series.</p></li>
+<li><p><strong>window</strong> (<em>int</em>) – The specific window size used to compute the MatrixProfile.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>np.array</strong> – An annotation vector.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>av</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If ts is not a list or np.array.
+    If ts is not one-dimensional.
+    If window is not an integer.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="matrixprofile-transform-make-clipping-av">
+<h2>matrixprofile.transform.make_clipping_av<a class="headerlink" href="#matrixprofile-transform-make-clipping-av" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="matrixprofile.transform.make_clipping_av">
+<code class="sig-prename descclassname">matrixprofile.transform.</code><code class="sig-name descname">make_clipping_av</code><span class="sig-paren">(</span><em class="sig-param">ts</em>, <em class="sig-param">window</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/transform.html#make_clipping_av"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.transform.make_clipping_av" title="Permalink to this definition">¶</a></dt>
+<dd><p>Utility function that returns an annotation vector such that
+subsequences that have more clipping have less importance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ts</strong> (<em>array_like</em>) – The time series.</p></li>
+<li><p><strong>window</strong> (<em>int</em>) – The specific window size used to compute the MatrixProfile.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>np.array</strong> – An annotation vector.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>av</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If ts is not a list or np.array.
+    If ts is not one-dimensional.
+    If window is not an integer.</p>
 </dd>
 </dl>
 </dd></dl>

@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                1.0
+                1.1
               </div>
             
           
@@ -198,12 +198,12 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">core</span><span class="o">.</span><span class="n">is_array_like</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
         <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
-    
+
     <span class="n">rows</span> <span class="o">=</span> <span class="n">matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">cols</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
         <span class="n">cols</span> <span class="o">=</span> <span class="n">matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-    
+
     <span class="k">return</span> <span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">matrix</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
 
 
@@ -223,12 +223,12 @@
 <span class="sd">        The window(s) in a list.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">windows</span> <span class="o">=</span> <span class="p">[]</span>
-    
+
     <span class="k">if</span> <span class="n">core</span><span class="o">.</span><span class="n">is_mp_obj</span><span class="p">(</span><span class="n">profile</span><span class="p">):</span>
         <span class="n">windows</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;w&#39;</span><span class="p">))</span>
     <span class="k">elif</span> <span class="n">core</span><span class="o">.</span><span class="n">is_pmp_obj</span><span class="p">(</span><span class="n">profile</span><span class="p">):</span>
         <span class="n">windows</span> <span class="o">=</span> <span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;windows&#39;</span><span class="p">)</span>
-    
+
     <span class="k">return</span> <span class="n">windows</span>
 
 
@@ -253,35 +253,35 @@
 <span class="sd">        The motif object for MPFOutput message.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">out_motif</span> <span class="o">=</span> <span class="n">Motif</span><span class="p">()</span>
-    
+
     <span class="k">for</span> <span class="n">indices</span> <span class="ow">in</span> <span class="n">motif</span><span class="p">[</span><span class="s1">&#39;motifs&#39;</span><span class="p">]:</span>
         <span class="n">tmp</span> <span class="o">=</span> <span class="n">Location</span><span class="p">()</span>
         <span class="n">tmp</span><span class="o">.</span><span class="n">row</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="n">tmp</span><span class="o">.</span><span class="n">col</span> <span class="o">=</span> <span class="mi">0</span>
-        
+
         <span class="c1"># handle single integer location</span>
         <span class="k">if</span> <span class="n">core</span><span class="o">.</span><span class="n">is_array_like</span><span class="p">(</span><span class="n">indices</span><span class="p">):</span>
             <span class="n">tmp</span><span class="o">.</span><span class="n">row</span> <span class="o">=</span> <span class="n">indices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
             <span class="n">tmp</span><span class="o">.</span><span class="n">col</span> <span class="o">=</span> <span class="n">indices</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">tmp</span><span class="o">.</span><span class="n">row</span> <span class="o">=</span> <span class="n">indices</span>
-        
+
         <span class="n">out_motif</span><span class="o">.</span><span class="n">motifs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
-    
+
     <span class="k">for</span> <span class="n">neighbor</span> <span class="ow">in</span> <span class="n">motif</span><span class="p">[</span><span class="s1">&#39;neighbors&#39;</span><span class="p">]:</span>
         <span class="n">tmp</span> <span class="o">=</span> <span class="n">Location</span><span class="p">()</span>
         <span class="n">tmp</span><span class="o">.</span><span class="n">row</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="n">tmp</span><span class="o">.</span><span class="n">col</span> <span class="o">=</span> <span class="mi">0</span>
-        
+
         <span class="c1"># handle single integer location</span>
         <span class="k">if</span> <span class="n">core</span><span class="o">.</span><span class="n">is_array_like</span><span class="p">(</span><span class="n">neighbor</span><span class="p">):</span>
             <span class="n">tmp</span><span class="o">.</span><span class="n">row</span> <span class="o">=</span> <span class="n">neighbor</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
             <span class="n">tmp</span><span class="o">.</span><span class="n">col</span> <span class="o">=</span> <span class="n">neighbor</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">tmp</span><span class="o">.</span><span class="n">row</span> <span class="o">=</span> <span class="n">neighbor</span>
-        
+
         <span class="n">out_motif</span><span class="o">.</span><span class="n">neighbors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
-    
+
     <span class="k">return</span> <span class="n">out_motif</span>
 
 
@@ -308,13 +308,13 @@
     <span class="n">out_discord</span> <span class="o">=</span> <span class="n">Location</span><span class="p">()</span>
     <span class="n">out_discord</span><span class="o">.</span><span class="n">row</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">out_discord</span><span class="o">.</span><span class="n">col</span> <span class="o">=</span> <span class="mi">0</span>
-    
+
     <span class="k">if</span> <span class="n">core</span><span class="o">.</span><span class="n">is_array_like</span><span class="p">(</span><span class="n">discord</span><span class="p">):</span>
         <span class="n">out_discord</span><span class="o">.</span><span class="n">row</span> <span class="o">=</span> <span class="n">discord</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">out_discord</span><span class="o">.</span><span class="n">col</span> <span class="o">=</span> <span class="n">discord</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">out_discord</span><span class="o">.</span><span class="n">row</span> <span class="o">=</span> <span class="n">discord</span>
-    
+
     <span class="k">return</span> <span class="n">out_discord</span>
 
 
@@ -334,13 +334,13 @@
 <span class="sd">        The MPFOutput protobuf message object.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">output</span> <span class="o">=</span> <span class="n">MPFOutput</span><span class="p">()</span>
-    
+
     <span class="c1"># add higher level attributes that work for PMP and MP</span>
     <span class="n">output</span><span class="o">.</span><span class="n">klass</span> <span class="o">=</span> <span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">)</span>
     <span class="n">output</span><span class="o">.</span><span class="n">algorithm</span> <span class="o">=</span> <span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;algorithm&#39;</span><span class="p">)</span>
     <span class="n">output</span><span class="o">.</span><span class="n">metric</span> <span class="o">=</span> <span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;metric&#39;</span><span class="p">)</span>
     <span class="n">output</span><span class="o">.</span><span class="n">sample_pct</span> <span class="o">=</span> <span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;sample_pct&#39;</span><span class="p">)</span>
-    
+
     <span class="c1"># add time series data</span>
     <span class="n">ts</span> <span class="o">=</span> <span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;ts&#39;</span><span class="p">)</span>
     <span class="n">query</span> <span class="o">=</span> <span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;query&#39;</span><span class="p">)</span>
@@ -348,94 +348,116 @@
     <span class="n">output</span><span class="o">.</span><span class="n">ts</span><span class="o">.</span><span class="n">rows</span> <span class="o">=</span> <span class="n">rows</span>
     <span class="n">output</span><span class="o">.</span><span class="n">ts</span><span class="o">.</span><span class="n">cols</span> <span class="o">=</span> <span class="n">cols</span>
     <span class="n">output</span><span class="o">.</span><span class="n">ts</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-    
+
     <span class="c1"># add query data</span>
     <span class="n">query</span> <span class="o">=</span> <span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;query&#39;</span><span class="p">)</span>
     <span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">get_matrix_attributes</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
-    
+
     <span class="k">if</span> <span class="n">rows</span> <span class="ow">and</span> <span class="n">cols</span> <span class="ow">and</span> <span class="n">core</span><span class="o">.</span><span class="n">is_array_like</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
         <span class="n">output</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">rows</span> <span class="o">=</span> <span class="n">rows</span>
         <span class="n">output</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">cols</span> <span class="o">=</span> <span class="n">cols</span>
         <span class="n">output</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-    
+
     <span class="c1"># add window(s)</span>
     <span class="n">output</span><span class="o">.</span><span class="n">windows</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">get_windows</span><span class="p">(</span><span class="n">profile</span><span class="p">))</span>
-    
+
     <span class="c1"># add motifs</span>
     <span class="n">motifs</span> <span class="o">=</span> <span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;motifs&#39;</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">motifs</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="kc">None</span><span class="p">)):</span>
         <span class="k">for</span> <span class="n">motif</span> <span class="ow">in</span> <span class="n">motifs</span><span class="p">:</span>
             <span class="n">output</span><span class="o">.</span><span class="n">motifs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">get_proto_motif</span><span class="p">(</span><span class="n">motif</span><span class="p">))</span>
 
-
     <span class="c1"># add discords</span>
     <span class="n">discords</span> <span class="o">=</span> <span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;discords&#39;</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">discords</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="kc">None</span><span class="p">)):</span>
         <span class="k">for</span> <span class="n">discord</span> <span class="ow">in</span> <span class="n">discords</span><span class="p">:</span>
             <span class="n">output</span><span class="o">.</span><span class="n">discords</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">get_proto_discord</span><span class="p">(</span><span class="n">discord</span><span class="p">))</span>
-    
+
+    <span class="c1"># add cmp</span>
+    <span class="nb">cmp</span> <span class="o">=</span> <span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;cmp&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="nb">cmp</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="kc">None</span><span class="p">)):</span>
+        <span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">get_matrix_attributes</span><span class="p">(</span><span class="nb">cmp</span><span class="p">)</span>
+
+        <span class="n">output</span><span class="o">.</span><span class="n">cmp</span><span class="o">.</span><span class="n">rows</span> <span class="o">=</span> <span class="n">rows</span>
+        <span class="n">output</span><span class="o">.</span><span class="n">cmp</span><span class="o">.</span><span class="n">cols</span> <span class="o">=</span> <span class="n">cols</span>
+        <span class="n">output</span><span class="o">.</span><span class="n">cmp</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="c1"># add av</span>
+    <span class="n">av</span> <span class="o">=</span> <span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;av&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">av</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="kc">None</span><span class="p">)):</span>
+        <span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">get_matrix_attributes</span><span class="p">(</span><span class="n">av</span><span class="p">)</span>
+
+        <span class="n">output</span><span class="o">.</span><span class="n">av</span><span class="o">.</span><span class="n">rows</span> <span class="o">=</span> <span class="n">rows</span>
+        <span class="n">output</span><span class="o">.</span><span class="n">av</span><span class="o">.</span><span class="n">cols</span> <span class="o">=</span> <span class="n">cols</span>
+        <span class="n">output</span><span class="o">.</span><span class="n">av</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="c1"># add av_type</span>
+    <span class="n">av_type</span> <span class="o">=</span> <span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;av_type&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">av_type</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="kc">None</span><span class="p">))</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">av_type</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">output</span><span class="o">.</span><span class="n">av_type</span> <span class="o">=</span> <span class="n">av_type</span>
+
     <span class="c1"># add the matrix profile specific attributes</span>
     <span class="k">if</span> <span class="n">core</span><span class="o">.</span><span class="n">is_mp_obj</span><span class="p">(</span><span class="n">profile</span><span class="p">):</span>
         <span class="n">output</span><span class="o">.</span><span class="n">mp</span><span class="o">.</span><span class="n">ez</span> <span class="o">=</span> <span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;ez&#39;</span><span class="p">)</span>
         <span class="n">output</span><span class="o">.</span><span class="n">mp</span><span class="o">.</span><span class="n">join</span> <span class="o">=</span> <span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;join&#39;</span><span class="p">)</span>
-        
+
         <span class="c1"># add mp</span>
         <span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">get_matrix_attributes</span><span class="p">(</span><span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;mp&#39;</span><span class="p">))</span>
         <span class="n">output</span><span class="o">.</span><span class="n">mp</span><span class="o">.</span><span class="n">mp</span><span class="o">.</span><span class="n">rows</span> <span class="o">=</span> <span class="n">rows</span>
         <span class="n">output</span><span class="o">.</span><span class="n">mp</span><span class="o">.</span><span class="n">mp</span><span class="o">.</span><span class="n">cols</span> <span class="o">=</span> <span class="n">cols</span>
         <span class="n">output</span><span class="o">.</span><span class="n">mp</span><span class="o">.</span><span class="n">mp</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-        
+
         <span class="c1"># add pi</span>
         <span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">get_matrix_attributes</span><span class="p">(</span><span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;pi&#39;</span><span class="p">))</span>
         <span class="n">output</span><span class="o">.</span><span class="n">mp</span><span class="o">.</span><span class="n">pi</span><span class="o">.</span><span class="n">rows</span> <span class="o">=</span> <span class="n">rows</span>
         <span class="n">output</span><span class="o">.</span><span class="n">mp</span><span class="o">.</span><span class="n">pi</span><span class="o">.</span><span class="n">cols</span> <span class="o">=</span> <span class="n">cols</span>
         <span class="n">output</span><span class="o">.</span><span class="n">mp</span><span class="o">.</span><span class="n">pi</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-        
+
         <span class="c1"># add lmp</span>
         <span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">get_matrix_attributes</span><span class="p">(</span><span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;lmp&#39;</span><span class="p">))</span>
         <span class="k">if</span> <span class="n">rows</span> <span class="ow">and</span> <span class="n">cols</span> <span class="ow">and</span> <span class="n">core</span><span class="o">.</span><span class="n">is_array_like</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
             <span class="n">output</span><span class="o">.</span><span class="n">mp</span><span class="o">.</span><span class="n">lmp</span><span class="o">.</span><span class="n">rows</span> <span class="o">=</span> <span class="n">rows</span>
             <span class="n">output</span><span class="o">.</span><span class="n">mp</span><span class="o">.</span><span class="n">lmp</span><span class="o">.</span><span class="n">cols</span> <span class="o">=</span> <span class="n">cols</span>
             <span class="n">output</span><span class="o">.</span><span class="n">mp</span><span class="o">.</span><span class="n">lmp</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-        
+
         <span class="c1"># add lpi</span>
         <span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">get_matrix_attributes</span><span class="p">(</span><span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;lpi&#39;</span><span class="p">))</span>
         <span class="k">if</span> <span class="n">rows</span> <span class="ow">and</span> <span class="n">cols</span> <span class="ow">and</span> <span class="n">core</span><span class="o">.</span><span class="n">is_array_like</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
             <span class="n">output</span><span class="o">.</span><span class="n">mp</span><span class="o">.</span><span class="n">lpi</span><span class="o">.</span><span class="n">rows</span> <span class="o">=</span> <span class="n">rows</span>
             <span class="n">output</span><span class="o">.</span><span class="n">mp</span><span class="o">.</span><span class="n">lpi</span><span class="o">.</span><span class="n">cols</span> <span class="o">=</span> <span class="n">cols</span>
             <span class="n">output</span><span class="o">.</span><span class="n">mp</span><span class="o">.</span><span class="n">lpi</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-        
+
         <span class="c1"># add rmp</span>
         <span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">get_matrix_attributes</span><span class="p">(</span><span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;rmp&#39;</span><span class="p">))</span>
         <span class="k">if</span> <span class="n">rows</span> <span class="ow">and</span> <span class="n">cols</span> <span class="ow">and</span> <span class="n">core</span><span class="o">.</span><span class="n">is_array_like</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
             <span class="n">output</span><span class="o">.</span><span class="n">mp</span><span class="o">.</span><span class="n">rmp</span><span class="o">.</span><span class="n">rows</span> <span class="o">=</span> <span class="n">rows</span>
             <span class="n">output</span><span class="o">.</span><span class="n">mp</span><span class="o">.</span><span class="n">rmp</span><span class="o">.</span><span class="n">cols</span> <span class="o">=</span> <span class="n">cols</span>
             <span class="n">output</span><span class="o">.</span><span class="n">mp</span><span class="o">.</span><span class="n">rmp</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-        
+
         <span class="c1"># add rpi</span>
         <span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">get_matrix_attributes</span><span class="p">(</span><span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;rpi&#39;</span><span class="p">))</span>
         <span class="k">if</span> <span class="n">rows</span> <span class="ow">and</span> <span class="n">cols</span> <span class="ow">and</span> <span class="n">core</span><span class="o">.</span><span class="n">is_array_like</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
             <span class="n">output</span><span class="o">.</span><span class="n">mp</span><span class="o">.</span><span class="n">rpi</span><span class="o">.</span><span class="n">rows</span> <span class="o">=</span> <span class="n">rows</span>
             <span class="n">output</span><span class="o">.</span><span class="n">mp</span><span class="o">.</span><span class="n">rpi</span><span class="o">.</span><span class="n">cols</span> <span class="o">=</span> <span class="n">cols</span>
             <span class="n">output</span><span class="o">.</span><span class="n">mp</span><span class="o">.</span><span class="n">rpi</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-        
+
     <span class="c1"># add the pan matrix profile specific attributes</span>
-    <span class="k">elif</span> <span class="n">core</span><span class="o">.</span><span class="n">is_pmp_obj</span><span class="p">(</span><span class="n">profile</span><span class="p">):</span>               
+    <span class="k">elif</span> <span class="n">core</span><span class="o">.</span><span class="n">is_pmp_obj</span><span class="p">(</span><span class="n">profile</span><span class="p">):</span>
         <span class="c1"># add pmp</span>
         <span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">get_matrix_attributes</span><span class="p">(</span><span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;pmp&#39;</span><span class="p">))</span>
         <span class="n">output</span><span class="o">.</span><span class="n">pmp</span><span class="o">.</span><span class="n">pmp</span><span class="o">.</span><span class="n">rows</span> <span class="o">=</span> <span class="n">rows</span>
         <span class="n">output</span><span class="o">.</span><span class="n">pmp</span><span class="o">.</span><span class="n">pmp</span><span class="o">.</span><span class="n">cols</span> <span class="o">=</span> <span class="n">cols</span>
         <span class="n">output</span><span class="o">.</span><span class="n">pmp</span><span class="o">.</span><span class="n">pmp</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-        
+
         <span class="c1"># add pmpi</span>
         <span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">get_matrix_attributes</span><span class="p">(</span><span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;pmpi&#39;</span><span class="p">))</span>
         <span class="n">output</span><span class="o">.</span><span class="n">pmp</span><span class="o">.</span><span class="n">pmpi</span><span class="o">.</span><span class="n">rows</span> <span class="o">=</span> <span class="n">rows</span>
         <span class="n">output</span><span class="o">.</span><span class="n">pmp</span><span class="o">.</span><span class="n">pmpi</span><span class="o">.</span><span class="n">cols</span> <span class="o">=</span> <span class="n">cols</span>
         <span class="n">output</span><span class="o">.</span><span class="n">pmp</span><span class="o">.</span><span class="n">pmpi</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-        
+
     <span class="k">else</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Expecting Pan-MatrixProfile or MatrixProfile!&#39;</span><span class="p">)</span>
-    
+
     <span class="k">return</span> <span class="n">output</span>
 
 
@@ -456,7 +478,7 @@
     <span class="n">obj</span> <span class="o">=</span> <span class="n">profile_to_proto</span><span class="p">(</span><span class="n">profile</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">obj</span><span class="o">.</span><span class="n">SerializeToString</span><span class="p">()</span></div>
 
-        
+
 <span class="k">def</span> <span class="nf">from_proto_to_array</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Utility function to convert a protobuf array back into the correct</span>
@@ -474,13 +496,13 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="kc">None</span><span class="p">))</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">data</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
         <span class="k">return</span> <span class="kc">None</span>
-    
+
     <span class="n">shape</span> <span class="o">=</span> <span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">rows</span><span class="p">,</span> <span class="n">value</span><span class="o">.</span><span class="n">cols</span><span class="p">)</span>
     <span class="n">out</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">out</span> <span class="o">=</span> <span class="n">out</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span>
-    
+
     <span class="k">return</span> <span class="n">out</span>
 
 
@@ -502,13 +524,13 @@
 <span class="sd">        The transformed discord locations.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">out</span> <span class="o">=</span> <span class="p">[]</span>
-    
+
     <span class="k">for</span> <span class="n">discord</span> <span class="ow">in</span> <span class="n">discords</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">is_one_dimensional</span><span class="p">:</span>
             <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">discord</span><span class="o">.</span><span class="n">row</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">discord</span><span class="o">.</span><span class="n">row</span><span class="p">,</span> <span class="n">discord</span><span class="o">.</span><span class="n">col</span><span class="p">))</span>
-    
+
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
 
 
@@ -530,24 +552,24 @@
 <span class="sd">        The transformed motif locations.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">out</span> <span class="o">=</span> <span class="p">[]</span>
-    
+
     <span class="k">for</span> <span class="n">motif</span> <span class="ow">in</span> <span class="n">motifs</span><span class="p">:</span>
         <span class="n">tmp</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;motifs&#39;</span><span class="p">:</span> <span class="p">[],</span> <span class="s1">&#39;neighbors&#39;</span><span class="p">:</span> <span class="p">[]}</span>
-        
+
         <span class="k">for</span> <span class="n">location</span> <span class="ow">in</span> <span class="n">motif</span><span class="o">.</span><span class="n">motifs</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">is_one_dimensional</span><span class="p">:</span>
                 <span class="n">tmp</span><span class="p">[</span><span class="s1">&#39;motifs&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">location</span><span class="o">.</span><span class="n">row</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">tmp</span><span class="p">[</span><span class="s1">&#39;motifs&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">location</span><span class="o">.</span><span class="n">row</span><span class="p">,</span> <span class="n">location</span><span class="o">.</span><span class="n">col</span><span class="p">))</span>
-        
+
         <span class="k">for</span> <span class="n">neighbor</span> <span class="ow">in</span> <span class="n">motif</span><span class="o">.</span><span class="n">neighbors</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">is_one_dimensional</span><span class="p">:</span>
                 <span class="n">tmp</span><span class="p">[</span><span class="s1">&#39;neighbors&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">neighbor</span><span class="o">.</span><span class="n">row</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">tmp</span><span class="p">[</span><span class="s1">&#39;neighbors&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">neighbor</span><span class="o">.</span><span class="n">row</span><span class="p">,</span> <span class="n">neighbor</span><span class="o">.</span><span class="n">col</span><span class="p">))</span>
-        
+
         <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
-    
+
     <span class="k">return</span> <span class="n">out</span>
 
 
@@ -567,10 +589,10 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">obj</span> <span class="o">=</span> <span class="n">MPFOutput</span><span class="p">()</span>
     <span class="n">obj</span><span class="o">.</span><span class="n">ParseFromString</span><span class="p">(</span><span class="n">profile</span><span class="p">)</span>
-    
+
     <span class="n">out</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="n">is_one_dimensional</span> <span class="o">=</span> <span class="kc">False</span>
-    
+
     <span class="c1"># load in all higher level attributes</span>
     <span class="n">out</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">klass</span>
     <span class="n">out</span><span class="p">[</span><span class="s1">&#39;algorithm&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">algorithm</span>
@@ -580,7 +602,7 @@
         <span class="s1">&#39;ts&#39;</span><span class="p">:</span> <span class="n">from_proto_to_array</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">ts</span><span class="p">),</span>
         <span class="s1">&#39;query&#39;</span><span class="p">:</span> <span class="n">from_proto_to_array</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">query</span><span class="p">)</span>
     <span class="p">}</span>
-    
+
     <span class="k">if</span> <span class="n">obj</span><span class="o">.</span><span class="n">klass</span> <span class="o">==</span> <span class="s1">&#39;MatrixProfile&#39;</span><span class="p">:</span>
         <span class="n">out</span><span class="p">[</span><span class="s1">&#39;mp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">from_proto_to_array</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">mp</span><span class="o">.</span><span class="n">mp</span><span class="p">)</span>
         <span class="n">out</span><span class="p">[</span><span class="s1">&#39;pi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">from_proto_to_array</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">mp</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
@@ -591,22 +613,31 @@
         <span class="n">out</span><span class="p">[</span><span class="s1">&#39;ez&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">mp</span><span class="o">.</span><span class="n">ez</span>
         <span class="n">out</span><span class="p">[</span><span class="s1">&#39;join&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">mp</span><span class="o">.</span><span class="n">join</span>
         <span class="n">out</span><span class="p">[</span><span class="s1">&#39;w&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">windows</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-        
+
         <span class="n">is_one_dimensional</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">out</span><span class="p">[</span><span class="s1">&#39;mp&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
-        
+
     <span class="k">elif</span> <span class="n">obj</span><span class="o">.</span><span class="n">klass</span> <span class="o">==</span> <span class="s1">&#39;PMP&#39;</span><span class="p">:</span>
         <span class="n">out</span><span class="p">[</span><span class="s1">&#39;pmp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">from_proto_to_array</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">pmp</span><span class="o">.</span><span class="n">pmp</span><span class="p">)</span>
         <span class="n">out</span><span class="p">[</span><span class="s1">&#39;pmpi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">from_proto_to_array</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">pmp</span><span class="o">.</span><span class="n">pmpi</span><span class="p">)</span>
         <span class="n">out</span><span class="p">[</span><span class="s1">&#39;windows&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">windows</span><span class="p">)</span>
-    
+
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">discords</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="kc">None</span><span class="p">))</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">discords</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">out</span><span class="p">[</span><span class="s1">&#39;discords&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">discords_from_proto</span><span class="p">(</span>
             <span class="n">obj</span><span class="o">.</span><span class="n">discords</span><span class="p">,</span> <span class="n">is_one_dimensional</span><span class="o">=</span><span class="n">is_one_dimensional</span><span class="p">)</span>
-    
+
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">motifs</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="kc">None</span><span class="p">))</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">motifs</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">out</span><span class="p">[</span><span class="s1">&#39;motifs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">motifs_from_proto</span><span class="p">(</span>
             <span class="n">obj</span><span class="o">.</span><span class="n">motifs</span><span class="p">,</span> <span class="n">is_one_dimensional</span><span class="o">=</span><span class="n">is_one_dimensional</span><span class="p">)</span>
-        
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">cmp</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="kc">None</span><span class="p">))</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">cmp</span><span class="o">.</span><span class="n">data</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">out</span><span class="p">[</span><span class="s1">&#39;cmp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">from_proto_to_array</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">cmp</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">av</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="kc">None</span><span class="p">))</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">av</span><span class="o">.</span><span class="n">data</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">out</span><span class="p">[</span><span class="s1">&#39;av&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">from_proto_to_array</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">av</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">av_type</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="kc">None</span><span class="p">))</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">av_type</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">out</span><span class="p">[</span><span class="s1">&#39;av_type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">av_type</span>
+
     <span class="k">return</span> <span class="n">out</span></div>
 </pre></div>
 

@@ -1,0 +1,1023 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Hierarchical Clustering with MPDist &mdash; MatrixProfile</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Algorithms" href="../Algorithms.html" />
+    <link rel="prev" title="ECG Motifs - Annotation Vectors" href="ECG_Annotation_Vectors.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> matrixprofile
+          
+
+          
+            
+            <img src="../_static/mpf-logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Quickstart.html">Quickstart Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../examples.html">Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="NYC_Taxis.html">NYC Taxi Analysis - Anomalies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Plot_Discords_MP.html">Plot MatrixProfile Discords - Anomalies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ECG_Annotation_Vectors.html">ECG Motifs - Annotation Vectors</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Hierarchical Clustering with MPDist</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Download-and-Extract-Data">Download and Extract Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Load-Raw-Data">Load Raw Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Visualize-Participant-Data">Visualize Participant Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Transform-Data">Transform Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Random-Sampling">Random Sampling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Good-Enough-Window-Size">Good Enough Window Size</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Clustering-and-Visualizing-Results">Clustering and Visualizing Results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Citations">Citations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Algorithms.html">Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../help.html">Getting Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../code_of_conduct.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../citations.html">Citations</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/matrix-profile-foundation/matrixprofile">Code Repository (Github)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://matrixprofile.org">Website</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">matrixprofile</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../examples.html">Examples</a> &raquo;</li>
+        
+      <li>Hierarchical Clustering with MPDist</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/examples/Hierarchical_Clustering_Accelerometer_Walk_Stand_etc.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container,
+div.nbinput.container div.prompt,
+div.nbinput.container div.input_area,
+div.nbinput.container div[class*=highlight],
+div.nbinput.container div[class*=highlight] pre,
+div.nboutput.container,
+div.nboutput.container div.prompt,
+div.nboutput.container div.output_area,
+div.nboutput.container div[class*=highlight],
+div.nboutput.container div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    min-width: 5ex;
+    padding-top: 0.4em;
+    padding-right: 0.4em;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    padding: 0.4em;
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="Hierarchical-Clustering-with-MPDist">
+<h1>Hierarchical Clustering with MPDist<a class="headerlink" href="#Hierarchical-Clustering-with-MPDist" title="Permalink to this headline">¶</a></h1>
+<p>In this tutorial you will see how to use the novel MPDist metric to cluster time series data. The time series data used in this example is accelerometer data consisting of individuals performing the following actions:</p>
+<ol class="arabic simple">
+<li><p>Working at Computer</p></li>
+<li><p>Standing Up, Walking and Going updown stairs</p></li>
+<li><p>Standing</p></li>
+<li><p>Walking</p></li>
+<li><p>Going UpDown Stairs</p></li>
+<li><p>Walking and Talking with Someone</p></li>
+<li><p>Talking while Standing</p></li>
+</ol>
+<p>You can read more about the data set here:</p>
+<p><a class="reference external" href="http://archive.ics.uci.edu/ml/datasets/Activity+Recognition+from+Single+Chest-Mounted+Accelerometer">http://archive.ics.uci.edu/ml/datasets/Activity+Recognition+from+Single+Chest-Mounted+Accelerometer</a></p>
+<p>In essence, MPDist considers “…two time series to be similar if they share many similar subsequences, regardless of the order of matching subsequences.” [1] I encourage those interested in the details of the metric to read the paper.</p>
+<p><strong>Note that all code written in this tutorial has only been tested with Python 3!</strong></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matrixprofile</span> <span class="k">as</span> <span class="nn">mp</span>
+<span class="kn">from</span> <span class="nn">scipy.cluster.hierarchy</span> <span class="k">import</span> <span class="n">dendrogram</span>
+
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="k">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+<div class="section" id="Download-and-Extract-Data">
+<h2>Download and Extract Data<a class="headerlink" href="#Download-and-Extract-Data" title="Permalink to this headline">¶</a></h2>
+<p>In this section we simply obtain the dataset and extract it.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">urllib.request</span>
+<span class="kn">import</span> <span class="nn">zipfile</span>
+<span class="kn">import</span> <span class="nn">tempfile</span>
+<span class="kn">import</span> <span class="nn">os</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">temp_dir</span> <span class="o">=</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">mkdtemp</span><span class="p">()</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://archive.ics.uci.edu/ml/machine-learning-databases/00287/Activity%20Recognition</span><span class="si">%20f</span><span class="s1">rom%20Single%20Chest-Mounted%20Accelerometer.zip&#39;</span>
+<span class="n">tmp_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">temp_dir</span><span class="p">,</span> <span class="s1">&#39;activity_recognition.zip&#39;</span><span class="p">)</span>
+<span class="n">extracted_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">temp_dir</span><span class="p">,</span> <span class="s1">&#39;extracted&#39;</span><span class="p">)</span>
+
+<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">extracted_dir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">response</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="n">tmp_file</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">out_file</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">read</span><span class="p">()</span> <span class="c1"># a `bytes` object</span>
+    <span class="n">out_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="n">tmp_file</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">zip_ref</span><span class="p">:</span>
+    <span class="n">zip_ref</span><span class="o">.</span><span class="n">extractall</span><span class="p">(</span><span class="n">extracted_dir</span><span class="p">)</span>
+
+<span class="n">data_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">extracted_dir</span><span class="p">,</span> <span class="s1">&#39;Activity Recognition from Single Chest-Mounted Accelerometer&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Load-Raw-Data">
+<h2>Load Raw Data<a class="headerlink" href="#Load-Raw-Data" title="Permalink to this headline">¶</a></h2>
+<p>In this section we load the raw data and process it. For readability purposes, the target labels are transformed into human readable descriptions.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">label_description</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">1: Working at Computer</span>
+<span class="s1">2: Standing Up, Walking and Going updown stairs</span>
+<span class="s1">3: Standing</span>
+<span class="s1">4: Walking</span>
+<span class="s1">5: Going UpDown Stairs</span>
+<span class="s1">6: Walking and Talking with Someone</span>
+<span class="s1">7: Talking while Standing</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">label_description</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">):</span>
+    <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">line</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
+        <span class="k">continue</span>
+
+    <span class="n">tmp</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
+    <span class="n">num</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="n">description</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+    <span class="n">labels</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+        <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">num</span><span class="p">),</span>
+        <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="n">description</span>
+    <span class="p">})</span>
+
+<span class="n">labels_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">labels_df</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>label</th>
+      <th>description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>1</td>
+      <td>Working at Computer</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>2</td>
+      <td>Standing Up, Walking and Going updown stairs</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>3</td>
+      <td>Standing</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>4</td>
+      <td>Walking</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>5</td>
+      <td>Going UpDown Stairs</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>6</td>
+      <td>Walking and Talking with Someone</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>7</td>
+      <td>Talking while Standing</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>This code snippet reads all of the csv files with pandas and combines them into a single data frame.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">glob</span> <span class="k">import</span> <span class="n">glob</span>
+
+<span class="n">dfs</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">csv</span> <span class="ow">in</span> <span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="s1">&#39;*.csv&#39;</span><span class="p">)):</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">csv</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;sequence&#39;</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">,</span> <span class="s1">&#39;label&#39;</span><span class="p">])</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;str&#39;</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;participant_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">labels_df</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;label&#39;</span><span class="p">)</span>
+    <span class="n">dfs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">dfs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sequence</th>
+      <th>x</th>
+      <th>y</th>
+      <th>z</th>
+      <th>label</th>
+      <th>participant_id</th>
+      <th>description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>0.0</td>
+      <td>1983</td>
+      <td>2438</td>
+      <td>1825</td>
+      <td>1</td>
+      <td>11</td>
+      <td>Working at Computer</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>1.0</td>
+      <td>1948</td>
+      <td>2442</td>
+      <td>1797</td>
+      <td>1</td>
+      <td>11</td>
+      <td>Working at Computer</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>2.0</td>
+      <td>1927</td>
+      <td>2388</td>
+      <td>1784</td>
+      <td>1</td>
+      <td>11</td>
+      <td>Working at Computer</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>3.0</td>
+      <td>1960</td>
+      <td>2319</td>
+      <td>1831</td>
+      <td>1</td>
+      <td>11</td>
+      <td>Working at Computer</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>4.0</td>
+      <td>1967</td>
+      <td>2274</td>
+      <td>1871</td>
+      <td>1</td>
+      <td>11</td>
+      <td>Working at Computer</td>
+    </tr>
+    <tr>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <td>122195</td>
+      <td>122200.0</td>
+      <td>2063</td>
+      <td>2360</td>
+      <td>2000</td>
+      <td>7</td>
+      <td>4</td>
+      <td>Talking while Standing</td>
+    </tr>
+    <tr>
+      <td>122196</td>
+      <td>122200.0</td>
+      <td>2056</td>
+      <td>2368</td>
+      <td>2001</td>
+      <td>7</td>
+      <td>4</td>
+      <td>Talking while Standing</td>
+    </tr>
+    <tr>
+      <td>122197</td>
+      <td>122200.0</td>
+      <td>2059</td>
+      <td>2366</td>
+      <td>2001</td>
+      <td>7</td>
+      <td>4</td>
+      <td>Talking while Standing</td>
+    </tr>
+    <tr>
+      <td>122198</td>
+      <td>122200.0</td>
+      <td>2063</td>
+      <td>2382</td>
+      <td>2004</td>
+      <td>7</td>
+      <td>4</td>
+      <td>Talking while Standing</td>
+    </tr>
+    <tr>
+      <td>122199</td>
+      <td>122200.0</td>
+      <td>2071</td>
+      <td>2381</td>
+      <td>2004</td>
+      <td>7</td>
+      <td>4</td>
+      <td>Talking while Standing</td>
+    </tr>
+  </tbody>
+</table>
+<p>1923177 rows × 7 columns</p>
+</div></div>
+</div>
+<p>The data consists of multiple coordinates from the accelerometer readings. Here we will just use the x data point.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;sequence&#39;</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;label&#39;</span><span class="p">,</span> <span class="s1">&#39;participant_id&#39;</span><span class="p">,</span> <span class="s1">&#39;description&#39;</span><span class="p">]</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">cols</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Visualize-Participant-Data">
+<h2>Visualize Participant Data<a class="headerlink" href="#Visualize-Participant-Data" title="Permalink to this headline">¶</a></h2>
+<p>Here we just plot the entire x signal for a few participants to get an understanding of what the data looks like.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">c</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">participant_id</span> <span class="ow">in</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;participant_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">():</span>
+    <span class="n">c</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;participant_id&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">participant_id</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;sequence&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">f</span><span class="s1">&#39;participant_id </span><span class="si">{participant_id}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">c</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="k">break</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/examples_Hierarchical_Clustering_Accelerometer_Walk_Stand_etc_14_0.png" src="../_images/examples_Hierarchical_Clustering_Accelerometer_Walk_Stand_etc_14_0.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/examples_Hierarchical_Clustering_Accelerometer_Walk_Stand_etc_14_1.png" src="../_images/examples_Hierarchical_Clustering_Accelerometer_Walk_Stand_etc_14_1.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/examples_Hierarchical_Clustering_Accelerometer_Walk_Stand_etc_14_2.png" src="../_images/examples_Hierarchical_Clustering_Accelerometer_Walk_Stand_etc_14_2.png" />
+</div>
+</div>
+</div>
+<div class="section" id="Transform-Data">
+<h2>Transform Data<a class="headerlink" href="#Transform-Data" title="Permalink to this headline">¶</a></h2>
+<p>This section transforms the data so that we have subsequences of data corresponding to a given activity. The series_data array contains the subsequences of an activity, the series labels are used to keep track of the activity, and the participant labels are used to keep track of the participant.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">&#39;participant_id&#39;</span><span class="p">,</span> <span class="s1">&#39;sequence&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">series_data</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">series_labels</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">participant_labels</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">items</span> <span class="ow">in</span> <span class="n">labels_df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="n">descr</span> <span class="o">=</span> <span class="n">items</span><span class="p">[</span><span class="s1">&#39;description&#39;</span><span class="p">]</span>
+    <span class="n">label</span> <span class="o">=</span> <span class="n">items</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span>
+
+    <span class="k">for</span> <span class="n">participant_id</span> <span class="ow">in</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;participant_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">():</span>
+        <span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;participant_id&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">participant_id</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">label</span><span class="p">)</span>
+        <span class="n">values</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">mask</span><span class="p">][</span><span class="s1">&#39;x&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+
+        <span class="n">series_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+        <span class="n">series_labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">descr</span><span class="p">)</span>
+        <span class="n">participant_labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">participant_id</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">len</span><span class="p">(</span><span class="n">series_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">series_labels</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">participant_labels</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(33677, &#39;Working at Computer&#39;, &#39;1&#39;)
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Random-Sampling">
+<h2>Random Sampling<a class="headerlink" href="#Random-Sampling" title="Permalink to this headline">¶</a></h2>
+<p>Here we take 25 random samples from the data set to see if our clustering seems logical. This saves time in the exploration phase allowing you to test more parameters.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">9999</span><span class="p">)</span>
+<span class="n">random_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">105</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">random_samples</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">random_labels</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">random_index</span> <span class="ow">in</span> <span class="n">random_indices</span><span class="p">:</span>
+    <span class="n">random_samples</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">series_data</span><span class="p">[</span><span class="n">random_index</span><span class="p">])</span>
+    <span class="n">random_labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">series_labels</span><span class="p">[</span><span class="n">random_index</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Good-Enough-Window-Size">
+<h2>Good Enough Window Size<a class="headerlink" href="#Good-Enough-Window-Size" title="Permalink to this headline">¶</a></h2>
+<p>Here we look identify what a “good” window size may be based on the minimum length of the time series. The window size must be smaller than the smallest time series length for the MPDist calculation to work.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">lengths</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">ts</span> <span class="ow">in</span> <span class="n">random_samples</span><span class="p">:</span>
+    <span class="n">lengths</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ts</span><span class="p">))</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">lengths</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+928
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Clustering-and-Visualizing-Results">
+<h2>Clustering and Visualizing Results<a class="headerlink" href="#Clustering-and-Visualizing-Results" title="Permalink to this headline">¶</a></h2>
+<p>Now that all of the data processing is complete, we can finally cluster the sampled data and look at the results.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">clusters</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="n">discover</span><span class="o">.</span><span class="n">hierarchical_clusters</span><span class="p">(</span><span class="n">random_samples</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">dendrogram</span><span class="p">(</span><span class="n">clusters</span><span class="p">[</span><span class="s1">&#39;linkage_matrix&#39;</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="n">random_labels</span><span class="p">,</span> <span class="n">leaf_rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/examples_Hierarchical_Clustering_Accelerometer_Walk_Stand_etc_26_0.png" src="../_images/examples_Hierarchical_Clustering_Accelerometer_Walk_Stand_etc_26_0.png" />
+</div>
+</div>
+<p>The results seem logical, however the dataset used uncalibrated accelerometers and I only chose to use the x value. I do not know if the x value is representative enough to identify all activities. With this in mind, I encourage you to take this example and test it on the z or y value and even toy with the clustering parameters.</p>
+</div>
+<div class="section" id="Citations">
+<h2>Citations<a class="headerlink" href="#Citations" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Matrix Proﬁle XII: MPdist: A Novel Time Series Distance Measure to Allow Data Mining in More Challenging Scenarios. Shaghayegh Gharghabi, Shima Imani, Anthony Bagnall, Amirali Darvishzadeh, Eamonn Keogh. ICDM 2018. <a class="reference external" href="https://docs.google.com/viewer?a=v&amp;pid=sites&amp;srcid=ZGVmYXVsdGRvbWFpbnxtcGRpc3RpbmZvfGd4OjNjMGZjOTBmYWEzNjM0ZWY">expanded version PDF</a></p></li>
+</ol>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../Algorithms.html" class="btn btn-neutral float-right" title="Algorithms" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="ECG_Annotation_Vectors.html" class="btn btn-neutral float-left" title="ECG Motifs - Annotation Vectors" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Matrix Profile Foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

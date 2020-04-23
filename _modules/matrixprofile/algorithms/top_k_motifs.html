@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                1.0
+                1.1
               </div>
             
           
@@ -207,7 +207,7 @@
 <span class="sd">        motifs key consists of the following structure.</span>
 
 <span class="sd">        A list of dicts containing motif indices and their corresponding</span>
-<span class="sd">        neighbor indices. Note that each index is a (row, col) index </span>
+<span class="sd">        neighbor indices. Note that each index is a (row, col) index</span>
 <span class="sd">        corresponding to the pan matrix profile.</span>
 <span class="sd">        &gt;&gt;&gt; [</span>
 <span class="sd">        &gt;&gt;&gt;     {</span>
@@ -223,56 +223,56 @@
     <span class="n">data</span> <span class="o">=</span> <span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
     <span class="n">ts</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;ts&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
     <span class="n">data_len</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span>
-    
+
     <span class="n">pmp</span> <span class="o">=</span> <span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;pmp&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-    <span class="n">profile_len</span> <span class="o">=</span> <span class="n">pmp</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>   
+    <span class="n">profile_len</span> <span class="o">=</span> <span class="n">pmp</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
     <span class="n">pmpi</span> <span class="o">=</span> <span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;pmpi&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
     <span class="n">windows</span> <span class="o">=</span> <span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;windows&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-    
+
     <span class="c1"># make sure we are working with Euclidean distances</span>
     <span class="n">tmp</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="k">if</span> <span class="n">core</span><span class="o">.</span><span class="n">is_pearson_array</span><span class="p">(</span><span class="n">pmp</span><span class="p">):</span>
         <span class="n">tmp</span> <span class="o">=</span> <span class="n">core</span><span class="o">.</span><span class="n">pearson_to_euclidean</span><span class="p">(</span><span class="n">pmp</span><span class="p">,</span> <span class="n">windows</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">tmp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">pmp</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;d&#39;</span><span class="p">)</span>
-    
+
     <span class="c1"># replace nan and infs with infinity</span>
     <span class="n">tmp</span><span class="p">[</span><span class="n">core</span><span class="o">.</span><span class="n">nan_inf_indices</span><span class="p">(</span><span class="n">tmp</span><span class="p">)]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span>
-    
+
     <span class="n">motifs</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
         <span class="n">min_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unravel_index</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">tmp</span><span class="p">),</span> <span class="n">tmp</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
         <span class="n">min_dist</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">[</span><span class="n">min_idx</span><span class="p">]</span>
-        
+
         <span class="c1"># nothing else to find...</span>
         <span class="k">if</span> <span class="n">core</span><span class="o">.</span><span class="n">is_nan_inf</span><span class="p">(</span><span class="n">min_dist</span><span class="p">):</span>
             <span class="k">break</span>
-        
+
         <span class="c1"># create the motif pair</span>
         <span class="n">min_row_idx</span> <span class="o">=</span> <span class="n">min_idx</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">min_col_idx</span> <span class="o">=</span> <span class="n">min_idx</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-        
+
         <span class="c1"># motif pairs are respective to the column of the matching row</span>
         <span class="n">first_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">([</span><span class="n">min_col_idx</span><span class="p">,</span> <span class="n">pmpi</span><span class="p">[</span><span class="n">min_row_idx</span><span class="p">][</span><span class="n">min_col_idx</span><span class="p">]])</span>
         <span class="n">second_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">([</span><span class="n">min_col_idx</span><span class="p">,</span> <span class="n">pmpi</span><span class="p">[</span><span class="n">min_row_idx</span><span class="p">][</span><span class="n">min_col_idx</span><span class="p">]])</span>
-        
+
         <span class="c1"># compute distance profile for first appearance</span>
         <span class="n">window_size</span> <span class="o">=</span> <span class="n">windows</span><span class="p">[</span><span class="n">min_row_idx</span><span class="p">]</span>
         <span class="n">query</span> <span class="o">=</span> <span class="n">ts</span><span class="p">[</span><span class="n">first_idx</span><span class="p">:</span><span class="n">first_idx</span> <span class="o">+</span> <span class="n">window_size</span><span class="p">]</span>
         <span class="n">distance_profile</span> <span class="o">=</span> <span class="n">mass2</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">query</span><span class="p">)</span>
-        
+
         <span class="c1"># extend the distance profile to be as long as the original</span>
         <span class="n">infs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">profile_len</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">distance_profile</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">)</span>
         <span class="n">distance_profile</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">distance_profile</span><span class="p">,</span> <span class="n">infs</span><span class="p">)</span>
-        
+
         <span class="c1"># exclude already picked motifs and neighbors</span>
-        <span class="n">mask</span> <span class="o">=</span> <span class="n">core</span><span class="o">.</span><span class="n">nan_inf_indices</span><span class="p">(</span><span class="n">pmp</span><span class="p">[</span><span class="n">min_row_idx</span><span class="p">])</span>        
+        <span class="n">mask</span> <span class="o">=</span> <span class="n">core</span><span class="o">.</span><span class="n">nan_inf_indices</span><span class="p">(</span><span class="n">pmp</span><span class="p">[</span><span class="n">min_row_idx</span><span class="p">])</span>
         <span class="n">distance_profile</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span>
-        
+
         <span class="c1"># determine the exclusion zone if not set</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">exclusion_zone</span><span class="p">:</span>
             <span class="n">exclusion_zone</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">window_size</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span>
-        
+
         <span class="c1"># apply exclusion zone for motif pair</span>
         <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="p">(</span><span class="n">first_idx</span><span class="p">,</span> <span class="n">second_idx</span><span class="p">):</span>
             <span class="n">distance_profile</span> <span class="o">=</span> <span class="n">core</span><span class="o">.</span><span class="n">apply_exclusion_zone</span><span class="p">(</span>
@@ -292,7 +292,7 @@
                 <span class="n">tmp</span><span class="p">[</span><span class="n">min_row_idx</span><span class="p">]</span>
             <span class="p">)</span>
             <span class="n">tmp</span><span class="p">[</span><span class="n">min_row_idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp2</span>
-        
+
         <span class="c1"># find up to max_neighbors</span>
         <span class="n">neighbors</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_neighbors</span><span class="p">):</span>
@@ -323,24 +323,24 @@
                 <span class="n">tmp</span><span class="p">[</span><span class="n">min_row_idx</span><span class="p">]</span>
             <span class="p">)</span>
             <span class="n">tmp</span><span class="p">[</span><span class="n">min_row_idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp2</span>
-        
+
         <span class="c1"># add the motifs and neighbors</span>
         <span class="c1"># note that they are (row, col) indices</span>
         <span class="n">motifs</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
             <span class="s1">&#39;motifs&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="n">min_row_idx</span><span class="p">,</span> <span class="n">first_idx</span><span class="p">),</span> <span class="p">(</span><span class="n">min_row_idx</span><span class="p">,</span> <span class="n">second_idx</span><span class="p">)],</span>
             <span class="s1">&#39;neighbors&#39;</span><span class="p">:</span> <span class="n">neighbors</span>
         <span class="p">})</span>
-    
+
     <span class="n">profile</span><span class="p">[</span><span class="s1">&#39;motifs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">motifs</span>
 
     <span class="k">return</span> <span class="n">profile</span>
 
 
-<span class="k">def</span> <span class="nf">mp_top_k_motifs</span><span class="p">(</span><span class="n">profile</span><span class="p">,</span> <span class="n">exclusion_zone</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">max_neighbors</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">mp_top_k_motifs</span><span class="p">(</span><span class="n">profile</span><span class="p">,</span> <span class="n">exclusion_zone</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">max_neighbors</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">use_cmp</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Find the top K number of motifs (patterns) given a matrix profile. By</span>
 <span class="sd">    default the algorithm will find up to 3 motifs (k) and up to 10 of their</span>
-<span class="sd">    neighbors with a radius of 3 * min_dist.</span>
+<span class="sd">    neighbors with a radius of 3 * min_dist using the regular matrix profile.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -357,6 +357,8 @@
 <span class="sd">    radius : int, Default = 3</span>
 <span class="sd">        The radius is used to associate a neighbor by checking if the</span>
 <span class="sd">        neighbor&#39;s distance is less than or equal to dist * radius</span>
+<span class="sd">    use_cmp : bool, Default = False</span>
+<span class="sd">        Use the Corrected Matrix Profile to compute the motifs.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -386,6 +388,8 @@
     <span class="n">data_len</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span>
     <span class="n">motifs</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">mp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">profile</span><span class="p">[</span><span class="s1">&#39;mp&#39;</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">use_cmp</span><span class="p">:</span>
+        <span class="n">mp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">profile</span><span class="p">[</span><span class="s1">&#39;cmp&#39;</span><span class="p">])</span>
     <span class="n">mpi</span> <span class="o">=</span> <span class="n">profile</span><span class="p">[</span><span class="s1">&#39;pi&#39;</span><span class="p">]</span>
 
     <span class="c1"># TODO: this is based on STOMP standards when this motif finding algorithm</span>
@@ -412,7 +416,7 @@
         <span class="n">distance_profile</span> <span class="o">=</span> <span class="n">mass2</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">query</span><span class="p">)</span>
 
         <span class="c1"># exclude already picked motifs and neighbors</span>
-        <span class="n">mask</span> <span class="o">=</span> <span class="n">core</span><span class="o">.</span><span class="n">nan_inf_indices</span><span class="p">(</span><span class="n">mp</span><span class="p">)</span>    
+        <span class="n">mask</span> <span class="o">=</span> <span class="n">core</span><span class="o">.</span><span class="n">nan_inf_indices</span><span class="p">(</span><span class="n">mp</span><span class="p">)</span>
         <span class="n">distance_profile</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span>
 
         <span class="c1"># apply exclusion zone for motif pair</span>
@@ -475,11 +479,13 @@
     <span class="k">return</span> <span class="n">profile</span>
 
 
-<span class="k">def</span> <span class="nf">top_k_motifs</span><span class="p">(</span><span class="n">profile</span><span class="p">,</span> <span class="n">exclusion_zone</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">max_neighbors</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">top_k_motifs</span><span class="p">(</span><span class="n">profile</span><span class="p">,</span> <span class="n">exclusion_zone</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">max_neighbors</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">use_cmp</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Find the top K number of motifs (patterns) given a matrix profile or a pan</span>
 <span class="sd">    matrix profile. By default the algorithm will find up to 3 motifs (k) and</span>
-<span class="sd">    up to 10 of their neighbors with a radius of 3 * min_dist.</span>
+<span class="sd">    up to 10 of their neighbors with a radius of 3 * min_dist using the</span>
+<span class="sd">    regular matrix profile. If the profile is a Matrix Profile data structure,</span>
+<span class="sd">    you can also use a Corrected Matrix Profile to compute the motifs.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -496,6 +502,9 @@
 <span class="sd">    radius : int, Default = 3</span>
 <span class="sd">        The radius is used to associate a neighbor by checking if the</span>
 <span class="sd">        neighbor&#39;s distance is less than or equal to dist * radius</span>
+<span class="sd">    use_cmp : bool, Default = False</span>
+<span class="sd">        Use the Corrected Matrix Profile to compute the motifs (only for</span>
+<span class="sd">        a Matrix Profile data structure).</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -530,12 +539,22 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Unsupported data structure!&#39;</span><span class="p">)</span>
 
+    <span class="k">if</span> <span class="bp">cls</span> <span class="o">==</span> <span class="s1">&#39;PMP&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">func</span><span class="p">(</span>
+            <span class="n">profile</span><span class="p">,</span>
+            <span class="n">exclusion_zone</span><span class="o">=</span><span class="n">exclusion_zone</span><span class="p">,</span>
+            <span class="n">k</span><span class="o">=</span><span class="n">k</span><span class="p">,</span>
+            <span class="n">max_neighbors</span><span class="o">=</span><span class="n">max_neighbors</span><span class="p">,</span>
+            <span class="n">radius</span><span class="o">=</span><span class="n">radius</span>
+        <span class="p">)</span>
+        
     <span class="k">return</span> <span class="n">func</span><span class="p">(</span>
         <span class="n">profile</span><span class="p">,</span>
         <span class="n">exclusion_zone</span><span class="o">=</span><span class="n">exclusion_zone</span><span class="p">,</span>
         <span class="n">k</span><span class="o">=</span><span class="n">k</span><span class="p">,</span>
         <span class="n">max_neighbors</span><span class="o">=</span><span class="n">max_neighbors</span><span class="p">,</span>
-        <span class="n">radius</span><span class="o">=</span><span class="n">radius</span>
+        <span class="n">radius</span><span class="o">=</span><span class="n">radius</span><span class="p">,</span>
+        <span class="n">use_cmp</span><span class="o">=</span><span class="n">use_cmp</span>
     <span class="p">)</span>
 </pre></div>
 

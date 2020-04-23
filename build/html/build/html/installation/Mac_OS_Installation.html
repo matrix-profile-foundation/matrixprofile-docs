@@ -1,0 +1,321 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Mac OS Installation &mdash; MatrixProfile</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../../" src="../../../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../../../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../../../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+          
+
+          
+            <a href="../../../../../index.html" class="icon icon-home"> matrixprofile
+          
+
+          
+            
+            <img src="../../../../../_static/mpf-logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../Quickstart.html">Quickstart Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../Algorithms.html">Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../help.html">Getting Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../code_of_conduct.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../citations.html">Citations</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/matrix-profile-foundation/matrixprofile">Code Repository (Github)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://matrixprofile.org">Website</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">matrixprofile</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Mac OS Installation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../../../_sources/build/html/build/html/installation/Mac_OS_Installation.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="Mac-OS-Installation">
+<h1>Mac OS Installation<a class="headerlink" href="#Mac-OS-Installation" title="Permalink to this headline">¶</a></h1>
+<p>Mac OS installation is broken up into two categories. The first is for end user installation and the second is for development.</p>
+<div class="section" id="End-User-Installation">
+<h2>End User Installation<a class="headerlink" href="#End-User-Installation" title="Permalink to this headline">¶</a></h2>
+<p>The majority of users will want to simply install the binary distribution of the library. This can be accomplished using pip. If we do not have a binary wheel for your operating system, you must follow the development installation guide.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install matrixprofile
+</pre></div>
+</div>
+</div>
+<div class="section" id="Development-Installation">
+<h2>Development Installation<a class="headerlink" href="#Development-Installation" title="Permalink to this headline">¶</a></h2>
+<p>Due to our usage of Cython and OpenMP for some modules, you are required to use homebrew’s C compiler gcc. Mac OS decided to drop support for OpenMP requiring manual installation of it. This development installation will walk you through the preferred way to get set up for development.</p>
+<div class="section" id="Install-Homebrew">
+<h3>Install Homebrew<a class="headerlink" href="#Install-Homebrew" title="Permalink to this headline">¶</a></h3>
+<p>Homebrew is required to install gcc, llvm and openmp. Go to the <a class="reference external" href="https://brew.sh">homebrew website</a> and install homebrew. In most cases it will automatically prompt you to install XCode Command Line Tools. If it does not, please install it.</p>
+</div>
+<div class="section" id="Install-Anaconda">
+<h3>Install Anaconda<a class="headerlink" href="#Install-Anaconda" title="Permalink to this headline">¶</a></h3>
+<p>Anaconda has become the defacto Python distribution for scientific computing and is highly recommended. You may use a base installation of Python without it, but this document does not cover that use case.</p>
+<p>Download the command line installer of Anaconda from the <a class="reference external" href="https://www.anaconda.com/distribution/">Anaconda website</a>.</p>
+<p>Open a terminal and execute the installer. If you are using the latest Mac OS (as of December 2019) Catalina, Anaconda does not automatically create a ZSH entry (the default shell). However, it does create an entry in your .bash_profile. To always load Anaconda environment when you launch a shell, run the following in a terminal:</p>
+<p>Note that all commands assume you installed Anaconda in your home directory.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="o">~/.</span><span class="n">bash_profile</span>
+<span class="n">conda</span> <span class="n">init</span> <span class="n">zsh</span>
+</pre></div>
+</div>
+<p>Conda will now load the (base) environment when you launch a terminal.</p>
+</div>
+<div class="section" id="Install-C-Libraries">
+<h3>Install C Libraries<a class="headerlink" href="#Install-C-Libraries" title="Permalink to this headline">¶</a></h3>
+<p>In this section you will install llvm, libomp and gcc via homebrew.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">brew</span> <span class="n">install</span> <span class="n">llvm</span> <span class="n">libomp</span> <span class="n">gcc</span>
+</pre></div>
+</div>
+<p>Once this is finished we need to create a symlink to the gcc version installed. This way it will be found when Cython tries to compile the Cython modules. Note that you should change {version} to the version of gcc that you installed.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">gcc</span><span class="o">-</span><span class="p">{</span><span class="n">version</span><span class="p">}</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">gcc</span>
+</pre></div>
+</div>
+<p>We also need to add some entries to our .zshrc file so that openmp can be found. Copy and paste the following lines into your ~/.zshrc file.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">PATH</span><span class="o">=</span><span class="s2">&quot;/usr/local/opt/llvm/bin:$PATH&quot;</span>
+<span class="n">export</span> <span class="n">LDFLAGS</span><span class="o">=</span><span class="s2">&quot;-L/usr/local/opt/llvm/lib&quot;</span>
+<span class="n">export</span> <span class="n">CPPFLAGS</span><span class="o">=</span><span class="s2">&quot;-I/usr/local/opt/llvm/include&quot;</span>
+</pre></div>
+</div>
+<p>Once this is complete, we can keep using the same terminal by simply sourcing the .zshrc file.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="o">~/.</span><span class="n">zshrc</span>
+</pre></div>
+</div>
+<p>To verify that openmp is working properly with gcc, we can create a simple C application. Create a file named “omptest.c” with the following code:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;omp.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="cp">#pragma omp parallel num_threads(4)</span>
+  <span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello from thread %d, nthreads %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">omp_get_thread_num</span><span class="p">(),</span> <span class="n">omp_get_num_threads</span><span class="p">());</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="n">EXIT_SUCCESS</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Now we can compile and run the application.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gcc</span> <span class="o">-</span><span class="n">fopenmp</span> <span class="n">omptest</span><span class="o">.</span><span class="n">c</span> <span class="o">-</span><span class="n">o</span> <span class="n">omptest</span>
+<span class="o">./</span><span class="n">omptest</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="Install-matrixprofile-for-Development">
+<h3>Install matrixprofile for Development<a class="headerlink" href="#Install-matrixprofile-for-Development" title="Permalink to this headline">¶</a></h3>
+<p>Finally, we can clone the matrixprofile source code and install it in development mode. If you wish, you may create a new Anaconda environment for this. Please refer to the <a class="reference external" href="https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-with-commands">Anaconda documentation</a> to create a conda environment.</p>
+<p>When I clone source code, I tend to favor putting all source files in a “src” directory within my home directory. Please substitute to suite your development preferences.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="o">~/</span><span class="n">src</span>
+<span class="n">cd</span> <span class="o">~/</span><span class="n">src</span>
+<span class="n">git</span> <span class="n">clone</span> <span class="n">git</span><span class="nd">@github</span><span class="o">.</span><span class="n">com</span><span class="p">:</span><span class="n">matrix</span><span class="o">-</span><span class="n">profile</span><span class="o">-</span><span class="n">foundation</span><span class="o">/</span><span class="n">matrixprofile</span><span class="o">.</span><span class="n">git</span>
+<span class="n">cd</span> <span class="n">matrixprofile</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">e</span> <span class="o">.</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>Once the installation completes, you can try running the tests to verify everything is OK.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pytest</span> <span class="n">tests</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>Please refer to our contribution guidelines for details on what we expect. Happy coding!</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Matrix Profile Foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

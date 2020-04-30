@@ -239,8 +239,14 @@
 <p>Next, launch an Anaconda Powershell.</p>
 <p><img alt="Anaconda Powershell" src="../_images/install_microsoft_anaconda.jpeg" /></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">matrixprofile</span>
-<span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">e</span> <span class="o">.</span>
+
+<span class="c1"># for python 3.x</span>
 <span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
+
+<span class="c1"># for python 2.x</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">python2</span><span class="o">-</span><span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
+
+<span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">e</span> <span class="o">.</span>
 </pre></div>
 </div>
 <p>Once the installation completes, you can try running the tests to verify everything is OK.</p>

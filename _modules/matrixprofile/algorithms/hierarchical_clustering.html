@@ -26,6 +26,8 @@
         <script type="text/javascript" src="../../../_static/doctools.js"></script>
         <script type="text/javascript" src="../../../_static/language_data.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
@@ -63,7 +65,7 @@
             
             
               <div class="version">
-                1.1.1
+                1.1.3
               </div>
             
           
@@ -173,99 +175,11 @@
 <span class="nb">range</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">__builtins__</span><span class="p">,</span> <span class="s1">&#39;xrange&#39;</span><span class="p">,</span> <span class="nb">range</span><span class="p">)</span>
 <span class="c1"># end of py2 compatability boilerplate</span>
 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">scipy.cluster.hierarchy</span> <span class="k">import</span> <span class="n">linkage</span><span class="p">,</span> <span class="n">inconsistent</span><span class="p">,</span> <span class="n">fcluster</span>
 <span class="kn">from</span> <span class="nn">scipy.cluster.hierarchy</span> <span class="k">import</span> <span class="n">cophenet</span>
 
 <span class="kn">from</span> <span class="nn">matrixprofile</span> <span class="k">import</span> <span class="n">core</span>
-<span class="kn">from</span> <span class="nn">matrixprofile.algorithms.mpdist</span> <span class="k">import</span> <span class="n">mpdist</span>
-
-<span class="k">def</span> <span class="nf">compute_dist</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Helper function to parallelize pairwise distance calculation.</span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    args : tuple</span>
-<span class="sd">        The arguments to pass to the mpdist calculation.</span>
-<span class="sd">    </span>
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    values : tuple</span>
-<span class="sd">        The kth index and distance.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">k</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">distance</span> <span class="o">=</span> <span class="n">mpdist</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">args</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">args</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">threshold</span><span class="o">=</span><span class="n">args</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>
-
-    <span class="k">return</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">distance</span><span class="p">)</span>
-
-
-<span class="k">def</span> <span class="nf">pairwise_dist</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">window_size</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Utility function to compute all pairwise distances between the timeseries</span>
-<span class="sd">    using MPDist. </span>
-<span class="sd">    </span>
-<span class="sd">    Note</span>
-<span class="sd">    ----</span>
-<span class="sd">    scipy.spatial.distance.pdist cannot be used because they</span>
-<span class="sd">    do not allow for jagged arrays, however their code was used as a reference</span>
-<span class="sd">    in creating this function.</span>
-<span class="sd">    https://github.com/scipy/scipy/blob/master/scipy/spatial/distance.py#L2039</span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    X : array_like</span>
-<span class="sd">        An array_like object containing time series to compute distances for.</span>
-<span class="sd">    window_size : int</span>
-<span class="sd">        The window size to use in computing the MPDist.</span>
-<span class="sd">    threshold : float</span>
-<span class="sd">        The threshold used to compute MPDist.</span>
-<span class="sd">    n_jobs : int</span>
-<span class="sd">        Number of CPU cores to use during computation.</span>
-<span class="sd">    </span>
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    Y : np.ndarray</span>
-<span class="sd">        Returns a condensed distance matrix Y.  For</span>
-<span class="sd">        each :math:`i` and :math:`j` (where :math:`i&lt;j&lt;m`),where m is the </span>
-<span class="sd">        number of original observations. The metric ``dist(u=X[i], v=X[j])``</span>
-<span class="sd">        is computed and stored in entry ``ij``.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">core</span><span class="o">.</span><span class="n">is_array_like</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;X must be array_like!&#39;</span><span class="p">)</span>
-    
-    <span class="c1"># identify shape based on iterable or np.ndarray.shape</span>
-    <span class="n">m</span> <span class="o">=</span> <span class="mi">0</span>
-    
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-        <span class="n">m</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">m</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-    
-    <span class="n">dm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">m</span> <span class="o">*</span> <span class="p">(</span><span class="n">m</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">double</span><span class="p">)</span>
-    <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span>
-
-    <span class="k">if</span> <span class="n">n_jobs</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">m</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
-            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
-                <span class="n">dm</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">mpdist</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">window_size</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="n">threshold</span><span class="p">,</span> 
-                            <span class="n">n_jobs</span><span class="o">=</span><span class="n">n_jobs</span><span class="p">)</span>
-                <span class="n">k</span> <span class="o">=</span> <span class="n">k</span> <span class="o">+</span> <span class="mi">1</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">args</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">m</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
-            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
-                <span class="n">args</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">k</span><span class="p">,</span> <span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">window_size</span><span class="p">,</span> <span class="n">threshold</span><span class="p">))</span>
-                <span class="n">k</span> <span class="o">=</span> <span class="n">k</span> <span class="o">+</span> <span class="mi">1</span>
-        
-        <span class="k">with</span> <span class="n">core</span><span class="o">.</span><span class="n">mp_pool</span><span class="p">()(</span><span class="n">n_jobs</span><span class="p">)</span> <span class="k">as</span> <span class="n">pool</span><span class="p">:</span>
-            <span class="n">results</span> <span class="o">=</span> <span class="n">pool</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">compute_dist</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
-        
-        <span class="c1"># put results in the matrix</span>
-        <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
-            <span class="n">dm</span><span class="p">[</span><span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-    
-    <span class="k">return</span> <span class="n">dm</span>
+<span class="kn">from</span> <span class="nn">matrixprofile.algorithms.pairwise_dist</span> <span class="k">import</span> <span class="n">pairwise_dist</span>
 
 
 <div class="viewcode-block" id="hierarchical_clusters"><a class="viewcode-back" href="../../../api.html#matrixprofile.discover.hierarchical_clusters">[docs]</a><span class="k">def</span> <span class="nf">hierarchical_clusters</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">window_size</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;single&#39;</span><span class="p">,</span> 

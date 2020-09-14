@@ -65,7 +65,7 @@
             
             
               <div class="version">
-                1.1.3
+                1.1.4
               </div>
             
           
@@ -197,7 +197,7 @@
 <span class="sd">    query : array_like</span>
 <span class="sd">        Optionally a query series.</span>
 <span class="sd">    cross_correlation : bool, Default=False</span>
-<span class="sd">        Setermine if cross_correlation distance should be returned. It defaults</span>
+<span class="sd">        Determine if cross_correlation distance should be returned. It defaults</span>
 <span class="sd">        to Euclidean Distance.</span>
 <span class="sd">    n_jobs : int, Default = 1</span>
 <span class="sd">        Number of cpu cores to use.</span>
@@ -240,7 +240,6 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="n">mp</span><span class="p">,</span> <span class="n">mpi</span> <span class="o">=</span> <span class="n">cympx_parallel</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">cross_correlation</span><span class="p">),</span> <span class="n">n_jobs</span><span class="p">)</span>
 
-
     <span class="n">mp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">mp</span><span class="p">)</span>
     <span class="n">mpi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">mpi</span><span class="p">)</span>
     <span class="n">distance_metric</span> <span class="o">=</span> <span class="s1">&#39;euclidean&#39;</span>
@@ -256,7 +255,7 @@
         <span class="s1">&#39;lpi&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
         <span class="s1">&#39;metric&#39;</span><span class="p">:</span> <span class="n">distance_metric</span><span class="p">,</span>
         <span class="s1">&#39;w&#39;</span><span class="p">:</span> <span class="n">w</span><span class="p">,</span>
-        <span class="s1">&#39;ez&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">w</span> <span class="o">/</span> <span class="mi">4</span><span class="p">)),</span>
+        <span class="s1">&#39;ez&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">w</span> <span class="o">/</span> <span class="mf">4.0</span><span class="p">))</span> <span class="k">if</span> <span class="n">is_join</span> <span class="k">else</span> <span class="mi">0</span><span class="p">,</span>
         <span class="s1">&#39;join&#39;</span><span class="p">:</span> <span class="n">is_join</span><span class="p">,</span>
         <span class="s1">&#39;sample_pct&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
         <span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="p">{</span>

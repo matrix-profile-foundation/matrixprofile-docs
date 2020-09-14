@@ -65,7 +65,7 @@
             
             
               <div class="version">
-                1.1.3
+                1.1.4
               </div>
             
           
@@ -212,6 +212,7 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">ts</span> <span class="o">=</span> <span class="n">core</span><span class="o">.</span><span class="n">to_np_array</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;d&#39;</span><span class="p">)</span>
+    <span class="n">time_series_len</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span>
     <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">snippet_size</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">or</span> <span class="n">snippet_size</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">:</span>
@@ -272,6 +273,18 @@
     <span class="c1"># compute the fraction of each snippet</span>
     <span class="k">for</span> <span class="n">snippet</span> <span class="ow">in</span> <span class="n">snippets</span><span class="p">:</span>
         <span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">snippet</span><span class="p">[</span><span class="s1">&#39;distance&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">total_min</span><span class="p">)</span>
+        <span class="c1"># create a key &quot;neighbors&quot; for the snippet dict, </span>
+        <span class="c1"># and store all the time series indices for the data represented by a snippet (arr[mask])</span>
+        <span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">mask</span><span class="p">))</span>
+        <span class="c1"># max_index indicates the length of a profile, which is (n-m) in the Snippets paper)</span>
+        <span class="n">max_index</span> <span class="o">=</span> <span class="n">time_series_len</span> <span class="o">-</span> <span class="n">snippet_size</span>
+        <span class="c1"># since &#39;ts&#39; is padded with 0 before calculate the MPdist profile</span>
+        <span class="c1"># all parts of the profile that are out of range [0, n-m] cannot be used as neighboring snippet indices</span>
+        <span class="n">snippet</span><span class="p">[</span><span class="s1">&#39;neighbors&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span> <span class="p">:</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="n">max_index</span><span class="p">,</span> <span class="n">arr</span><span class="p">[</span><span class="n">mask</span><span class="p">]))</span>     
+        <span class="c1"># Add the last m time series indices into the neighboring snippet indices</span>
+        <span class="k">if</span> <span class="n">max_index</span> <span class="ow">in</span> <span class="n">snippet</span><span class="p">[</span><span class="s1">&#39;neighbors&#39;</span><span class="p">]:</span>
+            <span class="n">last_m_indices</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">max_index</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">time_series_len</span><span class="p">))</span>
+            <span class="n">snippet</span><span class="p">[</span><span class="s1">&#39;neighbors&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">last_m_indices</span><span class="p">)</span>
         <span class="n">snippet</span><span class="p">[</span><span class="s1">&#39;fraction&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mask</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span> <span class="o">-</span> <span class="n">snippet_size</span><span class="p">)</span>
         <span class="n">total_min</span> <span class="o">=</span> <span class="n">total_min</span> <span class="o">-</span> <span class="n">mask</span>
         <span class="k">del</span> <span class="n">snippet</span><span class="p">[</span><span class="s1">&#39;distance&#39;</span><span class="p">]</span>

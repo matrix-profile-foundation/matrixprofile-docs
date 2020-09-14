@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                1.1.3
+                1.1.4
               </div>
             
           
@@ -363,7 +363,7 @@ you can also use a Corrected Matrix Profile to compute the motifs.</p>
 avoids trivial matches. It defaults to half of the computed window
 size. Setting the exclusion zone to 0 makes it not apply.</p></li>
 <li><p><strong>k</strong> (<em>int</em><em>, </em><em>Default = 3</em>) – Desired number of motifs to find.</p></li>
-<li><p><strong>neighbor_count</strong> (<em>int</em><em>, </em><em>Default = 10</em>) – The maximum number of neighbors to include for a given motif.</p></li>
+<li><p><strong>max_neighbors</strong> (<em>int</em><em>, </em><em>Default = 10</em>) – The maximum number of neighbors to include for a given motif.</p></li>
 <li><p><strong>radius</strong> (<em>int</em><em>, </em><em>Default = 3</em>) – The radius is used to associate a neighbor by checking if the
 neighbor’s distance is less than or equal to dist * radius</p></li>
 <li><p><strong>use_cmp</strong> (<em>bool</em><em>, </em><em>Default = False</em>) – Use the Corrected Matrix Profile to compute the motifs (only for
@@ -711,7 +711,7 @@ it takes priority over using Python’s multiprocessing.</p>
 <li><p><strong>ts</strong> (<em>array_like</em>) – The time series to compute the matrix profile for.</p></li>
 <li><p><strong>w</strong> (<em>int</em>) – The window size.</p></li>
 <li><p><strong>query</strong> (<em>array_like</em>) – Optionally a query series.</p></li>
-<li><p><strong>cross_correlation</strong> (<em>bool</em><em>, </em><em>Default=False</em>) – Setermine if cross_correlation distance should be returned. It defaults
+<li><p><strong>cross_correlation</strong> (<em>bool</em><em>, </em><em>Default=False</em>) – Determine if cross_correlation distance should be returned. It defaults
 to Euclidean Distance.</p></li>
 <li><p><strong>n_jobs</strong> (<em>int</em><em>, </em><em>Default = 1</em>) – Number of cpu cores to use.</p></li>
 </ul>
@@ -928,7 +928,7 @@ is computed and stored in entry <code class="docutils literal notranslate"><span
 <h2>matrixprofile.algorithms.maximum_subsequence<a class="headerlink" href="#matrixprofile-algorithms-maximum-subsequence" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="matrixprofile.algorithms.maximum_subsequence">
-<code class="sig-prename descclassname">matrixprofile.algorithms.</code><code class="sig-name descname">maximum_subsequence</code><span class="sig-paren">(</span><em class="sig-param">ts</em>, <em class="sig-param">threshold=0.95</em>, <em class="sig-param">refine_stepsize=0.05</em>, <em class="sig-param">n_jobs=1</em>, <em class="sig-param">include_pmp=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/algorithms/skimp.html#maximum_subsequence"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.algorithms.maximum_subsequence" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">matrixprofile.algorithms.</code><code class="sig-name descname">maximum_subsequence</code><span class="sig-paren">(</span><em class="sig-param">ts</em>, <em class="sig-param">threshold=0.95</em>, <em class="sig-param">refine_stepsize=0.05</em>, <em class="sig-param">n_jobs=1</em>, <em class="sig-param">include_pmp=False</em>, <em class="sig-param">lower_window=8</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/algorithms/skimp.html#maximum_subsequence"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.algorithms.maximum_subsequence" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finds the maximum subsequence length based on the threshold provided. Note
 that this threshold is domain specific requiring some knowledge about the
 underyling time series in question.</p>
@@ -944,6 +944,7 @@ maximum correlation coefficient is no longer met.</p>
 should be a percentage between 0.01 and 0.99.</p></li>
 <li><p><strong>n_jobs</strong> (<em>int</em><em>, </em><em>Default = 1</em>) – Number of cpu cores to use.</p></li>
 <li><p><strong>include_pmp</strong> (<em>bool</em><em>, </em><em>default False</em>) – Include the PanMatrixProfile for the computed windows.</p></li>
+<li><p><strong>lower_window</strong> (<em>int</em><em>, </em><em>default 8</em>) – Lower bound of subsequence length that can be altered if required.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>

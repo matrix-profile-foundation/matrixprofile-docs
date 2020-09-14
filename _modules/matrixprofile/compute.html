@@ -65,7 +65,7 @@
             
             
               <div class="version">
-                1.1.3
+                1.1.4
               </div>
             
           
@@ -174,11 +174,16 @@
 <span class="nb">range</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">__builtins__</span><span class="p">,</span> <span class="s1">&#39;xrange&#39;</span><span class="p">,</span> <span class="nb">range</span><span class="p">)</span>
 <span class="c1"># end of py2 compatability boilerplate</span>
 
+<span class="c1"># Python native imports</span>
 <span class="kn">import</span> <span class="nn">math</span>
 <span class="kn">import</span> <span class="nn">logging</span>
 
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
+<span class="c1"># Third-party imports</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Project imports</span>
 <span class="kn">from</span> <span class="nn">matrixprofile</span> <span class="k">import</span> <span class="n">core</span>
 <span class="kn">from</span> <span class="nn">matrixprofile.algorithms.mpx</span> <span class="k">import</span> <span class="n">mpx</span>
 <span class="kn">from</span> <span class="nn">matrixprofile.algorithms.scrimp</span> <span class="k">import</span> <span class="n">scrimp_plus_plus</span>
@@ -187,14 +192,14 @@
 
 
 <div class="viewcode-block" id="compute"><a class="viewcode-back" href="../../api.html#matrixprofile.compute">[docs]</a><span class="k">def</span> <span class="nf">compute</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">windows</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sample_pct</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">0.98</span><span class="p">,</span>
-    <span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+            <span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Computes the exact or approximate MatrixProfile based on the sample percent</span>
 <span class="sd">    specified. Currently, MPX and SCRIMP++ is used for the exact and</span>
 <span class="sd">    approximate algorithms respectively. When multiple windows are passed, the</span>
-<span class="sd">    Pan-MatrixProfile is computed and returned. </span>
+<span class="sd">    Pan-MatrixProfile is computed and returned.</span>
 
-<span class="sd">    By default, only passing in a time series (ts), the Pan-MatrixProfile is </span>
+<span class="sd">    By default, only passing in a time series (ts), the Pan-MatrixProfile is</span>
 <span class="sd">    computed based on the maximum upper window algorithm with a correlation</span>
 <span class="sd">    threshold of 0.98.</span>
 
@@ -219,11 +224,11 @@
 <span class="sd">        the MP or PMP. When it is 1, the exact algorithm is used.</span>
 <span class="sd">    threshold : float, default 0.98</span>
 <span class="sd">        The correlation coefficient used as the threshold. It should be between</span>
-<span class="sd">        0 and 1. This is used to compute the upper window size when no </span>
+<span class="sd">        0 and 1. This is used to compute the upper window size when no</span>
 <span class="sd">        window(s) is given.</span>
 <span class="sd">    n_jobs : int, default = 1</span>
 <span class="sd">        Number of cpu cores to use.</span>
-<span class="sd">    </span>
+
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    dict : profile</span>
@@ -237,7 +242,11 @@
 
     <span class="k">if</span> <span class="n">no_windows</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">has_threshold</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;compute requires a threshold or window(s) to be set!&#39;</span><span class="p">)</span>
-    
+
+    <span class="c1"># Check to make sure all window sizes are greater than 3, return a ValueError if not.</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">windows</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">and</span> <span class="n">windows</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">multiple_windows</span> <span class="ow">and</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">windows</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">)):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Compute requires all window sizes to be greater than 3!&#39;</span><span class="p">)</span>
+
     <span class="k">if</span> <span class="n">core</span><span class="o">.</span><span class="n">is_array_like</span><span class="p">(</span><span class="n">windows</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">windows</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
         <span class="n">windows</span> <span class="o">=</span> <span class="n">windows</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
@@ -252,7 +261,7 @@
 
         <span class="c1"># compute the pmp</span>
         <span class="n">result</span> <span class="o">=</span> <span class="n">skimp</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">windows</span><span class="o">=</span><span class="n">windows</span><span class="p">,</span> <span class="n">sample_pct</span><span class="o">=</span><span class="n">sample_pct</span><span class="p">,</span>
-                        <span class="n">pmp_obj</span><span class="o">=</span><span class="n">profile</span><span class="p">)</span>
+                       <span class="n">pmp_obj</span><span class="o">=</span><span class="n">profile</span><span class="p">)</span>
 
     <span class="c1"># compute the pmp</span>
     <span class="k">elif</span> <span class="n">multiple_windows</span><span class="p">:</span>
@@ -260,16 +269,16 @@
             <span class="n">logger</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;Computing PMP - query is ignored!&#39;</span><span class="p">)</span>
 
         <span class="n">result</span> <span class="o">=</span> <span class="n">skimp</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">windows</span><span class="o">=</span><span class="n">windows</span><span class="p">,</span> <span class="n">sample_pct</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-            <span class="n">n_jobs</span><span class="o">=</span><span class="n">n_jobs</span><span class="p">)</span>
-    
+                       <span class="n">n_jobs</span><span class="o">=</span><span class="n">n_jobs</span><span class="p">)</span>
+
     <span class="c1"># compute exact mp</span>
     <span class="k">elif</span> <span class="n">sample_pct</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">:</span>
         <span class="n">result</span> <span class="o">=</span> <span class="n">mpx</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">windows</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="n">query</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="n">n_jobs</span><span class="p">)</span>
-    
+
     <span class="c1"># compute approximate mp</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">result</span> <span class="o">=</span> <span class="n">scrimp_plus_plus</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">windows</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="n">query</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="n">n_jobs</span><span class="p">,</span>
-            <span class="n">sample_pct</span><span class="o">=</span><span class="n">sample_pct</span><span class="p">)</span>
+                                  <span class="n">sample_pct</span><span class="o">=</span><span class="n">sample_pct</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">result</span></div>
 </pre></div>

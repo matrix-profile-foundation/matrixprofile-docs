@@ -65,7 +65,7 @@
             
             
               <div class="version">
-                1.1.3
+                1.1.4
               </div>
             
           
@@ -410,7 +410,7 @@
     
 
 <div class="viewcode-block" id="maximum_subsequence"><a class="viewcode-back" href="../../../api.html#matrixprofile.algorithms.maximum_subsequence">[docs]</a><span class="k">def</span> <span class="nf">maximum_subsequence</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">refine_stepsize</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-    <span class="n">include_pmp</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="n">include_pmp</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">lower_window</span><span class="o">=</span><span class="mi">8</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Finds the maximum subsequence length based on the threshold provided. Note</span>
 <span class="sd">    that this threshold is domain specific requiring some knowledge about the</span>
@@ -433,6 +433,8 @@
 <span class="sd">        Number of cpu cores to use.</span>
 <span class="sd">    include_pmp : bool, default False</span>
 <span class="sd">        Include the PanMatrixProfile for the computed windows.</span>
+<span class="sd">    lower_window : int, default 8</span>
+<span class="sd">        Lower bound of subsequence length that can be altered if required.</span>
 <span class="sd">    </span>
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -459,7 +461,7 @@
     <span class="n">ts</span> <span class="o">=</span> <span class="n">core</span><span class="o">.</span><span class="n">to_np_array</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span>
     <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span>
     <span class="n">correlation_max</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span>
-    <span class="n">window_size</span> <span class="o">=</span> <span class="mi">8</span>
+    <span class="n">window_size</span> <span class="o">=</span> <span class="n">lower_window</span>
     <span class="n">max_window</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span>
     
     <span class="k">def</span> <span class="nf">resize</span><span class="p">(</span><span class="n">mp</span><span class="p">,</span> <span class="n">pi</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>

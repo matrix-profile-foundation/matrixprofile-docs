@@ -65,7 +65,7 @@
             
             
               <div class="version">
-                1.1.4
+                1.1.5
               </div>
             
           
@@ -178,6 +178,8 @@
 
 <span class="kn">from</span> <span class="nn">matrixprofile</span> <span class="k">import</span> <span class="n">core</span>
 
+<span class="kn">from</span> <span class="nn">matrixprofile.preprocess</span> <span class="k">import</span> <span class="n">preprocess</span>
+<span class="kn">from</span> <span class="nn">matrixprofile.preprocess</span> <span class="k">import</span> <span class="n">validate_preprocess_kwargs</span>
 <span class="kn">from</span> <span class="nn">matrixprofile.discover</span> <span class="k">import</span> <span class="n">discords</span>
 <span class="kn">from</span> <span class="nn">matrixprofile.discover</span> <span class="k">import</span> <span class="n">motifs</span>
 <span class="kn">from</span> <span class="nn">matrixprofile.algorithms</span> <span class="k">import</span> <span class="n">skimp</span>
@@ -335,7 +337,8 @@
     <span class="k">return</span> <span class="p">(</span><span class="n">profile</span><span class="p">,</span> <span class="n">figures</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="analyze"><a class="viewcode-back" href="../../api.html#matrixprofile.analyze">[docs]</a><span class="k">def</span> <span class="nf">analyze</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">windows</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sample_pct</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">0.98</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<div class="viewcode-block" id="analyze"><a class="viewcode-back" href="../../api.html#matrixprofile.analyze">[docs]</a><span class="k">def</span> <span class="nf">analyze</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">windows</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sample_pct</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">0.98</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+            <span class="n">preprocessing_kwargs</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Runs an appropriate workflow based on the parameters passed in. The goal</span>
 <span class="sd">    of this function is to compute all fundamental algorithms on the provided</span>
@@ -372,10 +375,28 @@
 <span class="sd">        the MP or PMP. When it is 1, the exact algorithm is used.</span>
 <span class="sd">    threshold : float, Default 0.98</span>
 <span class="sd">        The correlation coefficient used as the threshold. It should be between</span>
-<span class="sd">        0 and 1. This is used to compute the upper window size when no </span>
+<span class="sd">        0 and 1. This is used to compute the upper window size when no</span>
 <span class="sd">        window(s) is given.</span>
 <span class="sd">    n_jobs : int, Default = 1</span>
 <span class="sd">        Number of cpu cores to use.</span>
+<span class="sd">    preprocessing_kwargs : dict, default = None</span>
+<span class="sd">        A dictionary object to sets parameters for preprocess function.</span>
+<span class="sd">        A valid preprocessing_kwargs should have the following structure:</span>
+
+<span class="sd">        &gt;&gt;&gt; {</span>
+<span class="sd">        &gt;&gt;&gt;     &#39;window&#39;: The window size to compute the mean/median/minimum/maximum value,</span>
+<span class="sd">        &gt;&gt;&gt;     &#39;method&#39;: A string indicating the data imputation method, which should be</span>
+<span class="sd">        &gt;&gt;&gt;               &#39;mean&#39;, &#39;median&#39;, &#39;min&#39; or &#39;max&#39;,</span>
+<span class="sd">        &gt;&gt;&gt;     &#39;direction&#39;: A string indicating the data imputation direction, which should be</span>
+<span class="sd">        &gt;&gt;&gt;                 &#39;forward&#39;, &#39;fwd&#39;, &#39;f&#39;, &#39;backward&#39;, &#39;bwd&#39;, &#39;b&#39;. If the direction is</span>
+<span class="sd">        &gt;&gt;&gt;                 forward, we use previous data for imputation; if the direction is</span>
+<span class="sd">        &gt;&gt;&gt;                 backward, we use subsequent data for imputation.,</span>
+<span class="sd">        &gt;&gt;&gt;     &#39;add_noise&#39;: A boolean value indicating whether noise needs to be added into the</span>
+<span class="sd">        &gt;&gt;&gt;                 time series</span>
+<span class="sd">        &gt;&gt;&gt; }</span>
+
+<span class="sd">        To disable preprocessing procedure, set the preprocessing_kwargs to</span>
+<span class="sd">        None/False/&quot;&quot;/{}.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -384,6 +405,15 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">result</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="c1"># preprocess the time series</span>
+    <span class="n">preprocessing_kwargs</span> <span class="o">=</span> <span class="n">validate_preprocess_kwargs</span><span class="p">(</span><span class="n">preprocessing_kwargs</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">preprocessing_kwargs</span><span class="p">:</span>
+        <span class="n">ts</span> <span class="o">=</span> <span class="n">preprocess</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span>
+                        <span class="n">window</span><span class="o">=</span><span class="n">preprocessing_kwargs</span><span class="p">[</span><span class="s1">&#39;window&#39;</span><span class="p">],</span>
+                        <span class="n">impute_method</span><span class="o">=</span><span class="n">preprocessing_kwargs</span><span class="p">[</span><span class="s1">&#39;impute_method&#39;</span><span class="p">],</span>
+                        <span class="n">impute_direction</span><span class="o">=</span><span class="n">preprocessing_kwargs</span><span class="p">[</span><span class="s1">&#39;impute_direction&#39;</span><span class="p">],</span>
+                        <span class="n">add_noise</span><span class="o">=</span><span class="n">preprocessing_kwargs</span><span class="p">[</span><span class="s1">&#39;add_noise&#39;</span><span class="p">])</span>
 
     <span class="c1"># determine proper number of jobs</span>
     <span class="n">n_jobs</span> <span class="o">=</span> <span class="n">core</span><span class="o">.</span><span class="n">valid_n_jobs</span><span class="p">(</span><span class="n">n_jobs</span><span class="p">)</span>

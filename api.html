@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                1.1.4
+                1.1.5
               </div>
             
           
@@ -233,7 +233,7 @@
 <h2>matrixprofile.analyze<a class="headerlink" href="#matrixprofile-analyze" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="matrixprofile.analyze">
-<code class="sig-prename descclassname">matrixprofile.</code><code class="sig-name descname">analyze</code><span class="sig-paren">(</span><em class="sig-param">ts</em>, <em class="sig-param">query=None</em>, <em class="sig-param">windows=None</em>, <em class="sig-param">sample_pct=1.0</em>, <em class="sig-param">threshold=0.98</em>, <em class="sig-param">n_jobs=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/analyze.html#analyze"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.analyze" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">matrixprofile.</code><code class="sig-name descname">analyze</code><span class="sig-paren">(</span><em class="sig-param">ts</em>, <em class="sig-param">query=None</em>, <em class="sig-param">windows=None</em>, <em class="sig-param">sample_pct=1.0</em>, <em class="sig-param">threshold=0.98</em>, <em class="sig-param">n_jobs=1</em>, <em class="sig-param">preprocessing_kwargs=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/analyze.html#analyze"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.analyze" title="Permalink to this definition">¶</a></dt>
 <dd><p>Runs an appropriate workflow based on the parameters passed in. The goal
 of this function is to compute all fundamental algorithms on the provided
 time series data. For now the following is computed:</p>
@@ -268,6 +268,24 @@ the MP or PMP. When it is 1, the exact algorithm is used.</p></li>
 0 and 1. This is used to compute the upper window size when no
 window(s) is given.</p></li>
 <li><p><strong>n_jobs</strong> (<em>int</em><em>, </em><em>Default = 1</em>) – Number of cpu cores to use.</p></li>
+<li><p><strong>preprocessing_kwargs</strong> (<em>dict</em><em>, </em><em>default = None</em>) – <p>A dictionary object to sets parameters for preprocess function.
+A valid preprocessing_kwargs should have the following structure:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">{</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;window&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">window</span> <span class="n">size</span> <span class="n">to</span> <span class="n">compute</span> <span class="n">the</span> <span class="n">mean</span><span class="o">/</span><span class="n">median</span><span class="o">/</span><span class="n">minimum</span><span class="o">/</span><span class="n">maximum</span> <span class="n">value</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;method&#39;</span><span class="p">:</span> <span class="n">A</span> <span class="n">string</span> <span class="n">indicating</span> <span class="n">the</span> <span class="n">data</span> <span class="n">imputation</span> <span class="n">method</span><span class="p">,</span> <span class="n">which</span> <span class="n">should</span> <span class="n">be</span>
+<span class="gp">&gt;&gt;&gt; </span>              <span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;median&#39;</span><span class="p">,</span> <span class="s1">&#39;min&#39;</span> <span class="ow">or</span> <span class="s1">&#39;max&#39;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;direction&#39;</span><span class="p">:</span> <span class="n">A</span> <span class="n">string</span> <span class="n">indicating</span> <span class="n">the</span> <span class="n">data</span> <span class="n">imputation</span> <span class="n">direction</span><span class="p">,</span> <span class="n">which</span> <span class="n">should</span> <span class="n">be</span>
+<span class="gp">&gt;&gt;&gt; </span>                <span class="s1">&#39;forward&#39;</span><span class="p">,</span> <span class="s1">&#39;fwd&#39;</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">,</span> <span class="s1">&#39;backward&#39;</span><span class="p">,</span> <span class="s1">&#39;bwd&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="o">.</span> <span class="n">If</span> <span class="n">the</span> <span class="n">direction</span> <span class="ow">is</span>
+<span class="gp">&gt;&gt;&gt; </span>                <span class="n">forward</span><span class="p">,</span> <span class="n">we</span> <span class="n">use</span> <span class="n">previous</span> <span class="n">data</span> <span class="k">for</span> <span class="n">imputation</span><span class="p">;</span> <span class="k">if</span> <span class="n">the</span> <span class="n">direction</span> <span class="ow">is</span>
+<span class="gp">&gt;&gt;&gt; </span>                <span class="n">backward</span><span class="p">,</span> <span class="n">we</span> <span class="n">use</span> <span class="n">subsequent</span> <span class="n">data</span> <span class="k">for</span> <span class="n">imputation</span><span class="o">.</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;add_noise&#39;</span><span class="p">:</span> <span class="n">A</span> <span class="n">boolean</span> <span class="n">value</span> <span class="n">indicating</span> <span class="n">whether</span> <span class="n">noise</span> <span class="n">needs</span> <span class="n">to</span> <span class="n">be</span> <span class="n">added</span> <span class="n">into</span> <span class="n">the</span>
+<span class="gp">&gt;&gt;&gt; </span>                <span class="n">time</span> <span class="n">series</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>To disable preprocessing procedure, set the preprocessing_kwargs to
+None/False/””/{}.</p>
+</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -284,7 +302,7 @@ window(s) is given.</p></li>
 <h2>matrixprofile.compute<a class="headerlink" href="#matrixprofile-compute" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="matrixprofile.compute">
-<code class="sig-prename descclassname">matrixprofile.</code><code class="sig-name descname">compute</code><span class="sig-paren">(</span><em class="sig-param">ts</em>, <em class="sig-param">windows=None</em>, <em class="sig-param">query=None</em>, <em class="sig-param">sample_pct=1</em>, <em class="sig-param">threshold=0.98</em>, <em class="sig-param">n_jobs=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/compute.html#compute"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.compute" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">matrixprofile.</code><code class="sig-name descname">compute</code><span class="sig-paren">(</span><em class="sig-param">ts</em>, <em class="sig-param">windows=None</em>, <em class="sig-param">query=None</em>, <em class="sig-param">sample_pct=1</em>, <em class="sig-param">threshold=0.98</em>, <em class="sig-param">n_jobs=1</em>, <em class="sig-param">preprocessing_kwargs=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/compute.html#compute"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.compute" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes the exact or approximate MatrixProfile based on the sample percent
 specified. Currently, MPX and SCRIMP++ is used for the exact and
 approximate algorithms respectively. When multiple windows are passed, the
@@ -310,6 +328,24 @@ the MP or PMP. When it is 1, the exact algorithm is used.</p></li>
 0 and 1. This is used to compute the upper window size when no
 window(s) is given.</p></li>
 <li><p><strong>n_jobs</strong> (<em>int</em><em>, </em><em>default = 1</em>) – Number of cpu cores to use.</p></li>
+<li><p><strong>preprocessing_kwargs</strong> (<em>dict</em><em>, </em><em>default = None</em>) – <p>A dictionary object to sets parameters for preprocess function.
+A valid preprocessing_kwargs should have the following structure:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">{</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;window&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">window</span> <span class="n">size</span> <span class="n">to</span> <span class="n">compute</span> <span class="n">the</span> <span class="n">mean</span><span class="o">/</span><span class="n">median</span><span class="o">/</span><span class="n">minimum</span><span class="o">/</span><span class="n">maximum</span> <span class="n">value</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;method&#39;</span><span class="p">:</span> <span class="n">A</span> <span class="n">string</span> <span class="n">indicating</span> <span class="n">the</span> <span class="n">data</span> <span class="n">imputation</span> <span class="n">method</span><span class="p">,</span> <span class="n">which</span> <span class="n">should</span> <span class="n">be</span>
+<span class="gp">&gt;&gt;&gt; </span>              <span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;median&#39;</span><span class="p">,</span> <span class="s1">&#39;min&#39;</span> <span class="ow">or</span> <span class="s1">&#39;max&#39;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;direction&#39;</span><span class="p">:</span> <span class="n">A</span> <span class="n">string</span> <span class="n">indicating</span> <span class="n">the</span> <span class="n">data</span> <span class="n">imputation</span> <span class="n">direction</span><span class="p">,</span> <span class="n">which</span> <span class="n">should</span> <span class="n">be</span>
+<span class="gp">&gt;&gt;&gt; </span>                <span class="s1">&#39;forward&#39;</span><span class="p">,</span> <span class="s1">&#39;fwd&#39;</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">,</span> <span class="s1">&#39;backward&#39;</span><span class="p">,</span> <span class="s1">&#39;bwd&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="o">.</span> <span class="n">If</span> <span class="n">the</span> <span class="n">direction</span> <span class="ow">is</span>
+<span class="gp">&gt;&gt;&gt; </span>                <span class="n">forward</span><span class="p">,</span> <span class="n">we</span> <span class="n">use</span> <span class="n">previous</span> <span class="n">data</span> <span class="k">for</span> <span class="n">imputation</span><span class="p">;</span> <span class="k">if</span> <span class="n">the</span> <span class="n">direction</span> <span class="ow">is</span>
+<span class="gp">&gt;&gt;&gt; </span>                <span class="n">backward</span><span class="p">,</span> <span class="n">we</span> <span class="n">use</span> <span class="n">subsequent</span> <span class="n">data</span> <span class="k">for</span> <span class="n">imputation</span><span class="o">.</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;add_noise&#39;</span><span class="p">:</span> <span class="n">A</span> <span class="n">boolean</span> <span class="n">value</span> <span class="n">indicating</span> <span class="n">whether</span> <span class="n">noise</span> <span class="n">needs</span> <span class="n">to</span> <span class="n">be</span> <span class="n">added</span> <span class="n">into</span> <span class="n">the</span>
+<span class="gp">&gt;&gt;&gt; </span>                <span class="n">time</span> <span class="n">series</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>To disable preprocessing procedure, set the preprocessing_kwargs to
+None/False/””/{}.</p>
+</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -446,9 +482,10 @@ to use.</p>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><p><strong>list</strong> – A list of snippets as dictionary objects with the following structure.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">{</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">fraction</span><span class="p">:</span> <span class="n">fraction</span> <span class="n">of</span> <span class="n">the</span> <span class="n">snippet</span><span class="p">,</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="n">index</span><span class="p">:</span> <span class="n">the</span> <span class="n">index</span> <span class="n">of</span> <span class="n">the</span> <span class="n">snippet</span><span class="p">,</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">snippet</span><span class="p">:</span> <span class="n">the</span> <span class="n">snippet</span> <span class="n">values</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">snippet</span><span class="p">:</span> <span class="n">the</span> <span class="n">snippet</span> <span class="n">values</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">neighbors</span><span class="p">:</span> <span class="n">the</span> <span class="n">starting</span> <span class="n">indices</span> <span class="n">of</span> <span class="nb">all</span> <span class="n">subsequences</span> <span class="n">similar</span> <span class="n">to</span> <span class="n">the</span> <span class="n">current</span> <span class="n">snippet</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">fraction</span><span class="p">:</span> <span class="n">fraction</span> <span class="n">of</span> <span class="n">the</span> <span class="n">snippet</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="p">}</span>
 </pre></div>
 </div>

@@ -99,6 +99,9 @@
 <li class="toctree-l2"><a class="reference internal" href="#matrixprofile-analyze">matrixprofile.analyze</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#matrixprofile-compute">matrixprofile.compute</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#matrixprofile-visualize">matrixprofile.visualize</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#matrixprofile-preprocess-preprocess">matrixprofile.preprocess.preprocess</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#matrixprofile-preprocess-impute-missing">matrixprofile.preprocess.impute_missing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#matrixprofile-preprocess-add-noise-to-series">matrixprofile.preprocess.add_noise_to_series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#matrixprofile-discover-motifs">matrixprofile.discover.motifs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#matrixprofile-discover-discords">matrixprofile.discover.discords</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#matrixprofile-discover-snippets">matrixprofile.discover.snippets</a></li>
@@ -376,6 +379,87 @@ will be plotted.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>figures</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="matrixprofile-preprocess-preprocess">
+<h2>matrixprofile.preprocess.preprocess<a class="headerlink" href="#matrixprofile-preprocess-preprocess" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="matrixprofile.preprocess.preprocess">
+<code class="sig-prename descclassname">matrixprofile.preprocess.</code><code class="sig-name descname">preprocess</code><span class="sig-paren">(</span><em class="sig-param">ts</em>, <em class="sig-param">window</em>, <em class="sig-param">impute_method='mean'</em>, <em class="sig-param">impute_direction='forward'</em>, <em class="sig-param">add_noise=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/preprocess.html#preprocess"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.preprocess.preprocess" title="Permalink to this definition">¶</a></dt>
+<dd><p>Preprocesses the given time series by adding noise and imputing missing data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ts</strong> (<em>array_like</em>) – The time series to be preprocessed.</p></li>
+<li><p><strong>window</strong> (<em>int</em>) – The window size to compute the mean/median/minimum value/maximum
+value.</p></li>
+<li><p><strong>method</strong> (<em>string</em><em>, </em><em>Default = 'mean'</em>) – A string indicating the data imputation method, which should be
+‘mean’, ‘median’, ‘min’ or ‘max’.</p></li>
+<li><p><strong>direction</strong> (<em>string</em><em>, </em><em>Default = 'forward'</em>) – A string indicating the data imputation direction, which should be
+‘forward’, ‘fwd’, ‘f’, ‘backward’, ‘bwd’, ‘b’. If the direction is
+forward, we use previous data for imputation; if the direction is
+backward, we use subsequent data for imputation.</p></li>
+<li><p><strong>add_noise</strong> (<em>bool</em><em>, </em><em>Default = True</em>) – A boolean value indicating whether noise needs to be added into the time series.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>temp</strong> – The time series after being preprocessed.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>array_like</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="matrixprofile-preprocess-impute-missing">
+<h2>matrixprofile.preprocess.impute_missing<a class="headerlink" href="#matrixprofile-preprocess-impute-missing" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="matrixprofile.preprocess.impute_missing">
+<code class="sig-prename descclassname">matrixprofile.preprocess.</code><code class="sig-name descname">impute_missing</code><span class="sig-paren">(</span><em class="sig-param">ts</em>, <em class="sig-param">window</em>, <em class="sig-param">method='mean'</em>, <em class="sig-param">direction='forward'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/preprocess.html#impute_missing"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.preprocess.impute_missing" title="Permalink to this definition">¶</a></dt>
+<dd><p>Imputes missing data in time series.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ts</strong> (<em>array_like</em>) – The time series to be handled.</p></li>
+<li><p><strong>window</strong> (<em>int</em>) – The window size to compute the mean/median/minimum value/maximum
+value.</p></li>
+<li><p><strong>method</strong> (<em>string</em><em>, </em><em>Default = 'mean'</em>) – A string indicating the data imputation method, which should be
+‘mean’, ‘median’, ‘min’ or ‘max’.</p></li>
+<li><p><strong>direction</strong> (<em>string</em><em>, </em><em>Default = 'forward'</em>) – A string indicating the data imputation direction, which should be
+‘forward’, ‘fwd’, ‘f’, ‘backward’, ‘bwd’, ‘b’. If the direction is
+forward, we use previous data for imputation; if the direction is
+backward, we use subsequent data for imputation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>temp</strong> – The time series after being imputed missing data.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>array_like</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="matrixprofile-preprocess-add-noise-to-series">
+<h2>matrixprofile.preprocess.add_noise_to_series<a class="headerlink" href="#matrixprofile-preprocess-add-noise-to-series" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="matrixprofile.preprocess.add_noise_to_series">
+<code class="sig-prename descclassname">matrixprofile.preprocess.</code><code class="sig-name descname">add_noise_to_series</code><span class="sig-paren">(</span><em class="sig-param">series</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/preprocess.html#add_noise_to_series"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.preprocess.add_noise_to_series" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds noise to the given time series.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>series</strong> (<em>array_like</em>) – The time series subsequence to be added noise.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>temp</strong> – The time series subsequence after being added noise.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>array_like</p>
 </dd>
 </dl>
 </dd></dl>

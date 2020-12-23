@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,31 +11,32 @@
   
 
   
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Examples" href="examples.html" />
@@ -54,7 +54,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home"> matrixprofile
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> matrixprofile
           
 
           
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                1.1.5
+                1.1.6
               </div>
             
           
@@ -84,6 +84,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -147,6 +148,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -185,7 +187,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="index.html">Docs</a> &raquo;</li>
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
       <li>API</li>
     
@@ -234,9 +236,9 @@
 <h1>API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="matrixprofile-analyze">
 <h2>matrixprofile.analyze<a class="headerlink" href="#matrixprofile-analyze" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+<dl class="py function">
 <dt id="matrixprofile.analyze">
-<code class="sig-prename descclassname">matrixprofile.</code><code class="sig-name descname">analyze</code><span class="sig-paren">(</span><em class="sig-param">ts</em>, <em class="sig-param">query=None</em>, <em class="sig-param">windows=None</em>, <em class="sig-param">sample_pct=1.0</em>, <em class="sig-param">threshold=0.98</em>, <em class="sig-param">n_jobs=1</em>, <em class="sig-param">preprocessing_kwargs=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/analyze.html#analyze"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.analyze" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">matrixprofile.</code><code class="sig-name descname">analyze</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ts</span></em>, <em class="sig-param"><span class="n">query</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">windows</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">sample_pct</span><span class="o">=</span><span class="default_value">1.0</span></em>, <em class="sig-param"><span class="n">threshold</span><span class="o">=</span><span class="default_value">0.98</span></em>, <em class="sig-param"><span class="n">n_jobs</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">preprocessing_kwargs</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/analyze.html#analyze"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.analyze" title="Permalink to this definition">¶</a></dt>
 <dd><p>Runs an appropriate workflow based on the parameters passed in. The goal
 of this function is to compute all fundamental algorithms on the provided
 time series data. For now the following is computed:</p>
@@ -273,7 +275,7 @@ window(s) is given.</p></li>
 <li><p><strong>n_jobs</strong> (<em>int</em><em>, </em><em>Default = 1</em>) – Number of cpu cores to use.</p></li>
 <li><p><strong>preprocessing_kwargs</strong> (<em>dict</em><em>, </em><em>default = None</em>) – <p>A dictionary object to sets parameters for preprocess function.
 A valid preprocessing_kwargs should have the following structure:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">{</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">{</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;window&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">window</span> <span class="n">size</span> <span class="n">to</span> <span class="n">compute</span> <span class="n">the</span> <span class="n">mean</span><span class="o">/</span><span class="n">median</span><span class="o">/</span><span class="n">minimum</span><span class="o">/</span><span class="n">maximum</span> <span class="n">value</span><span class="p">,</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;method&#39;</span><span class="p">:</span> <span class="n">A</span> <span class="n">string</span> <span class="n">indicating</span> <span class="n">the</span> <span class="n">data</span> <span class="n">imputation</span> <span class="n">method</span><span class="p">,</span> <span class="n">which</span> <span class="n">should</span> <span class="n">be</span>
 <span class="gp">&gt;&gt;&gt; </span>              <span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;median&#39;</span><span class="p">,</span> <span class="s1">&#39;min&#39;</span> <span class="ow">or</span> <span class="s1">&#39;max&#39;</span><span class="p">,</span>
@@ -303,9 +305,9 @@ None/False/””/{}.</p>
 </div>
 <div class="section" id="matrixprofile-compute">
 <h2>matrixprofile.compute<a class="headerlink" href="#matrixprofile-compute" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+<dl class="py function">
 <dt id="matrixprofile.compute">
-<code class="sig-prename descclassname">matrixprofile.</code><code class="sig-name descname">compute</code><span class="sig-paren">(</span><em class="sig-param">ts</em>, <em class="sig-param">windows=None</em>, <em class="sig-param">query=None</em>, <em class="sig-param">sample_pct=1</em>, <em class="sig-param">threshold=0.98</em>, <em class="sig-param">n_jobs=1</em>, <em class="sig-param">preprocessing_kwargs=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/compute.html#compute"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.compute" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">matrixprofile.</code><code class="sig-name descname">compute</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ts</span></em>, <em class="sig-param"><span class="n">windows</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">query</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">sample_pct</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">threshold</span><span class="o">=</span><span class="default_value">0.98</span></em>, <em class="sig-param"><span class="n">n_jobs</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">preprocessing_kwargs</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/compute.html#compute"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.compute" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes the exact or approximate MatrixProfile based on the sample percent
 specified. Currently, MPX and SCRIMP++ is used for the exact and
 approximate algorithms respectively. When multiple windows are passed, the
@@ -333,7 +335,7 @@ window(s) is given.</p></li>
 <li><p><strong>n_jobs</strong> (<em>int</em><em>, </em><em>default = 1</em>) – Number of cpu cores to use.</p></li>
 <li><p><strong>preprocessing_kwargs</strong> (<em>dict</em><em>, </em><em>default = None</em>) – <p>A dictionary object to sets parameters for preprocess function.
 A valid preprocessing_kwargs should have the following structure:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">{</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">{</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;window&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">window</span> <span class="n">size</span> <span class="n">to</span> <span class="n">compute</span> <span class="n">the</span> <span class="n">mean</span><span class="o">/</span><span class="n">median</span><span class="o">/</span><span class="n">minimum</span><span class="o">/</span><span class="n">maximum</span> <span class="n">value</span><span class="p">,</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;method&#39;</span><span class="p">:</span> <span class="n">A</span> <span class="n">string</span> <span class="n">indicating</span> <span class="n">the</span> <span class="n">data</span> <span class="n">imputation</span> <span class="n">method</span><span class="p">,</span> <span class="n">which</span> <span class="n">should</span> <span class="n">be</span>
 <span class="gp">&gt;&gt;&gt; </span>              <span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;median&#39;</span><span class="p">,</span> <span class="s1">&#39;min&#39;</span> <span class="ow">or</span> <span class="s1">&#39;max&#39;</span><span class="p">,</span>
@@ -363,9 +365,9 @@ None/False/””/{}.</p>
 </div>
 <div class="section" id="matrixprofile-visualize">
 <h2>matrixprofile.visualize<a class="headerlink" href="#matrixprofile-visualize" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+<dl class="py function">
 <dt id="matrixprofile.visualize">
-<code class="sig-prename descclassname">matrixprofile.</code><code class="sig-name descname">visualize</code><span class="sig-paren">(</span><em class="sig-param">profile</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/visualize.html#visualize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.visualize" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">matrixprofile.</code><code class="sig-name descname">visualize</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">profile</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/visualize.html#visualize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.visualize" title="Permalink to this definition">¶</a></dt>
 <dd><p>Automatically creates plots for the provided data structure. In some cases
 many plots are created. For example, when a MatrixProfile is passed with
 corresponding motifs and discords, the matrix profile, discords and motifs
@@ -386,9 +388,9 @@ will be plotted.</p>
 </div>
 <div class="section" id="matrixprofile-preprocess-preprocess">
 <h2>matrixprofile.preprocess.preprocess<a class="headerlink" href="#matrixprofile-preprocess-preprocess" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+<dl class="py function">
 <dt id="matrixprofile.preprocess.preprocess">
-<code class="sig-prename descclassname">matrixprofile.preprocess.</code><code class="sig-name descname">preprocess</code><span class="sig-paren">(</span><em class="sig-param">ts</em>, <em class="sig-param">window</em>, <em class="sig-param">impute_method='mean'</em>, <em class="sig-param">impute_direction='forward'</em>, <em class="sig-param">add_noise=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/preprocess.html#preprocess"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.preprocess.preprocess" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">matrixprofile.preprocess.</code><code class="sig-name descname">preprocess</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ts</span></em>, <em class="sig-param"><span class="n">window</span></em>, <em class="sig-param"><span class="n">impute_method</span><span class="o">=</span><span class="default_value">'mean'</span></em>, <em class="sig-param"><span class="n">impute_direction</span><span class="o">=</span><span class="default_value">'forward'</span></em>, <em class="sig-param"><span class="n">add_noise</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/preprocess.html#preprocess"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.preprocess.preprocess" title="Permalink to this definition">¶</a></dt>
 <dd><p>Preprocesses the given time series by adding noise and imputing missing data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -417,9 +419,9 @@ backward, we use subsequent data for imputation.</p></li>
 </div>
 <div class="section" id="matrixprofile-preprocess-impute-missing">
 <h2>matrixprofile.preprocess.impute_missing<a class="headerlink" href="#matrixprofile-preprocess-impute-missing" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+<dl class="py function">
 <dt id="matrixprofile.preprocess.impute_missing">
-<code class="sig-prename descclassname">matrixprofile.preprocess.</code><code class="sig-name descname">impute_missing</code><span class="sig-paren">(</span><em class="sig-param">ts</em>, <em class="sig-param">window</em>, <em class="sig-param">method='mean'</em>, <em class="sig-param">direction='forward'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/preprocess.html#impute_missing"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.preprocess.impute_missing" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">matrixprofile.preprocess.</code><code class="sig-name descname">impute_missing</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ts</span></em>, <em class="sig-param"><span class="n">window</span></em>, <em class="sig-param"><span class="n">method</span><span class="o">=</span><span class="default_value">'mean'</span></em>, <em class="sig-param"><span class="n">direction</span><span class="o">=</span><span class="default_value">'forward'</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/preprocess.html#impute_missing"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.preprocess.impute_missing" title="Permalink to this definition">¶</a></dt>
 <dd><p>Imputes missing data in time series.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -447,9 +449,9 @@ backward, we use subsequent data for imputation.</p></li>
 </div>
 <div class="section" id="matrixprofile-preprocess-add-noise-to-series">
 <h2>matrixprofile.preprocess.add_noise_to_series<a class="headerlink" href="#matrixprofile-preprocess-add-noise-to-series" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+<dl class="py function">
 <dt id="matrixprofile.preprocess.add_noise_to_series">
-<code class="sig-prename descclassname">matrixprofile.preprocess.</code><code class="sig-name descname">add_noise_to_series</code><span class="sig-paren">(</span><em class="sig-param">series</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/preprocess.html#add_noise_to_series"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.preprocess.add_noise_to_series" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">matrixprofile.preprocess.</code><code class="sig-name descname">add_noise_to_series</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">series</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/preprocess.html#add_noise_to_series"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.preprocess.add_noise_to_series" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adds noise to the given time series.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -467,9 +469,9 @@ backward, we use subsequent data for imputation.</p></li>
 </div>
 <div class="section" id="matrixprofile-discover-motifs">
 <h2>matrixprofile.discover.motifs<a class="headerlink" href="#matrixprofile-discover-motifs" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+<dl class="py function">
 <dt id="matrixprofile.discover.motifs">
-<code class="sig-prename descclassname">matrixprofile.discover.</code><code class="sig-name descname">motifs</code><span class="sig-paren">(</span><em class="sig-param">profile</em>, <em class="sig-param">exclusion_zone=None</em>, <em class="sig-param">k=3</em>, <em class="sig-param">max_neighbors=10</em>, <em class="sig-param">radius=3</em>, <em class="sig-param">use_cmp=False</em><span class="sig-paren">)</span><a class="headerlink" href="#matrixprofile.discover.motifs" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">matrixprofile.discover.</code><code class="sig-name descname">motifs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">profile</span></em>, <em class="sig-param"><span class="n">exclusion_zone</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">k</span><span class="o">=</span><span class="default_value">3</span></em>, <em class="sig-param"><span class="n">max_neighbors</span><span class="o">=</span><span class="default_value">10</span></em>, <em class="sig-param"><span class="n">radius</span><span class="o">=</span><span class="default_value">3</span></em>, <em class="sig-param"><span class="n">use_cmp</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#matrixprofile.discover.motifs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Find the top K number of motifs (patterns) given a matrix profile or a pan
 matrix profile. By default the algorithm will find up to 3 motifs (k) and
 up to 10 of their neighbors with a radius of 3 * min_dist using the
@@ -495,7 +497,7 @@ a Matrix Profile data structure).</p></li>
 motifs key consists of the following structure.</p>
 <p>A list of dicts containing motif indices and their corresponding
 neighbor indices.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">[</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">[</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="p">{</span>
 <span class="gp">&gt;&gt;&gt; </span>        <span class="s1">&#39;motifs&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">first_index</span><span class="p">,</span> <span class="n">second_index</span><span class="p">],</span>
 <span class="gp">&gt;&gt;&gt; </span>        <span class="s1">&#39;neighbors&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">index</span> <span class="o">...</span><span class="n">max_neighbors</span><span class="p">]</span>
@@ -516,9 +518,9 @@ the index contains a row and column index for Pan-MatrixProfile.</p>
 </div>
 <div class="section" id="matrixprofile-discover-discords">
 <h2>matrixprofile.discover.discords<a class="headerlink" href="#matrixprofile-discover-discords" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+<dl class="py function">
 <dt id="matrixprofile.discover.discords">
-<code class="sig-prename descclassname">matrixprofile.discover.</code><code class="sig-name descname">discords</code><span class="sig-paren">(</span><em class="sig-param">profile</em>, <em class="sig-param">exclusion_zone=None</em>, <em class="sig-param">k=3</em><span class="sig-paren">)</span><a class="headerlink" href="#matrixprofile.discover.discords" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">matrixprofile.discover.</code><code class="sig-name descname">discords</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">profile</span></em>, <em class="sig-param"><span class="n">exclusion_zone</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">k</span><span class="o">=</span><span class="default_value">3</span></em><span class="sig-paren">)</span><a class="headerlink" href="#matrixprofile.discover.discords" title="Permalink to this definition">¶</a></dt>
 <dd><p>Find the top K number of discords (anomalies) given a mp or pmp,
 exclusion zone and the desired number of discords. The exclusion zone
 nullifies entries on the left and right side of the first and subsequent
@@ -547,9 +549,9 @@ Pan-MatrixProfile contains a row and column index.</p>
 </div>
 <div class="section" id="matrixprofile-discover-snippets">
 <h2>matrixprofile.discover.snippets<a class="headerlink" href="#matrixprofile-discover-snippets" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+<dl class="py function">
 <dt id="matrixprofile.discover.snippets">
-<code class="sig-prename descclassname">matrixprofile.discover.</code><code class="sig-name descname">snippets</code><span class="sig-paren">(</span><em class="sig-param">ts</em>, <em class="sig-param">snippet_size</em>, <em class="sig-param">num_snippets=2</em>, <em class="sig-param">window_size=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/algorithms/snippets.html#snippets"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.discover.snippets" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">matrixprofile.discover.</code><code class="sig-name descname">snippets</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ts</span></em>, <em class="sig-param"><span class="n">snippet_size</span></em>, <em class="sig-param"><span class="n">num_snippets</span><span class="o">=</span><span class="default_value">2</span></em>, <em class="sig-param"><span class="n">window_size</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/algorithms/snippets.html#snippets"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.discover.snippets" title="Permalink to this definition">¶</a></dt>
 <dd><p>The snippets algorithm is used to summarize your time series by
 identifying N number of representative subsequences. If you want to
 identify typical patterns in your time series, then this is the algorithm
@@ -565,7 +567,7 @@ to use.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><p><strong>list</strong> – A list of snippets as dictionary objects with the following structure.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">{</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">{</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="n">index</span><span class="p">:</span> <span class="n">the</span> <span class="n">index</span> <span class="n">of</span> <span class="n">the</span> <span class="n">snippet</span><span class="p">,</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="n">snippet</span><span class="p">:</span> <span class="n">the</span> <span class="n">snippet</span> <span class="n">values</span><span class="p">,</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="n">neighbors</span><span class="p">:</span> <span class="n">the</span> <span class="n">starting</span> <span class="n">indices</span> <span class="n">of</span> <span class="nb">all</span> <span class="n">subsequences</span> <span class="n">similar</span> <span class="n">to</span> <span class="n">the</span> <span class="n">current</span> <span class="n">snippet</span>
@@ -584,9 +586,9 @@ to use.</p>
 </div>
 <div class="section" id="matrixprofile-discover-regimes">
 <h2>matrixprofile.discover.regimes<a class="headerlink" href="#matrixprofile-discover-regimes" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+<dl class="py function">
 <dt id="matrixprofile.discover.regimes">
-<code class="sig-prename descclassname">matrixprofile.discover.</code><code class="sig-name descname">regimes</code><span class="sig-paren">(</span><em class="sig-param">profile</em>, <em class="sig-param">num_regimes=3</em><span class="sig-paren">)</span><a class="headerlink" href="#matrixprofile.discover.regimes" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">matrixprofile.discover.</code><code class="sig-name descname">regimes</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">profile</span></em>, <em class="sig-param"><span class="n">num_regimes</span><span class="o">=</span><span class="default_value">3</span></em><span class="sig-paren">)</span><a class="headerlink" href="#matrixprofile.discover.regimes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Given a MatrixProfile, compute the corrected arc curve and extract
 the desired number of regimes. Regimes are computed with an exclusion
 zone of 5 * window size per the authors.</p>
@@ -605,7 +607,7 @@ patterns.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><p><strong>dict</strong> – The original MatrixProfile object with additional keys containing.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">{</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">{</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;cac&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">corrected</span> <span class="n">arc</span> <span class="n">curve</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;cac_ez&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">exclusion</span> <span class="n">zone</span> <span class="n">used</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;regimes&#39;</span><span class="p">:</span> <span class="n">Array</span> <span class="n">of</span> <span class="n">starting</span> <span class="n">indices</span> <span class="n">indicating</span> <span class="n">a</span> <span class="n">regime</span><span class="o">.</span>
@@ -623,9 +625,9 @@ patterns.</p>
 </div>
 <div class="section" id="matrixprofile-discover-statistics">
 <h2>matrixprofile.discover.statistics<a class="headerlink" href="#matrixprofile-discover-statistics" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+<dl class="py function">
 <dt id="matrixprofile.discover.statistics">
-<code class="sig-prename descclassname">matrixprofile.discover.</code><code class="sig-name descname">statistics</code><span class="sig-paren">(</span><em class="sig-param">ts</em>, <em class="sig-param">window_size</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/algorithms/statistics.html#statistics"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.discover.statistics" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">matrixprofile.discover.</code><code class="sig-name descname">statistics</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ts</span></em>, <em class="sig-param"><span class="n">window_size</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/algorithms/statistics.html#statistics"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.discover.statistics" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute global and moving statistics for the provided 1D time
 series. The statistics computed include the min, max, mean, std. and median
 over the window specified and globally.</p>
@@ -638,7 +640,7 @@ over the window specified and globally.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><p><strong>dict</strong> – The global and rolling window statistics.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">{</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">{</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="n">ts</span><span class="p">:</span> <span class="n">the</span> <span class="n">original</span> <span class="n">time</span> <span class="n">series</span><span class="p">,</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="nb">min</span><span class="p">:</span> <span class="n">the</span> <span class="k">global</span> <span class="n">minimum</span><span class="p">,</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="nb">max</span><span class="p">:</span> <span class="n">the</span> <span class="k">global</span> <span class="n">maximum</span><span class="p">,</span>
@@ -672,9 +674,9 @@ over the window specified and globally.</p>
 </div>
 <div class="section" id="matrixprofile-discover-hierarchical-clusters">
 <h2>matrixprofile.discover.hierarchical_clusters<a class="headerlink" href="#matrixprofile-discover-hierarchical-clusters" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+<dl class="py function">
 <dt id="matrixprofile.discover.hierarchical_clusters">
-<code class="sig-prename descclassname">matrixprofile.discover.</code><code class="sig-name descname">hierarchical_clusters</code><span class="sig-paren">(</span><em class="sig-param">X</em>, <em class="sig-param">window_size</em>, <em class="sig-param">t</em>, <em class="sig-param">threshold=0.05</em>, <em class="sig-param">method='single'</em>, <em class="sig-param">depth=2</em>, <em class="sig-param">criterion='distance'</em>, <em class="sig-param">n_jobs=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/algorithms/hierarchical_clustering.html#hierarchical_clusters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.discover.hierarchical_clusters" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">matrixprofile.discover.</code><code class="sig-name descname">hierarchical_clusters</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">X</span></em>, <em class="sig-param"><span class="n">window_size</span></em>, <em class="sig-param"><span class="n">t</span></em>, <em class="sig-param"><span class="n">threshold</span><span class="o">=</span><span class="default_value">0.05</span></em>, <em class="sig-param"><span class="n">method</span><span class="o">=</span><span class="default_value">'single'</span></em>, <em class="sig-param"><span class="n">depth</span><span class="o">=</span><span class="default_value">2</span></em>, <em class="sig-param"><span class="n">criterion</span><span class="o">=</span><span class="default_value">'distance'</span></em>, <em class="sig-param"><span class="n">n_jobs</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/algorithms/hierarchical_clustering.html#hierarchical_clusters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.discover.hierarchical_clusters" title="Permalink to this definition">¶</a></dt>
 <dd><p>Cluster M time series into hierarchical clusters using agglomerative
 approach. This function is more or less a convenience wrapper around
 SciPy’s scipy.cluster.hierarchy functions, but uses the MPDist algorithm
@@ -740,7 +742,7 @@ threshold of 0.8 do:</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><p><strong>clusters</strong> – Clustering statistics, distances and labels.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">{</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">{</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="n">pairwise_distances</span><span class="p">:</span> <span class="n">MPDist</span> <span class="n">between</span> <span class="n">pairs</span> <span class="n">of</span> <span class="n">time</span> <span class="n">series</span> <span class="k">as</span>
 <span class="gp">&gt;&gt;&gt; </span>                        <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="n">linkage_matrix</span><span class="p">:</span> <span class="n">clustering</span> <span class="n">linkage</span> <span class="n">matrix</span> <span class="k">as</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
@@ -765,9 +767,9 @@ threshold of 0.8 do:</p>
 </div>
 <div class="section" id="matrixprofile-algorithms-stomp">
 <h2>matrixprofile.algorithms.stomp<a class="headerlink" href="#matrixprofile-algorithms-stomp" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+<dl class="py function">
 <dt id="matrixprofile.algorithms.stomp">
-<code class="sig-prename descclassname">matrixprofile.algorithms.</code><code class="sig-name descname">stomp</code><span class="sig-paren">(</span><em class="sig-param">ts</em>, <em class="sig-param">window_size</em>, <em class="sig-param">query=None</em>, <em class="sig-param">n_jobs=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/algorithms/stomp.html#stomp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.algorithms.stomp" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">matrixprofile.algorithms.</code><code class="sig-name descname">stomp</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ts</span></em>, <em class="sig-param"><span class="n">window_size</span></em>, <em class="sig-param"><span class="n">query</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">n_jobs</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/algorithms/stomp.html#stomp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.algorithms.stomp" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes matrix profiles for a single dimensional time series using the
 parallelized STOMP algorithm (by default). Ray or Python’s multiprocessing
 library may be used. When you have initialized Ray on your machine,
@@ -783,7 +785,7 @@ it takes priority over using Python’s multiprocessing.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><p><strong>dict</strong> – A MatrixProfile data structure.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">{</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">{</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;mp&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">matrix</span> <span class="n">profile</span><span class="p">,</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;pi&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">matrix</span> <span class="n">profile</span> <span class="mi">1</span><span class="n">NN</span> <span class="n">indices</span><span class="p">,</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;rmp&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">right</span> <span class="n">matrix</span> <span class="n">profile</span><span class="p">,</span>
@@ -822,9 +824,9 @@ it takes priority over using Python’s multiprocessing.</p>
 </div>
 <div class="section" id="matrixprofile-algorithms-mpx">
 <h2>matrixprofile.algorithms.mpx<a class="headerlink" href="#matrixprofile-algorithms-mpx" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+<dl class="py function">
 <dt id="matrixprofile.algorithms.mpx">
-<code class="sig-prename descclassname">matrixprofile.algorithms.</code><code class="sig-name descname">mpx</code><span class="sig-paren">(</span><em class="sig-param">ts</em>, <em class="sig-param">w</em>, <em class="sig-param">query=None</em>, <em class="sig-param">cross_correlation=False</em>, <em class="sig-param">n_jobs=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/algorithms/mpx.html#mpx"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.algorithms.mpx" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">matrixprofile.algorithms.</code><code class="sig-name descname">mpx</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ts</span></em>, <em class="sig-param"><span class="n">w</span></em>, <em class="sig-param"><span class="n">query</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">cross_correlation</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">n_jobs</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/algorithms/mpx.html#mpx"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.algorithms.mpx" title="Permalink to this definition">¶</a></dt>
 <dd><p>The MPX algorithm computes the matrix profile without using the FFT.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -839,7 +841,7 @@ to Euclidean Distance.</p></li>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><p><strong>dict</strong> – A MatrixProfile data structure.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">{</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">{</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;mp&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">matrix</span> <span class="n">profile</span><span class="p">,</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;pi&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">matrix</span> <span class="n">profile</span> <span class="mi">1</span><span class="n">NN</span> <span class="n">indices</span><span class="p">,</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;rmp&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">right</span> <span class="n">matrix</span> <span class="n">profile</span><span class="p">,</span>
@@ -871,9 +873,9 @@ to Euclidean Distance.</p></li>
 </div>
 <div class="section" id="matrixprofile-algorithms-skimp">
 <h2>matrixprofile.algorithms.skimp<a class="headerlink" href="#matrixprofile-algorithms-skimp" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+<dl class="py function">
 <dt id="matrixprofile.algorithms.skimp">
-<code class="sig-prename descclassname">matrixprofile.algorithms.</code><code class="sig-name descname">skimp</code><span class="sig-paren">(</span><em class="sig-param">ts</em>, <em class="sig-param">windows=None</em>, <em class="sig-param">show_progress=False</em>, <em class="sig-param">cross_correlation=False</em>, <em class="sig-param">pmp_obj=None</em>, <em class="sig-param">sample_pct=0.1</em>, <em class="sig-param">n_jobs=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/algorithms/skimp.html#skimp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.algorithms.skimp" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">matrixprofile.algorithms.</code><code class="sig-name descname">skimp</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ts</span></em>, <em class="sig-param"><span class="n">windows</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">show_progress</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">cross_correlation</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">pmp_obj</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">sample_pct</span><span class="o">=</span><span class="default_value">0.1</span></em>, <em class="sig-param"><span class="n">n_jobs</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/algorithms/skimp.html#skimp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.algorithms.skimp" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes the Pan Matrix Profile (PMP) for the given time series. When the
 time series is only passed, windows start from 8 and increase by increments
 of 2 up to length(ts) / 2. Also, the PMP is only computed using 10% of the
@@ -901,7 +903,7 @@ subsequence.</p></li>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><p><strong>dict</strong> – A Pan-MatrixProfile data structure.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">{</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">{</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;pmp&#39;</span><span class="p">:</span> <span class="n">the</span> <span class="n">pan</span> <span class="n">matrix</span> <span class="n">profile</span> <span class="k">as</span> <span class="n">a</span> <span class="mi">2</span><span class="n">D</span> <span class="n">array</span><span class="p">,</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;pmpi&#39;</span><span class="p">:</span> <span class="n">the</span> <span class="n">pmp</span> <span class="n">indices</span><span class="p">,</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="p">{</span>
@@ -936,9 +938,9 @@ subsequence.</p></li>
 </div>
 <div class="section" id="matrixprofile-algorithms-mass2">
 <h2>matrixprofile.algorithms.mass2<a class="headerlink" href="#matrixprofile-algorithms-mass2" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+<dl class="py function">
 <dt id="matrixprofile.algorithms.mass2">
-<code class="sig-prename descclassname">matrixprofile.algorithms.</code><code class="sig-name descname">mass2</code><span class="sig-paren">(</span><em class="sig-param">ts</em>, <em class="sig-param">query</em>, <em class="sig-param">extras=False</em>, <em class="sig-param">threshold=1e-10</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/algorithms/mass2.html#mass2"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.algorithms.mass2" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">matrixprofile.algorithms.</code><code class="sig-name descname">mass2</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ts</span></em>, <em class="sig-param"><span class="n">query</span></em>, <em class="sig-param"><span class="n">extras</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">threshold</span><span class="o">=</span><span class="default_value">1e-10</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/algorithms/mass2.html#mass2"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.algorithms.mass2" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the distance profile for the given query over the given time
 series.</p>
 <dl class="field-list simple">
@@ -952,7 +954,7 @@ series.</p>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><p><strong>np.array, dict</strong> – An array of distances np.array() or dict with extras.</p>
 <p>With extras:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">{</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">{</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;distance_profile&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">distance</span> <span class="n">profile</span><span class="p">,</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;product&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">FFT</span> <span class="n">product</span> <span class="n">between</span> <span class="n">ts</span> <span class="ow">and</span> <span class="n">query</span><span class="p">,</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;data_mean&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">moving</span> <span class="n">average</span> <span class="n">of</span> <span class="n">the</span> <span class="n">ts</span> <span class="n">over</span> <span class="nb">len</span><span class="p">(</span><span class="n">query</span><span class="p">),</span>
@@ -978,9 +980,9 @@ series.</p>
 </div>
 <div class="section" id="matrixprofile-algorithms-mpdist">
 <h2>matrixprofile.algorithms.mpdist<a class="headerlink" href="#matrixprofile-algorithms-mpdist" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+<dl class="py function">
 <dt id="matrixprofile.algorithms.mpdist">
-<code class="sig-prename descclassname">matrixprofile.algorithms.</code><code class="sig-name descname">mpdist</code><span class="sig-paren">(</span><em class="sig-param">ts</em>, <em class="sig-param">ts_b</em>, <em class="sig-param">w</em>, <em class="sig-param">threshold=0.05</em>, <em class="sig-param">n_jobs=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/algorithms/mpdist.html#mpdist"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.algorithms.mpdist" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">matrixprofile.algorithms.</code><code class="sig-name descname">mpdist</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ts</span></em>, <em class="sig-param"><span class="n">ts_b</span></em>, <em class="sig-param"><span class="n">w</span></em>, <em class="sig-param"><span class="n">threshold</span><span class="o">=</span><span class="default_value">0.05</span></em>, <em class="sig-param"><span class="n">n_jobs</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/algorithms/mpdist.html#mpdist"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.algorithms.mpdist" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes the MPDist between the two series ts and ts_b. For more details
 refer to the paper:</p>
 <p>Matrix Proﬁle XII: MPdist: A Novel Time Series Distance Measure to Allow
@@ -1011,9 +1013,9 @@ doing! This value must be a float greater than 0 and less than 1.</p></li>
 </div>
 <div class="section" id="matrixprofile-algorithms-pairwise-dist">
 <h2>matrixprofile.algorithms.pairwise_dist<a class="headerlink" href="#matrixprofile-algorithms-pairwise-dist" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+<dl class="py function">
 <dt id="matrixprofile.algorithms.pairwise_dist">
-<code class="sig-prename descclassname">matrixprofile.algorithms.</code><code class="sig-name descname">pairwise_dist</code><span class="sig-paren">(</span><em class="sig-param">X</em>, <em class="sig-param">window_size</em>, <em class="sig-param">threshold=0.05</em>, <em class="sig-param">n_jobs=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/algorithms/pairwise_dist.html#pairwise_dist"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.algorithms.pairwise_dist" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">matrixprofile.algorithms.</code><code class="sig-name descname">pairwise_dist</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">X</span></em>, <em class="sig-param"><span class="n">window_size</span></em>, <em class="sig-param"><span class="n">threshold</span><span class="o">=</span><span class="default_value">0.05</span></em>, <em class="sig-param"><span class="n">n_jobs</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/algorithms/pairwise_dist.html#pairwise_dist"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.algorithms.pairwise_dist" title="Permalink to this definition">¶</a></dt>
 <dd><p>Utility function to compute all pairwise distances between the timeseries
 using MPDist.</p>
 <div class="admonition note">
@@ -1047,9 +1049,9 @@ is computed and stored in entry <code class="docutils literal notranslate"><span
 </div>
 <div class="section" id="matrixprofile-algorithms-maximum-subsequence">
 <h2>matrixprofile.algorithms.maximum_subsequence<a class="headerlink" href="#matrixprofile-algorithms-maximum-subsequence" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+<dl class="py function">
 <dt id="matrixprofile.algorithms.maximum_subsequence">
-<code class="sig-prename descclassname">matrixprofile.algorithms.</code><code class="sig-name descname">maximum_subsequence</code><span class="sig-paren">(</span><em class="sig-param">ts</em>, <em class="sig-param">threshold=0.95</em>, <em class="sig-param">refine_stepsize=0.05</em>, <em class="sig-param">n_jobs=1</em>, <em class="sig-param">include_pmp=False</em>, <em class="sig-param">lower_window=8</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/algorithms/skimp.html#maximum_subsequence"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.algorithms.maximum_subsequence" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">matrixprofile.algorithms.</code><code class="sig-name descname">maximum_subsequence</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ts</span></em>, <em class="sig-param"><span class="n">threshold</span><span class="o">=</span><span class="default_value">0.95</span></em>, <em class="sig-param"><span class="n">refine_stepsize</span><span class="o">=</span><span class="default_value">0.05</span></em>, <em class="sig-param"><span class="n">n_jobs</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">include_pmp</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">lower_window</span><span class="o">=</span><span class="default_value">8</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/algorithms/skimp.html#maximum_subsequence"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.algorithms.maximum_subsequence" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finds the maximum subsequence length based on the threshold provided. Note
 that this threshold is domain specific requiring some knowledge about the
 underyling time series in question.</p>
@@ -1073,7 +1075,7 @@ should be a percentage between 0.01 and 0.99.</p></li>
 int : The maximum subsequence length based on the threshold provided.</p>
 <p>With include_pmp=True
 dict : A dict containing the upper window, windows and pmp.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">{</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">{</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;upper_window&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">upper</span> <span class="n">window</span><span class="p">,</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;windows&#39;</span><span class="p">:</span> <span class="n">array_like</span> <span class="n">windows</span> <span class="n">used</span> <span class="n">to</span> <span class="n">compute</span> <span class="n">the</span> <span class="n">pmp</span><span class="p">,</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;pmp&#39;</span><span class="p">:</span> <span class="n">the</span> <span class="n">pan</span> <span class="n">matrix</span> <span class="n">profile</span> <span class="k">as</span> <span class="n">a</span> <span class="mi">2</span><span class="n">D</span> <span class="n">array</span><span class="p">,</span>
@@ -1092,9 +1094,9 @@ dict : A dict containing the upper window, windows and pmp.</p>
 </div>
 <div class="section" id="matrixprofile-algorithms-prescrimp">
 <h2>matrixprofile.algorithms.prescrimp<a class="headerlink" href="#matrixprofile-algorithms-prescrimp" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+<dl class="py function">
 <dt id="matrixprofile.algorithms.prescrimp">
-<code class="sig-prename descclassname">matrixprofile.algorithms.</code><code class="sig-name descname">prescrimp</code><span class="sig-paren">(</span><em class="sig-param">ts</em>, <em class="sig-param">window_size</em>, <em class="sig-param">query=None</em>, <em class="sig-param">step_size=0.25</em>, <em class="sig-param">sample_pct=0.1</em>, <em class="sig-param">random_state=None</em>, <em class="sig-param">n_jobs=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/algorithms/scrimp.html#prescrimp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.algorithms.prescrimp" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">matrixprofile.algorithms.</code><code class="sig-name descname">prescrimp</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ts</span></em>, <em class="sig-param"><span class="n">window_size</span></em>, <em class="sig-param"><span class="n">query</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">step_size</span><span class="o">=</span><span class="default_value">0.25</span></em>, <em class="sig-param"><span class="n">sample_pct</span><span class="o">=</span><span class="default_value">0.1</span></em>, <em class="sig-param"><span class="n">random_state</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">n_jobs</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/algorithms/scrimp.html#prescrimp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.algorithms.prescrimp" title="Permalink to this definition">¶</a></dt>
 <dd><p>This is the PreScrimp algorithm from the SCRIMP++ paper. It is primarly
 used to compute the approximate matrix profile. In this case we use
 a sample percentage to mock “the anytime/approximate nature”.</p>
@@ -1120,7 +1122,7 @@ solution.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p><p><strong>dict</strong> – A MatrixProfile data structure.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">{</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">{</span>
 <span class="gp">&gt;&gt;&gt; </span>   <span class="s1">&#39;mp&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">matrix</span> <span class="n">profile</span><span class="p">,</span>
 <span class="gp">&gt;&gt;&gt; </span>   <span class="s1">&#39;pi&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">matrix</span> <span class="n">profile</span> <span class="mi">1</span><span class="n">NN</span> <span class="n">indices</span><span class="p">,</span>
 <span class="gp">&gt;&gt;&gt; </span>   <span class="s1">&#39;rmp&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">right</span> <span class="n">matrix</span> <span class="n">profile</span><span class="p">,</span>
@@ -1160,9 +1162,9 @@ solution.</p>
 </div>
 <div class="section" id="matrixprofile-algorithms-scrimp-plus-plus">
 <h2>matrixprofile.algorithms.scrimp_plus_plus<a class="headerlink" href="#matrixprofile-algorithms-scrimp-plus-plus" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+<dl class="py function">
 <dt id="matrixprofile.algorithms.scrimp_plus_plus">
-<code class="sig-prename descclassname">matrixprofile.algorithms.</code><code class="sig-name descname">scrimp_plus_plus</code><span class="sig-paren">(</span><em class="sig-param">ts</em>, <em class="sig-param">window_size</em>, <em class="sig-param">query=None</em>, <em class="sig-param">step_size=0.25</em>, <em class="sig-param">sample_pct=0.1</em>, <em class="sig-param">random_state=None</em>, <em class="sig-param">n_jobs=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/algorithms/scrimp.html#scrimp_plus_plus"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.algorithms.scrimp_plus_plus" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">matrixprofile.algorithms.</code><code class="sig-name descname">scrimp_plus_plus</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ts</span></em>, <em class="sig-param"><span class="n">window_size</span></em>, <em class="sig-param"><span class="n">query</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">step_size</span><span class="o">=</span><span class="default_value">0.25</span></em>, <em class="sig-param"><span class="n">sample_pct</span><span class="o">=</span><span class="default_value">0.1</span></em>, <em class="sig-param"><span class="n">random_state</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">n_jobs</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/algorithms/scrimp.html#scrimp_plus_plus"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.algorithms.scrimp_plus_plus" title="Permalink to this definition">¶</a></dt>
 <dd><p>SCRIMP++ is an anytime algorithm that computes the matrix profile for a
 given time series (ts) over a given window size (m). Essentially, it allows
 for an approximate solution to be provided for quicker analysis. In the
@@ -1190,7 +1192,7 @@ most practical. It should be a float value between 0 and 1.</p></li>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><p><strong>dict</strong> – A MatrixProfile data structure.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">{</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">{</span>
 <span class="gp">&gt;&gt;&gt; </span>   <span class="s1">&#39;mp&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">matrix</span> <span class="n">profile</span><span class="p">,</span>
 <span class="gp">&gt;&gt;&gt; </span>   <span class="s1">&#39;pi&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">matrix</span> <span class="n">profile</span> <span class="mi">1</span><span class="n">NN</span> <span class="n">indices</span><span class="p">,</span>
 <span class="gp">&gt;&gt;&gt; </span>   <span class="s1">&#39;rmp&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">right</span> <span class="n">matrix</span> <span class="n">profile</span><span class="p">,</span>
@@ -1230,9 +1232,9 @@ most practical. It should be a float value between 0 and 1.</p></li>
 </div>
 <div class="section" id="matrixprofile-transform-apply-av">
 <h2>matrixprofile.transform.apply_av<a class="headerlink" href="#matrixprofile-transform-apply-av" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+<dl class="py function">
 <dt id="matrixprofile.transform.apply_av">
-<code class="sig-prename descclassname">matrixprofile.transform.</code><code class="sig-name descname">apply_av</code><span class="sig-paren">(</span><em class="sig-param">profile</em>, <em class="sig-param">av='default'</em>, <em class="sig-param">custom_av=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/transform.html#apply_av"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.transform.apply_av" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">matrixprofile.transform.</code><code class="sig-name descname">apply_av</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">profile</span></em>, <em class="sig-param"><span class="n">av</span><span class="o">=</span><span class="default_value">'default'</span></em>, <em class="sig-param"><span class="n">custom_av</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/transform.html#apply_av"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.transform.apply_av" title="Permalink to this definition">¶</a></dt>
 <dd><p>Utility function that returns a MatrixProfile data structure
 with a calculated annotation vector that has been applied
 to correct the matrix profile.</p>
@@ -1264,9 +1266,9 @@ and a corrected matrix profile.</p>
 </div>
 <div class="section" id="matrixprofile-transform-make-default-av">
 <h2>matrixprofile.transform.make_default_av<a class="headerlink" href="#matrixprofile-transform-make-default-av" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+<dl class="py function">
 <dt id="matrixprofile.transform.make_default_av">
-<code class="sig-prename descclassname">matrixprofile.transform.</code><code class="sig-name descname">make_default_av</code><span class="sig-paren">(</span><em class="sig-param">ts</em>, <em class="sig-param">window</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/transform.html#make_default_av"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.transform.make_default_av" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">matrixprofile.transform.</code><code class="sig-name descname">make_default_av</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ts</span></em>, <em class="sig-param"><span class="n">window</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/transform.html#make_default_av"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.transform.make_default_av" title="Permalink to this definition">¶</a></dt>
 <dd><p>Utility function that returns an annotation vector filled with 1s
 (should not change the matrix profile).</p>
 <dl class="field-list simple">
@@ -1293,9 +1295,9 @@ and a corrected matrix profile.</p>
 </div>
 <div class="section" id="matrixprofile-transform-make-complexity-av">
 <h2>matrixprofile.transform.make_complexity_av<a class="headerlink" href="#matrixprofile-transform-make-complexity-av" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+<dl class="py function">
 <dt id="matrixprofile.transform.make_complexity_av">
-<code class="sig-prename descclassname">matrixprofile.transform.</code><code class="sig-name descname">make_complexity_av</code><span class="sig-paren">(</span><em class="sig-param">ts</em>, <em class="sig-param">window</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/transform.html#make_complexity_av"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.transform.make_complexity_av" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">matrixprofile.transform.</code><code class="sig-name descname">make_complexity_av</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ts</span></em>, <em class="sig-param"><span class="n">window</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/transform.html#make_complexity_av"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.transform.make_complexity_av" title="Permalink to this definition">¶</a></dt>
 <dd><p>Utility function that returns an annotation vector where values are based
 on the complexity estimation of the signal.</p>
 <dl class="field-list simple">
@@ -1322,9 +1324,9 @@ on the complexity estimation of the signal.</p>
 </div>
 <div class="section" id="matrixprofile-transform-make-meanstd-av">
 <h2>matrixprofile.transform.make_meanstd_av<a class="headerlink" href="#matrixprofile-transform-make-meanstd-av" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+<dl class="py function">
 <dt id="matrixprofile.transform.make_meanstd_av">
-<code class="sig-prename descclassname">matrixprofile.transform.</code><code class="sig-name descname">make_meanstd_av</code><span class="sig-paren">(</span><em class="sig-param">ts</em>, <em class="sig-param">window</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/transform.html#make_meanstd_av"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.transform.make_meanstd_av" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">matrixprofile.transform.</code><code class="sig-name descname">make_meanstd_av</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ts</span></em>, <em class="sig-param"><span class="n">window</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/transform.html#make_meanstd_av"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.transform.make_meanstd_av" title="Permalink to this definition">¶</a></dt>
 <dd><p>Utility function that returns an annotation vector where values are set to
 1 if the standard deviation is less than the mean of standard deviation.
 Otherwise, the values are set to 0.</p>
@@ -1352,9 +1354,9 @@ Otherwise, the values are set to 0.</p>
 </div>
 <div class="section" id="matrixprofile-transform-make-clipping-av">
 <h2>matrixprofile.transform.make_clipping_av<a class="headerlink" href="#matrixprofile-transform-make-clipping-av" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+<dl class="py function">
 <dt id="matrixprofile.transform.make_clipping_av">
-<code class="sig-prename descclassname">matrixprofile.transform.</code><code class="sig-name descname">make_clipping_av</code><span class="sig-paren">(</span><em class="sig-param">ts</em>, <em class="sig-param">window</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/transform.html#make_clipping_av"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.transform.make_clipping_av" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">matrixprofile.transform.</code><code class="sig-name descname">make_clipping_av</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ts</span></em>, <em class="sig-param"><span class="n">window</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/transform.html#make_clipping_av"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.transform.make_clipping_av" title="Permalink to this definition">¶</a></dt>
 <dd><p>Utility function that returns an annotation vector such that
 subsequences that have more clipping have less importance.</p>
 <dl class="field-list simple">
@@ -1381,7 +1383,7 @@ subsequences that have more clipping have less importance.</p>
 </div>
 <div class="section" id="matrixprofile-utils-empty-mp">
 <h2>matrixprofile.utils.empty_mp<a class="headerlink" href="#matrixprofile-utils-empty-mp" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+<dl class="py function">
 <dt id="matrixprofile.utils.empty_mp">
 <code class="sig-prename descclassname">matrixprofile.utils.</code><code class="sig-name descname">empty_mp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/utils.html#empty_mp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.utils.empty_mp" title="Permalink to this definition">¶</a></dt>
 <dd><p>Utility function that provides an empty MatrixProfile data structure.</p>
@@ -1398,9 +1400,9 @@ subsequences that have more clipping have less importance.</p>
 </div>
 <div class="section" id="matrixprofile-utils-pick-mp">
 <h2>matrixprofile.utils.pick_mp<a class="headerlink" href="#matrixprofile-utils-pick-mp" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+<dl class="py function">
 <dt id="matrixprofile.utils.pick_mp">
-<code class="sig-prename descclassname">matrixprofile.utils.</code><code class="sig-name descname">pick_mp</code><span class="sig-paren">(</span><em class="sig-param">profile</em>, <em class="sig-param">window</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/utils.html#pick_mp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.utils.pick_mp" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">matrixprofile.utils.</code><code class="sig-name descname">pick_mp</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">profile</span></em>, <em class="sig-param"><span class="n">window</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/utils.html#pick_mp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.utils.pick_mp" title="Permalink to this definition">¶</a></dt>
 <dd><p>Utility function that extracts a MatrixProfile from a Pan-MatrixProfile
 placing it into the MatrixProfile data structure.</p>
 <dl class="field-list simple">
@@ -1427,9 +1429,9 @@ placing it into the MatrixProfile data structure.</p>
 </div>
 <div class="section" id="matrixprofile-io-to-disk">
 <h2>matrixprofile.io.to_disk<a class="headerlink" href="#matrixprofile-io-to-disk" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+<dl class="py function">
 <dt id="matrixprofile.io.to_disk">
-<code class="sig-prename descclassname">matrixprofile.io.</code><code class="sig-name descname">to_disk</code><span class="sig-paren">(</span><em class="sig-param">profile</em>, <em class="sig-param">file_path</em>, <em class="sig-param">format='json'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/io/__io.html#to_disk"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.io.to_disk" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">matrixprofile.io.</code><code class="sig-name descname">to_disk</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">profile</span></em>, <em class="sig-param"><span class="n">file_path</span></em>, <em class="sig-param"><span class="n">format</span><span class="o">=</span><span class="default_value">'json'</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/io/__io.html#to_disk"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.io.to_disk" title="Permalink to this definition">¶</a></dt>
 <dd><p>Writes a profile object of type MatrixProfile or PMP to disk as a JSON
 formatted file by default.</p>
 <div class="admonition note">
@@ -1452,9 +1454,9 @@ include the extension, it is appended for you.</p>
 </div>
 <div class="section" id="matrixprofile-io-from-disk">
 <h2>matrixprofile.io.from_disk<a class="headerlink" href="#matrixprofile-io-from-disk" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+<dl class="py function">
 <dt id="matrixprofile.io.from_disk">
-<code class="sig-prename descclassname">matrixprofile.io.</code><code class="sig-name descname">from_disk</code><span class="sig-paren">(</span><em class="sig-param">file_path</em>, <em class="sig-param">format='infer'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/io/__io.html#from_disk"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.io.from_disk" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">matrixprofile.io.</code><code class="sig-name descname">from_disk</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">file_path</span></em>, <em class="sig-param"><span class="n">format</span><span class="o">=</span><span class="default_value">'infer'</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/io/__io.html#from_disk"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.io.from_disk" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reads a profile object of type MatrixProfile or PMP from disk into the
 respective object type. By default the type is inferred by the file
 extension.</p>
@@ -1478,9 +1480,9 @@ infer, json, mpf</p></li>
 </div>
 <div class="section" id="matrixprofile-io-to-json">
 <h2>matrixprofile.io.to_json<a class="headerlink" href="#matrixprofile-io-to-json" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+<dl class="py function">
 <dt id="matrixprofile.io.to_json">
-<code class="sig-prename descclassname">matrixprofile.io.</code><code class="sig-name descname">to_json</code><span class="sig-paren">(</span><em class="sig-param">profile</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/io/__io.html#to_json"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.io.to_json" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">matrixprofile.io.</code><code class="sig-name descname">to_json</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">profile</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/io/__io.html#to_json"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.io.to_json" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts a given profile object into JSON format.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1498,9 +1500,9 @@ infer, json, mpf</p></li>
 </div>
 <div class="section" id="matrixprofile-io-from-json">
 <h2>matrixprofile.io.from_json<a class="headerlink" href="#matrixprofile-io-from-json" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+<dl class="py function">
 <dt id="matrixprofile.io.from_json">
-<code class="sig-prename descclassname">matrixprofile.io.</code><code class="sig-name descname">from_json</code><span class="sig-paren">(</span><em class="sig-param">profile</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/io/__io.html#from_json"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.io.from_json" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">matrixprofile.io.</code><code class="sig-name descname">from_json</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">profile</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/io/__io.html#from_json"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.io.from_json" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts a JSON formatted string into a profile data structure.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1518,9 +1520,9 @@ infer, json, mpf</p></li>
 </div>
 <div class="section" id="matrixprofile-io-to-mpf">
 <h2>matrixprofile.io.to_mpf<a class="headerlink" href="#matrixprofile-io-to-mpf" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+<dl class="py function">
 <dt id="matrixprofile.io.to_mpf">
-<code class="sig-prename descclassname">matrixprofile.io.</code><code class="sig-name descname">to_mpf</code><span class="sig-paren">(</span><em class="sig-param">profile</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/io/protobuf/protobuf_utils.html#to_mpf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.io.to_mpf" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">matrixprofile.io.</code><code class="sig-name descname">to_mpf</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">profile</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/io/protobuf/protobuf_utils.html#to_mpf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.io.to_mpf" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts a given profile object into MPF binary file format.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1538,9 +1540,9 @@ infer, json, mpf</p></li>
 </div>
 <div class="section" id="matrixprofile-io-from-mpf">
 <h2>matrixprofile.io.from_mpf<a class="headerlink" href="#matrixprofile-io-from-mpf" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+<dl class="py function">
 <dt id="matrixprofile.io.from_mpf">
-<code class="sig-prename descclassname">matrixprofile.io.</code><code class="sig-name descname">from_mpf</code><span class="sig-paren">(</span><em class="sig-param">profile</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/io/protobuf/protobuf_utils.html#from_mpf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.io.from_mpf" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">matrixprofile.io.</code><code class="sig-name descname">from_mpf</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">profile</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/io/protobuf/protobuf_utils.html#from_mpf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.io.from_mpf" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts binary formatted MPFOutput message into a profile data structure.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1558,9 +1560,9 @@ infer, json, mpf</p></li>
 </div>
 <div class="section" id="matrixprofile-datasets-fetch-available">
 <h2>matrixprofile.datasets.fetch_available<a class="headerlink" href="#matrixprofile-datasets-fetch-available" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+<dl class="py function">
 <dt id="matrixprofile.datasets.fetch_available">
-<code class="sig-prename descclassname">matrixprofile.datasets.</code><code class="sig-name descname">fetch_available</code><span class="sig-paren">(</span><em class="sig-param">category=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/datasets/datasets.html#fetch_available"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.datasets.fetch_available" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">matrixprofile.datasets.</code><code class="sig-name descname">fetch_available</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">category</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/datasets/datasets.html#fetch_available"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.datasets.fetch_available" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fetches the available datasets found in
 github.com/matrix-profile-foundation/mpf-datasets github repository.
 Providing a category filters the datasets.</p>
@@ -1583,9 +1585,9 @@ Providing a category filters the datasets.</p>
 </div>
 <div class="section" id="matrixprofile-datasets-load">
 <h2>matrixprofile.datasets.load<a class="headerlink" href="#matrixprofile-datasets-load" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+<dl class="py function">
 <dt id="matrixprofile.datasets.load">
-<code class="sig-prename descclassname">matrixprofile.datasets.</code><code class="sig-name descname">load</code><span class="sig-paren">(</span><em class="sig-param">name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/datasets/datasets.html#load"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.datasets.load" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">matrixprofile.datasets.</code><code class="sig-name descname">load</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matrixprofile/datasets/datasets.html#load"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matrixprofile.datasets.load" title="Permalink to this definition">¶</a></dt>
 <dd><p>Loads a MPF dataset by base file name or file name. The match is case
 insensitive.</p>
 <div class="admonition note">
@@ -1595,7 +1597,7 @@ insensitive.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p><p>The dataset and metadata.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">{</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">{</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">file</span> <span class="n">name</span> <span class="n">loaded</span><span class="p">,</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;category&#39;</span><span class="p">:</span> <span class="n">The</span> <span class="n">category</span> <span class="n">the</span> <span class="n">file</span> <span class="n">came</span> <span class="n">from</span><span class="p">,</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="n">A</span> <span class="n">description</span><span class="p">,</span>
@@ -1635,11 +1637,19 @@ insensitive.</p>
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2020, Matrix Profile Foundation
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -1650,7 +1660,6 @@ insensitive.</p>
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {
